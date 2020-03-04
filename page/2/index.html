@@ -195,139 +195,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-cluster-2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="LelandYan">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LelandYan">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/04/2020-3-3-cluster-2020/" class="post-title-link" itemprop="url">聚类各种方法和度量关系</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:50:44" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="聚类相关知识"><a href="#聚类相关知识" class="headerlink" title="聚类相关知识"></a>聚类相关知识</h1><h3 id="聚类"><a href="#聚类" class="headerlink" title="聚类"></a>聚类</h3><ol>
-<li>相似度/距离计算方法<ol>
-<li>闵可夫斯基距离/欧式距离</li>
-<li>Jaccard相似系数 适合于集合运算</li>
-<li>余弦相似度</li>
-<li>相关系数（是线性的）也可以作为相似度度量</li>
-<li>Person相似系数</li>
-<li>相对熵（K-L距离）不对称</li>
-<li>Hellinger距离 对称的，满足三角不等式、非负距离的</li>
-</ol>
-</li>
-</ol>
-<h3 id="K-means算法"><a href="#K-means算法" class="headerlink" title="K-means算法"></a>K-means算法</h3><p>改进：</p>
-<ol>
-<li>K-Mediods聚类（使用中位数代替k-means中位数）</li>
-<li>二分k-Means聚类方法</li>
-<li>K-Means++算法在选择聚类中心的改进</li>
-<li>Mini-batch-K-Means随机聚类算法 随机体现到更新中心随机部分样本</li>
-</ol>
-<p>K-means算法对初值是敏感的</p>
-<p><strong>有时候可以通过数据的映射（比如聚类等），然后聚类可以得到更好的效果
-</strong></p>
-<p><strong>当方差不相等的数据，数量不相等k-means聚类的效果不一定好</strong></p>
-<p>K-means使用平方误差作为目标函数时的梯度就是聚类更新时每个类别均值作为新的聚类中心，这个也可以理解为什么K-Means聚类中心随机初始化的中心是不同的，因为梯度下降可能处于不同的局部最优解</p>
-<p>K-Mean使用范围：得到的类型为圆形的聚类形状，默认的是高斯分布或混合高斯模型</p>
-<p>K-Means聚类参数的关键在于K值得选取：可以使用交叉验证进行选择，选择类似损失图得进行选择拐点出</p>
-<p>优点：可以处理大数据集，当数据集符合高斯分布效果较好</p>
-<p>缺点：需要给出k值，而且对初值很敏感，不同得初值得到不同得结果，不适合非凸形状得睡觉，而且对噪声和孤立点数据很敏感</p>
-<h3 id="Canopy算法"><a href="#Canopy算法" class="headerlink" title="Canopy算法"></a>Canopy算法</h3><h3 id="聚类得衡量指标"><a href="#聚类得衡量指标" class="headerlink" title="聚类得衡量指标"></a>聚类得衡量指标</h3><ol>
-<li><p>均一性 一个簇只包含一个类别得样本，则满足均一性</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> metrics</span><br><span class="line">  y = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">1</span>]</span><br><span class="line">  y_hat = [<span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">2</span>]</span><br><span class="line">  h = metrics.homogeneity_score(y, y_hat)</span><br><span class="line">  c = metrics.completeness_score(y, y_hat)</span><br><span class="line">  <span class="keyword">print</span> <span class="string">u'同一性(Homogeneity)：'</span>, h</span><br><span class="line">  <span class="keyword">print</span> <span class="string">u'完整性(Completeness)：'</span>, c</span><br><span class="line">  v2 = <span class="number">2</span> * c * h / (c + h)</span><br><span class="line">  v = metrics.v_measure_score(y, y_hat)</span><br><span class="line">  <span class="keyword">print</span> <span class="string">u'V-Measure：'</span>, v2, v</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>完整性  同类别样本被归类到相同得簇中，则满足完整性</p>
-</li>
-<li><p>V-measure 均一性和完整性得加权平均</p>
-</li>
-<li><p>ARI</p>
-</li>
-<li><p>AMI</p>
-</li>
-<li><p>轮廓系数（可以不知道真正的类别）</p>
-</li>
-</ol>
-<h3 id="层次聚类"><a href="#层次聚类" class="headerlink" title="层次聚类"></a>层次聚类</h3><ol>
-<li>凝聚的层次聚类 AGNES算法</li>
-<li>分裂的层次聚类 DIANA 算法</li>
-</ol>
-<p>层次聚类更像是决策树</p>
-<h3 id="密度聚类-DBSCAN"><a href="#密度聚类-DBSCAN" class="headerlink" title="密度聚类 DBSCAN"></a>密度聚类 DBSCAN</h3><p>只要样本点的密度大于阈值，则将该样本添加到最近的簇中</p>
-<p>该算法能够克服基于距离算法只能发现“类圆”的聚类的缺点，而且在一定程度允许噪声</p>
-<h3 id="密度最大值聚类"><a href="#密度最大值聚类" class="headerlink" title="密度最大值聚类"></a>密度最大值聚类</h3><p>可以进一步得到更好的效果，而且对于噪音可以有更好的效果，而且可以得到聚类的边界的</p>
-<h3 id="AP算法调参"><a href="#AP算法调参" class="headerlink" title="AP算法调参"></a>AP算法调参</h3><p>根据相似度来进行聚类的算法</p>
-<p>AP算法的基本思想：将全部样本看成网格的节点，然后通过网格各条边的消息传递计算出各样本的聚类中心。聚类过程中，共有两种消息在各个节点间传递，分别是吸引度（responsibility）和归属度（availability）。Ap算法通过迭代过程不断更新每一个点的吸引读和归属度值，直到产生m个高质量的Exemplar(类似与质心)，同时将其余的数据点分配到相应的聚类中。</p>
-<p>在实际计算应用中，最重要的两个参数（也是需要手动指定）是Preference和Damping factor。前者定了<strong>聚类数量的多少</strong>，值越大聚类数量越多；后者控制算法收敛效果。</p>
-<h3 id="谱聚类"><a href="#谱聚类" class="headerlink" title="谱聚类"></a>谱聚类</h3><p>随机游走拉布拉斯矩阵求解</p>
-<p>优点就是可以求解非凸的类型数据和嵌套的圆形数据，谱聚类也是需要给定K</p>
-<p>值的</p>
-<p>谱聚类是可以做图像的分割的</p>
-<h3 id="标签传递算法"><a href="#标签传递算法" class="headerlink" title="标签传递算法"></a>标签传递算法</h3><p>对于部分样本的标记给定，而大多数样本的标记未知的情形，是半监督学习问题LPA</p>
-<h3 id="MeanShift聚类"><a href="#MeanShift聚类" class="headerlink" title="MeanShift聚类"></a>MeanShift聚类</h3><p>算法原理：有一个点x，它的周围有很多个点xi我们计算点x移动到每个点xi所需要的偏移量之和，求平均，就得到平均偏移量（该偏移量的方向是周围点分布密集的方向）该偏移量是包含大小和方向的，然后点x就往平均偏移量方向移动，在以此为新的起点不断地迭代直到满足一定地条件结束。</p>
-<p>meanshift在图像处理中地聚类，跟踪中的应用。</p>
-<p><strong>与K-means算法不同的是，Meanshift算法可以自动决定类别的数目</strong></p>
-<p><strong>与K-means算法一样的是，两者都使用集合内数据点的均值进行中心点的移动</strong></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-cost_function-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -353,7 +220,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：13:58:37" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：18:21:11" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -377,12 +244,15 @@
 
       
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="损失函数（loss-function）"><a href="#损失函数（loss-function）" class="headerlink" title="损失函数（loss function）"></a>损失函数（loss function）</h1><p>损失函数（loss function）是用来估量你模型的预测值f(x)与真实值Y的不一致程度，它是一个非负实值函数,通常使用L(Y, f(x))来表示，损失函数越小，模型的鲁棒性就越好。损失函数是<strong>经验风险函数</strong>的核心部分，也是<strong>结构风险函数</strong>重要组成部分。模型的结构风险函数包括了经验风险项和正则项，通常可以表示成如下式子：</p>
-<script type="math/tex; mode=display">
-\theta^* = \arg \min_\theta \frac{1}{N}{}\sum_{i=1}^{N} L(y_i, f(x_i; \theta)) + \lambda\  \Phi(\theta)</script><p>其中，前面的均值函数表示的是经验风险函数，L代表的是损失函数，后面的Φ是正则化项（regularizer）或者叫惩罚项（penalty term），它可以是L1，也可以是L2，或者其他的正则函数。整个式子表示的意思是<strong>找到使目标函数最小时的θθ值</strong>。下面主要列出几种常见的损失函数。</p>
-
+<p>Machine Learning notes<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/04/2020-3-3-cost_function-2020/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -426,7 +296,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：13:55:03" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：18:20:58" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -450,11 +320,91 @@
 
       
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><h2 id="有关交叉验证的sklearn的方法和原理"><a href="#有关交叉验证的sklearn的方法和原理" class="headerlink" title="有关交叉验证的sklearn的方法和原理"></a>有关交叉验证的sklearn的方法和原理</h2><h3 id="cross-val-score"><a href="#cross-val-score" class="headerlink" title="cross_val_score"></a>cross_val_score</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cross_val_score 用训练集来评估模型的好坏，注意交叉验证都是使用的是训练集来进行测验，而不是测试集</span></span><br><span class="line"><span class="comment"># 其返回的是，几折交叉验证就返回几个模型训练的评估分数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="comment"># 这里的model(),传入的是个模型实例，后传入的两个数据集合，cv表示交叉验证的次数，scoring表示评价方法</span></span><br><span class="line">cross_val_score(model(),X_train,y_train,cv=<span class="number">3</span>,scoring=<span class="string">"accuracy"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面则使用python实现一个cross_val_score函数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedKFold</span><br><span class="line"><span class="keyword">from</span> sklean.base <span class="keyword">import</span> clone</span><br><span class="line"><span class="comment"># 将数据集划分为几份</span></span><br><span class="line">skfolds = StratifiedKFold(n_splits=<span class="number">3</span>,random_state=<span class="number">42</span>)</span><br><span class="line"><span class="keyword">for</span> train_index,test_index <span class="keyword">in</span> skfolds.split(X_train,y_train):</span><br><span class="line">    <span class="comment"># 克隆原来模型</span></span><br><span class="line">    clone_clf = clone(model())</span><br><span class="line">    X_train_folds = X_train[trian_index]</span><br><span class="line">    y_train_folds = y_train[train_index]</span><br><span class="line">    X_test_folds = X_train[test_index]</span><br><span class="line">    y_test_folds= y_train[test_index]</span><br><span class="line">    clone_clf.fit(X_train_folds,y_train_folds)</span><br><span class="line">    y_pred = clone_clf.predict(X_test_folds)</span><br><span class="line">    n_correct = sum(y_pred == y_test_folds)</span><br><span class="line">    print(n_correct / len(y_pred) )</span><br></pre></td></tr></table></figure>
-<h3 id="cross-val-predict"><a href="#cross-val-predict" class="headerlink" title="cross_val_predict"></a>cross_val_predict</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">就像 cross_val_score(),cross_val_predict()也使用 K 折交叉验证。它不是返回一个评估分数，而是返回基于每一个测试折做出的一个预测值。这意味着，对于每一个训练集的样例，你得到一个干净的预测（“干净”是说一个模型在训练过程当中没有用到测试集的数据）。"""</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_predict</span><br><span class="line">y_train_pred = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p>Machine Learning notes<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/04/2020-3-3-cross_valadation_sklearn-2020/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
 
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-Sklearn_RandomForest-2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="LelandYan">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LelandYan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/04/2020-3-3-Sklearn_RandomForest-2020/" class="post-title-link" itemprop="url">sklearn中RandomForestClassifier</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：18:22:49" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/04/2020-3-3-Sklearn_RandomForest-2020/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -498,7 +448,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:05:07" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：18:21:42" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -522,12 +472,15 @@
 
       
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="Cross-Validation-详解"><a href="#Cross-Validation-详解" class="headerlink" title="Cross Validation 详解"></a>Cross Validation 详解</h1><p><img src="https://github.com/LelandYan/lelandyan.github.io/raw/master/img/cross_validation.png" alt="Image text"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line">knn_clf = KNeighborsClassifier()</span><br><span class="line"><span class="comment"># cv参数为交叉时候分成几份（k-folds）</span></span><br><span class="line">scores = cross_val_score(knn_clf,x_train,y_train,cv=<span class="number">10</span>)</span><br><span class="line">scores = np.mean(scores)</span><br></pre></td></tr></table></figure>
-<h2 id="交叉验证的目的就是找到最好的超参数所以传入的数据只是train的数据"><a href="#交叉验证的目的就是找到最好的超参数所以传入的数据只是train的数据" class="headerlink" title="交叉验证的目的就是找到最好的超参数所以传入的数据只是train的数据"></a>交叉验证的目的就是找到最好的超参数所以传入的数据只是train的数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line"><span class="comment"># 事实上网格搜受已经使用了交叉验证了</span></span><br><span class="line">para,_grid = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">'weights'</span>:[<span class="string">'uniform'</span>],</span><br><span class="line">        <span class="string">'n_neighbors'</span>:[i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>)]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">'weights'</span>:[<span class="string">'distance'</span>],</span><br><span class="line">        <span class="string">'n_neighbors'</span>:[i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>)],</span><br><span class="line">        <span class="string">'p'</span>:[i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">6</span>)]</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"><span class="comment"># n_jobs表示的处理的计算的核数,verbose可以在运行的程序的时候，可以显示信息</span></span><br><span class="line">knn_clf = KneighborsClassifier()</span><br><span class="line">grid_search = GridSearchCV(knn_clf,param_grid,n_jobs=<span class="number">-1</span>，verbose=<span class="number">2</span>)</span><br><span class="line">grid_search.fit(X_train,y_train)</span><br><span class="line"><span class="comment"># 获取训练集的最好结果</span></span><br><span class="line">grid_search.best_score_</span><br><span class="line"><span class="comment"># 获取训练集的最好超参数</span></span><br><span class="line">grid_search.best_params_</span><br><span class="line"><span class="comment"># 获得最好的分类器</span></span><br><span class="line">grid_search.best_estimator_</span><br></pre></td></tr></table></figure>
-<h3 id="留一法-LOO-CV-虽然准确，但是计算量巨大"><a href="#留一法-LOO-CV-虽然准确，但是计算量巨大" class="headerlink" title="留一法(LOO-CV) 虽然准确，但是计算量巨大"></a>留一法(LOO-CV) 虽然准确，但是计算量巨大</h3>
+<p>Machine Learning notes<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/04/2020-3-3-cross_validation-2020/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -571,7 +524,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:49:22" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：18:24:10" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -595,10 +548,15 @@
 
       
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="决策树的可视化"><a href="#决策树的可视化" class="headerlink" title="决策树的可视化"></a>决策树的可视化</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pydotplus</span><br><span class="line"><span class="keyword">with</span> open(<span class="string">"irsi.dot"</span>,<span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">    tree.export_graphviz(model,out_file=f)</span><br><span class="line">   </span><br><span class="line">iris_feature_E = <span class="string">'sepal length'</span>, <span class="string">'sepal width'</span>, <span class="string">'petal length'</span>, <span class="string">'petal width'</span></span><br><span class="line">    iris_feature = <span class="string">'花萼长度'</span>, <span class="string">'花萼宽度'</span>, <span class="string">'花瓣长度'</span>, <span class="string">'花瓣宽度'</span></span><br><span class="line">    iris_class = <span class="string">'Iris-setosa'</span>, <span class="string">'Iris-versicolor'</span>, <span class="string">'Iris-virginica'</span></span><br><span class="line">dot_data = tree.export_graphviz(model, out_file=<span class="literal">None</span>, feature_names=iris_feature_E[:<span class="number">2</span>], class_names=iris_class,</span><br><span class="line">                                    filled=<span class="literal">True</span>, rounded=<span class="literal">True</span>, special_characters=<span class="literal">True</span>)</span><br><span class="line">    graph = pydotplus.graph_from_dot_data(dot_data)</span><br><span class="line">    graph.write_pdf(<span class="string">'iris.pdf'</span>)</span><br><span class="line">    f = open(<span class="string">'iris.png'</span>, <span class="string">'wb'</span>)</span><br><span class="line">    f.write(graph.create_png())</span><br><span class="line">    f.close()</span><br></pre></td></tr></table></figure>
-
+<p>Machine Learning notes<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/04/2020-3-3-decisionTreevis-2020/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -642,7 +600,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：13:57:36" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：18:21:05" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -666,44 +624,15 @@
 
       
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="Ensemble-Learning"><a href="#Ensemble-Learning" class="headerlink" title="Ensemble Learning"></a>Ensemble Learning</h1><h2 id="集成学习"><a href="#集成学习" class="headerlink" title="集成学习"></a>集成学习</h2><h3 id="集成学习概述"><a href="#集成学习概述" class="headerlink" title="集成学习概述"></a>集成学习概述</h3><p>从下图，我们可以对集成学习的思想做一个概括。对于训练集数据，我们通过训练若干个个体学习器，通过一定的结合策略，就可以最终形成一个强学习器，以达到博采众长的目的</p>
-<p>也就是说，集成学习有两个主要的问题需要解决，第一是如何得到若干个个体学习器，第二是如何选择一种结合策略，将这些个体学习器集合成一个强学习器</p>
-<h3 id="集成学习之个体学习器"><a href="#集成学习之个体学习器" class="headerlink" title="集成学习之个体学习器"></a>集成学习之个体学习器</h3><p>上一节我们讲到，集成学习的第一个问题就是如何得到若干个个体学习器。这里我们有两种选择。</p>
-<p>　　　　第一种就是所有的个体学习器都是一个种类的，或者说是同质的。比如都是决策树个体学习器，或者都是神经网络个体学习器。第二种是所有的个体学习器不全是一个种类的，或者说是异质的。比如我们有一个分类问题，对训练集采用支持向量机个体学习器，逻辑回归个体学习器和朴素贝叶斯个体学习器来学习，再通过某种结合策略来确定最终的分类强学习器。</p>
-<p>　　　　目前来说，同质个体学习器的应用是最广泛的，一般我们常说的集成学习的方法都是指的同质个体学习器。而同质个体学习器使用最多的模型是CART决策树和神经网络。同质个体学习器按照个体学习器之间是否存在依赖关系可以分为两类，第一个是个体学习器之间存在强依赖关系，一系列个体学习器基本都需要串行生成，代表算法是boosting系列算法，第二个是个体学习器之间不存在强依赖关系，一系列个体学习器可以并行生成，代表算法是bagging和随机森林（Random Forest）系列算法。下面就分别对这两类算法做一个概括总结。</p>
-<h3 id="boostsing集成学习"><a href="#boostsing集成学习" class="headerlink" title="boostsing集成学习"></a>boostsing集成学习</h3><p>　从图中可以看出，Boosting算法的工作机制是首先从训练集用初始权重训练出一个弱学习器1，根据弱学习的学习误差率表现来更新训练样本的权重，使得之前弱学习器1学习误差率高的训练样本点的权重变高，使得这些误差率高的点在后面的弱学习器2中得到更多的重视。然后基于调整权重后的训练集来训练弱学习器2.，如此重复进行，直到弱学习器数达到事先指定的数目T，最终将这T个弱学习器通过集合策略进行整合，得到最终的强学习器。</p>
-<p>Boosting系列算法里最著名算法主要有AdaBoost算法和提升树(boosting tree)系列算法。提升树系列算法里面应用最广泛的是梯度提升树(Gradient Boosting Tree)</p>
-<p>这里对Adaboost算法的优缺点做一个总结。</p>
-<p>Adaboost的主要优点有：</p>
-<p>1）Adaboost作为分类器时，分类精度很高</p>
-<p>2）在Adaboost的框架下，可以使用各种回归分类模型来构建弱学习器，非常灵活。</p>
-<p>3）作为简单的二元分类器时，构造简单，结果可理解。</p>
-<p>4）不容易发生过拟合</p>
-<p>Adaboost的主要缺点有：</p>
-<p>1）对异常样本敏感，异常样本在迭代中可能会获得较高的权重，影响最终的强学习器的预测准确性。</p>
-<p>由于GBDT的卓越性能，只要是研究机器学习都应该掌握这个算法，包括背后的原理和应用调参方法。目前GBDT的算法比较好的库是xgboost。当然scikit-learn也可以。</p>
-<p>最后总结下GBDT的优缺点。</p>
-<p>GBDT主要的优点有：</p>
-<p>1) 可以灵活处理各种类型的数据，包括连续值和离散值。</p>
-<p>2) 在相对少的调参时间情况下，预测的准确率也可以比较高。这个是相对SVM来说的。</p>
-<p>3）使用一些健壮的损失函数，对异常值的鲁棒性非常强。比如 Huber损失函数和Quantile损失函数。</p>
-<p>GBDT的主要缺点有：</p>
-<p>1)由于弱学习器之间存在依赖关系，难以并行训练数据。不过可以通过自采样的SGBT来达到部分并行。</p>
-<h3 id="集成学习之bagging"><a href="#集成学习之bagging" class="headerlink" title="集成学习之bagging"></a>集成学习之bagging</h3><p>Bagging的算法原理和 boosting不同，它的弱学习器之间没有依赖关系，可以并行生成，我们可以用一张图做一个概括如下：从上图可以看出，bagging的个体弱学习器的训练集是通过随机采样得到的。通过T次的随机采样，我们就可以得到T个采样集，对于这T个采样集，我们可以分别独立的训练出T个弱学习器，再对这T个弱学习器通过集合策略来得到最终的强学习器。</p>
-<p>　　　　对于这里的随机采样有必要做进一步的介绍，这里一般采用的是自助采样法（Bootstrap sampling）,即对于m个样本的原始训练集，我们每次先随机采集一个样本放入采样集，接着把该样本放回，也就是说下次采样时该样本仍有可能被采集到，这样采集m次，最终可以得到m个样本的采样集，由于是随机采样，这样每次的采样集是和原始训练集不同的，和其他采样集也是不同的，这样得到多个不同的弱学习器。</p>
-<p>　　　　随机森林是bagging的一个特化进阶版，所谓的特化是因为随机森林的弱学习器都是决策树。所谓的进阶是随机森林在bagging的样本随机采样基础上，又加上了特征的随机选择，其基本思想没有脱离bagging的范畴。bagging和随机森林算法的原理在后面的文章中会专门来讲。</p>
-<h3 id="集成学习之结合策略"><a href="#集成学习之结合策略" class="headerlink" title="集成学习之结合策略"></a>集成学习之结合策略</h3><ol>
-<li><p>平均法 </p>
-</li>
-<li><p>投票法 （投票法也可以设置权重）</p>
-</li>
-<li><p>学习法 （代表的方法是stacking）当使用stacking的结合策略时， 我们不是对弱学习器的结果做简单的逻辑处理，而是再加上一层学习器，也就是说，我们将训练集弱学习器的学习结果作为输入，将训练集的输出作为输出，重新训练一个学习器来得到最终结果。</p>
-<p>　　　　在这种情况下，我们将弱学习器称为初级学习器，将用于结合的学习器称为次级学习器。对于测试集，我们首先用初级学习器预测一次，得到次级学习器的输入样本，再用次级学习器预测一次，得到最终的预测结果。</p>
-</li>
-</ol>
-
+<p>Machine Learning notes<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/04/2020-3-3-enseemble_learning-2020/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -747,7 +676,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:46:20" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：18:24:00" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -771,87 +700,15 @@
 
       
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="在进行特征选择时候可以求特征与特征之间的相关系数"><a href="#在进行特征选择时候可以求特征与特征之间的相关系数" class="headerlink" title="在进行特征选择时候可以求特征与特征之间的相关系数"></a>在进行特征选择时候可以求特征与特征之间的相关系数</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 做出特征之间的相关系数，并作图</span></span><br><span class="line"><span class="keyword">from</span> pandas.plotting <span class="keyword">import</span> scatter_matrix</span><br><span class="line"></span><br><span class="line">attributes = [<span class="string">"median_house_value"</span>, <span class="string">"median_income"</span>, <span class="string">"total_rooms"</span>,</span><br><span class="line">              <span class="string">"housing_median_age"</span>]</span><br><span class="line">scatter_matrix(housing[attributes], figsize=(<span class="number">12</span>, <span class="number">8</span>))</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 然后在进行敏感特征之间的处理分析</span></span><br><span class="line">housing.plot(kind=<span class="string">"scatter"</span>, x=<span class="string">"median_income"</span>, y=<span class="string">"median_house_value"</span>,</span><br><span class="line">             alpha=<span class="number">0.1</span>)</span><br><span class="line">plt.axis([<span class="number">0</span>, <span class="number">16</span>, <span class="number">0</span>, <span class="number">550000</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
+<p>Machine Learning notes<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/04/2020-3-3-feature_something-2020/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
         
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-gridsearch-2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="LelandYan">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LelandYan">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/04/2020-3-3-gridsearch-2020/" class="post-title-link" itemprop="url">网格搜索与交叉验证</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:42:34" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="网格搜索与交叉验证（网格搜索必须要在main下定义）"><a href="#网格搜索与交叉验证（网格搜索必须要在main下定义）" class="headerlink" title="网格搜索与交叉验证（网格搜索必须要在main下定义）"></a>网格搜索与交叉验证（网格搜索必须要在main下定义）</h1><h2 id="k折交叉验证调节超参数"><a href="#k折交叉验证调节超参数" class="headerlink" title="k折交叉验证调节超参数"></a>k折交叉验证调节超参数</h2><p>使用与样本数量较小的数据样本(以万基)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_breast_cancer</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> make_scorer, accuracy_score</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">data = load_breast_cancer()</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(data[<span class="string">'data'</span>], data[<span class="string">'target'</span>], test_size=<span class="number">0.2</span>, random_state=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># print(X_train.shape,y_train.shape,X_test.shape,y_test.shape)</span></span><br><span class="line">dec_clf = DecisionTreeClassifier(random_state=<span class="number">0</span>)</span><br><span class="line">dec_clf.fit(X_train, y_train)</span><br><span class="line">print(dec_clf.score(X_test, y_test))</span><br><span class="line"></span><br><span class="line">parameters = &#123;<span class="string">'max_depth'</span>: range(<span class="number">1</span>, <span class="number">6</span>), <span class="string">'min_samples_leaf'</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]&#125;</span><br><span class="line"><span class="comment"># 构建一个打分器</span></span><br><span class="line">scoring_fnc = make_scorer(accuracy_score)</span><br><span class="line">kfold = KFold(n_splits=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># for train_index,test_index in kfold.split(range(10)):</span></span><br><span class="line"><span class="comment">#     print(train_index,test_index)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 网格搜索</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line"></span><br><span class="line">grid = GridSearchCV(dec_clf, parameters, scoring_fnc, cv=kfold)</span><br><span class="line">grid = grid.fit(X_train, y_train)</span><br><span class="line">reg = grid.best_estimator_</span><br><span class="line"></span><br><span class="line">print(<span class="string">"best score:"</span>, grid.best_score_)</span><br><span class="line">print(<span class="string">'best parameters: '</span>, grid.best_params_)</span><br><span class="line">print(reg.score(X_test, y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment"># for key in parameters.keys():</span></span><br><span class="line"><span class="comment">#     print(key," : ",reg.get_params()[key])</span></span><br><span class="line"><span class="comment"># 显示交叉验证的过程</span></span><br><span class="line">print(pd.DataFrame(grid.cv_results_).T)</span><br></pre></td></tr></table></figure>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>k折交叉验证法是将训练集分为k组，用每1组作为测试集而剩下的k-1组的训练集作为训练数据集，从而可以测试k个训练模型</p>
-<p>交叉验证是用于调节参数，最大的利用训练集寻找最优的超参数</p>
-<p>过拟合：训练集准确率高，测试集准确率较低</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sklearn进行交叉验证----单一超参数</span></span><br><span class="line"><span class="comment"># 交叉验证得分cross_val_score()</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="comment"># estimator 训练器的选择</span></span><br><span class="line"><span class="comment"># X为训练集上的特征</span></span><br><span class="line"><span class="comment"># y是训练集中要预测的标签</span></span><br><span class="line"><span class="comment"># cv是交叉验证分为几折</span></span><br><span class="line">cross_val_score(estimator,X,y=<span class="literal">None</span>,cv=<span class="literal">None</span>)</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"></span><br><span class="line">k_range = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">10</span>] <span class="comment">#k选择2，4，5，10四个参数</span></span><br><span class="line">cv_scores = [] <span class="comment">#分别放用4个参数训练得到的精确度</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> k_range:</span><br><span class="line">    knn = KNeighborsClassifier(n_neighbors=k)</span><br><span class="line">    <span class="comment">#*****下面这句进行了交叉验证**********</span></span><br><span class="line">    scores = cross_val_score(knn, X_train_scaled, y_train, cv=<span class="number">3</span>)<span class="comment">#进行3折交叉验证，返回的是3个值即每次验证的精确度</span></span><br><span class="line"></span><br><span class="line">    cv_score = np.mean(scores)<span class="comment"># 把某个k对应的精确度求平均值</span></span><br><span class="line">    print(<span class="string">'k=&#123;&#125;，验证集上的准确率=&#123;:.3f&#125;'</span>.format(k, cv_score))</span><br><span class="line">    cv_scores.append(cv_score)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 验证曲线validation_curve()</span></span><br><span class="line">    sklearn.model_selection.validation_curve(estimator, X, y, param_name, param_range, cv=<span class="literal">None</span>, scoring=<span class="literal">None</span>) </span><br><span class="line">参数： </span><br><span class="line">- estimator： 训练器 </span><br><span class="line">- X： 训练集上选择的特征 </span><br><span class="line">- y：训练集上的要预测值 </span><br><span class="line">- param_name ：变化的参数的名称 </span><br><span class="line">- param_range ： 参数变化的范围 </span><br><span class="line">- cv：交叉验证的折数 </span><br><span class="line">- scoring：采用的模型评价标准</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> validation_curve</span><br><span class="line">train_scores, test_scores = validation_curve(SVC(kernel=<span class="string">'linear'</span>), X_train_scaled, y_train, param_name=<span class="string">'C'</span>, param_range=c_range, cv=<span class="number">5</span>, scoring=<span class="string">'accuracy'</span>)<span class="comment"># 通过验证曲线得到不同取值的C在验证集合训练集上的得分。</span></span><br></pre></td></tr></table></figure>
-<h1 id="随机搜索"><a href="#随机搜索" class="headerlink" title="随机搜索"></a>随机搜索</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> RandomizedSearchCV</span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> randint</span><br><span class="line"></span><br><span class="line">param_distribs = &#123;</span><br><span class="line">        <span class="string">'n_estimators'</span>: randint(low=<span class="number">1</span>, high=<span class="number">200</span>),</span><br><span class="line">        <span class="string">'max_features'</span>: randint(low=<span class="number">1</span>, high=<span class="number">8</span>),</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">forest_reg = RandomForestRegressor(random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search = RandomizedSearchCV(forest_reg, param_distributions=param_distribs,</span><br><span class="line">                                n_iter=<span class="number">10</span>, cv=<span class="number">5</span>, scoring=<span class="string">'neg_mean_squared_error'</span>, random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search.fit(housing_prepared, housing_labels)</span><br><span class="line"></span><br><span class="line">cvres = rnd_search.cv_results_</span><br><span class="line"><span class="keyword">for</span> mean_score, params <span class="keyword">in</span> zip(cvres[<span class="string">"mean_test_score"</span>], cvres[<span class="string">"params"</span>]):</span><br><span class="line">    print(np.sqrt(-mean_score), params)</span><br></pre></td></tr></table></figure>
-
       
     </div>
 
@@ -895,7 +752,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:44:14" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：18:23:55" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -919,19 +776,15 @@
 
       
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="完整机器学习项目流程"><a href="#完整机器学习项目流程" class="headerlink" title="完整机器学习项目流程"></a>完整机器学习项目流程</h1><ol>
-<li>观察大局</li>
-<li>获得数据</li>
-<li>从数据探索和可视化中获得东西</li>
-<li>数据预处理</li>
-<li>选择和训练模型</li>
-<li>微调模型</li>
-<li>展示解决方案</li>
-<li>启动、监护和维护系统</li>
-</ol>
-
+<p>Machine Learning notes<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/04/2020-3-3-machie_learning_procedure-2020/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -950,7 +803,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-machine_learning_procedure-2020/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-gridsearch-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -964,7 +817,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/04/2020-3-3-machine_learning_procedure-2020/" class="post-title-link" itemprop="url">Machine Learning Procedure</a>
+            <a href="/2020/03/04/2020-3-3-gridsearch-2020/" class="post-title-link" itemprop="url">网格搜索与交叉验证</a>
         </h1>
 
         <div class="post-meta">
@@ -975,7 +828,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：13:59:29" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：18:23:50" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -999,25 +852,91 @@
 
       
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="Machine-Learning-Procedure"><a href="#Machine-Learning-Procedure" class="headerlink" title="Machine Learning Procedure"></a>Machine Learning Procedure</h1><h2 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
-<h2 id="数据预览"><a href="#数据预览" class="headerlink" title="数据预览"></a>数据预览</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">X = pd.DataFrame(X)</span><br><span class="line"><span class="comment"># 取前10行数据</span></span><br><span class="line">X.head(n=<span class="number">10</span>)</span><br><span class="line"><span class="comment"># 取数据中任意的10行</span></span><br><span class="line">X.sample(n=<span class="number">10</span>)</span><br><span class="line"><span class="comment"># 查看数据的大体数据分布以及大小</span></span><br><span class="line">X.describe()</span><br></pre></td></tr></table></figure>
-<h2 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h2><p>通过箱线图可以发现异常值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X.plot(kind=<span class="string">'box'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>通过条形图可以看出数据结构的分布特征，是否满足正太分布</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X.hist(figsize=(<span class="number">12</span>,<span class="number">5</span>),xlabelsize=<span class="number">1</span>,ylabelsize=<span class="number">1</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>通过折线图可以看出数据值的大小密度的分布情况</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X.plot(kind=<span class="string">"density"</span>,subplot=<span class="literal">True</span>,layout=(<span class="number">4</span>,<span class="number">4</span>),figsize=(<span class="number">12</span>,<span class="number">5</span>))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>通过特征相关图我们能够知道哪些特征存在明显的相关性</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pd.scatter_matrix(X,figsize=(<span class="number">10</span>,<span class="number">10</span>))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>通过热力图可以更加清晰的看出各个特征之间的关系</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(<span class="number">10</span>,<span class="number">10</span>))</span><br><span class="line">ax = fig.add_subplot(<span class="number">111</span>)</span><br><span class="line">cax = ax.matshow(X.corr(),vmin=<span class="number">-1</span>,vmax=<span class="number">1</span>,interploation=<span class="string">"none"</span>)</span><br><span class="line">fig.colorbar(cax)</span><br><span class="line"><span class="comment"># 这里为数据特征关联的分布大小</span></span><br><span class="line">ticks = np.arange(<span class="number">0</span>,<span class="number">4</span>,<span class="number">1</span>)</span><br><span class="line">ax.set_xticks(ticks)</span><br><span class="line">ax.set_yticks(ticks)</span><br><span class="line"><span class="comment"># 这里的col_name为特征的名称</span></span><br><span class="line">ax.set_xticklabels(col_name)</span><br><span class="line">ax.set_yticklabels(col_name)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<h2 id="查找最优模型"><a href="#查找最优模型" class="headerlink" title="查找最优模型"></a>查找最优模型</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> AdaBoostClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> ExtraTreesClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> GaussianNB</span><br><span class="line"><span class="keyword">from</span> sklearn.discriminant_analysis <span class="keyword">import</span> LinearDiscriminantAnalysis</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold, cross_val_score,GridSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"></span><br><span class="line">models = []</span><br><span class="line">models.append((<span class="string">"AB"</span>, AdaBoostClassifier()))</span><br><span class="line">models.append((<span class="string">"GBM"</span>, GradientBoostingClassifier()))</span><br><span class="line">models.append((<span class="string">"RF"</span>, RandomForestClassifier()))</span><br><span class="line">models.append((<span class="string">"ET"</span>, ExtraTreesClassifier()))</span><br><span class="line">models.append((<span class="string">"SVC"</span>, SVC()))</span><br><span class="line">models.append((<span class="string">"KNN"</span>, KNeighborsClassifier()))</span><br><span class="line">models.append((<span class="string">"LR"</span>, LogisticRegression()))</span><br><span class="line">models.append((<span class="string">"GNB"</span>, GaussianNB()))</span><br><span class="line">models.append((<span class="string">"LDA"</span>, LinearDiscriminantAnalysis()))</span><br><span class="line"></span><br><span class="line">names = []</span><br><span class="line">results = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name, model <span class="keyword">in</span> models:</span><br><span class="line">    kfold = KFold(n_splits=<span class="number">5</span>, random_state=<span class="number">42</span>)</span><br><span class="line">    result = cross_val_score(model, X, y, scoring=<span class="string">'accuracy'</span>, cv=kfold)</span><br><span class="line">    names.append(name)</span><br><span class="line">    results.append(result)</span><br><span class="line">    print(<span class="string">"&#123;&#125; Mean:&#123;:.4f&#125;(Std:&#123;:.4f&#125;)"</span>.format(name, result.mean(), result.std()))</span><br></pre></td></tr></table></figure>
-<h2 id="使用Pipeline"><a href="#使用Pipeline" class="headerlink" title="使用Pipeline"></a>使用Pipeline</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"></span><br><span class="line">pipeline = []</span><br><span class="line">pipeline.append((<span class="string">"ScalerET"</span>, Pipeline([(<span class="string">"Scaler"</span>,StandardScaler()),</span><br><span class="line"> (<span class="string">"ET"</span>,ExtraTreesClassifier())])))</span><br><span class="line">pipeline.append((<span class="string">"ScalerGBM"</span>, Pipeline([(<span class="string">"Scaler"</span>,StandardScaler()),</span><br><span class="line">   (<span class="string">"GBM"</span>,GradientBoostingClassifier())])))</span><br><span class="line">pipeline.append((<span class="string">"ScalerRF"</span>, Pipeline([(<span class="string">"Scaler"</span>,StandardScaler()),</span><br><span class="line"> (<span class="string">"RF"</span>,RandomForestClassifier())])))</span><br><span class="line"></span><br><span class="line">names = []</span><br><span class="line">results = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name, model <span class="keyword">in</span> pipeline:</span><br><span class="line">    kfold = KFold(n_splits=<span class="number">5</span>, random_state=<span class="number">42</span>)</span><br><span class="line">    result = cross_val_score(model, X, y, scoring=<span class="string">'accuracy'</span>, cv=kfold)</span><br><span class="line">    names.append(name)</span><br><span class="line">    results.append(result)</span><br><span class="line">    print(<span class="string">"&#123;&#125; Mean:&#123;:.4f&#125;(Std:&#123;:.4f&#125;)"</span>.format(name, result.mean(), result.std()))</span><br></pre></td></tr></table></figure>
-<h2 id="模型调节"><a href="#模型调节" class="headerlink" title="模型调节"></a>模型调节</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">param_grid = &#123;</span><br><span class="line">    <span class="string">"C"</span>:[<span class="number">0.1</span>,<span class="number">0.3</span>,<span class="number">0.5</span>,<span class="number">0.7</span>,<span class="number">0.9</span>,<span class="number">1.0</span>,<span class="number">1.3</span>,<span class="number">1.5</span>,<span class="number">1.7</span>,<span class="number">2.0</span>],</span><br><span class="line">    <span class="string">"kernel"</span>:[<span class="string">"linear"</span>,<span class="string">"poly"</span>,<span class="string">"rbf"</span>,<span class="string">"sigmoid"</span>]</span><br><span class="line">&#125;</span><br><span class="line">model = SVC()</span><br><span class="line">kfold = KFold(n_splits=<span class="number">5</span>,random_state=<span class="number">42</span>)</span><br><span class="line">grid = GridSearchCV(estimator=model,param_grid=param_grid,scoring=<span class="string">"accuracy"</span>,cv=kfold)</span><br><span class="line">grid_result = grid.fit(X,y)</span><br><span class="line">print(<span class="string">"Best: &#123;&#125; using &#123;&#125;"</span>.format(grid_result.best_score_,grid_result.best_params_))</span><br><span class="line">means = grid_result.cv_results_[<span class="string">"mean_test_score"</span>]</span><br><span class="line">stds = grid_result.cv_results_[<span class="string">"std_test_score"</span>]</span><br><span class="line">params = grid_result.cv_results_[<span class="string">"params"</span>]</span><br><span class="line"><span class="keyword">for</span> mean,stdev,param <span class="keyword">in</span> zip(means,stds,params):</span><br><span class="line">    print(<span class="string">"&#123;&#125; (&#123;&#125;) with &#123;&#125;"</span>.format(mean,stdev,param))</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 使用随机梯度下降法</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> RandomizedSearchCV</span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> randint</span><br><span class="line"></span><br><span class="line">param_distribs = &#123;</span><br><span class="line">        <span class="string">'n_estimators'</span>: randint(low=<span class="number">1</span>, high=<span class="number">200</span>),</span><br><span class="line">        <span class="string">'max_features'</span>: randint(low=<span class="number">1</span>, high=<span class="number">8</span>),</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">forest_reg = RandomForestRegressor(random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search = RandomizedSearchCV(forest_reg, param_distributions=param_distribs,</span><br><span class="line">                                n_iter=<span class="number">10</span>, cv=<span class="number">5</span>, scoring=<span class="string">'neg_mean_squared_error'</span>, random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search.fit(housing_prepared, housing_labels)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># svm 调参</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> RandomizedSearchCV</span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> expon, reciprocal</span><br><span class="line"></span><br><span class="line"><span class="comment"># see https://docs.scipy.org/doc/scipy/reference/stats.html</span></span><br><span class="line"><span class="comment"># for `expon()` and `reciprocal()` documentation and more probability distribution functions.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Note: gamma is ignored when kernel is "linear"</span></span><br><span class="line">param_distribs = &#123;</span><br><span class="line">        <span class="string">'kernel'</span>: [<span class="string">'linear'</span>, <span class="string">'rbf'</span>],</span><br><span class="line">        <span class="string">'C'</span>: reciprocal(<span class="number">20</span>, <span class="number">200000</span>),</span><br><span class="line">        <span class="string">'gamma'</span>: expon(scale=<span class="number">1.0</span>),</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">svm_reg = SVR()</span><br><span class="line">rnd_search = RandomizedSearchCV(svm_reg, param_distributions=param_distribs,</span><br><span class="line">                                n_iter=<span class="number">50</span>, cv=<span class="number">5</span>, scoring=<span class="string">'neg_mean_squared_error'</span>,</span><br><span class="line">                                verbose=<span class="number">2</span>, random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search.fit(housing_prepared, housing_labels)</span><br></pre></td></tr></table></figure>
+<p>Machine Learning notes<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/04/2020-3-3-gridsearch-2020/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
 
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-matplotlib_learning-2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="LelandYan">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LelandYan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/04/2020-3-3-matplotlib_learning-2020/" class="post-title-link" itemprop="url">matplotlib防止中文乱码</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：18:22:24" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes<br>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/03/04/2020-3-3-matplotlib_learning-2020/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 

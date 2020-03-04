@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Hey Machine Learning notes  2.5 SciPy中稀疏矩阵In [3]: 12%matplotlib inlineimport numpy as np 2.5.1 介绍(密集) 矩阵是:  数据对象 存储二维值数组的数据结构  重要特征:  一次分配所有项目的内存 通常是一个连续组块，想一想Numpy数组   快速访问个项目(*)  2.5.1.1 为什么有稀疏矩阵？ 内">
+  <meta name="description" content="Hey Machine Learning notes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何处理不平衡的数据">
 <meta property="og:url" content="http://yoursite.com/2020/03/04/2020-3-3-sciPy-2020/index.html">
 <meta property="og:site_name" content="LelandYan">
-<meta property="og:description" content="Hey Machine Learning notes  2.5 SciPy中稀疏矩阵In [3]: 12%matplotlib inlineimport numpy as np 2.5.1 介绍(密集) 矩阵是:  数据对象 存储二维值数组的数据结构  重要特征:  一次分配所有项目的内存 通常是一个连续组块，想一想Numpy数组   快速访问个项目(*)  2.5.1.1 为什么有稀疏矩阵？ 内">
+<meta property="og:description" content="Hey Machine Learning notes">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://wizardforcel.gitbooks.io/scipy-lecture-notes/content/img/C3AAAAAElFTkSuQmCC.png">
 <meta property="og:image" content="http://scipy-lectures.github.io/_images/graph.png">
 <meta property="og:image" content="http://scipy-lectures.github.io/_images/graph_g.png">
 <meta property="og:image" content="http://scipy-lectures.github.io/_images/graph_rcm.png">
 <meta property="article:published_time" content="2020-03-04T04:08:25.000Z">
-<meta property="article:modified_time" content="2020-03-04T05:53:40.715Z">
+<meta property="article:modified_time" content="2020-03-04T10:20:48.815Z">
 <meta property="article:author" content="LelandYan">
 <meta property="article:tag" content="matplotlib">
 <meta property="article:tag" content="scikit-learn">
@@ -222,7 +222,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：13:53:40" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：18:20:48" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -246,9 +246,9 @@
 
       
         <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="2-5-SciPy中稀疏矩阵"><a href="#2-5-SciPy中稀疏矩阵" class="headerlink" title="2.5 SciPy中稀疏矩阵"></a>2.5 SciPy中稀疏矩阵</h1><p>In [3]:</p>
+<p>Machine Learning notes<br><a id="more"></a></p>
+<h1 id="2-5-SciPy中稀疏矩阵"><a href="#2-5-SciPy中稀疏矩阵" class="headerlink" title="2.5 SciPy中稀疏矩阵"></a>2.5 SciPy中稀疏矩阵</h1></blockquote>
+<p>In [3]:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line">import numpy as np</span><br></pre></td></tr></table></figure>
 <h2 id="2-5-1-介绍"><a href="#2-5-1-介绍" class="headerlink" title="2.5.1 介绍"></a>2.5.1 介绍</h2><p>(密集) 矩阵是:</p>
 <ul>
@@ -952,8 +952,8 @@ with 0 stored elements (blocksize = 3x2) in Block Sparse Row format></li>
       <i class="fa fa-chevron-left"></i> sklearn的非数值进行数值性编码与sklearn的库进行准确率的计算
     </a></div>
       <div class="post-nav-item">
-    <a href="/2020/03/04/2020-3-3-spare_matrix-2020/" rel="next" title="sklearn稀疏矩阵">
-      sklearn稀疏矩阵 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/03/04/2020-3-3-sample_data-2020/" rel="next" title="数据集划分">
+      数据集划分 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>

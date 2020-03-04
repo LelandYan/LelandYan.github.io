@@ -20,15 +20,15 @@
     var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Pisces","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":true,"comments":{"style":"tabs","active":"gitalk","storage":true,"lazyload":false,"nav":null,"activeClass":"gitalk"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":5,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Hey Machine Learning notes  如何处理多分类问题有关多分类问题有两种方法二分类器只能区分两个类，而多类分类器（也被叫做多项式分类器）可以区分多于两个类。 一些算法（比如随机森林分类器或者朴素贝叶斯分类器）可以直接处理多类分类问题。其他一些算法（比如 SVM 分类器或者线性分类器）则是严格的二分类器。然后，有许多策略可以让你用二分类器去执行多类分类。 举例子，创建一个可以将">
+  <meta name="description" content="Hey Machine Learning notes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="如何处理多分类问题">
 <meta property="og:url" content="http://yoursite.com/2020/03/04/2020-3-3-mult_classifition-2020/index.html">
 <meta property="og:site_name" content="LelandYan">
-<meta property="og:description" content="Hey Machine Learning notes  如何处理多分类问题有关多分类问题有两种方法二分类器只能区分两个类，而多类分类器（也被叫做多项式分类器）可以区分多于两个类。 一些算法（比如随机森林分类器或者朴素贝叶斯分类器）可以直接处理多类分类问题。其他一些算法（比如 SVM 分类器或者线性分类器）则是严格的二分类器。然后，有许多策略可以让你用二分类器去执行多类分类。 举例子，创建一个可以将">
+<meta property="og:description" content="Hey Machine Learning notes">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-03-04T04:08:25.000Z">
-<meta property="article:modified_time" content="2020-03-04T06:02:29.794Z">
+<meta property="article:modified_time" content="2020-03-04T10:21:37.377Z">
 <meta property="article:author" content="LelandYan">
 <meta property="article:tag" content="scikit-learn">
 <meta property="article:tag" content="multi-classifition">
@@ -216,7 +216,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:02:29" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：18:21:37" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -240,9 +240,9 @@
 
       
         <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="如何处理多分类问题"><a href="#如何处理多分类问题" class="headerlink" title="如何处理多分类问题"></a>如何处理多分类问题</h1><h2 id="有关多分类问题有两种方法"><a href="#有关多分类问题有两种方法" class="headerlink" title="有关多分类问题有两种方法"></a>有关多分类问题有两种方法</h2><p>二分类器只能区分两个类，而多类分类器（也被叫做多项式分类器）可以区分多于两个类。</p>
+<p>Machine Learning notes<br><a id="more"></a></p>
+<h1 id="如何处理多分类问题"><a href="#如何处理多分类问题" class="headerlink" title="如何处理多分类问题"></a>如何处理多分类问题</h1><h2 id="有关多分类问题有两种方法"><a href="#有关多分类问题有两种方法" class="headerlink" title="有关多分类问题有两种方法"></a>有关多分类问题有两种方法</h2></blockquote>
+<p>二分类器只能区分两个类，而多类分类器（也被叫做多项式分类器）可以区分多于两个类。</p>
 <p>一些算法（比如随机森林分类器或者朴素贝叶斯分类器）可以直接处理多类分类问题。其他一些算法（比如 SVM 分类器或者线性分类器）则是严格的二分类器。然后，有许多策略可以让你用二分类器去执行多类分类。</p>
 <p>举例子，创建一个可以将图片分成 10 类（从 0 到 9）的系统的一个方法是：训练10个二分类器，每一个对应一个数字（探测器 0，探测器 1，探测器 2，以此类推）。然后当你想对某张图片进行分类的时候，让每一个分类器对这个图片进行分类，选出决策分数最高的那个分类器。这叫做“一对所有”（OvA）策略（也被叫做“一对其他”）。</p>
 <p>另一个策略是对每一对数字都训练一个二分类器：一个分类器用来处理数字 0 和数字 1，一个用来处理数字 0 和数字 2，一个用来处理数字 1 和 2，以此类推。这叫做“一对一”（OvO）策略。如果有 N 个类。你需要训练<code>N*(N-1)/2</code>个分类器。对于 MNIST 问题，需要训练 45 个二分类器！当你想对一张图片进行分类，你必须将这张图片跑在全部45个二分类器上。然后看哪个类胜出。OvO 策略的主要优点是：每个分类器只需要在训练集的部分数据上面进行训练。这部分数据是它所需要区分的那两个类对应的数据。</p>
