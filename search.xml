@@ -82,6 +82,51 @@
       </tags>
   </entry>
   <entry>
+    <title>logistic regression(classification)</title>
+    <url>/2020/03/04/2020-3-3-Logistic_Regression_Classification-2020/</url>
+    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes</p>
+</blockquote>
+<h1 id="logistic-regression-classification"><a href="#logistic-regression-classification" class="headerlink" title="logistic regression(classification)"></a>logistic regression(classification)</h1><p>1.Hypothesis Representation</p>
+<p>​    运用sigmoid function(logistic function)来将函数的值域映射到[0-1]</p>
+<p>​    </p>
+<script type="math/tex; mode=display">
+sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img src="/images/sigmoid.png" alt=""></p>
+<p>2.decision boundary<br><img src="/images/decision_boudary.png" alt=""></p>
+<p><img src="/images/decision_boudary2.png" alt=""></p>
+<ol>
+<li><p>cost function</p>
+<p>这里的代价函数不再使用平方差的均值的方法，因为使用的话，通过非线性函数sigimoid函数，可能变成非凸函数，也就是说，可能存在多个局部最优的解，这将导致梯度下降算法不再有效</p>
+<p><img src="/images/square_functino.png" alt="Image text"></p>
+<p>这里可以更改代价函数为</p>
+<p><img src="/images/cost_functinon.png" alt=""></p>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>logistic regression</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>李宏毅机器学习课程线性回归训练题目一</title>
+    <url>/2020/03/04/2020-3-3-Programming_Exercise_1_Linear_Regression-2020/</url>
+    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes</p>
+</blockquote>
+<h1 id="李宏毅机器学习课程线性回归训练题目一"><a href="#李宏毅机器学习课程线性回归训练题目一" class="headerlink" title="李宏毅机器学习课程线性回归训练题目一"></a>李宏毅机器学习课程线性回归训练题目一</h1><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line"></span><br><span class="line">data = pd.read_table(<span class="string">"ex1data1.txt"</span>, header=<span class="literal">None</span>, delimiter=<span class="string">","</span>, encoding=<span class="string">"gb2312"</span>)</span><br><span class="line">m = len(data)</span><br><span class="line">data_x = np.array(data)[:, <span class="number">0</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line">data_y = np.array(data)[:, <span class="number">1</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># the first task</span></span><br><span class="line">print(np.eye(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># the second task</span></span><br><span class="line"><span class="comment"># plt.scatter(data_x, data_y, color='r', marker='x',label="Training Data")</span></span><br><span class="line"><span class="comment"># plt.ylabel('Profit in $10,000s')</span></span><br><span class="line"><span class="comment"># plt.xlabel('Population of City in 10,000s')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># the third task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">computeCost</span><span class="params">(X, y, theta)</span>:</span></span><br><span class="line">    inner = np.power(((X * theta) - y), <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> np.sum(inner / (<span class="number">2</span> * len(X)))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradientDescent</span><span class="params">(X,y,theta,alpha,epoch)</span>:</span></span><br><span class="line">    cost = np.zeros(epoch)</span><br><span class="line"></span><br><span class="line">    m = X.shape[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(epoch):</span><br><span class="line">        temp = theta - (alpha / m) * ((X * theta - y).T * X).T</span><br><span class="line">        theta = temp</span><br><span class="line">        cost[i] = computeCost(X,y,theta)</span><br><span class="line">    <span class="keyword">return</span>  theta,cost</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">normal_equations</span><span class="params">(X,y)</span>:</span></span><br><span class="line">    theta = np.linalg.inv(X.T*X)*X.T*y</span><br><span class="line">    <span class="keyword">return</span> theta</span><br><span class="line"></span><br><span class="line">X = np.matrix(np.concatenate((np.ones((m, <span class="number">1</span>)), data_x), axis=<span class="number">1</span>))</span><br><span class="line">y = np.matrix(data_y)</span><br><span class="line">theta = np.matrix(np.zeros([<span class="number">2</span>, <span class="number">1</span>]))</span><br><span class="line">alpha = <span class="number">0.01</span></span><br><span class="line">epoch = <span class="number">1000</span></span><br><span class="line">final_theta,cost = gradientDescent(X,y,theta,alpha,epoch)</span><br><span class="line">print(final_theta)</span><br><span class="line">final_theta = normal_equations(X,y)</span><br><span class="line">print(final_theta)</span><br><span class="line">x = np.array(list(data_x[:,<span class="number">0</span>]))</span><br><span class="line">f = final_theta[<span class="number">0</span>,<span class="number">0</span>] + final_theta[<span class="number">1</span>,<span class="number">0</span>] * x</span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.scatter(data_x, data_y, color='r', marker='x',label="Training Data")</span></span><br><span class="line"><span class="comment"># plt.ylabel('Profit in $10,000s')</span></span><br><span class="line"><span class="comment"># plt.xlabel('Population of City in 10,000s')</span></span><br><span class="line"><span class="comment"># plt.plot(x,f,label="Prediction")</span></span><br><span class="line"><span class="comment"># plt.legend()</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.plot(np.arange(epoch),cost,'r')</span></span><br><span class="line"><span class="comment"># plt.xlabel("Iteration")</span></span><br><span class="line"><span class="comment"># plt.ylabel("Cost")</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line">theta0_vals = np.linspace(<span class="number">-10</span>,<span class="number">10</span>,<span class="number">100</span>)</span><br><span class="line">theta1_vals = np.linspace(<span class="number">-1</span>,<span class="number">4</span>,<span class="number">100</span>)</span><br><span class="line">J_vals = np.zeros((len(theta0_vals),len(theta1_vals)))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(theta0_vals)):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(len(theta1_vals)):</span><br><span class="line">        t = np.matrix(np.array([theta0_vals[i],theta1_vals[j]]).reshape((<span class="number">2</span>,<span class="number">1</span>)))</span><br><span class="line">        J_vals[i,j] = computeCost(X,y,t)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### # fig = plt.figure()</span></span><br><span class="line"><span class="comment"># ax = Axes3D(fig)</span></span><br><span class="line"><span class="comment"># ax.plot_surface(theta0_vals,theta1_vals,J_vals,rstride=1,cstride=1,cmap="rainbow")</span></span><br><span class="line"><span class="comment"># plt.xlabel('theta_0')</span></span><br><span class="line"><span class="comment"># plt.ylabel('theta_1')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"><span class="comment">### </span></span><br><span class="line"><span class="comment">### # plt.figure()</span></span><br><span class="line"><span class="comment"># plt.contourf(theta0_vals, theta1_vals, J_vals, 20, alpha = 0.6, cmap = plt.cm.hot)</span></span><br><span class="line"><span class="comment"># a = plt.contour(theta0_vals, theta1_vals, J_vals, colors = 'black')</span></span><br><span class="line"><span class="comment"># plt.clabel(a,inline=1,fontsize=10)</span></span><br><span class="line"><span class="comment"># plt.plot(theta[0,0],theta[1,0],'r',marker='x')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"><span class="comment">### </span></span><br><span class="line">data2 = pd.read_table(<span class="string">"ex1data2.txt"</span>, header=<span class="literal">None</span>, delimiter=<span class="string">","</span>, encoding=<span class="string">"gb2312"</span>)</span><br><span class="line"></span><br><span class="line">data2 = (data2 - data2.mean()) / data2.std()</span><br><span class="line">m = len(data2)</span><br><span class="line">data_x = np.array(data2)[:, <span class="number">0</span>:<span class="number">2</span>].reshape(m, <span class="number">2</span>)</span><br><span class="line">data_y = np.array(data2)[:, <span class="number">2</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line">data_x = np.concatenate((np.zeros((m,<span class="number">1</span>)),data_x),axis=<span class="number">1</span>)</span><br><span class="line">X = np.matrix(data_x)</span><br><span class="line">y = np.matrix(data_y)</span><br><span class="line">theta = np.matrix(np.zeros((<span class="number">3</span>,<span class="number">1</span>)))</span><br><span class="line">final_theta,cost = gradientDescent(X,y,theta,alpha,epoch)</span><br><span class="line"></span><br><span class="line">plt.plot(np.arange(epoch),cost,<span class="string">'r'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>matplotlib</tag>
+        <tag>Axes3D</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>多元线性回归问题</title>
     <url>/2020/03/04/2020-3-3-Liner_Regression%20with%20multiple%20variable-2020/</url>
     <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
@@ -131,83 +176,6 @@ X(每个数据) - U(特征值均值))/(std)
       </tags>
   </entry>
   <entry>
-    <title>logistic regression(classification)</title>
-    <url>/2020/03/04/2020-3-3-Logistic_Regression_Classification-2020/</url>
-    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="logistic-regression-classification"><a href="#logistic-regression-classification" class="headerlink" title="logistic regression(classification)"></a>logistic regression(classification)</h1><p>1.Hypothesis Representation</p>
-<p>​    运用sigmoid function(logistic function)来将函数的值域映射到[0-1]</p>
-<p>​    </p>
-<script type="math/tex; mode=display">
-sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img src="/images/sigmoid.png" alt=""></p>
-<p>2.decision boundary<br><img src="/images/decision_boudary.png" alt=""></p>
-<p><img src="/images/decision_boudary2.png" alt=""></p>
-<ol>
-<li><p>cost function</p>
-<p>这里的代价函数不再使用平方差的均值的方法，因为使用的话，通过非线性函数sigimoid函数，可能变成非凸函数，也就是说，可能存在多个局部最优的解，这将导致梯度下降算法不再有效</p>
-<p><img src="/images/square_functino.png" alt="Image text"></p>
-<p>这里可以更改代价函数为</p>
-<p><img src="/images/cost_functinon.png" alt=""></p>
-</li>
-</ol>
-]]></content>
-      <categories>
-        <category>Machine Learning</category>
-      </categories>
-      <tags>
-        <tag>logistic regression</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>李宏毅机器学习课程线性回归训练题目一</title>
-    <url>/2020/03/04/2020-3-3-Programming_Exercise_1_Linear_Regression-2020/</url>
-    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="李宏毅机器学习课程线性回归训练题目一"><a href="#李宏毅机器学习课程线性回归训练题目一" class="headerlink" title="李宏毅机器学习课程线性回归训练题目一"></a>李宏毅机器学习课程线性回归训练题目一</h1><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line"></span><br><span class="line">data = pd.read_table(<span class="string">"ex1data1.txt"</span>, header=<span class="literal">None</span>, delimiter=<span class="string">","</span>, encoding=<span class="string">"gb2312"</span>)</span><br><span class="line">m = len(data)</span><br><span class="line">data_x = np.array(data)[:, <span class="number">0</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line">data_y = np.array(data)[:, <span class="number">1</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># the first task</span></span><br><span class="line">print(np.eye(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># the second task</span></span><br><span class="line"><span class="comment"># plt.scatter(data_x, data_y, color='r', marker='x',label="Training Data")</span></span><br><span class="line"><span class="comment"># plt.ylabel('Profit in $10,000s')</span></span><br><span class="line"><span class="comment"># plt.xlabel('Population of City in 10,000s')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># the third task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">computeCost</span><span class="params">(X, y, theta)</span>:</span></span><br><span class="line">    inner = np.power(((X * theta) - y), <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> np.sum(inner / (<span class="number">2</span> * len(X)))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradientDescent</span><span class="params">(X,y,theta,alpha,epoch)</span>:</span></span><br><span class="line">    cost = np.zeros(epoch)</span><br><span class="line"></span><br><span class="line">    m = X.shape[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(epoch):</span><br><span class="line">        temp = theta - (alpha / m) * ((X * theta - y).T * X).T</span><br><span class="line">        theta = temp</span><br><span class="line">        cost[i] = computeCost(X,y,theta)</span><br><span class="line">    <span class="keyword">return</span>  theta,cost</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">normal_equations</span><span class="params">(X,y)</span>:</span></span><br><span class="line">    theta = np.linalg.inv(X.T*X)*X.T*y</span><br><span class="line">    <span class="keyword">return</span> theta</span><br><span class="line"></span><br><span class="line">X = np.matrix(np.concatenate((np.ones((m, <span class="number">1</span>)), data_x), axis=<span class="number">1</span>))</span><br><span class="line">y = np.matrix(data_y)</span><br><span class="line">theta = np.matrix(np.zeros([<span class="number">2</span>, <span class="number">1</span>]))</span><br><span class="line">alpha = <span class="number">0.01</span></span><br><span class="line">epoch = <span class="number">1000</span></span><br><span class="line">final_theta,cost = gradientDescent(X,y,theta,alpha,epoch)</span><br><span class="line">print(final_theta)</span><br><span class="line">final_theta = normal_equations(X,y)</span><br><span class="line">print(final_theta)</span><br><span class="line">x = np.array(list(data_x[:,<span class="number">0</span>]))</span><br><span class="line">f = final_theta[<span class="number">0</span>,<span class="number">0</span>] + final_theta[<span class="number">1</span>,<span class="number">0</span>] * x</span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.scatter(data_x, data_y, color='r', marker='x',label="Training Data")</span></span><br><span class="line"><span class="comment"># plt.ylabel('Profit in $10,000s')</span></span><br><span class="line"><span class="comment"># plt.xlabel('Population of City in 10,000s')</span></span><br><span class="line"><span class="comment"># plt.plot(x,f,label="Prediction")</span></span><br><span class="line"><span class="comment"># plt.legend()</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.plot(np.arange(epoch),cost,'r')</span></span><br><span class="line"><span class="comment"># plt.xlabel("Iteration")</span></span><br><span class="line"><span class="comment"># plt.ylabel("Cost")</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line">theta0_vals = np.linspace(<span class="number">-10</span>,<span class="number">10</span>,<span class="number">100</span>)</span><br><span class="line">theta1_vals = np.linspace(<span class="number">-1</span>,<span class="number">4</span>,<span class="number">100</span>)</span><br><span class="line">J_vals = np.zeros((len(theta0_vals),len(theta1_vals)))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(theta0_vals)):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(len(theta1_vals)):</span><br><span class="line">        t = np.matrix(np.array([theta0_vals[i],theta1_vals[j]]).reshape((<span class="number">2</span>,<span class="number">1</span>)))</span><br><span class="line">        J_vals[i,j] = computeCost(X,y,t)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### # fig = plt.figure()</span></span><br><span class="line"><span class="comment"># ax = Axes3D(fig)</span></span><br><span class="line"><span class="comment"># ax.plot_surface(theta0_vals,theta1_vals,J_vals,rstride=1,cstride=1,cmap="rainbow")</span></span><br><span class="line"><span class="comment"># plt.xlabel('theta_0')</span></span><br><span class="line"><span class="comment"># plt.ylabel('theta_1')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"><span class="comment">### </span></span><br><span class="line"><span class="comment">### # plt.figure()</span></span><br><span class="line"><span class="comment"># plt.contourf(theta0_vals, theta1_vals, J_vals, 20, alpha = 0.6, cmap = plt.cm.hot)</span></span><br><span class="line"><span class="comment"># a = plt.contour(theta0_vals, theta1_vals, J_vals, colors = 'black')</span></span><br><span class="line"><span class="comment"># plt.clabel(a,inline=1,fontsize=10)</span></span><br><span class="line"><span class="comment"># plt.plot(theta[0,0],theta[1,0],'r',marker='x')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"><span class="comment">### </span></span><br><span class="line">data2 = pd.read_table(<span class="string">"ex1data2.txt"</span>, header=<span class="literal">None</span>, delimiter=<span class="string">","</span>, encoding=<span class="string">"gb2312"</span>)</span><br><span class="line"></span><br><span class="line">data2 = (data2 - data2.mean()) / data2.std()</span><br><span class="line">m = len(data2)</span><br><span class="line">data_x = np.array(data2)[:, <span class="number">0</span>:<span class="number">2</span>].reshape(m, <span class="number">2</span>)</span><br><span class="line">data_y = np.array(data2)[:, <span class="number">2</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line">data_x = np.concatenate((np.zeros((m,<span class="number">1</span>)),data_x),axis=<span class="number">1</span>)</span><br><span class="line">X = np.matrix(data_x)</span><br><span class="line">y = np.matrix(data_y)</span><br><span class="line">theta = np.matrix(np.zeros((<span class="number">3</span>,<span class="number">1</span>)))</span><br><span class="line">final_theta,cost = gradientDescent(X,y,theta,alpha,epoch)</span><br><span class="line"></span><br><span class="line">plt.plot(np.arange(epoch),cost,<span class="string">'r'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Machine Learning</category>
-      </categories>
-      <tags>
-        <tag>matplotlib</tag>
-        <tag>Axes3D</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>AUC、ROC详解</title>
-    <url>/2020/03/04/2020-3-3-auc_roc-2020/</url>
-    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="AUC、ROC详解"><a href="#AUC、ROC详解" class="headerlink" title="AUC、ROC详解"></a>AUC、ROC详解</h1><p>AUC:一个正例，一个负例，预测为正的概率值比预测为负的概率还要大的可能性</p>
-<p>根据定义：我们最直观的有两种计算auc的方法</p>
-<ol>
-<li>绘制ROC曲线，roc曲线下面的面积就是AUC的值</li>
-<li>假设共有（m+n）个样本，其中正样本m个，负样本n个，共有m<em> n 个样本对，计数，正样本预测为正样本的概率概率大于负样本预测为正样本的概率记为1，累加计数，然后除以（m</em>  n）就是AUC的值</li>
-</ol>
-<h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>ROC曲线：接受者操作特征（receiveroperating characteristic），roc曲线上的每个点反应着对同一信号刺激的感受性。</p>
-<p>横轴：负正类率（false postive rate FPR）特异度，划分实例中所有的负例占所有负例的比例 （1-Specificity）</p>
-<p>纵轴：真正类率 （true postive rate TPR）灵敏度，Sensitivity(正类覆盖率)</p>
-<p>2针对一个二分类问题，将实例分成正类(postive)或者负类(negative)。但是实际中分类时，会出现四种情况.</p>
-<p>(1)若一个实例是正类并且被预测为正类，即为真正类(True Postive TP)</p>
-<p>(2)若一个实例是正类，但是被预测成为负类，即为假负类(False Negative FN)</p>
-<p>(3)若一个实例是负类，但是被预测成为正类，即为假正类(False Postive FP)</p>
-<p>(4)若一个实例是负类，但是被预测成为负类，即为真负类(True Negative TN)</p>
-<p>TP:正确的肯定数目</p>
-<p>FN:漏报，没有找到正确匹配的数目</p>
-<p>FP:误报，没有的匹配不正确</p>
-<p>(1)真正类率(True Postive Rate)TPR: TP/(TP+FN),代表分类器预测的正类中实际正实例占所有正实例的比例。Sensitivity</p>
-<p>(2)负正类率(False Postive Rate)FPR: FP/(FP+TN)，代表分类器预测的正类中实际负实例占所有负实例的比例。1-Specificity</p>
-<p>AUC(Area under Curve)：Roc曲线下的面积，介于0.1和1之间。Auc作为数值可以直观的评价分类器的好坏，值越大越好。</p>
-]]></content>
-      <categories>
-        <category>Machine Learning</category>
-        <category>machine learning metrics</category>
-      </categories>
-  </entry>
-  <entry>
     <title>随机森林中有关熵概念</title>
     <url>/2020/03/04/2020-3-3-RandomForest-2020/</url>
     <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
@@ -249,26 +217,31 @@ sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img s
       </tags>
   </entry>
   <entry>
-    <title>Classifition metrics</title>
-    <url>/2020/03/04/2020-3-3-classifition_metrics-2020/</url>
+    <title>AUC、ROC详解</title>
+    <url>/2020/03/04/2020-3-3-auc_roc-2020/</url>
     <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes</p>
 </blockquote>
-<h1 id="Classifition-metrics"><a href="#Classifition-metrics" class="headerlink" title="Classifition metrics"></a>Classifition metrics</h1><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line">confusion_matrix(y_train_5, y_train_pred)</span><br><span class="line">array([[<span class="number">53272</span>, <span class="number">1307</span>],</span><br><span class="line">        [ <span class="number">1077</span>, <span class="number">4344</span>]])</span><br></pre></td></tr></table></figure>
-<h2 id="准确率和召回率"><a href="#准确率和召回率" class="headerlink" title="准确率和召回率"></a>准确率和召回率</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_score, recall_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>precision_score(y_train_5, y_pred) <span class="comment"># == 4344 / (4344 + 1307)</span></span><br><span class="line"><span class="number">0.76871350203503808</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>recall_score(y_train_5, y_train_pred) <span class="comment"># == 4344 / (4344 + 1077)</span></span><br><span class="line"><span class="number">0.7913669064748201</span></span><br></pre></td></tr></table></figure>
-<h3 id="F1-score"><a href="#F1-score" class="headerlink" title="F1 score"></a>F1 score</h3><p>通常结合准确率和召回率会更加方便，这个指标叫做“F1 值”，特别是当你需要一个简单的方法去比较两个分类器的优劣的时候。F1 值是准确率和召回率的调和平均。普通的平均值平等地看待所有的值，而调和平均会给小的值更大的权重。所以，要想分类器得到一个高的 F1 值，需要召回率和准确率同时高。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> f1_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f1_score(y_train_5, y_train_pred)</span><br><span class="line"><span class="number">0.78468208092485547</span></span><br></pre></td></tr></table></figure>
-<h3 id="准确率和召回率的关系"><a href="#准确率和召回率的关系" class="headerlink" title="准确率和召回率的关系"></a>准确率和召回率的关系</h3><p>Scikit-Learn 不让你直接设置阈值，但是它给你提供了设置决策分数的方法，这个决策分数可以用来产生预测。它不是调用分类器的<code>predict()</code>方法，而是调用<code>decision_function()</code>方法。这个方法返回每一个样例的分数值，然后基于这个分数值，使用你想要的任何阈值做出预测</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt; y_scores = sgd_clf.decision_function([some_digit])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_scores</span><br><span class="line">array([ <span class="number">161855.74572176</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>threshold = <span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred = (y_scores &gt; threshold)</span><br><span class="line">array([ <span class="literal">True</span>], dtype=bool)</span><br><span class="line"><span class="string">"""SGDClassifier用了一个等于 0 的阈值，所以前面的代码返回了跟predict()方法一样的结果（都返回了true）。让我们提高这个阈值"""</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>threshold = <span class="number">200000</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred = (y_scores &gt; threshold)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred</span><br><span class="line">array([<span class="literal">False</span>], dtype=bool)</span><br><span class="line"></span><br><span class="line"><span class="string">"""使用cross_val_predict()得到每一个样例的分数值，但是这一次指定返回一个决策分数，而不是预测值。"""</span></span><br><span class="line">y_scores = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>, </span><br><span class="line">                            method=<span class="string">"decision_function"</span>)</span><br><span class="line"><span class="comment"># y_scores返回和样本数量相同的决策分数</span></span><br><span class="line"><span class="keyword">if</span> y_scores.ndim == <span class="number">2</span>:</span><br><span class="line">    y_scores = y_scores[:, <span class="number">1</span>]</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_recall_curve</span><br><span class="line"></span><br><span class="line">precisions, recalls, thresholds = precision_recall_curve(y_train_5, y_scores)</span><br><span class="line"><span class="comment"># 绘制precisoin和recall曲线</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_precision_recall_vs_threshold</span><span class="params">(precisions, recalls, thresholds)</span>:</span></span><br><span class="line">    plt.plot(thresholds, precisions[:<span class="number">-1</span>], <span class="string">"b--"</span>, label=<span class="string">"Precision"</span>)</span><br><span class="line">    plt.plot(thresholds, recalls[:<span class="number">-1</span>], <span class="string">"g-"</span>, label=<span class="string">"Recall"</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"Threshold"</span>)</span><br><span class="line">    plt.legend(loc=<span class="string">"upper left"</span>)</span><br><span class="line">    plt.ylim([<span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">plot_precision_recall_vs_threshold(precisions, recalls, thresholds)</span><br><span class="line">plt.show()    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_precision_vs_recall</span><span class="params">(precisions, recalls)</span>:</span></span><br><span class="line">    plt.plot(recalls, precisions, <span class="string">"b-"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"Recall"</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">    plt.ylabel(<span class="string">"Precision"</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">    plt.axis([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">6</span>))</span><br><span class="line">plot_precision_vs_recall(precisions, recalls)</span><br><span class="line">save_fig(<span class="string">"precision_vs_recall_plot"</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.4.jpeg" alt="图3-4 准确率和召回率对决策阈值"></p>
-<p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.5.jpeg" alt="图3-5 准确率对召回率"></p>
-<h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>受试者工作特征（ROC）曲线是另一个二分类器常用的工具。它非常类似与准确率/召回率曲线，但不是画出准确率对召回率的曲线，ROC 曲线是真正例率（true positive rate，另一个名字叫做召回率）对假正例率（false positive rate, FPR）的曲线。FPR 是反例被错误分成正例的比率。它等于 1 减去真反例率（true negative rate， TNR）。TNR是反例被正确分类的比率。TNR也叫做特异性。所以 ROC 曲线画出召回率对（1 减特异性）的曲线。</p>
-<p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.6.jpeg" alt="图3-6 ROC曲线"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_curve</span><br><span class="line"><span class="string">"""使用cross_val_predict()得到每一个样例的分数值，但是这一次指定返回一个决策分数，而不是预测值。"""</span></span><br><span class="line">y_scores = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>, </span><br><span class="line">                            method=<span class="string">"decision_function"</span>)</span><br><span class="line"><span class="comment"># y_scores返回和样本数量相同的决策分数</span></span><br><span class="line"><span class="keyword">if</span> y_scores.ndim == <span class="number">2</span>:</span><br><span class="line">    y_scores = y_scores[:, <span class="number">1</span>]</span><br><span class="line">fpr, tpr, thresholds = roc_curve(y_train_5, y_scores)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_roc_curve</span><span class="params">(fpr, tpr, label=None)</span>:</span></span><br><span class="line">    plt.plot(fpr, tpr, linewidth=<span class="number">2</span>, label=label)</span><br><span class="line">    plt.plot([<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>], <span class="string">'k--'</span>)</span><br><span class="line">    plt.axis([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">    plt.xlabel(<span class="string">'False Positive Rate'</span>)</span><br><span class="line">    plt.ylabel(<span class="string">'True Positive Rate'</span>)</span><br><span class="line">plot_roc_curve(fpr, tpr)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>这里同样存在折衷的问题：召回率（TPR）越高，分类器就会产生越多的假正例（FPR）。图中的点线是一个完全随机的分类器生成的 ROC 曲线；一个好的分类器的 ROC 曲线应该尽可能远离这条线（即向左上角方向靠拢）。</p>
-<p>一个比较分类器之间优劣的方法是：测量ROC曲线下的面积（AUC）。一个完美的分类器的 ROC AUC 等于 1，而一个纯随机分类器的 ROC AUC 等于 0.5。Scikit-Learn 提供了一个函数来计算 ROC AUC：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_auc_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>roc_auc_score(y_train_5, y_scores)</span><br><span class="line"><span class="number">0.97061072797174941</span></span><br></pre></td></tr></table></figure>
-<p>因为 ROC 曲线跟准确率/召回率曲线（或者叫 PR）很类似，你或许会好奇如何决定使用哪一个曲线呢？一个笨拙的规则是，优先使用 PR 曲线当正例很少，或者当你关注假正例多于假反例的时候。其他情况使用 ROC 曲线。举例子，回顾前面的 ROC 曲线和 ROC AUC 数值，你或许认为这个分类器很棒。但是这几乎全是因为只有少数正例（“是 5”），而大部分是反例（“非 5”）。相反，PR 曲线清楚显示出这个分类器还有很大的改善空间（PR 曲线应该尽可能地靠近右上角）。</p>
+<h1 id="AUC、ROC详解"><a href="#AUC、ROC详解" class="headerlink" title="AUC、ROC详解"></a>AUC、ROC详解</h1><p>AUC:一个正例，一个负例，预测为正的概率值比预测为负的概率还要大的可能性</p>
+<p>根据定义：我们最直观的有两种计算auc的方法</p>
+<ol>
+<li>绘制ROC曲线，roc曲线下面的面积就是AUC的值</li>
+<li>假设共有（m+n）个样本，其中正样本m个，负样本n个，共有m<em> n 个样本对，计数，正样本预测为正样本的概率概率大于负样本预测为正样本的概率记为1，累加计数，然后除以（m</em>  n）就是AUC的值</li>
+</ol>
+<h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>ROC曲线：接受者操作特征（receiveroperating characteristic），roc曲线上的每个点反应着对同一信号刺激的感受性。</p>
+<p>横轴：负正类率（false postive rate FPR）特异度，划分实例中所有的负例占所有负例的比例 （1-Specificity）</p>
+<p>纵轴：真正类率 （true postive rate TPR）灵敏度，Sensitivity(正类覆盖率)</p>
+<p>2针对一个二分类问题，将实例分成正类(postive)或者负类(negative)。但是实际中分类时，会出现四种情况.</p>
+<p>(1)若一个实例是正类并且被预测为正类，即为真正类(True Postive TP)</p>
+<p>(2)若一个实例是正类，但是被预测成为负类，即为假负类(False Negative FN)</p>
+<p>(3)若一个实例是负类，但是被预测成为正类，即为假正类(False Postive FP)</p>
+<p>(4)若一个实例是负类，但是被预测成为负类，即为真负类(True Negative TN)</p>
+<p>TP:正确的肯定数目</p>
+<p>FN:漏报，没有找到正确匹配的数目</p>
+<p>FP:误报，没有的匹配不正确</p>
+<p>(1)真正类率(True Postive Rate)TPR: TP/(TP+FN),代表分类器预测的正类中实际正实例占所有正实例的比例。Sensitivity</p>
+<p>(2)负正类率(False Postive Rate)FPR: FP/(FP+TN)，代表分类器预测的正类中实际负实例占所有负实例的比例。1-Specificity</p>
+<p>AUC(Area under Curve)：Roc曲线下的面积，介于0.1和1之间。Auc作为数值可以直观的评价分类器的好坏，值越大越好。</p>
 ]]></content>
       <categories>
         <category>Machine Learning</category>
@@ -323,6 +296,51 @@ sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img s
       </tags>
   </entry>
   <entry>
+    <title>Classifition metrics</title>
+    <url>/2020/03/04/2020-3-3-classifition_metrics-2020/</url>
+    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes</p>
+</blockquote>
+<h1 id="Classifition-metrics"><a href="#Classifition-metrics" class="headerlink" title="Classifition metrics"></a>Classifition metrics</h1><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line">confusion_matrix(y_train_5, y_train_pred)</span><br><span class="line">array([[<span class="number">53272</span>, <span class="number">1307</span>],</span><br><span class="line">        [ <span class="number">1077</span>, <span class="number">4344</span>]])</span><br></pre></td></tr></table></figure>
+<h2 id="准确率和召回率"><a href="#准确率和召回率" class="headerlink" title="准确率和召回率"></a>准确率和召回率</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_score, recall_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>precision_score(y_train_5, y_pred) <span class="comment"># == 4344 / (4344 + 1307)</span></span><br><span class="line"><span class="number">0.76871350203503808</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>recall_score(y_train_5, y_train_pred) <span class="comment"># == 4344 / (4344 + 1077)</span></span><br><span class="line"><span class="number">0.7913669064748201</span></span><br></pre></td></tr></table></figure>
+<h3 id="F1-score"><a href="#F1-score" class="headerlink" title="F1 score"></a>F1 score</h3><p>通常结合准确率和召回率会更加方便，这个指标叫做“F1 值”，特别是当你需要一个简单的方法去比较两个分类器的优劣的时候。F1 值是准确率和召回率的调和平均。普通的平均值平等地看待所有的值，而调和平均会给小的值更大的权重。所以，要想分类器得到一个高的 F1 值，需要召回率和准确率同时高。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> f1_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f1_score(y_train_5, y_train_pred)</span><br><span class="line"><span class="number">0.78468208092485547</span></span><br></pre></td></tr></table></figure>
+<h3 id="准确率和召回率的关系"><a href="#准确率和召回率的关系" class="headerlink" title="准确率和召回率的关系"></a>准确率和召回率的关系</h3><p>Scikit-Learn 不让你直接设置阈值，但是它给你提供了设置决策分数的方法，这个决策分数可以用来产生预测。它不是调用分类器的<code>predict()</code>方法，而是调用<code>decision_function()</code>方法。这个方法返回每一个样例的分数值，然后基于这个分数值，使用你想要的任何阈值做出预测</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt; y_scores = sgd_clf.decision_function([some_digit])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_scores</span><br><span class="line">array([ <span class="number">161855.74572176</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>threshold = <span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred = (y_scores &gt; threshold)</span><br><span class="line">array([ <span class="literal">True</span>], dtype=bool)</span><br><span class="line"><span class="string">"""SGDClassifier用了一个等于 0 的阈值，所以前面的代码返回了跟predict()方法一样的结果（都返回了true）。让我们提高这个阈值"""</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>threshold = <span class="number">200000</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred = (y_scores &gt; threshold)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred</span><br><span class="line">array([<span class="literal">False</span>], dtype=bool)</span><br><span class="line"></span><br><span class="line"><span class="string">"""使用cross_val_predict()得到每一个样例的分数值，但是这一次指定返回一个决策分数，而不是预测值。"""</span></span><br><span class="line">y_scores = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>, </span><br><span class="line">                            method=<span class="string">"decision_function"</span>)</span><br><span class="line"><span class="comment"># y_scores返回和样本数量相同的决策分数</span></span><br><span class="line"><span class="keyword">if</span> y_scores.ndim == <span class="number">2</span>:</span><br><span class="line">    y_scores = y_scores[:, <span class="number">1</span>]</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_recall_curve</span><br><span class="line"></span><br><span class="line">precisions, recalls, thresholds = precision_recall_curve(y_train_5, y_scores)</span><br><span class="line"><span class="comment"># 绘制precisoin和recall曲线</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_precision_recall_vs_threshold</span><span class="params">(precisions, recalls, thresholds)</span>:</span></span><br><span class="line">    plt.plot(thresholds, precisions[:<span class="number">-1</span>], <span class="string">"b--"</span>, label=<span class="string">"Precision"</span>)</span><br><span class="line">    plt.plot(thresholds, recalls[:<span class="number">-1</span>], <span class="string">"g-"</span>, label=<span class="string">"Recall"</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"Threshold"</span>)</span><br><span class="line">    plt.legend(loc=<span class="string">"upper left"</span>)</span><br><span class="line">    plt.ylim([<span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">plot_precision_recall_vs_threshold(precisions, recalls, thresholds)</span><br><span class="line">plt.show()    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_precision_vs_recall</span><span class="params">(precisions, recalls)</span>:</span></span><br><span class="line">    plt.plot(recalls, precisions, <span class="string">"b-"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"Recall"</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">    plt.ylabel(<span class="string">"Precision"</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">    plt.axis([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">6</span>))</span><br><span class="line">plot_precision_vs_recall(precisions, recalls)</span><br><span class="line">save_fig(<span class="string">"precision_vs_recall_plot"</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.4.jpeg" alt="图3-4 准确率和召回率对决策阈值"></p>
+<p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.5.jpeg" alt="图3-5 准确率对召回率"></p>
+<h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>受试者工作特征（ROC）曲线是另一个二分类器常用的工具。它非常类似与准确率/召回率曲线，但不是画出准确率对召回率的曲线，ROC 曲线是真正例率（true positive rate，另一个名字叫做召回率）对假正例率（false positive rate, FPR）的曲线。FPR 是反例被错误分成正例的比率。它等于 1 减去真反例率（true negative rate， TNR）。TNR是反例被正确分类的比率。TNR也叫做特异性。所以 ROC 曲线画出召回率对（1 减特异性）的曲线。</p>
+<p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.6.jpeg" alt="图3-6 ROC曲线"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_curve</span><br><span class="line"><span class="string">"""使用cross_val_predict()得到每一个样例的分数值，但是这一次指定返回一个决策分数，而不是预测值。"""</span></span><br><span class="line">y_scores = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>, </span><br><span class="line">                            method=<span class="string">"decision_function"</span>)</span><br><span class="line"><span class="comment"># y_scores返回和样本数量相同的决策分数</span></span><br><span class="line"><span class="keyword">if</span> y_scores.ndim == <span class="number">2</span>:</span><br><span class="line">    y_scores = y_scores[:, <span class="number">1</span>]</span><br><span class="line">fpr, tpr, thresholds = roc_curve(y_train_5, y_scores)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_roc_curve</span><span class="params">(fpr, tpr, label=None)</span>:</span></span><br><span class="line">    plt.plot(fpr, tpr, linewidth=<span class="number">2</span>, label=label)</span><br><span class="line">    plt.plot([<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>], <span class="string">'k--'</span>)</span><br><span class="line">    plt.axis([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">    plt.xlabel(<span class="string">'False Positive Rate'</span>)</span><br><span class="line">    plt.ylabel(<span class="string">'True Positive Rate'</span>)</span><br><span class="line">plot_roc_curve(fpr, tpr)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>这里同样存在折衷的问题：召回率（TPR）越高，分类器就会产生越多的假正例（FPR）。图中的点线是一个完全随机的分类器生成的 ROC 曲线；一个好的分类器的 ROC 曲线应该尽可能远离这条线（即向左上角方向靠拢）。</p>
+<p>一个比较分类器之间优劣的方法是：测量ROC曲线下的面积（AUC）。一个完美的分类器的 ROC AUC 等于 1，而一个纯随机分类器的 ROC AUC 等于 0.5。Scikit-Learn 提供了一个函数来计算 ROC AUC：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_auc_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>roc_auc_score(y_train_5, y_scores)</span><br><span class="line"><span class="number">0.97061072797174941</span></span><br></pre></td></tr></table></figure>
+<p>因为 ROC 曲线跟准确率/召回率曲线（或者叫 PR）很类似，你或许会好奇如何决定使用哪一个曲线呢？一个笨拙的规则是，优先使用 PR 曲线当正例很少，或者当你关注假正例多于假反例的时候。其他情况使用 ROC 曲线。举例子，回顾前面的 ROC 曲线和 ROC AUC 数值，你或许认为这个分类器很棒。但是这几乎全是因为只有少数正例（“是 5”），而大部分是反例（“非 5”）。相反，PR 曲线清楚显示出这个分类器还有很大的改善空间（PR 曲线应该尽可能地靠近右上角）。</p>
+]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>Machine Learning metrics</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Cross Validation</title>
+    <url>/2020/03/04/2020-3-3-cross_valadation_sklearn-2020/</url>
+    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes</p>
+</blockquote>
+<h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><h2 id="有关交叉验证的sklearn的方法和原理"><a href="#有关交叉验证的sklearn的方法和原理" class="headerlink" title="有关交叉验证的sklearn的方法和原理"></a>有关交叉验证的sklearn的方法和原理</h2><h3 id="cross-val-score"><a href="#cross-val-score" class="headerlink" title="cross_val_score"></a>cross_val_score</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cross_val_score 用训练集来评估模型的好坏，注意交叉验证都是使用的是训练集来进行测验，而不是测试集</span></span><br><span class="line"><span class="comment"># 其返回的是，几折交叉验证就返回几个模型训练的评估分数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="comment"># 这里的model(),传入的是个模型实例，后传入的两个数据集合，cv表示交叉验证的次数，scoring表示评价方法</span></span><br><span class="line">cross_val_score(model(),X_train,y_train,cv=<span class="number">3</span>,scoring=<span class="string">"accuracy"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面则使用python实现一个cross_val_score函数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedKFold</span><br><span class="line"><span class="keyword">from</span> sklean.base <span class="keyword">import</span> clone</span><br><span class="line"><span class="comment"># 将数据集划分为几份</span></span><br><span class="line">skfolds = StratifiedKFold(n_splits=<span class="number">3</span>,random_state=<span class="number">42</span>)</span><br><span class="line"><span class="keyword">for</span> train_index,test_index <span class="keyword">in</span> skfolds.split(X_train,y_train):</span><br><span class="line">    <span class="comment"># 克隆原来模型</span></span><br><span class="line">    clone_clf = clone(model())</span><br><span class="line">    X_train_folds = X_train[trian_index]</span><br><span class="line">    y_train_folds = y_train[train_index]</span><br><span class="line">    X_test_folds = X_train[test_index]</span><br><span class="line">    y_test_folds= y_train[test_index]</span><br><span class="line">    clone_clf.fit(X_train_folds,y_train_folds)</span><br><span class="line">    y_pred = clone_clf.predict(X_test_folds)</span><br><span class="line">    n_correct = sum(y_pred == y_test_folds)</span><br><span class="line">    print(n_correct / len(y_pred) )</span><br></pre></td></tr></table></figure>
+<h3 id="cross-val-predict"><a href="#cross-val-predict" class="headerlink" title="cross_val_predict"></a>cross_val_predict</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">就像 cross_val_score(),cross_val_predict()也使用 K 折交叉验证。它不是返回一个评估分数，而是返回基于每一个测试折做出的一个预测值。这意味着，对于每一个训练集的样例，你得到一个干净的预测（“干净”是说一个模型在训练过程当中没有用到测试集的数据）。"""</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_predict</span><br><span class="line">y_train_pred = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>scikit-learn</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Cross Validation 详解</title>
     <url>/2020/03/04/2020-3-3-cross_validation-2020/</url>
     <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
@@ -342,19 +360,17 @@ sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img s
       </tags>
   </entry>
   <entry>
-    <title>Cross Validation</title>
-    <url>/2020/03/04/2020-3-3-cross_valadation_sklearn-2020/</url>
+    <title>matplotlib防止中文乱码</title>
+    <url>/2020/03/04/2020-3-3-matplotlib_learning-2020/</url>
     <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes</p>
 </blockquote>
-<h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><h2 id="有关交叉验证的sklearn的方法和原理"><a href="#有关交叉验证的sklearn的方法和原理" class="headerlink" title="有关交叉验证的sklearn的方法和原理"></a>有关交叉验证的sklearn的方法和原理</h2><h3 id="cross-val-score"><a href="#cross-val-score" class="headerlink" title="cross_val_score"></a>cross_val_score</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># cross_val_score 用训练集来评估模型的好坏，注意交叉验证都是使用的是训练集来进行测验，而不是测试集</span></span><br><span class="line"><span class="comment"># 其返回的是，几折交叉验证就返回几个模型训练的评估分数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="comment"># 这里的model(),传入的是个模型实例，后传入的两个数据集合，cv表示交叉验证的次数，scoring表示评价方法</span></span><br><span class="line">cross_val_score(model(),X_train,y_train,cv=<span class="number">3</span>,scoring=<span class="string">"accuracy"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面则使用python实现一个cross_val_score函数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedKFold</span><br><span class="line"><span class="keyword">from</span> sklean.base <span class="keyword">import</span> clone</span><br><span class="line"><span class="comment"># 将数据集划分为几份</span></span><br><span class="line">skfolds = StratifiedKFold(n_splits=<span class="number">3</span>,random_state=<span class="number">42</span>)</span><br><span class="line"><span class="keyword">for</span> train_index,test_index <span class="keyword">in</span> skfolds.split(X_train,y_train):</span><br><span class="line">    <span class="comment"># 克隆原来模型</span></span><br><span class="line">    clone_clf = clone(model())</span><br><span class="line">    X_train_folds = X_train[trian_index]</span><br><span class="line">    y_train_folds = y_train[train_index]</span><br><span class="line">    X_test_folds = X_train[test_index]</span><br><span class="line">    y_test_folds= y_train[test_index]</span><br><span class="line">    clone_clf.fit(X_train_folds,y_train_folds)</span><br><span class="line">    y_pred = clone_clf.predict(X_test_folds)</span><br><span class="line">    n_correct = sum(y_pred == y_test_folds)</span><br><span class="line">    print(n_correct / len(y_pred) )</span><br></pre></td></tr></table></figure>
-<h3 id="cross-val-predict"><a href="#cross-val-predict" class="headerlink" title="cross_val_predict"></a>cross_val_predict</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">就像 cross_val_score(),cross_val_predict()也使用 K 折交叉验证。它不是返回一个评估分数，而是返回基于每一个测试折做出的一个预测值。这意味着，对于每一个训练集的样例，你得到一个干净的预测（“干净”是说一个模型在训练过程当中没有用到测试集的数据）。"""</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_predict</span><br><span class="line">y_train_pred = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-]]></content>
+<h1 id="matplotlib防止中文乱码"><a href="#matplotlib防止中文乱码" class="headerlink" title="matplotlib防止中文乱码"></a>matplotlib防止中文乱码</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 绘图时候防止在图像的中文乱码</span></span><br><span class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">'simHei'</span>]</span><br><span class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="literal">False</span></span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>Machine Learning</category>
       </categories>
       <tags>
-        <tag>scikit-learn</tag>
+        <tag>matplotlib</tag>
       </tags>
   </entry>
   <entry>
@@ -438,17 +454,74 @@ sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img s
       </tags>
   </entry>
   <entry>
-    <title>matplotlib防止中文乱码</title>
-    <url>/2020/03/04/2020-3-3-matplotlib_learning-2020/</url>
+    <title>矩阵求导</title>
+    <url>/2020/03/04/2020-3-3-matrix_derivative-2020/</url>
     <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes</p>
 </blockquote>
-<h1 id="matplotlib防止中文乱码"><a href="#matplotlib防止中文乱码" class="headerlink" title="matplotlib防止中文乱码"></a>matplotlib防止中文乱码</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 绘图时候防止在图像的中文乱码</span></span><br><span class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">'simHei'</span>]</span><br><span class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="literal">False</span></span><br></pre></td></tr></table></figure>]]></content>
+<h1 id="矩阵求导"><a href="#矩阵求导" class="headerlink" title="矩阵求导"></a>矩阵求导</h1><ol>
+<li>向量关于标量X的求导<script type="math/tex; mode=display">
+\left[
+ \begin{matrix}
+   y_1 \\
+   y_2 \\
+   \vdots \\
+   y_n
+  \end{matrix}
+  \right]</script></li>
+</ol>
+<p>   经过求导后</p>
+<script type="math/tex; mode=display">
+   \left[
+    \begin{matrix}
+     \frac{\partial y_1}{\partial x} \\
+      \frac{\partial y_2}{\partial x} \\
+      \vdots \\
+      \frac{\partial y_n}{\partial x}
+     \end{matrix}
+     \right]</script><ol>
+<li><p>矩阵对标量X的求导-和对向量的求导使同理的</p>
+</li>
+<li><p>矩阵对向量X求导</p>
+</li>
+</ol>
+<script type="math/tex; mode=display">
+   A=\left[
+   \begin{matrix}
+    a11      & a12      & \cdots & a1n      \\
+    a21      & a22      & \cdots & a2n      \\
+    \vdots & \vdots & \ddots & \vdots \\
+    am1      & am2      & \cdots & am      \\
+   \end{matrix}
+   \right]</script><script type="math/tex; mode=display">
+   \vec{X}=\begin{Bmatrix}
+     x_1 \\
+      x_2 \\
+      \vdots \\
+      x_n
+     \end{Bmatrix} \tag{5}</script><script type="math/tex; mode=display">
+   \vec{Y} = \vec{A}\cdot\vec{X}=\left[
+   \begin{matrix}
+    a11\cdot x1 + a12\cdot\ x2 \cdot + a1n \cdot xn \\
+    a21\cdot x1 + a22\cdot\ x2 \cdot + a2n \cdot xn \\
+    \vdots &  \\
+    am1\cdot x1 + am2\cdot\ x2 \cdot + amn \cdot xn \\
+   \end{matrix}
+   \right]</script><script type="math/tex; mode=display">
+\frac{\partial \vec{Y}}{\partial \vec{X}}=\left[
+   \begin{matrix}
+    a11      & a21      & \cdots & am1      \\
+    a12      & a22      & \cdots & am2      \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a1n      & a2n      & \cdots & amn      \\
+   \end{matrix}
+   \right]=A^T</script><p><img src="/images/matrix.png" alt=""></p>
+]]></content>
       <categories>
         <category>Machine Learning</category>
       </categories>
       <tags>
-        <tag>matplotlib</tag>
+        <tag>矩阵求导</tag>
       </tags>
   </entry>
   <entry>
@@ -538,74 +611,22 @@ J(\theta) = -\frac{ 1 }{ m }[\sum_{ i=1 }^{ m } ({y^{(i)} \log h_\theta(x^{(i)})
       </tags>
   </entry>
   <entry>
-    <title>矩阵求导</title>
-    <url>/2020/03/04/2020-3-3-matrix_derivative-2020/</url>
+    <title>sklearn的非数值进行数值性编码与sklearn的库进行准确率的计算</title>
+    <url>/2020/03/04/2020-3-3-skearn_learning-2020/</url>
     <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes</p>
 </blockquote>
-<h1 id="矩阵求导"><a href="#矩阵求导" class="headerlink" title="矩阵求导"></a>矩阵求导</h1><ol>
-<li>向量关于标量X的求导<script type="math/tex; mode=display">
-\left[
- \begin{matrix}
-   y_1 \\
-   y_2 \\
-   \vdots \\
-   y_n
-  \end{matrix}
-  \right]</script></li>
-</ol>
-<p>   经过求导后</p>
-<script type="math/tex; mode=display">
-   \left[
-    \begin{matrix}
-     \frac{\partial y_1}{\partial x} \\
-      \frac{\partial y_2}{\partial x} \\
-      \vdots \\
-      \frac{\partial y_n}{\partial x}
-     \end{matrix}
-     \right]</script><ol>
-<li><p>矩阵对标量X的求导-和对向量的求导使同理的</p>
-</li>
-<li><p>矩阵对向量X求导</p>
-</li>
-</ol>
-<script type="math/tex; mode=display">
-   A=\left[
-   \begin{matrix}
-    a11      & a12      & \cdots & a1n      \\
-    a21      & a22      & \cdots & a2n      \\
-    \vdots & \vdots & \ddots & \vdots \\
-    am1      & am2      & \cdots & am      \\
-   \end{matrix}
-   \right]</script><script type="math/tex; mode=display">
-   \vec{X}=\begin{Bmatrix}
-     x_1 \\
-      x_2 \\
-      \vdots \\
-      x_n
-     \end{Bmatrix} \tag{5}</script><script type="math/tex; mode=display">
-   \vec{Y} = \vec{A}\cdot\vec{X}=\left[
-   \begin{matrix}
-    a11\cdot x1 + a12\cdot\ x2 \cdot + a1n \cdot xn \\
-    a21\cdot x1 + a22\cdot\ x2 \cdot + a2n \cdot xn \\
-    \vdots &  \\
-    am1\cdot x1 + am2\cdot\ x2 \cdot + amn \cdot xn \\
-   \end{matrix}
-   \right]</script><script type="math/tex; mode=display">
-\frac{\partial \vec{Y}}{\partial \vec{X}}=\left[
-   \begin{matrix}
-    a11      & a21      & \cdots & am1      \\
-    a12      & a22      & \cdots & am2      \\
-    \vdots & \vdots & \ddots & \vdots \\
-    a1n      & a2n      & \cdots & amn      \\
-   \end{matrix}
-   \right]=A^T</script><p><img src="/images/matrix.png" alt=""></p>
+<h1 id="skearn的非数值进行数值性编码与sklearn的库进行准确率的计算"><a href="#skearn的非数值进行数值性编码与sklearn的库进行准确率的计算" class="headerlink" title="skearn的非数值进行数值性编码与sklearn的库进行准确率的计算"></a>skearn的非数值进行数值性编码与sklearn的库进行准确率的计算</h1><p>1.可以使用python自带的skearn对result的非数值进行数值性编码</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">y = LabelEncoder().fit_transform(data[<span class="number">4</span>])</span><br></pre></td></tr></table></figure>
+<p>2.可以使用sklearn的库进行准确率的计算</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_socre</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">1</span>)</span><br><span class="line">model = DecisionTreeClassifier(criterion=<span class="string">'entorpy'</span>)</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line">y_test_hat = model.predict(x_test)</span><br><span class="line"><span class="comment"># 第一种方法</span></span><br><span class="line">print(<span class="string">"accuracy_score"</span>,accuracy_socre(y_test_hat,y_test))</span><br><span class="line"><span class="comment"># 第二种方法</span></span><br><span class="line">y_test = y_test.reshape(<span class="number">-1</span>)<span class="comment"># 变成一维</span></span><br><span class="line">result = (y_test_hat==y_test)</span><br><span class="line">acc = np.mean(result)</span><br><span class="line">print(<span class="string">f"准确率:<span class="subst">&#123;<span class="number">100</span>*acc&#125;</span>"</span>)</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>Machine Learning</category>
       </categories>
       <tags>
-        <tag>矩阵求导</tag>
+        <tag>scikit-learn</tag>
+        <tag>encoding</tag>
       </tags>
   </entry>
   <entry>
@@ -1302,25 +1323,6 @@ with 0 stored elements (blocksize = 3x2) in Block Sparse Row format></li>
         <tag>matplotlib</tag>
         <tag>scikit-learn</tag>
         <tag>scipy</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>sklearn的非数值进行数值性编码与sklearn的库进行准确率的计算</title>
-    <url>/2020/03/04/2020-3-3-skearn_learning-2020/</url>
-    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="skearn的非数值进行数值性编码与sklearn的库进行准确率的计算"><a href="#skearn的非数值进行数值性编码与sklearn的库进行准确率的计算" class="headerlink" title="skearn的非数值进行数值性编码与sklearn的库进行准确率的计算"></a>skearn的非数值进行数值性编码与sklearn的库进行准确率的计算</h1><p>1.可以使用python自带的skearn对result的非数值进行数值性编码</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">y = LabelEncoder().fit_transform(data[<span class="number">4</span>])</span><br></pre></td></tr></table></figure>
-<p>2.可以使用sklearn的库进行准确率的计算</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_socre</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">1</span>)</span><br><span class="line">model = DecisionTreeClassifier(criterion=<span class="string">'entorpy'</span>)</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line">y_test_hat = model.predict(x_test)</span><br><span class="line"><span class="comment"># 第一种方法</span></span><br><span class="line">print(<span class="string">"accuracy_score"</span>,accuracy_socre(y_test_hat,y_test))</span><br><span class="line"><span class="comment"># 第二种方法</span></span><br><span class="line">y_test = y_test.reshape(<span class="number">-1</span>)<span class="comment"># 变成一维</span></span><br><span class="line">result = (y_test_hat==y_test)</span><br><span class="line">acc = np.mean(result)</span><br><span class="line">print(<span class="string">f"准确率:<span class="subst">&#123;<span class="number">100</span>*acc&#125;</span>"</span>)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Machine Learning</category>
-      </categories>
-      <tags>
-        <tag>scikit-learn</tag>
-        <tag>encoding</tag>
       </tags>
   </entry>
   <entry>

@@ -195,6 +195,78 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-cross_valadation_sklearn-2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="LelandYan">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LelandYan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/04/2020-3-3-cross_valadation_sklearn-2020/" class="post-title-link" itemprop="url">Cross Validation</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：13:55:03" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes</p>
+</blockquote>
+<h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><h2 id="有关交叉验证的sklearn的方法和原理"><a href="#有关交叉验证的sklearn的方法和原理" class="headerlink" title="有关交叉验证的sklearn的方法和原理"></a>有关交叉验证的sklearn的方法和原理</h2><h3 id="cross-val-score"><a href="#cross-val-score" class="headerlink" title="cross_val_score"></a>cross_val_score</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cross_val_score 用训练集来评估模型的好坏，注意交叉验证都是使用的是训练集来进行测验，而不是测试集</span></span><br><span class="line"><span class="comment"># 其返回的是，几折交叉验证就返回几个模型训练的评估分数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="comment"># 这里的model(),传入的是个模型实例，后传入的两个数据集合，cv表示交叉验证的次数，scoring表示评价方法</span></span><br><span class="line">cross_val_score(model(),X_train,y_train,cv=<span class="number">3</span>,scoring=<span class="string">"accuracy"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面则使用python实现一个cross_val_score函数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedKFold</span><br><span class="line"><span class="keyword">from</span> sklean.base <span class="keyword">import</span> clone</span><br><span class="line"><span class="comment"># 将数据集划分为几份</span></span><br><span class="line">skfolds = StratifiedKFold(n_splits=<span class="number">3</span>,random_state=<span class="number">42</span>)</span><br><span class="line"><span class="keyword">for</span> train_index,test_index <span class="keyword">in</span> skfolds.split(X_train,y_train):</span><br><span class="line">    <span class="comment"># 克隆原来模型</span></span><br><span class="line">    clone_clf = clone(model())</span><br><span class="line">    X_train_folds = X_train[trian_index]</span><br><span class="line">    y_train_folds = y_train[train_index]</span><br><span class="line">    X_test_folds = X_train[test_index]</span><br><span class="line">    y_test_folds= y_train[test_index]</span><br><span class="line">    clone_clf.fit(X_train_folds,y_train_folds)</span><br><span class="line">    y_pred = clone_clf.predict(X_test_folds)</span><br><span class="line">    n_correct = sum(y_pred == y_test_folds)</span><br><span class="line">    print(n_correct / len(y_pred) )</span><br></pre></td></tr></table></figure>
+<h3 id="cross-val-predict"><a href="#cross-val-predict" class="headerlink" title="cross_val_predict"></a>cross_val_predict</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">就像 cross_val_score(),cross_val_predict()也使用 K 折交叉验证。它不是返回一个评估分数，而是返回基于每一个测试折做出的一个预测值。这意味着，对于每一个训练集的样例，你得到一个干净的预测（“干净”是说一个模型在训练过程当中没有用到测试集的数据）。"""</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_predict</span><br><span class="line">y_train_pred = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-cross_validation-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -268,7 +340,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-cross_valadation_sklearn-2020/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-matplotlib_learning-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -282,7 +354,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/04/2020-3-3-cross_valadation_sklearn-2020/" class="post-title-link" itemprop="url">Cross Validation</a>
+            <a href="/2020/03/04/2020-3-3-matplotlib_learning-2020/" class="post-title-link" itemprop="url">matplotlib防止中文乱码</a>
         </h1>
 
         <div class="post-meta">
@@ -293,7 +365,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：13:55:03" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:23:30" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -319,9 +391,7 @@
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes</p>
 </blockquote>
-<h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><h2 id="有关交叉验证的sklearn的方法和原理"><a href="#有关交叉验证的sklearn的方法和原理" class="headerlink" title="有关交叉验证的sklearn的方法和原理"></a>有关交叉验证的sklearn的方法和原理</h2><h3 id="cross-val-score"><a href="#cross-val-score" class="headerlink" title="cross_val_score"></a>cross_val_score</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cross_val_score 用训练集来评估模型的好坏，注意交叉验证都是使用的是训练集来进行测验，而不是测试集</span></span><br><span class="line"><span class="comment"># 其返回的是，几折交叉验证就返回几个模型训练的评估分数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="comment"># 这里的model(),传入的是个模型实例，后传入的两个数据集合，cv表示交叉验证的次数，scoring表示评价方法</span></span><br><span class="line">cross_val_score(model(),X_train,y_train,cv=<span class="number">3</span>,scoring=<span class="string">"accuracy"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面则使用python实现一个cross_val_score函数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedKFold</span><br><span class="line"><span class="keyword">from</span> sklean.base <span class="keyword">import</span> clone</span><br><span class="line"><span class="comment"># 将数据集划分为几份</span></span><br><span class="line">skfolds = StratifiedKFold(n_splits=<span class="number">3</span>,random_state=<span class="number">42</span>)</span><br><span class="line"><span class="keyword">for</span> train_index,test_index <span class="keyword">in</span> skfolds.split(X_train,y_train):</span><br><span class="line">    <span class="comment"># 克隆原来模型</span></span><br><span class="line">    clone_clf = clone(model())</span><br><span class="line">    X_train_folds = X_train[trian_index]</span><br><span class="line">    y_train_folds = y_train[train_index]</span><br><span class="line">    X_test_folds = X_train[test_index]</span><br><span class="line">    y_test_folds= y_train[test_index]</span><br><span class="line">    clone_clf.fit(X_train_folds,y_train_folds)</span><br><span class="line">    y_pred = clone_clf.predict(X_test_folds)</span><br><span class="line">    n_correct = sum(y_pred == y_test_folds)</span><br><span class="line">    print(n_correct / len(y_pred) )</span><br></pre></td></tr></table></figure>
-<h3 id="cross-val-predict"><a href="#cross-val-predict" class="headerlink" title="cross_val_predict"></a>cross_val_predict</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">就像 cross_val_score(),cross_val_predict()也使用 K 折交叉验证。它不是返回一个评估分数，而是返回基于每一个测试折做出的一个预测值。这意味着，对于每一个训练集的样例，你得到一个干净的预测（“干净”是说一个模型在训练过程当中没有用到测试集的数据）。"""</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_predict</span><br><span class="line">y_train_pred = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-
+<h1 id="matplotlib防止中文乱码"><a href="#matplotlib防止中文乱码" class="headerlink" title="matplotlib防止中文乱码"></a>matplotlib防止中文乱码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘图时候防止在图像的中文乱码</span></span><br><span class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">'simHei'</span>]</span><br><span class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -531,7 +601,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-matplotlib_learning-2020/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-matrix_derivative-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -545,7 +615,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/04/2020-3-3-matplotlib_learning-2020/" class="post-title-link" itemprop="url">matplotlib防止中文乱码</a>
+            <a href="/2020/03/04/2020-3-3-matrix_derivative-2020/" class="post-title-link" itemprop="url">矩阵求导</a>
         </h1>
 
         <div class="post-meta">
@@ -556,7 +626,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:23:30" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:30:43" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -582,7 +652,64 @@
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes</p>
 </blockquote>
-<h1 id="matplotlib防止中文乱码"><a href="#matplotlib防止中文乱码" class="headerlink" title="matplotlib防止中文乱码"></a>matplotlib防止中文乱码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘图时候防止在图像的中文乱码</span></span><br><span class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">'simHei'</span>]</span><br><span class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
+<h1 id="矩阵求导"><a href="#矩阵求导" class="headerlink" title="矩阵求导"></a>矩阵求导</h1><ol>
+<li>向量关于标量X的求导<script type="math/tex; mode=display">
+\left[
+ \begin{matrix}
+   y_1 \\
+   y_2 \\
+   \vdots \\
+   y_n
+  \end{matrix}
+  \right]</script></li>
+</ol>
+<p>   经过求导后</p>
+<script type="math/tex; mode=display">
+   \left[
+    \begin{matrix}
+     \frac{\partial y_1}{\partial x} \\
+      \frac{\partial y_2}{\partial x} \\
+      \vdots \\
+      \frac{\partial y_n}{\partial x}
+     \end{matrix}
+     \right]</script><ol>
+<li><p>矩阵对标量X的求导-和对向量的求导使同理的</p>
+</li>
+<li><p>矩阵对向量X求导</p>
+</li>
+</ol>
+<script type="math/tex; mode=display">
+   A=\left[
+   \begin{matrix}
+    a11      & a12      & \cdots & a1n      \\
+    a21      & a22      & \cdots & a2n      \\
+    \vdots & \vdots & \ddots & \vdots \\
+    am1      & am2      & \cdots & am      \\
+   \end{matrix}
+   \right]</script><script type="math/tex; mode=display">
+   \vec{X}=\begin{Bmatrix}
+     x_1 \\
+      x_2 \\
+      \vdots \\
+      x_n
+     \end{Bmatrix} \tag{5}</script><script type="math/tex; mode=display">
+   \vec{Y} = \vec{A}\cdot\vec{X}=\left[
+   \begin{matrix}
+    a11\cdot x1 + a12\cdot\ x2 \cdot + a1n \cdot xn \\
+    a21\cdot x1 + a22\cdot\ x2 \cdot + a2n \cdot xn \\
+    \vdots &  \\
+    am1\cdot x1 + am2\cdot\ x2 \cdot + amn \cdot xn \\
+   \end{matrix}
+   \right]</script><script type="math/tex; mode=display">
+\frac{\partial \vec{Y}}{\partial \vec{X}}=\left[
+   \begin{matrix}
+    a11      & a21      & \cdots & am1      \\
+    a12      & a22      & \cdots & am2      \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a1n      & a2n      & \cdots & amn      \\
+   \end{matrix}
+   \right]=A^T</script><p><img src="/images/matrix.png" alt=""></p>
+
       
     </div>
 
@@ -795,7 +922,7 @@ J(\theta) = -\frac{ 1 }{ m }[\sum_{ i=1 }^{ m } ({y^{(i)} \log h_\theta(x^{(i)})
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-matrix_derivative-2020/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-skearn_learning-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -809,7 +936,7 @@ J(\theta) = -\frac{ 1 }{ m }[\sum_{ i=1 }^{ m } ({y^{(i)} \log h_\theta(x^{(i)})
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/04/2020-3-3-matrix_derivative-2020/" class="post-title-link" itemprop="url">矩阵求导</a>
+            <a href="/2020/03/04/2020-3-3-skearn_learning-2020/" class="post-title-link" itemprop="url">sklearn的非数值进行数值性编码与sklearn的库进行准确率的计算</a>
         </h1>
 
         <div class="post-meta">
@@ -820,7 +947,7 @@ J(\theta) = -\frac{ 1 }{ m }[\sum_{ i=1 }^{ m } ({y^{(i)} \log h_\theta(x^{(i)})
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:30:43" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:24:57" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -846,63 +973,10 @@ J(\theta) = -\frac{ 1 }{ m }[\sum_{ i=1 }^{ m } ({y^{(i)} \log h_\theta(x^{(i)})
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes</p>
 </blockquote>
-<h1 id="矩阵求导"><a href="#矩阵求导" class="headerlink" title="矩阵求导"></a>矩阵求导</h1><ol>
-<li>向量关于标量X的求导<script type="math/tex; mode=display">
-\left[
- \begin{matrix}
-   y_1 \\
-   y_2 \\
-   \vdots \\
-   y_n
-  \end{matrix}
-  \right]</script></li>
-</ol>
-<p>   经过求导后</p>
-<script type="math/tex; mode=display">
-   \left[
-    \begin{matrix}
-     \frac{\partial y_1}{\partial x} \\
-      \frac{\partial y_2}{\partial x} \\
-      \vdots \\
-      \frac{\partial y_n}{\partial x}
-     \end{matrix}
-     \right]</script><ol>
-<li><p>矩阵对标量X的求导-和对向量的求导使同理的</p>
-</li>
-<li><p>矩阵对向量X求导</p>
-</li>
-</ol>
-<script type="math/tex; mode=display">
-   A=\left[
-   \begin{matrix}
-    a11      & a12      & \cdots & a1n      \\
-    a21      & a22      & \cdots & a2n      \\
-    \vdots & \vdots & \ddots & \vdots \\
-    am1      & am2      & \cdots & am      \\
-   \end{matrix}
-   \right]</script><script type="math/tex; mode=display">
-   \vec{X}=\begin{Bmatrix}
-     x_1 \\
-      x_2 \\
-      \vdots \\
-      x_n
-     \end{Bmatrix} \tag{5}</script><script type="math/tex; mode=display">
-   \vec{Y} = \vec{A}\cdot\vec{X}=\left[
-   \begin{matrix}
-    a11\cdot x1 + a12\cdot\ x2 \cdot + a1n \cdot xn \\
-    a21\cdot x1 + a22\cdot\ x2 \cdot + a2n \cdot xn \\
-    \vdots &  \\
-    am1\cdot x1 + am2\cdot\ x2 \cdot + amn \cdot xn \\
-   \end{matrix}
-   \right]</script><script type="math/tex; mode=display">
-\frac{\partial \vec{Y}}{\partial \vec{X}}=\left[
-   \begin{matrix}
-    a11      & a21      & \cdots & am1      \\
-    a12      & a22      & \cdots & am2      \\
-    \vdots & \vdots & \ddots & \vdots \\
-    a1n      & a2n      & \cdots & amn      \\
-   \end{matrix}
-   \right]=A^T</script><p><img src="/images/matrix.png" alt=""></p>
+<h1 id="skearn的非数值进行数值性编码与sklearn的库进行准确率的计算"><a href="#skearn的非数值进行数值性编码与sklearn的库进行准确率的计算" class="headerlink" title="skearn的非数值进行数值性编码与sklearn的库进行准确率的计算"></a>skearn的非数值进行数值性编码与sklearn的库进行准确率的计算</h1><p>1.可以使用python自带的skearn对result的非数值进行数值性编码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">y = LabelEncoder().fit_transform(data[<span class="number">4</span>])</span><br></pre></td></tr></table></figure>
+<p>2.可以使用sklearn的库进行准确率的计算</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_socre</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">1</span>)</span><br><span class="line">model = DecisionTreeClassifier(criterion=<span class="string">'entorpy'</span>)</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line">y_test_hat = model.predict(x_test)</span><br><span class="line"><span class="comment"># 第一种方法</span></span><br><span class="line">print(<span class="string">"accuracy_score"</span>,accuracy_socre(y_test_hat,y_test))</span><br><span class="line"><span class="comment"># 第二种方法</span></span><br><span class="line">y_test = y_test.reshape(<span class="number">-1</span>)<span class="comment"># 变成一维</span></span><br><span class="line">result = (y_test_hat==y_test)</span><br><span class="line">acc = np.mean(result)</span><br><span class="line">print(<span class="string">f"准确率:<span class="subst">&#123;<span class="number">100</span>*acc&#125;</span>"</span>)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1668,80 +1742,6 @@ with 0 stored elements (blocksize = 3x2) in Block Sparse Row format></li>
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-skearn_learning-2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="LelandYan">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LelandYan">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/04/2020-3-3-skearn_learning-2020/" class="post-title-link" itemprop="url">sklearn的非数值进行数值性编码与sklearn的库进行准确率的计算</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:24:57" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="skearn的非数值进行数值性编码与sklearn的库进行准确率的计算"><a href="#skearn的非数值进行数值性编码与sklearn的库进行准确率的计算" class="headerlink" title="skearn的非数值进行数值性编码与sklearn的库进行准确率的计算"></a>skearn的非数值进行数值性编码与sklearn的库进行准确率的计算</h1><p>1.可以使用python自带的skearn对result的非数值进行数值性编码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">y = LabelEncoder().fit_transform(data[<span class="number">4</span>])</span><br></pre></td></tr></table></figure>
-<p>2.可以使用sklearn的库进行准确率的计算</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_socre</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">1</span>)</span><br><span class="line">model = DecisionTreeClassifier(criterion=<span class="string">'entorpy'</span>)</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line">y_test_hat = model.predict(x_test)</span><br><span class="line"><span class="comment"># 第一种方法</span></span><br><span class="line">print(<span class="string">"accuracy_score"</span>,accuracy_socre(y_test_hat,y_test))</span><br><span class="line"><span class="comment"># 第二种方法</span></span><br><span class="line">y_test = y_test.reshape(<span class="number">-1</span>)<span class="comment"># 变成一维</span></span><br><span class="line">result = (y_test_hat==y_test)</span><br><span class="line">acc = np.mean(result)</span><br><span class="line">print(<span class="string">f"准确率:<span class="subst">&#123;<span class="number">100</span>*acc&#125;</span>"</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
@@ -1821,7 +1821,7 @@ with 0 stored elements (blocksize = 3x2) in Block Sparse Row format></li>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">

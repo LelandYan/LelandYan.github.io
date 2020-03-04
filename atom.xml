@@ -79,35 +79,6 @@
   </entry>
   
   <entry>
-    <title>多元线性回归问题</title>
-    <link href="http://yoursite.com/2020/03/04/2020-3-3-Liner_Regression%20with%20multiple%20variable-2020/"/>
-    <id>http://yoursite.com/2020/03/04/2020-3-3-Liner_Regression%20with%20multiple%20variable-2020/</id>
-    <published>2020-03-04T04:08:25.000Z</published>
-    <updated>2020-03-04T06:33:10.564Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="多元线性回归问题"><a href="#多元线性回归问题" class="headerlink" title="多元线性回归问题"></a>多元线性回归问题</h1><ol><li><p>代价函数(整体数据集)，损失函数(对于每个数据的误差)</p></li><li><p>learning_rate(从小的尝试比如0.0006)</p></li></ol><h3 id="scaling-the-features-特征缩放-—适用与梯度下降改进-Mean-normalization-均值归一化"><a href="#scaling-the-features-特征缩放-—适用与梯度下降改进-Mean-normalization-均值归一化" class="headerlink" title="scaling the features(特征缩放)—适用与梯度下降改进 -Mean normalization(均值归一化)"></a>scaling the features(特征缩放)—适用与梯度下降改进 -Mean normalization(均值归一化)</h3><pre><code>1.min-max标准化X(每个数据) - U(特征值均值))/(Max-Min)2.Z-score标准化方法X(每个数据) - U(特征值均值))/(std)3.归一化把数据变成(0,1)或者(1,1)之间的小数。主要是为了数据处理方便提出来的，把数据映射到0～1范围之内处理，更加便捷快速 </code></pre><h3 id="normal-equation-正规方程-or-Gradient-Descent"><a href="#normal-equation-正规方程-or-Gradient-Descent" class="headerlink" title="normal equation(正规方程) or Gradient Descent"></a>normal equation(正规方程) or Gradient Descent</h3><ol><li><p>normal equation is suitable for samll features(计算量比较大)</p></li><li><p>Gradient descent is suitable for a large number for features(<br> <img src="/images/feature_scaling.png" alt="">)<br> 但是受数据的影响较大，所以对与Gradient descent来说需要进行feature scaling)</p></li><li><p>normalize equation(正规方程)的公式推导 代价函数</p><script type="math/tex; mode=display"> J(\theta)=J(\theta_0,\ldots,\theta_n)=\frac {1} {2m} \sum_{i=1}^{m} {(h_\theta(x^{(i)})-y^{(i)})^2}</script><script type="math/tex; mode=display"> J(\theta)=\frac {1}{2m}(X\theta-y)^T(X\theta-y)</script><script type="math/tex; mode=display">   J(\theta)=\theta^TX^TX\theta-(X\theta)^Ty-y^TX\theta+y^Ty</script><script type="math/tex; mode=display">   J(\theta)=\theta^TX^TX\theta-2(X\theta)^Ty+y^Ty</script><script type="math/tex; mode=display"> \frac {\partial}{\partial\theta}J(\theta)=2X^TX\theta-2X^Ty=0</script><p> ​                                            <script type="math/tex">\theta=(X^TX)^{-1}X^Ty</script></p></li><li><p>矩阵不可逆：</p><p> 1.矩阵存在线性相关的特征之值</p><p> 2.矩阵所对应的行列式为0</p></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;Machine Learning notes&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;多元线性
-      
-    
-    </summary>
-    
-    
-      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
-    
-    
-      <category term="multi-regression" scheme="http://yoursite.com/tags/multi-regression/"/>
-    
-  </entry>
-  
-  <entry>
     <title>logistic regression(classification)</title>
     <link href="http://yoursite.com/2020/03/04/2020-3-3-Logistic_Regression_Classification-2020/"/>
     <id>http://yoursite.com/2020/03/04/2020-3-3-Logistic_Regression_Classification-2020/</id>
@@ -168,13 +139,13 @@
   </entry>
   
   <entry>
-    <title>AUC、ROC详解</title>
-    <link href="http://yoursite.com/2020/03/04/2020-3-3-auc_roc-2020/"/>
-    <id>http://yoursite.com/2020/03/04/2020-3-3-auc_roc-2020/</id>
+    <title>多元线性回归问题</title>
+    <link href="http://yoursite.com/2020/03/04/2020-3-3-Liner_Regression%20with%20multiple%20variable-2020/"/>
+    <id>http://yoursite.com/2020/03/04/2020-3-3-Liner_Regression%20with%20multiple%20variable-2020/</id>
     <published>2020-03-04T04:08:25.000Z</published>
-    <updated>2020-03-04T06:34:15.038Z</updated>
+    <updated>2020-03-04T06:33:10.564Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="AUC、ROC详解"><a href="#AUC、ROC详解" class="headerlink" title="AUC、ROC详解"></a>AUC、ROC详解</h1><p>AUC:一个正例，一个负例，预测为正的概率值比预测为负的概率还要大的可能性</p><p>根据定义：我们最直观的有两种计算auc的方法</p><ol><li>绘制ROC曲线，roc曲线下面的面积就是AUC的值</li><li>假设共有（m+n）个样本，其中正样本m个，负样本n个，共有m<em> n 个样本对，计数，正样本预测为正样本的概率概率大于负样本预测为正样本的概率记为1，累加计数，然后除以（m</em>  n）就是AUC的值</li></ol><h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>ROC曲线：接受者操作特征（receiveroperating characteristic），roc曲线上的每个点反应着对同一信号刺激的感受性。</p><p>横轴：负正类率（false postive rate FPR）特异度，划分实例中所有的负例占所有负例的比例 （1-Specificity）</p><p>纵轴：真正类率 （true postive rate TPR）灵敏度，Sensitivity(正类覆盖率)</p><p>2针对一个二分类问题，将实例分成正类(postive)或者负类(negative)。但是实际中分类时，会出现四种情况.</p><p>(1)若一个实例是正类并且被预测为正类，即为真正类(True Postive TP)</p><p>(2)若一个实例是正类，但是被预测成为负类，即为假负类(False Negative FN)</p><p>(3)若一个实例是负类，但是被预测成为正类，即为假正类(False Postive FP)</p><p>(4)若一个实例是负类，但是被预测成为负类，即为真负类(True Negative TN)</p><p>TP:正确的肯定数目</p><p>FN:漏报，没有找到正确匹配的数目</p><p>FP:误报，没有的匹配不正确</p><p>(1)真正类率(True Postive Rate)TPR: TP/(TP+FN),代表分类器预测的正类中实际正实例占所有正实例的比例。Sensitivity</p><p>(2)负正类率(False Postive Rate)FPR: FP/(FP+TN)，代表分类器预测的正类中实际负实例占所有负实例的比例。1-Specificity</p><p>AUC(Area under Curve)：Roc曲线下的面积，介于0.1和1之间。Auc作为数值可以直观的评价分类器的好坏，值越大越好。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="多元线性回归问题"><a href="#多元线性回归问题" class="headerlink" title="多元线性回归问题"></a>多元线性回归问题</h1><ol><li><p>代价函数(整体数据集)，损失函数(对于每个数据的误差)</p></li><li><p>learning_rate(从小的尝试比如0.0006)</p></li></ol><h3 id="scaling-the-features-特征缩放-—适用与梯度下降改进-Mean-normalization-均值归一化"><a href="#scaling-the-features-特征缩放-—适用与梯度下降改进-Mean-normalization-均值归一化" class="headerlink" title="scaling the features(特征缩放)—适用与梯度下降改进 -Mean normalization(均值归一化)"></a>scaling the features(特征缩放)—适用与梯度下降改进 -Mean normalization(均值归一化)</h3><pre><code>1.min-max标准化X(每个数据) - U(特征值均值))/(Max-Min)2.Z-score标准化方法X(每个数据) - U(特征值均值))/(std)3.归一化把数据变成(0,1)或者(1,1)之间的小数。主要是为了数据处理方便提出来的，把数据映射到0～1范围之内处理，更加便捷快速 </code></pre><h3 id="normal-equation-正规方程-or-Gradient-Descent"><a href="#normal-equation-正规方程-or-Gradient-Descent" class="headerlink" title="normal equation(正规方程) or Gradient Descent"></a>normal equation(正规方程) or Gradient Descent</h3><ol><li><p>normal equation is suitable for samll features(计算量比较大)</p></li><li><p>Gradient descent is suitable for a large number for features(<br> <img src="/images/feature_scaling.png" alt="">)<br> 但是受数据的影响较大，所以对与Gradient descent来说需要进行feature scaling)</p></li><li><p>normalize equation(正规方程)的公式推导 代价函数</p><script type="math/tex; mode=display"> J(\theta)=J(\theta_0,\ldots,\theta_n)=\frac {1} {2m} \sum_{i=1}^{m} {(h_\theta(x^{(i)})-y^{(i)})^2}</script><script type="math/tex; mode=display"> J(\theta)=\frac {1}{2m}(X\theta-y)^T(X\theta-y)</script><script type="math/tex; mode=display">   J(\theta)=\theta^TX^TX\theta-(X\theta)^Ty-y^TX\theta+y^Ty</script><script type="math/tex; mode=display">   J(\theta)=\theta^TX^TX\theta-2(X\theta)^Ty+y^Ty</script><script type="math/tex; mode=display"> \frac {\partial}{\partial\theta}J(\theta)=2X^TX\theta-2X^Ty=0</script><p> ​                                            <script type="math/tex">\theta=(X^TX)^{-1}X^Ty</script></p></li><li><p>矩阵不可逆：</p><p> 1.矩阵存在线性相关的特征之值</p><p> 2.矩阵所对应的行列式为0</p></li></ol>]]></content>
     
     <summary type="html">
     
@@ -183,7 +154,7 @@
         &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;Machine Learning notes&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&quot;AUC、
+&lt;h1 id=&quot;多元线性
       
     
     </summary>
@@ -191,8 +162,8 @@
     
       <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
     
-      <category term="machine learning metrics" scheme="http://yoursite.com/categories/Machine-Learning/machine-learning-metrics/"/>
     
+      <category term="multi-regression" scheme="http://yoursite.com/tags/multi-regression/"/>
     
   </entry>
   
@@ -230,13 +201,13 @@
   </entry>
   
   <entry>
-    <title>Classifition metrics</title>
-    <link href="http://yoursite.com/2020/03/04/2020-3-3-classifition_metrics-2020/"/>
-    <id>http://yoursite.com/2020/03/04/2020-3-3-classifition_metrics-2020/</id>
+    <title>AUC、ROC详解</title>
+    <link href="http://yoursite.com/2020/03/04/2020-3-3-auc_roc-2020/"/>
+    <id>http://yoursite.com/2020/03/04/2020-3-3-auc_roc-2020/</id>
     <published>2020-03-04T04:08:25.000Z</published>
-    <updated>2020-03-04T06:34:48.880Z</updated>
+    <updated>2020-03-04T06:38:10.897Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="Classifition-metrics"><a href="#Classifition-metrics" class="headerlink" title="Classifition metrics"></a>Classifition metrics</h1><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line">confusion_matrix(y_train_5, y_train_pred)</span><br><span class="line">array([[<span class="number">53272</span>, <span class="number">1307</span>],</span><br><span class="line">        [ <span class="number">1077</span>, <span class="number">4344</span>]])</span><br></pre></td></tr></table></figure><h2 id="准确率和召回率"><a href="#准确率和召回率" class="headerlink" title="准确率和召回率"></a>准确率和召回率</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_score, recall_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>precision_score(y_train_5, y_pred) <span class="comment"># == 4344 / (4344 + 1307)</span></span><br><span class="line"><span class="number">0.76871350203503808</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>recall_score(y_train_5, y_train_pred) <span class="comment"># == 4344 / (4344 + 1077)</span></span><br><span class="line"><span class="number">0.7913669064748201</span></span><br></pre></td></tr></table></figure><h3 id="F1-score"><a href="#F1-score" class="headerlink" title="F1 score"></a>F1 score</h3><p>通常结合准确率和召回率会更加方便，这个指标叫做“F1 值”，特别是当你需要一个简单的方法去比较两个分类器的优劣的时候。F1 值是准确率和召回率的调和平均。普通的平均值平等地看待所有的值，而调和平均会给小的值更大的权重。所以，要想分类器得到一个高的 F1 值，需要召回率和准确率同时高。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> f1_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f1_score(y_train_5, y_train_pred)</span><br><span class="line"><span class="number">0.78468208092485547</span></span><br></pre></td></tr></table></figure><h3 id="准确率和召回率的关系"><a href="#准确率和召回率的关系" class="headerlink" title="准确率和召回率的关系"></a>准确率和召回率的关系</h3><p>Scikit-Learn 不让你直接设置阈值，但是它给你提供了设置决策分数的方法，这个决策分数可以用来产生预测。它不是调用分类器的<code>predict()</code>方法，而是调用<code>decision_function()</code>方法。这个方法返回每一个样例的分数值，然后基于这个分数值，使用你想要的任何阈值做出预测</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; y_scores = sgd_clf.decision_function([some_digit])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_scores</span><br><span class="line">array([ <span class="number">161855.74572176</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>threshold = <span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred = (y_scores &gt; threshold)</span><br><span class="line">array([ <span class="literal">True</span>], dtype=bool)</span><br><span class="line"><span class="string">"""SGDClassifier用了一个等于 0 的阈值，所以前面的代码返回了跟predict()方法一样的结果（都返回了true）。让我们提高这个阈值"""</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>threshold = <span class="number">200000</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred = (y_scores &gt; threshold)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred</span><br><span class="line">array([<span class="literal">False</span>], dtype=bool)</span><br><span class="line"></span><br><span class="line"><span class="string">"""使用cross_val_predict()得到每一个样例的分数值，但是这一次指定返回一个决策分数，而不是预测值。"""</span></span><br><span class="line">y_scores = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>, </span><br><span class="line">                            method=<span class="string">"decision_function"</span>)</span><br><span class="line"><span class="comment"># y_scores返回和样本数量相同的决策分数</span></span><br><span class="line"><span class="keyword">if</span> y_scores.ndim == <span class="number">2</span>:</span><br><span class="line">    y_scores = y_scores[:, <span class="number">1</span>]</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_recall_curve</span><br><span class="line"></span><br><span class="line">precisions, recalls, thresholds = precision_recall_curve(y_train_5, y_scores)</span><br><span class="line"><span class="comment"># 绘制precisoin和recall曲线</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_precision_recall_vs_threshold</span><span class="params">(precisions, recalls, thresholds)</span>:</span></span><br><span class="line">    plt.plot(thresholds, precisions[:<span class="number">-1</span>], <span class="string">"b--"</span>, label=<span class="string">"Precision"</span>)</span><br><span class="line">    plt.plot(thresholds, recalls[:<span class="number">-1</span>], <span class="string">"g-"</span>, label=<span class="string">"Recall"</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"Threshold"</span>)</span><br><span class="line">    plt.legend(loc=<span class="string">"upper left"</span>)</span><br><span class="line">    plt.ylim([<span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">plot_precision_recall_vs_threshold(precisions, recalls, thresholds)</span><br><span class="line">plt.show()    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_precision_vs_recall</span><span class="params">(precisions, recalls)</span>:</span></span><br><span class="line">    plt.plot(recalls, precisions, <span class="string">"b-"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"Recall"</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">    plt.ylabel(<span class="string">"Precision"</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">    plt.axis([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">6</span>))</span><br><span class="line">plot_precision_vs_recall(precisions, recalls)</span><br><span class="line">save_fig(<span class="string">"precision_vs_recall_plot"</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure><p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.4.jpeg" alt="图3-4 准确率和召回率对决策阈值"></p><p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.5.jpeg" alt="图3-5 准确率对召回率"></p><h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>受试者工作特征（ROC）曲线是另一个二分类器常用的工具。它非常类似与准确率/召回率曲线，但不是画出准确率对召回率的曲线，ROC 曲线是真正例率（true positive rate，另一个名字叫做召回率）对假正例率（false positive rate, FPR）的曲线。FPR 是反例被错误分成正例的比率。它等于 1 减去真反例率（true negative rate， TNR）。TNR是反例被正确分类的比率。TNR也叫做特异性。所以 ROC 曲线画出召回率对（1 减特异性）的曲线。</p><p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.6.jpeg" alt="图3-6 ROC曲线"></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_curve</span><br><span class="line"><span class="string">"""使用cross_val_predict()得到每一个样例的分数值，但是这一次指定返回一个决策分数，而不是预测值。"""</span></span><br><span class="line">y_scores = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>, </span><br><span class="line">                            method=<span class="string">"decision_function"</span>)</span><br><span class="line"><span class="comment"># y_scores返回和样本数量相同的决策分数</span></span><br><span class="line"><span class="keyword">if</span> y_scores.ndim == <span class="number">2</span>:</span><br><span class="line">    y_scores = y_scores[:, <span class="number">1</span>]</span><br><span class="line">fpr, tpr, thresholds = roc_curve(y_train_5, y_scores)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_roc_curve</span><span class="params">(fpr, tpr, label=None)</span>:</span></span><br><span class="line">    plt.plot(fpr, tpr, linewidth=<span class="number">2</span>, label=label)</span><br><span class="line">    plt.plot([<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>], <span class="string">'k--'</span>)</span><br><span class="line">    plt.axis([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">    plt.xlabel(<span class="string">'False Positive Rate'</span>)</span><br><span class="line">    plt.ylabel(<span class="string">'True Positive Rate'</span>)</span><br><span class="line">plot_roc_curve(fpr, tpr)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure><p>这里同样存在折衷的问题：召回率（TPR）越高，分类器就会产生越多的假正例（FPR）。图中的点线是一个完全随机的分类器生成的 ROC 曲线；一个好的分类器的 ROC 曲线应该尽可能远离这条线（即向左上角方向靠拢）。</p><p>一个比较分类器之间优劣的方法是：测量ROC曲线下的面积（AUC）。一个完美的分类器的 ROC AUC 等于 1，而一个纯随机分类器的 ROC AUC 等于 0.5。Scikit-Learn 提供了一个函数来计算 ROC AUC：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_auc_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>roc_auc_score(y_train_5, y_scores)</span><br><span class="line"><span class="number">0.97061072797174941</span></span><br></pre></td></tr></table></figure><p>因为 ROC 曲线跟准确率/召回率曲线（或者叫 PR）很类似，你或许会好奇如何决定使用哪一个曲线呢？一个笨拙的规则是，优先使用 PR 曲线当正例很少，或者当你关注假正例多于假反例的时候。其他情况使用 ROC 曲线。举例子，回顾前面的 ROC 曲线和 ROC AUC 数值，你或许认为这个分类器很棒。但是这几乎全是因为只有少数正例（“是 5”），而大部分是反例（“非 5”）。相反，PR 曲线清楚显示出这个分类器还有很大的改善空间（PR 曲线应该尽可能地靠近右上角）。</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="AUC、ROC详解"><a href="#AUC、ROC详解" class="headerlink" title="AUC、ROC详解"></a>AUC、ROC详解</h1><p>AUC:一个正例，一个负例，预测为正的概率值比预测为负的概率还要大的可能性</p><p>根据定义：我们最直观的有两种计算auc的方法</p><ol><li>绘制ROC曲线，roc曲线下面的面积就是AUC的值</li><li>假设共有（m+n）个样本，其中正样本m个，负样本n个，共有m<em> n 个样本对，计数，正样本预测为正样本的概率概率大于负样本预测为正样本的概率记为1，累加计数，然后除以（m</em>  n）就是AUC的值</li></ol><h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>ROC曲线：接受者操作特征（receiveroperating characteristic），roc曲线上的每个点反应着对同一信号刺激的感受性。</p><p>横轴：负正类率（false postive rate FPR）特异度，划分实例中所有的负例占所有负例的比例 （1-Specificity）</p><p>纵轴：真正类率 （true postive rate TPR）灵敏度，Sensitivity(正类覆盖率)</p><p>2针对一个二分类问题，将实例分成正类(postive)或者负类(negative)。但是实际中分类时，会出现四种情况.</p><p>(1)若一个实例是正类并且被预测为正类，即为真正类(True Postive TP)</p><p>(2)若一个实例是正类，但是被预测成为负类，即为假负类(False Negative FN)</p><p>(3)若一个实例是负类，但是被预测成为正类，即为假正类(False Postive FP)</p><p>(4)若一个实例是负类，但是被预测成为负类，即为真负类(True Negative TN)</p><p>TP:正确的肯定数目</p><p>FN:漏报，没有找到正确匹配的数目</p><p>FP:误报，没有的匹配不正确</p><p>(1)真正类率(True Postive Rate)TPR: TP/(TP+FN),代表分类器预测的正类中实际正实例占所有正实例的比例。Sensitivity</p><p>(2)负正类率(False Postive Rate)FPR: FP/(FP+TN)，代表分类器预测的正类中实际负实例占所有负实例的比例。1-Specificity</p><p>AUC(Area under Curve)：Roc曲线下的面积，介于0.1和1之间。Auc作为数值可以直观的评价分类器的好坏，值越大越好。</p>]]></content>
     
     <summary type="html">
     
@@ -245,7 +216,7 @@
         &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;Machine Learning notes&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&quot;Clas
+&lt;h1 id=&quot;AUC、
       
     
     </summary>
@@ -319,6 +290,64 @@
   </entry>
   
   <entry>
+    <title>Classifition metrics</title>
+    <link href="http://yoursite.com/2020/03/04/2020-3-3-classifition_metrics-2020/"/>
+    <id>http://yoursite.com/2020/03/04/2020-3-3-classifition_metrics-2020/</id>
+    <published>2020-03-04T04:08:25.000Z</published>
+    <updated>2020-03-04T06:34:48.880Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="Classifition-metrics"><a href="#Classifition-metrics" class="headerlink" title="Classifition metrics"></a>Classifition metrics</h1><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line">confusion_matrix(y_train_5, y_train_pred)</span><br><span class="line">array([[<span class="number">53272</span>, <span class="number">1307</span>],</span><br><span class="line">        [ <span class="number">1077</span>, <span class="number">4344</span>]])</span><br></pre></td></tr></table></figure><h2 id="准确率和召回率"><a href="#准确率和召回率" class="headerlink" title="准确率和召回率"></a>准确率和召回率</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_score, recall_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>precision_score(y_train_5, y_pred) <span class="comment"># == 4344 / (4344 + 1307)</span></span><br><span class="line"><span class="number">0.76871350203503808</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>recall_score(y_train_5, y_train_pred) <span class="comment"># == 4344 / (4344 + 1077)</span></span><br><span class="line"><span class="number">0.7913669064748201</span></span><br></pre></td></tr></table></figure><h3 id="F1-score"><a href="#F1-score" class="headerlink" title="F1 score"></a>F1 score</h3><p>通常结合准确率和召回率会更加方便，这个指标叫做“F1 值”，特别是当你需要一个简单的方法去比较两个分类器的优劣的时候。F1 值是准确率和召回率的调和平均。普通的平均值平等地看待所有的值，而调和平均会给小的值更大的权重。所以，要想分类器得到一个高的 F1 值，需要召回率和准确率同时高。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> f1_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f1_score(y_train_5, y_train_pred)</span><br><span class="line"><span class="number">0.78468208092485547</span></span><br></pre></td></tr></table></figure><h3 id="准确率和召回率的关系"><a href="#准确率和召回率的关系" class="headerlink" title="准确率和召回率的关系"></a>准确率和召回率的关系</h3><p>Scikit-Learn 不让你直接设置阈值，但是它给你提供了设置决策分数的方法，这个决策分数可以用来产生预测。它不是调用分类器的<code>predict()</code>方法，而是调用<code>decision_function()</code>方法。这个方法返回每一个样例的分数值，然后基于这个分数值，使用你想要的任何阈值做出预测</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; y_scores = sgd_clf.decision_function([some_digit])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_scores</span><br><span class="line">array([ <span class="number">161855.74572176</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>threshold = <span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred = (y_scores &gt; threshold)</span><br><span class="line">array([ <span class="literal">True</span>], dtype=bool)</span><br><span class="line"><span class="string">"""SGDClassifier用了一个等于 0 的阈值，所以前面的代码返回了跟predict()方法一样的结果（都返回了true）。让我们提高这个阈值"""</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>threshold = <span class="number">200000</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred = (y_scores &gt; threshold)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred</span><br><span class="line">array([<span class="literal">False</span>], dtype=bool)</span><br><span class="line"></span><br><span class="line"><span class="string">"""使用cross_val_predict()得到每一个样例的分数值，但是这一次指定返回一个决策分数，而不是预测值。"""</span></span><br><span class="line">y_scores = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>, </span><br><span class="line">                            method=<span class="string">"decision_function"</span>)</span><br><span class="line"><span class="comment"># y_scores返回和样本数量相同的决策分数</span></span><br><span class="line"><span class="keyword">if</span> y_scores.ndim == <span class="number">2</span>:</span><br><span class="line">    y_scores = y_scores[:, <span class="number">1</span>]</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_recall_curve</span><br><span class="line"></span><br><span class="line">precisions, recalls, thresholds = precision_recall_curve(y_train_5, y_scores)</span><br><span class="line"><span class="comment"># 绘制precisoin和recall曲线</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_precision_recall_vs_threshold</span><span class="params">(precisions, recalls, thresholds)</span>:</span></span><br><span class="line">    plt.plot(thresholds, precisions[:<span class="number">-1</span>], <span class="string">"b--"</span>, label=<span class="string">"Precision"</span>)</span><br><span class="line">    plt.plot(thresholds, recalls[:<span class="number">-1</span>], <span class="string">"g-"</span>, label=<span class="string">"Recall"</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"Threshold"</span>)</span><br><span class="line">    plt.legend(loc=<span class="string">"upper left"</span>)</span><br><span class="line">    plt.ylim([<span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">plot_precision_recall_vs_threshold(precisions, recalls, thresholds)</span><br><span class="line">plt.show()    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_precision_vs_recall</span><span class="params">(precisions, recalls)</span>:</span></span><br><span class="line">    plt.plot(recalls, precisions, <span class="string">"b-"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"Recall"</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">    plt.ylabel(<span class="string">"Precision"</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">    plt.axis([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">6</span>))</span><br><span class="line">plot_precision_vs_recall(precisions, recalls)</span><br><span class="line">save_fig(<span class="string">"precision_vs_recall_plot"</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure><p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.4.jpeg" alt="图3-4 准确率和召回率对决策阈值"></p><p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.5.jpeg" alt="图3-5 准确率对召回率"></p><h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>受试者工作特征（ROC）曲线是另一个二分类器常用的工具。它非常类似与准确率/召回率曲线，但不是画出准确率对召回率的曲线，ROC 曲线是真正例率（true positive rate，另一个名字叫做召回率）对假正例率（false positive rate, FPR）的曲线。FPR 是反例被错误分成正例的比率。它等于 1 减去真反例率（true negative rate， TNR）。TNR是反例被正确分类的比率。TNR也叫做特异性。所以 ROC 曲线画出召回率对（1 减特异性）的曲线。</p><p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.6.jpeg" alt="图3-6 ROC曲线"></p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_curve</span><br><span class="line"><span class="string">"""使用cross_val_predict()得到每一个样例的分数值，但是这一次指定返回一个决策分数，而不是预测值。"""</span></span><br><span class="line">y_scores = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>, </span><br><span class="line">                            method=<span class="string">"decision_function"</span>)</span><br><span class="line"><span class="comment"># y_scores返回和样本数量相同的决策分数</span></span><br><span class="line"><span class="keyword">if</span> y_scores.ndim == <span class="number">2</span>:</span><br><span class="line">    y_scores = y_scores[:, <span class="number">1</span>]</span><br><span class="line">fpr, tpr, thresholds = roc_curve(y_train_5, y_scores)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_roc_curve</span><span class="params">(fpr, tpr, label=None)</span>:</span></span><br><span class="line">    plt.plot(fpr, tpr, linewidth=<span class="number">2</span>, label=label)</span><br><span class="line">    plt.plot([<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>], <span class="string">'k--'</span>)</span><br><span class="line">    plt.axis([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">    plt.xlabel(<span class="string">'False Positive Rate'</span>)</span><br><span class="line">    plt.ylabel(<span class="string">'True Positive Rate'</span>)</span><br><span class="line">plot_roc_curve(fpr, tpr)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure><p>这里同样存在折衷的问题：召回率（TPR）越高，分类器就会产生越多的假正例（FPR）。图中的点线是一个完全随机的分类器生成的 ROC 曲线；一个好的分类器的 ROC 曲线应该尽可能远离这条线（即向左上角方向靠拢）。</p><p>一个比较分类器之间优劣的方法是：测量ROC曲线下的面积（AUC）。一个完美的分类器的 ROC AUC 等于 1，而一个纯随机分类器的 ROC AUC 等于 0.5。Scikit-Learn 提供了一个函数来计算 ROC AUC：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_auc_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>roc_auc_score(y_train_5, y_scores)</span><br><span class="line"><span class="number">0.97061072797174941</span></span><br></pre></td></tr></table></figure><p>因为 ROC 曲线跟准确率/召回率曲线（或者叫 PR）很类似，你或许会好奇如何决定使用哪一个曲线呢？一个笨拙的规则是，优先使用 PR 曲线当正例很少，或者当你关注假正例多于假反例的时候。其他情况使用 ROC 曲线。举例子，回顾前面的 ROC 曲线和 ROC AUC 数值，你或许认为这个分类器很棒。但是这几乎全是因为只有少数正例（“是 5”），而大部分是反例（“非 5”）。相反，PR 曲线清楚显示出这个分类器还有很大的改善空间（PR 曲线应该尽可能地靠近右上角）。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Machine Learning notes&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;Clas
+      
+    
+    </summary>
+    
+    
+      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
+    
+    
+      <category term="Machine Learning metrics" scheme="http://yoursite.com/tags/Machine-Learning-metrics/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Cross Validation</title>
+    <link href="http://yoursite.com/2020/03/04/2020-3-3-cross_valadation_sklearn-2020/"/>
+    <id>http://yoursite.com/2020/03/04/2020-3-3-cross_valadation_sklearn-2020/</id>
+    <published>2020-03-04T04:08:25.000Z</published>
+    <updated>2020-03-04T05:55:03.582Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><h2 id="有关交叉验证的sklearn的方法和原理"><a href="#有关交叉验证的sklearn的方法和原理" class="headerlink" title="有关交叉验证的sklearn的方法和原理"></a>有关交叉验证的sklearn的方法和原理</h2><h3 id="cross-val-score"><a href="#cross-val-score" class="headerlink" title="cross_val_score"></a>cross_val_score</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cross_val_score 用训练集来评估模型的好坏，注意交叉验证都是使用的是训练集来进行测验，而不是测试集</span></span><br><span class="line"><span class="comment"># 其返回的是，几折交叉验证就返回几个模型训练的评估分数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="comment"># 这里的model(),传入的是个模型实例，后传入的两个数据集合，cv表示交叉验证的次数，scoring表示评价方法</span></span><br><span class="line">cross_val_score(model(),X_train,y_train,cv=<span class="number">3</span>,scoring=<span class="string">"accuracy"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面则使用python实现一个cross_val_score函数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedKFold</span><br><span class="line"><span class="keyword">from</span> sklean.base <span class="keyword">import</span> clone</span><br><span class="line"><span class="comment"># 将数据集划分为几份</span></span><br><span class="line">skfolds = StratifiedKFold(n_splits=<span class="number">3</span>,random_state=<span class="number">42</span>)</span><br><span class="line"><span class="keyword">for</span> train_index,test_index <span class="keyword">in</span> skfolds.split(X_train,y_train):</span><br><span class="line">    <span class="comment"># 克隆原来模型</span></span><br><span class="line">    clone_clf = clone(model())</span><br><span class="line">    X_train_folds = X_train[trian_index]</span><br><span class="line">    y_train_folds = y_train[train_index]</span><br><span class="line">    X_test_folds = X_train[test_index]</span><br><span class="line">    y_test_folds= y_train[test_index]</span><br><span class="line">    clone_clf.fit(X_train_folds,y_train_folds)</span><br><span class="line">    y_pred = clone_clf.predict(X_test_folds)</span><br><span class="line">    n_correct = sum(y_pred == y_test_folds)</span><br><span class="line">    print(n_correct / len(y_pred) )</span><br></pre></td></tr></table></figure><h3 id="cross-val-predict"><a href="#cross-val-predict" class="headerlink" title="cross_val_predict"></a>cross_val_predict</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">就像 cross_val_score(),cross_val_predict()也使用 K 折交叉验证。它不是返回一个评估分数，而是返回基于每一个测试折做出的一个预测值。这意味着，对于每一个训练集的样例，你得到一个干净的预测（“干净”是说一个模型在训练过程当中没有用到测试集的数据）。"""</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_predict</span><br><span class="line">y_train_pred = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Machine Learning notes&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;Cros
+      
+    
+    </summary>
+    
+    
+      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
+    
+    
+      <category term="scikit-learn" scheme="http://yoursite.com/tags/scikit-learn/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Cross Validation 详解</title>
     <link href="http://yoursite.com/2020/03/04/2020-3-3-cross_validation-2020/"/>
     <id>http://yoursite.com/2020/03/04/2020-3-3-cross_validation-2020/</id>
@@ -352,13 +381,13 @@
   </entry>
   
   <entry>
-    <title>Cross Validation</title>
-    <link href="http://yoursite.com/2020/03/04/2020-3-3-cross_valadation_sklearn-2020/"/>
-    <id>http://yoursite.com/2020/03/04/2020-3-3-cross_valadation_sklearn-2020/</id>
+    <title>matplotlib防止中文乱码</title>
+    <link href="http://yoursite.com/2020/03/04/2020-3-3-matplotlib_learning-2020/"/>
+    <id>http://yoursite.com/2020/03/04/2020-3-3-matplotlib_learning-2020/</id>
     <published>2020-03-04T04:08:25.000Z</published>
-    <updated>2020-03-04T05:55:03.582Z</updated>
+    <updated>2020-03-04T06:23:30.910Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><h2 id="有关交叉验证的sklearn的方法和原理"><a href="#有关交叉验证的sklearn的方法和原理" class="headerlink" title="有关交叉验证的sklearn的方法和原理"></a>有关交叉验证的sklearn的方法和原理</h2><h3 id="cross-val-score"><a href="#cross-val-score" class="headerlink" title="cross_val_score"></a>cross_val_score</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cross_val_score 用训练集来评估模型的好坏，注意交叉验证都是使用的是训练集来进行测验，而不是测试集</span></span><br><span class="line"><span class="comment"># 其返回的是，几折交叉验证就返回几个模型训练的评估分数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="comment"># 这里的model(),传入的是个模型实例，后传入的两个数据集合，cv表示交叉验证的次数，scoring表示评价方法</span></span><br><span class="line">cross_val_score(model(),X_train,y_train,cv=<span class="number">3</span>,scoring=<span class="string">"accuracy"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面则使用python实现一个cross_val_score函数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedKFold</span><br><span class="line"><span class="keyword">from</span> sklean.base <span class="keyword">import</span> clone</span><br><span class="line"><span class="comment"># 将数据集划分为几份</span></span><br><span class="line">skfolds = StratifiedKFold(n_splits=<span class="number">3</span>,random_state=<span class="number">42</span>)</span><br><span class="line"><span class="keyword">for</span> train_index,test_index <span class="keyword">in</span> skfolds.split(X_train,y_train):</span><br><span class="line">    <span class="comment"># 克隆原来模型</span></span><br><span class="line">    clone_clf = clone(model())</span><br><span class="line">    X_train_folds = X_train[trian_index]</span><br><span class="line">    y_train_folds = y_train[train_index]</span><br><span class="line">    X_test_folds = X_train[test_index]</span><br><span class="line">    y_test_folds= y_train[test_index]</span><br><span class="line">    clone_clf.fit(X_train_folds,y_train_folds)</span><br><span class="line">    y_pred = clone_clf.predict(X_test_folds)</span><br><span class="line">    n_correct = sum(y_pred == y_test_folds)</span><br><span class="line">    print(n_correct / len(y_pred) )</span><br></pre></td></tr></table></figure><h3 id="cross-val-predict"><a href="#cross-val-predict" class="headerlink" title="cross_val_predict"></a>cross_val_predict</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">就像 cross_val_score(),cross_val_predict()也使用 K 折交叉验证。它不是返回一个评估分数，而是返回基于每一个测试折做出的一个预测值。这意味着，对于每一个训练集的样例，你得到一个干净的预测（“干净”是说一个模型在训练过程当中没有用到测试集的数据）。"""</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_predict</span><br><span class="line">y_train_pred = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="matplotlib防止中文乱码"><a href="#matplotlib防止中文乱码" class="headerlink" title="matplotlib防止中文乱码"></a>matplotlib防止中文乱码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘图时候防止在图像的中文乱码</span></span><br><span class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">'simHei'</span>]</span><br><span class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="literal">False</span></span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -367,7 +396,7 @@
         &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;Machine Learning notes&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&quot;Cros
+&lt;h1 id=&quot;matp
       
     
     </summary>
@@ -376,7 +405,7 @@
       <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
     
     
-      <category term="scikit-learn" scheme="http://yoursite.com/tags/scikit-learn/"/>
+      <category term="matplotlib" scheme="http://yoursite.com/tags/matplotlib/"/>
     
   </entry>
   
@@ -441,13 +470,13 @@
   </entry>
   
   <entry>
-    <title>matplotlib防止中文乱码</title>
-    <link href="http://yoursite.com/2020/03/04/2020-3-3-matplotlib_learning-2020/"/>
-    <id>http://yoursite.com/2020/03/04/2020-3-3-matplotlib_learning-2020/</id>
+    <title>矩阵求导</title>
+    <link href="http://yoursite.com/2020/03/04/2020-3-3-matrix_derivative-2020/"/>
+    <id>http://yoursite.com/2020/03/04/2020-3-3-matrix_derivative-2020/</id>
     <published>2020-03-04T04:08:25.000Z</published>
-    <updated>2020-03-04T06:23:30.910Z</updated>
+    <updated>2020-03-04T06:30:43.645Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="matplotlib防止中文乱码"><a href="#matplotlib防止中文乱码" class="headerlink" title="matplotlib防止中文乱码"></a>matplotlib防止中文乱码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘图时候防止在图像的中文乱码</span></span><br><span class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">'simHei'</span>]</span><br><span class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="literal">False</span></span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="矩阵求导"><a href="#矩阵求导" class="headerlink" title="矩阵求导"></a>矩阵求导</h1><ol><li>向量关于标量X的求导<script type="math/tex; mode=display">\left[ \begin{matrix}   y_1 \\   y_2 \\   \vdots \\   y_n  \end{matrix}  \right]</script></li></ol><p>   经过求导后</p><script type="math/tex; mode=display">   \left[    \begin{matrix}     \frac{\partial y_1}{\partial x} \\      \frac{\partial y_2}{\partial x} \\      \vdots \\      \frac{\partial y_n}{\partial x}     \end{matrix}     \right]</script><ol><li><p>矩阵对标量X的求导-和对向量的求导使同理的</p></li><li><p>矩阵对向量X求导</p></li></ol><script type="math/tex; mode=display">   A=\left[   \begin{matrix}    a11      & a12      & \cdots & a1n      \\    a21      & a22      & \cdots & a2n      \\    \vdots & \vdots & \ddots & \vdots \\    am1      & am2      & \cdots & am      \\   \end{matrix}   \right]</script><script type="math/tex; mode=display">   \vec{X}=\begin{Bmatrix}     x_1 \\      x_2 \\      \vdots \\      x_n     \end{Bmatrix} \tag{5}</script><script type="math/tex; mode=display">   \vec{Y} = \vec{A}\cdot\vec{X}=\left[   \begin{matrix}    a11\cdot x1 + a12\cdot\ x2 \cdot + a1n \cdot xn \\    a21\cdot x1 + a22\cdot\ x2 \cdot + a2n \cdot xn \\    \vdots &  \\    am1\cdot x1 + am2\cdot\ x2 \cdot + amn \cdot xn \\   \end{matrix}   \right]</script><script type="math/tex; mode=display">\frac{\partial \vec{Y}}{\partial \vec{X}}=\left[   \begin{matrix}    a11      & a21      & \cdots & am1      \\    a12      & a22      & \cdots & am2      \\    \vdots & \vdots & \ddots & \vdots \\    a1n      & a2n      & \cdots & amn      \\   \end{matrix}   \right]=A^T</script><p><img src="/images/matrix.png" alt=""></p>]]></content>
     
     <summary type="html">
     
@@ -456,7 +485,7 @@
         &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;Machine Learning notes&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&quot;matp
+&lt;h1 id=&quot;矩阵求导
       
     
     </summary>
@@ -465,7 +494,7 @@
       <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
     
     
-      <category term="matplotlib" scheme="http://yoursite.com/tags/matplotlib/"/>
+      <category term="矩阵求导" scheme="http://yoursite.com/tags/%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC/"/>
     
   </entry>
   
@@ -536,13 +565,13 @@
   </entry>
   
   <entry>
-    <title>矩阵求导</title>
-    <link href="http://yoursite.com/2020/03/04/2020-3-3-matrix_derivative-2020/"/>
-    <id>http://yoursite.com/2020/03/04/2020-3-3-matrix_derivative-2020/</id>
+    <title>sklearn的非数值进行数值性编码与sklearn的库进行准确率的计算</title>
+    <link href="http://yoursite.com/2020/03/04/2020-3-3-skearn_learning-2020/"/>
+    <id>http://yoursite.com/2020/03/04/2020-3-3-skearn_learning-2020/</id>
     <published>2020-03-04T04:08:25.000Z</published>
-    <updated>2020-03-04T06:30:43.645Z</updated>
+    <updated>2020-03-04T06:24:57.736Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="矩阵求导"><a href="#矩阵求导" class="headerlink" title="矩阵求导"></a>矩阵求导</h1><ol><li>向量关于标量X的求导<script type="math/tex; mode=display">\left[ \begin{matrix}   y_1 \\   y_2 \\   \vdots \\   y_n  \end{matrix}  \right]</script></li></ol><p>   经过求导后</p><script type="math/tex; mode=display">   \left[    \begin{matrix}     \frac{\partial y_1}{\partial x} \\      \frac{\partial y_2}{\partial x} \\      \vdots \\      \frac{\partial y_n}{\partial x}     \end{matrix}     \right]</script><ol><li><p>矩阵对标量X的求导-和对向量的求导使同理的</p></li><li><p>矩阵对向量X求导</p></li></ol><script type="math/tex; mode=display">   A=\left[   \begin{matrix}    a11      & a12      & \cdots & a1n      \\    a21      & a22      & \cdots & a2n      \\    \vdots & \vdots & \ddots & \vdots \\    am1      & am2      & \cdots & am      \\   \end{matrix}   \right]</script><script type="math/tex; mode=display">   \vec{X}=\begin{Bmatrix}     x_1 \\      x_2 \\      \vdots \\      x_n     \end{Bmatrix} \tag{5}</script><script type="math/tex; mode=display">   \vec{Y} = \vec{A}\cdot\vec{X}=\left[   \begin{matrix}    a11\cdot x1 + a12\cdot\ x2 \cdot + a1n \cdot xn \\    a21\cdot x1 + a22\cdot\ x2 \cdot + a2n \cdot xn \\    \vdots &  \\    am1\cdot x1 + am2\cdot\ x2 \cdot + amn \cdot xn \\   \end{matrix}   \right]</script><script type="math/tex; mode=display">\frac{\partial \vec{Y}}{\partial \vec{X}}=\left[   \begin{matrix}    a11      & a21      & \cdots & am1      \\    a12      & a22      & \cdots & am2      \\    \vdots & \vdots & \ddots & \vdots \\    a1n      & a2n      & \cdots & amn      \\   \end{matrix}   \right]=A^T</script><p><img src="/images/matrix.png" alt=""></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="skearn的非数值进行数值性编码与sklearn的库进行准确率的计算"><a href="#skearn的非数值进行数值性编码与sklearn的库进行准确率的计算" class="headerlink" title="skearn的非数值进行数值性编码与sklearn的库进行准确率的计算"></a>skearn的非数值进行数值性编码与sklearn的库进行准确率的计算</h1><p>1.可以使用python自带的skearn对result的非数值进行数值性编码</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">y = LabelEncoder().fit_transform(data[<span class="number">4</span>])</span><br></pre></td></tr></table></figure><p>2.可以使用sklearn的库进行准确率的计算</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_socre</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">1</span>)</span><br><span class="line">model = DecisionTreeClassifier(criterion=<span class="string">'entorpy'</span>)</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line">y_test_hat = model.predict(x_test)</span><br><span class="line"><span class="comment"># 第一种方法</span></span><br><span class="line">print(<span class="string">"accuracy_score"</span>,accuracy_socre(y_test_hat,y_test))</span><br><span class="line"><span class="comment"># 第二种方法</span></span><br><span class="line">y_test = y_test.reshape(<span class="number">-1</span>)<span class="comment"># 变成一维</span></span><br><span class="line">result = (y_test_hat==y_test)</span><br><span class="line">acc = np.mean(result)</span><br><span class="line">print(<span class="string">f"准确率:<span class="subst">&#123;<span class="number">100</span>*acc&#125;</span>"</span>)</span><br></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
     
@@ -551,7 +580,7 @@
         &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;Machine Learning notes&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&quot;矩阵求导
+&lt;h1 id=&quot;skea
       
     
     </summary>
@@ -560,7 +589,9 @@
       <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
     
     
-      <category term="矩阵求导" scheme="http://yoursite.com/tags/%E7%9F%A9%E9%98%B5%E6%B1%82%E5%AF%BC/"/>
+      <category term="scikit-learn" scheme="http://yoursite.com/tags/scikit-learn/"/>
+    
+      <category term="encoding" scheme="http://yoursite.com/tags/encoding/"/>
     
   </entry>
   
@@ -594,37 +625,6 @@
       <category term="scikit-learn" scheme="http://yoursite.com/tags/scikit-learn/"/>
     
       <category term="scipy" scheme="http://yoursite.com/tags/scipy/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>sklearn的非数值进行数值性编码与sklearn的库进行准确率的计算</title>
-    <link href="http://yoursite.com/2020/03/04/2020-3-3-skearn_learning-2020/"/>
-    <id>http://yoursite.com/2020/03/04/2020-3-3-skearn_learning-2020/</id>
-    <published>2020-03-04T04:08:25.000Z</published>
-    <updated>2020-03-04T06:24:57.736Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="skearn的非数值进行数值性编码与sklearn的库进行准确率的计算"><a href="#skearn的非数值进行数值性编码与sklearn的库进行准确率的计算" class="headerlink" title="skearn的非数值进行数值性编码与sklearn的库进行准确率的计算"></a>skearn的非数值进行数值性编码与sklearn的库进行准确率的计算</h1><p>1.可以使用python自带的skearn对result的非数值进行数值性编码</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">y = LabelEncoder().fit_transform(data[<span class="number">4</span>])</span><br></pre></td></tr></table></figure><p>2.可以使用sklearn的库进行准确率的计算</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_socre</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">1</span>)</span><br><span class="line">model = DecisionTreeClassifier(criterion=<span class="string">'entorpy'</span>)</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line">y_test_hat = model.predict(x_test)</span><br><span class="line"><span class="comment"># 第一种方法</span></span><br><span class="line">print(<span class="string">"accuracy_score"</span>,accuracy_socre(y_test_hat,y_test))</span><br><span class="line"><span class="comment"># 第二种方法</span></span><br><span class="line">y_test = y_test.reshape(<span class="number">-1</span>)<span class="comment"># 变成一维</span></span><br><span class="line">result = (y_test_hat==y_test)</span><br><span class="line">acc = np.mean(result)</span><br><span class="line">print(<span class="string">f"准确率:<span class="subst">&#123;<span class="number">100</span>*acc&#125;</span>"</span>)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;Machine Learning notes&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;skea
-      
-    
-    </summary>
-    
-    
-      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
-    
-    
-      <category term="scikit-learn" scheme="http://yoursite.com/tags/scikit-learn/"/>
-    
-      <category term="encoding" scheme="http://yoursite.com/tags/encoding/"/>
     
   </entry>
   

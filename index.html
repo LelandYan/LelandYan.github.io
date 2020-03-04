@@ -386,111 +386,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-Liner_Regression%20with%20multiple%20variable-2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="LelandYan">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LelandYan">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/04/2020-3-3-Liner_Regression%20with%20multiple%20variable-2020/" class="post-title-link" itemprop="url">多元线性回归问题</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:33:10" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="多元线性回归问题"><a href="#多元线性回归问题" class="headerlink" title="多元线性回归问题"></a>多元线性回归问题</h1><ol>
-<li><p>代价函数(整体数据集)，损失函数(对于每个数据的误差)</p>
-</li>
-<li><p>learning_rate(从小的尝试比如0.0006)</p>
-</li>
-</ol>
-<h3 id="scaling-the-features-特征缩放-—适用与梯度下降改进-Mean-normalization-均值归一化"><a href="#scaling-the-features-特征缩放-—适用与梯度下降改进-Mean-normalization-均值归一化" class="headerlink" title="scaling the features(特征缩放)—适用与梯度下降改进 -Mean normalization(均值归一化)"></a>scaling the features(特征缩放)—适用与梯度下降改进 -Mean normalization(均值归一化)</h3><pre><code>1.min-max标准化
-
-X(每个数据) - U(特征值均值))/(Max-Min)
-
-2.Z-score标准化方法
-
-X(每个数据) - U(特征值均值))/(std)
-
-3.归一化
-
-把数据变成(0,1)或者(1,1)之间的小数。主要是为了数据处理方便提出来的，把数据映射到0～1范围之内处理，更加便捷快速 
-</code></pre><h3 id="normal-equation-正规方程-or-Gradient-Descent"><a href="#normal-equation-正规方程-or-Gradient-Descent" class="headerlink" title="normal equation(正规方程) or Gradient Descent"></a>normal equation(正规方程) or Gradient Descent</h3><ol>
-<li><p>normal equation is suitable for samll features(计算量比较大)</p>
-</li>
-<li><p>Gradient descent is suitable for a large number for features(<br> <img src="/images/feature_scaling.png" alt="">)<br> 但是受数据的影响较大，所以对与Gradient descent来说需要进行feature scaling)</p>
-</li>
-<li><p>normalize equation(正规方程)的公式推导 代价函数</p>
-<script type="math/tex; mode=display">
- J(\theta)=J(\theta_0,\ldots,\theta_n)=\frac {1} {2m} \sum_{i=1}^{m} {(h_\theta(x^{(i)})-y^{(i)})^2}</script><script type="math/tex; mode=display">
- J(\theta)=\frac {1}{2m}(X\theta-y)^T(X\theta-y)</script><script type="math/tex; mode=display">
-   J(\theta)=\theta^TX^TX\theta-(X\theta)^Ty-y^TX\theta+y^Ty</script><script type="math/tex; mode=display">
-   J(\theta)=\theta^TX^TX\theta-2(X\theta)^Ty+y^Ty</script><script type="math/tex; mode=display">
- \frac {\partial}{\partial\theta}J(\theta)=2X^TX\theta-2X^Ty=0</script><p> ​                                            <script type="math/tex">\theta=(X^TX)^{-1}X^Ty</script></p>
-</li>
-<li><p>矩阵不可逆：</p>
-<p> 1.矩阵存在线性相关的特征之值</p>
-<p> 2.矩阵所对应的行列式为0</p>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-Logistic_Regression_Classification-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -647,7 +542,7 @@ sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img s
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-auc_roc-2020/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-Liner_Regression%20with%20multiple%20variable-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -661,7 +556,7 @@ sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img s
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/04/2020-3-3-auc_roc-2020/" class="post-title-link" itemprop="url">AUC、ROC详解</a>
+            <a href="/2020/03/04/2020-3-3-Liner_Regression%20with%20multiple%20variable-2020/" class="post-title-link" itemprop="url">多元线性回归问题</a>
         </h1>
 
         <div class="post-meta">
@@ -672,7 +567,7 @@ sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img s
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:34:15" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:33:10" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -681,10 +576,6 @@ sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img s
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
-                </span>
-                  ，
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/machine-learning-metrics/" itemprop="url" rel="index"><span itemprop="name">machine learning metrics</span></a>
                 </span>
             </span>
 
@@ -702,26 +593,41 @@ sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img s
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes</p>
 </blockquote>
-<h1 id="AUC、ROC详解"><a href="#AUC、ROC详解" class="headerlink" title="AUC、ROC详解"></a>AUC、ROC详解</h1><p>AUC:一个正例，一个负例，预测为正的概率值比预测为负的概率还要大的可能性</p>
-<p>根据定义：我们最直观的有两种计算auc的方法</p>
-<ol>
-<li>绘制ROC曲线，roc曲线下面的面积就是AUC的值</li>
-<li>假设共有（m+n）个样本，其中正样本m个，负样本n个，共有m<em> n 个样本对，计数，正样本预测为正样本的概率概率大于负样本预测为正样本的概率记为1，累加计数，然后除以（m</em>  n）就是AUC的值</li>
+<h1 id="多元线性回归问题"><a href="#多元线性回归问题" class="headerlink" title="多元线性回归问题"></a>多元线性回归问题</h1><ol>
+<li><p>代价函数(整体数据集)，损失函数(对于每个数据的误差)</p>
+</li>
+<li><p>learning_rate(从小的尝试比如0.0006)</p>
+</li>
 </ol>
-<h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>ROC曲线：接受者操作特征（receiveroperating characteristic），roc曲线上的每个点反应着对同一信号刺激的感受性。</p>
-<p>横轴：负正类率（false postive rate FPR）特异度，划分实例中所有的负例占所有负例的比例 （1-Specificity）</p>
-<p>纵轴：真正类率 （true postive rate TPR）灵敏度，Sensitivity(正类覆盖率)</p>
-<p>2针对一个二分类问题，将实例分成正类(postive)或者负类(negative)。但是实际中分类时，会出现四种情况.</p>
-<p>(1)若一个实例是正类并且被预测为正类，即为真正类(True Postive TP)</p>
-<p>(2)若一个实例是正类，但是被预测成为负类，即为假负类(False Negative FN)</p>
-<p>(3)若一个实例是负类，但是被预测成为正类，即为假正类(False Postive FP)</p>
-<p>(4)若一个实例是负类，但是被预测成为负类，即为真负类(True Negative TN)</p>
-<p>TP:正确的肯定数目</p>
-<p>FN:漏报，没有找到正确匹配的数目</p>
-<p>FP:误报，没有的匹配不正确</p>
-<p>(1)真正类率(True Postive Rate)TPR: TP/(TP+FN),代表分类器预测的正类中实际正实例占所有正实例的比例。Sensitivity</p>
-<p>(2)负正类率(False Postive Rate)FPR: FP/(FP+TN)，代表分类器预测的正类中实际负实例占所有负实例的比例。1-Specificity</p>
-<p>AUC(Area under Curve)：Roc曲线下的面积，介于0.1和1之间。Auc作为数值可以直观的评价分类器的好坏，值越大越好。</p>
+<h3 id="scaling-the-features-特征缩放-—适用与梯度下降改进-Mean-normalization-均值归一化"><a href="#scaling-the-features-特征缩放-—适用与梯度下降改进-Mean-normalization-均值归一化" class="headerlink" title="scaling the features(特征缩放)—适用与梯度下降改进 -Mean normalization(均值归一化)"></a>scaling the features(特征缩放)—适用与梯度下降改进 -Mean normalization(均值归一化)</h3><pre><code>1.min-max标准化
+
+X(每个数据) - U(特征值均值))/(Max-Min)
+
+2.Z-score标准化方法
+
+X(每个数据) - U(特征值均值))/(std)
+
+3.归一化
+
+把数据变成(0,1)或者(1,1)之间的小数。主要是为了数据处理方便提出来的，把数据映射到0～1范围之内处理，更加便捷快速 
+</code></pre><h3 id="normal-equation-正规方程-or-Gradient-Descent"><a href="#normal-equation-正规方程-or-Gradient-Descent" class="headerlink" title="normal equation(正规方程) or Gradient Descent"></a>normal equation(正规方程) or Gradient Descent</h3><ol>
+<li><p>normal equation is suitable for samll features(计算量比较大)</p>
+</li>
+<li><p>Gradient descent is suitable for a large number for features(<br> <img src="/images/feature_scaling.png" alt="">)<br> 但是受数据的影响较大，所以对与Gradient descent来说需要进行feature scaling)</p>
+</li>
+<li><p>normalize equation(正规方程)的公式推导 代价函数</p>
+<script type="math/tex; mode=display">
+ J(\theta)=J(\theta_0,\ldots,\theta_n)=\frac {1} {2m} \sum_{i=1}^{m} {(h_\theta(x^{(i)})-y^{(i)})^2}</script><script type="math/tex; mode=display">
+ J(\theta)=\frac {1}{2m}(X\theta-y)^T(X\theta-y)</script><script type="math/tex; mode=display">
+   J(\theta)=\theta^TX^TX\theta-(X\theta)^Ty-y^TX\theta+y^Ty</script><script type="math/tex; mode=display">
+   J(\theta)=\theta^TX^TX\theta-2(X\theta)^Ty+y^Ty</script><script type="math/tex; mode=display">
+ \frac {\partial}{\partial\theta}J(\theta)=2X^TX\theta-2X^Ty=0</script><p> ​                                            <script type="math/tex">\theta=(X^TX)^{-1}X^Ty</script></p>
+</li>
+<li><p>矩阵不可逆：</p>
+<p> 1.矩阵存在线性相关的特征之值</p>
+<p> 2.矩阵所对应的行列式为0</p>
+</li>
+</ol>
 
       
     </div>
@@ -836,7 +742,7 @@ sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img s
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-classifition_metrics-2020/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-auc_roc-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -850,7 +756,7 @@ sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img s
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/04/2020-3-3-classifition_metrics-2020/" class="post-title-link" itemprop="url">Classifition metrics</a>
+            <a href="/2020/03/04/2020-3-3-auc_roc-2020/" class="post-title-link" itemprop="url">AUC、ROC详解</a>
         </h1>
 
         <div class="post-meta">
@@ -861,7 +767,7 @@ sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img s
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:34:48" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:38:10" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -887,21 +793,26 @@ sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img s
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes</p>
 </blockquote>
-<h1 id="Classifition-metrics"><a href="#Classifition-metrics" class="headerlink" title="Classifition metrics"></a>Classifition metrics</h1><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line">confusion_matrix(y_train_5, y_train_pred)</span><br><span class="line">array([[<span class="number">53272</span>, <span class="number">1307</span>],</span><br><span class="line">        [ <span class="number">1077</span>, <span class="number">4344</span>]])</span><br></pre></td></tr></table></figure>
-<h2 id="准确率和召回率"><a href="#准确率和召回率" class="headerlink" title="准确率和召回率"></a>准确率和召回率</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_score, recall_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>precision_score(y_train_5, y_pred) <span class="comment"># == 4344 / (4344 + 1307)</span></span><br><span class="line"><span class="number">0.76871350203503808</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>recall_score(y_train_5, y_train_pred) <span class="comment"># == 4344 / (4344 + 1077)</span></span><br><span class="line"><span class="number">0.7913669064748201</span></span><br></pre></td></tr></table></figure>
-<h3 id="F1-score"><a href="#F1-score" class="headerlink" title="F1 score"></a>F1 score</h3><p>通常结合准确率和召回率会更加方便，这个指标叫做“F1 值”，特别是当你需要一个简单的方法去比较两个分类器的优劣的时候。F1 值是准确率和召回率的调和平均。普通的平均值平等地看待所有的值，而调和平均会给小的值更大的权重。所以，要想分类器得到一个高的 F1 值，需要召回率和准确率同时高。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> f1_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f1_score(y_train_5, y_train_pred)</span><br><span class="line"><span class="number">0.78468208092485547</span></span><br></pre></td></tr></table></figure>
-<h3 id="准确率和召回率的关系"><a href="#准确率和召回率的关系" class="headerlink" title="准确率和召回率的关系"></a>准确率和召回率的关系</h3><p>Scikit-Learn 不让你直接设置阈值，但是它给你提供了设置决策分数的方法，这个决策分数可以用来产生预测。它不是调用分类器的<code>predict()</code>方法，而是调用<code>decision_function()</code>方法。这个方法返回每一个样例的分数值，然后基于这个分数值，使用你想要的任何阈值做出预测</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; y_scores = sgd_clf.decision_function([some_digit])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_scores</span><br><span class="line">array([ <span class="number">161855.74572176</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>threshold = <span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred = (y_scores &gt; threshold)</span><br><span class="line">array([ <span class="literal">True</span>], dtype=bool)</span><br><span class="line"><span class="string">"""SGDClassifier用了一个等于 0 的阈值，所以前面的代码返回了跟predict()方法一样的结果（都返回了true）。让我们提高这个阈值"""</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>threshold = <span class="number">200000</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred = (y_scores &gt; threshold)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred</span><br><span class="line">array([<span class="literal">False</span>], dtype=bool)</span><br><span class="line"></span><br><span class="line"><span class="string">"""使用cross_val_predict()得到每一个样例的分数值，但是这一次指定返回一个决策分数，而不是预测值。"""</span></span><br><span class="line">y_scores = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>, </span><br><span class="line">                            method=<span class="string">"decision_function"</span>)</span><br><span class="line"><span class="comment"># y_scores返回和样本数量相同的决策分数</span></span><br><span class="line"><span class="keyword">if</span> y_scores.ndim == <span class="number">2</span>:</span><br><span class="line">    y_scores = y_scores[:, <span class="number">1</span>]</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_recall_curve</span><br><span class="line"></span><br><span class="line">precisions, recalls, thresholds = precision_recall_curve(y_train_5, y_scores)</span><br><span class="line"><span class="comment"># 绘制precisoin和recall曲线</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_precision_recall_vs_threshold</span><span class="params">(precisions, recalls, thresholds)</span>:</span></span><br><span class="line">    plt.plot(thresholds, precisions[:<span class="number">-1</span>], <span class="string">"b--"</span>, label=<span class="string">"Precision"</span>)</span><br><span class="line">    plt.plot(thresholds, recalls[:<span class="number">-1</span>], <span class="string">"g-"</span>, label=<span class="string">"Recall"</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"Threshold"</span>)</span><br><span class="line">    plt.legend(loc=<span class="string">"upper left"</span>)</span><br><span class="line">    plt.ylim([<span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">plot_precision_recall_vs_threshold(precisions, recalls, thresholds)</span><br><span class="line">plt.show()    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_precision_vs_recall</span><span class="params">(precisions, recalls)</span>:</span></span><br><span class="line">    plt.plot(recalls, precisions, <span class="string">"b-"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"Recall"</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">    plt.ylabel(<span class="string">"Precision"</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">    plt.axis([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">6</span>))</span><br><span class="line">plot_precision_vs_recall(precisions, recalls)</span><br><span class="line">save_fig(<span class="string">"precision_vs_recall_plot"</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.4.jpeg" alt="图3-4 准确率和召回率对决策阈值"></p>
-<p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.5.jpeg" alt="图3-5 准确率对召回率"></p>
-<h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>受试者工作特征（ROC）曲线是另一个二分类器常用的工具。它非常类似与准确率/召回率曲线，但不是画出准确率对召回率的曲线，ROC 曲线是真正例率（true positive rate，另一个名字叫做召回率）对假正例率（false positive rate, FPR）的曲线。FPR 是反例被错误分成正例的比率。它等于 1 减去真反例率（true negative rate， TNR）。TNR是反例被正确分类的比率。TNR也叫做特异性。所以 ROC 曲线画出召回率对（1 减特异性）的曲线。</p>
-<p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.6.jpeg" alt="图3-6 ROC曲线"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_curve</span><br><span class="line"><span class="string">"""使用cross_val_predict()得到每一个样例的分数值，但是这一次指定返回一个决策分数，而不是预测值。"""</span></span><br><span class="line">y_scores = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>, </span><br><span class="line">                            method=<span class="string">"decision_function"</span>)</span><br><span class="line"><span class="comment"># y_scores返回和样本数量相同的决策分数</span></span><br><span class="line"><span class="keyword">if</span> y_scores.ndim == <span class="number">2</span>:</span><br><span class="line">    y_scores = y_scores[:, <span class="number">1</span>]</span><br><span class="line">fpr, tpr, thresholds = roc_curve(y_train_5, y_scores)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_roc_curve</span><span class="params">(fpr, tpr, label=None)</span>:</span></span><br><span class="line">    plt.plot(fpr, tpr, linewidth=<span class="number">2</span>, label=label)</span><br><span class="line">    plt.plot([<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>], <span class="string">'k--'</span>)</span><br><span class="line">    plt.axis([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">    plt.xlabel(<span class="string">'False Positive Rate'</span>)</span><br><span class="line">    plt.ylabel(<span class="string">'True Positive Rate'</span>)</span><br><span class="line">plot_roc_curve(fpr, tpr)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>这里同样存在折衷的问题：召回率（TPR）越高，分类器就会产生越多的假正例（FPR）。图中的点线是一个完全随机的分类器生成的 ROC 曲线；一个好的分类器的 ROC 曲线应该尽可能远离这条线（即向左上角方向靠拢）。</p>
-<p>一个比较分类器之间优劣的方法是：测量ROC曲线下的面积（AUC）。一个完美的分类器的 ROC AUC 等于 1，而一个纯随机分类器的 ROC AUC 等于 0.5。Scikit-Learn 提供了一个函数来计算 ROC AUC：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_auc_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>roc_auc_score(y_train_5, y_scores)</span><br><span class="line"><span class="number">0.97061072797174941</span></span><br></pre></td></tr></table></figure>
-<p>因为 ROC 曲线跟准确率/召回率曲线（或者叫 PR）很类似，你或许会好奇如何决定使用哪一个曲线呢？一个笨拙的规则是，优先使用 PR 曲线当正例很少，或者当你关注假正例多于假反例的时候。其他情况使用 ROC 曲线。举例子，回顾前面的 ROC 曲线和 ROC AUC 数值，你或许认为这个分类器很棒。但是这几乎全是因为只有少数正例（“是 5”），而大部分是反例（“非 5”）。相反，PR 曲线清楚显示出这个分类器还有很大的改善空间（PR 曲线应该尽可能地靠近右上角）。</p>
+<h1 id="AUC、ROC详解"><a href="#AUC、ROC详解" class="headerlink" title="AUC、ROC详解"></a>AUC、ROC详解</h1><p>AUC:一个正例，一个负例，预测为正的概率值比预测为负的概率还要大的可能性</p>
+<p>根据定义：我们最直观的有两种计算auc的方法</p>
+<ol>
+<li>绘制ROC曲线，roc曲线下面的面积就是AUC的值</li>
+<li>假设共有（m+n）个样本，其中正样本m个，负样本n个，共有m<em> n 个样本对，计数，正样本预测为正样本的概率概率大于负样本预测为正样本的概率记为1，累加计数，然后除以（m</em>  n）就是AUC的值</li>
+</ol>
+<h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>ROC曲线：接受者操作特征（receiveroperating characteristic），roc曲线上的每个点反应着对同一信号刺激的感受性。</p>
+<p>横轴：负正类率（false postive rate FPR）特异度，划分实例中所有的负例占所有负例的比例 （1-Specificity）</p>
+<p>纵轴：真正类率 （true postive rate TPR）灵敏度，Sensitivity(正类覆盖率)</p>
+<p>2针对一个二分类问题，将实例分成正类(postive)或者负类(negative)。但是实际中分类时，会出现四种情况.</p>
+<p>(1)若一个实例是正类并且被预测为正类，即为真正类(True Postive TP)</p>
+<p>(2)若一个实例是正类，但是被预测成为负类，即为假负类(False Negative FN)</p>
+<p>(3)若一个实例是负类，但是被预测成为正类，即为假正类(False Postive FP)</p>
+<p>(4)若一个实例是负类，但是被预测成为负类，即为真负类(True Negative TN)</p>
+<p>TP:正确的肯定数目</p>
+<p>FN:漏报，没有找到正确匹配的数目</p>
+<p>FP:误报，没有的匹配不正确</p>
+<p>(1)真正类率(True Postive Rate)TPR: TP/(TP+FN),代表分类器预测的正类中实际正实例占所有正实例的比例。Sensitivity</p>
+<p>(2)负正类率(False Postive Rate)FPR: FP/(FP+TN)，代表分类器预测的正类中实际负实例占所有负实例的比例。1-Specificity</p>
+<p>AUC(Area under Curve)：Roc曲线下的面积，介于0.1和1之间。Auc作为数值可以直观的评价分类器的好坏，值越大越好。</p>
 
       
     </div>
@@ -1073,6 +984,91 @@ sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img s
   
   
 
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-classifition_metrics-2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="LelandYan">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LelandYan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/04/2020-3-3-classifition_metrics-2020/" class="post-title-link" itemprop="url">Classifition metrics</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:34:48" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes</p>
+</blockquote>
+<h1 id="Classifition-metrics"><a href="#Classifition-metrics" class="headerlink" title="Classifition metrics"></a>Classifition metrics</h1><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line">confusion_matrix(y_train_5, y_train_pred)</span><br><span class="line">array([[<span class="number">53272</span>, <span class="number">1307</span>],</span><br><span class="line">        [ <span class="number">1077</span>, <span class="number">4344</span>]])</span><br></pre></td></tr></table></figure>
+<h2 id="准确率和召回率"><a href="#准确率和召回率" class="headerlink" title="准确率和召回率"></a>准确率和召回率</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_score, recall_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>precision_score(y_train_5, y_pred) <span class="comment"># == 4344 / (4344 + 1307)</span></span><br><span class="line"><span class="number">0.76871350203503808</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>recall_score(y_train_5, y_train_pred) <span class="comment"># == 4344 / (4344 + 1077)</span></span><br><span class="line"><span class="number">0.7913669064748201</span></span><br></pre></td></tr></table></figure>
+<h3 id="F1-score"><a href="#F1-score" class="headerlink" title="F1 score"></a>F1 score</h3><p>通常结合准确率和召回率会更加方便，这个指标叫做“F1 值”，特别是当你需要一个简单的方法去比较两个分类器的优劣的时候。F1 值是准确率和召回率的调和平均。普通的平均值平等地看待所有的值，而调和平均会给小的值更大的权重。所以，要想分类器得到一个高的 F1 值，需要召回率和准确率同时高。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> f1_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f1_score(y_train_5, y_train_pred)</span><br><span class="line"><span class="number">0.78468208092485547</span></span><br></pre></td></tr></table></figure>
+<h3 id="准确率和召回率的关系"><a href="#准确率和召回率的关系" class="headerlink" title="准确率和召回率的关系"></a>准确率和召回率的关系</h3><p>Scikit-Learn 不让你直接设置阈值，但是它给你提供了设置决策分数的方法，这个决策分数可以用来产生预测。它不是调用分类器的<code>predict()</code>方法，而是调用<code>decision_function()</code>方法。这个方法返回每一个样例的分数值，然后基于这个分数值，使用你想要的任何阈值做出预测</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt; y_scores = sgd_clf.decision_function([some_digit])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_scores</span><br><span class="line">array([ <span class="number">161855.74572176</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>threshold = <span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred = (y_scores &gt; threshold)</span><br><span class="line">array([ <span class="literal">True</span>], dtype=bool)</span><br><span class="line"><span class="string">"""SGDClassifier用了一个等于 0 的阈值，所以前面的代码返回了跟predict()方法一样的结果（都返回了true）。让我们提高这个阈值"""</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>threshold = <span class="number">200000</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred = (y_scores &gt; threshold)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred</span><br><span class="line">array([<span class="literal">False</span>], dtype=bool)</span><br><span class="line"></span><br><span class="line"><span class="string">"""使用cross_val_predict()得到每一个样例的分数值，但是这一次指定返回一个决策分数，而不是预测值。"""</span></span><br><span class="line">y_scores = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>, </span><br><span class="line">                            method=<span class="string">"decision_function"</span>)</span><br><span class="line"><span class="comment"># y_scores返回和样本数量相同的决策分数</span></span><br><span class="line"><span class="keyword">if</span> y_scores.ndim == <span class="number">2</span>:</span><br><span class="line">    y_scores = y_scores[:, <span class="number">1</span>]</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_recall_curve</span><br><span class="line"></span><br><span class="line">precisions, recalls, thresholds = precision_recall_curve(y_train_5, y_scores)</span><br><span class="line"><span class="comment"># 绘制precisoin和recall曲线</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_precision_recall_vs_threshold</span><span class="params">(precisions, recalls, thresholds)</span>:</span></span><br><span class="line">    plt.plot(thresholds, precisions[:<span class="number">-1</span>], <span class="string">"b--"</span>, label=<span class="string">"Precision"</span>)</span><br><span class="line">    plt.plot(thresholds, recalls[:<span class="number">-1</span>], <span class="string">"g-"</span>, label=<span class="string">"Recall"</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"Threshold"</span>)</span><br><span class="line">    plt.legend(loc=<span class="string">"upper left"</span>)</span><br><span class="line">    plt.ylim([<span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">plot_precision_recall_vs_threshold(precisions, recalls, thresholds)</span><br><span class="line">plt.show()    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_precision_vs_recall</span><span class="params">(precisions, recalls)</span>:</span></span><br><span class="line">    plt.plot(recalls, precisions, <span class="string">"b-"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"Recall"</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">    plt.ylabel(<span class="string">"Precision"</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">    plt.axis([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">6</span>))</span><br><span class="line">plot_precision_vs_recall(precisions, recalls)</span><br><span class="line">save_fig(<span class="string">"precision_vs_recall_plot"</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.4.jpeg" alt="图3-4 准确率和召回率对决策阈值"></p>
+<p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.5.jpeg" alt="图3-5 准确率对召回率"></p>
+<h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>受试者工作特征（ROC）曲线是另一个二分类器常用的工具。它非常类似与准确率/召回率曲线，但不是画出准确率对召回率的曲线，ROC 曲线是真正例率（true positive rate，另一个名字叫做召回率）对假正例率（false positive rate, FPR）的曲线。FPR 是反例被错误分成正例的比率。它等于 1 减去真反例率（true negative rate， TNR）。TNR是反例被正确分类的比率。TNR也叫做特异性。所以 ROC 曲线画出召回率对（1 减特异性）的曲线。</p>
+<p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.6.jpeg" alt="图3-6 ROC曲线"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_curve</span><br><span class="line"><span class="string">"""使用cross_val_predict()得到每一个样例的分数值，但是这一次指定返回一个决策分数，而不是预测值。"""</span></span><br><span class="line">y_scores = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>, </span><br><span class="line">                            method=<span class="string">"decision_function"</span>)</span><br><span class="line"><span class="comment"># y_scores返回和样本数量相同的决策分数</span></span><br><span class="line"><span class="keyword">if</span> y_scores.ndim == <span class="number">2</span>:</span><br><span class="line">    y_scores = y_scores[:, <span class="number">1</span>]</span><br><span class="line">fpr, tpr, thresholds = roc_curve(y_train_5, y_scores)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_roc_curve</span><span class="params">(fpr, tpr, label=None)</span>:</span></span><br><span class="line">    plt.plot(fpr, tpr, linewidth=<span class="number">2</span>, label=label)</span><br><span class="line">    plt.plot([<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>], <span class="string">'k--'</span>)</span><br><span class="line">    plt.axis([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">    plt.xlabel(<span class="string">'False Positive Rate'</span>)</span><br><span class="line">    plt.ylabel(<span class="string">'True Positive Rate'</span>)</span><br><span class="line">plot_roc_curve(fpr, tpr)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>这里同样存在折衷的问题：召回率（TPR）越高，分类器就会产生越多的假正例（FPR）。图中的点线是一个完全随机的分类器生成的 ROC 曲线；一个好的分类器的 ROC 曲线应该尽可能远离这条线（即向左上角方向靠拢）。</p>
+<p>一个比较分类器之间优劣的方法是：测量ROC曲线下的面积（AUC）。一个完美的分类器的 ROC AUC 等于 1，而一个纯随机分类器的 ROC AUC 等于 0.5。Scikit-Learn 提供了一个函数来计算 ROC AUC：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_auc_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>roc_auc_score(y_train_5, y_scores)</span><br><span class="line"><span class="number">0.97061072797174941</span></span><br></pre></td></tr></table></figure>
+<p>因为 ROC 曲线跟准确率/召回率曲线（或者叫 PR）很类似，你或许会好奇如何决定使用哪一个曲线呢？一个笨拙的规则是，优先使用 PR 曲线当正例很少，或者当你关注假正例多于假反例的时候。其他情况使用 ROC 曲线。举例子，回顾前面的 ROC 曲线和 ROC AUC 数值，你或许认为这个分类器很棒。但是这几乎全是因为只有少数正例（“是 5”），而大部分是反例（“非 5”）。相反，PR 曲线清楚显示出这个分类器还有很大的改善空间（PR 曲线应该尽可能地靠近右上角）。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
   </div>
 
   
@@ -1152,7 +1148,7 @@ sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img s
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
