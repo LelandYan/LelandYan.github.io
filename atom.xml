@@ -108,13 +108,13 @@
   </entry>
   
   <entry>
-    <title>李宏毅机器学习课程线性回归训练题目一</title>
-    <link href="http://yoursite.com/2020/03/04/2020-3-3-Programming_Exercise_1_Linear_Regression-2020/"/>
-    <id>http://yoursite.com/2020/03/04/2020-3-3-Programming_Exercise_1_Linear_Regression-2020/</id>
+    <title>PCA(主成分分析法)</title>
+    <link href="http://yoursite.com/2020/03/04/2020-3-3-PCA-2020/"/>
+    <id>http://yoursite.com/2020/03/04/2020-3-3-PCA-2020/</id>
     <published>2020-03-04T04:08:25.000Z</published>
-    <updated>2020-03-04T06:24:14.443Z</updated>
+    <updated>2020-03-04T06:41:14.983Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="李宏毅机器学习课程线性回归训练题目一"><a href="#李宏毅机器学习课程线性回归训练题目一" class="headerlink" title="李宏毅机器学习课程线性回归训练题目一"></a>李宏毅机器学习课程线性回归训练题目一</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line"></span><br><span class="line">data = pd.read_table(<span class="string">"ex1data1.txt"</span>, header=<span class="literal">None</span>, delimiter=<span class="string">","</span>, encoding=<span class="string">"gb2312"</span>)</span><br><span class="line">m = len(data)</span><br><span class="line">data_x = np.array(data)[:, <span class="number">0</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line">data_y = np.array(data)[:, <span class="number">1</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># the first task</span></span><br><span class="line">print(np.eye(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># the second task</span></span><br><span class="line"><span class="comment"># plt.scatter(data_x, data_y, color='r', marker='x',label="Training Data")</span></span><br><span class="line"><span class="comment"># plt.ylabel('Profit in $10,000s')</span></span><br><span class="line"><span class="comment"># plt.xlabel('Population of City in 10,000s')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># the third task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">computeCost</span><span class="params">(X, y, theta)</span>:</span></span><br><span class="line">    inner = np.power(((X * theta) - y), <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> np.sum(inner / (<span class="number">2</span> * len(X)))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradientDescent</span><span class="params">(X,y,theta,alpha,epoch)</span>:</span></span><br><span class="line">    cost = np.zeros(epoch)</span><br><span class="line"></span><br><span class="line">    m = X.shape[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(epoch):</span><br><span class="line">        temp = theta - (alpha / m) * ((X * theta - y).T * X).T</span><br><span class="line">        theta = temp</span><br><span class="line">        cost[i] = computeCost(X,y,theta)</span><br><span class="line">    <span class="keyword">return</span>  theta,cost</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">normal_equations</span><span class="params">(X,y)</span>:</span></span><br><span class="line">    theta = np.linalg.inv(X.T*X)*X.T*y</span><br><span class="line">    <span class="keyword">return</span> theta</span><br><span class="line"></span><br><span class="line">X = np.matrix(np.concatenate((np.ones((m, <span class="number">1</span>)), data_x), axis=<span class="number">1</span>))</span><br><span class="line">y = np.matrix(data_y)</span><br><span class="line">theta = np.matrix(np.zeros([<span class="number">2</span>, <span class="number">1</span>]))</span><br><span class="line">alpha = <span class="number">0.01</span></span><br><span class="line">epoch = <span class="number">1000</span></span><br><span class="line">final_theta,cost = gradientDescent(X,y,theta,alpha,epoch)</span><br><span class="line">print(final_theta)</span><br><span class="line">final_theta = normal_equations(X,y)</span><br><span class="line">print(final_theta)</span><br><span class="line">x = np.array(list(data_x[:,<span class="number">0</span>]))</span><br><span class="line">f = final_theta[<span class="number">0</span>,<span class="number">0</span>] + final_theta[<span class="number">1</span>,<span class="number">0</span>] * x</span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.scatter(data_x, data_y, color='r', marker='x',label="Training Data")</span></span><br><span class="line"><span class="comment"># plt.ylabel('Profit in $10,000s')</span></span><br><span class="line"><span class="comment"># plt.xlabel('Population of City in 10,000s')</span></span><br><span class="line"><span class="comment"># plt.plot(x,f,label="Prediction")</span></span><br><span class="line"><span class="comment"># plt.legend()</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.plot(np.arange(epoch),cost,'r')</span></span><br><span class="line"><span class="comment"># plt.xlabel("Iteration")</span></span><br><span class="line"><span class="comment"># plt.ylabel("Cost")</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line">theta0_vals = np.linspace(<span class="number">-10</span>,<span class="number">10</span>,<span class="number">100</span>)</span><br><span class="line">theta1_vals = np.linspace(<span class="number">-1</span>,<span class="number">4</span>,<span class="number">100</span>)</span><br><span class="line">J_vals = np.zeros((len(theta0_vals),len(theta1_vals)))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(theta0_vals)):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(len(theta1_vals)):</span><br><span class="line">        t = np.matrix(np.array([theta0_vals[i],theta1_vals[j]]).reshape((<span class="number">2</span>,<span class="number">1</span>)))</span><br><span class="line">        J_vals[i,j] = computeCost(X,y,t)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### # fig = plt.figure()</span></span><br><span class="line"><span class="comment"># ax = Axes3D(fig)</span></span><br><span class="line"><span class="comment"># ax.plot_surface(theta0_vals,theta1_vals,J_vals,rstride=1,cstride=1,cmap="rainbow")</span></span><br><span class="line"><span class="comment"># plt.xlabel('theta_0')</span></span><br><span class="line"><span class="comment"># plt.ylabel('theta_1')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"><span class="comment">### </span></span><br><span class="line"><span class="comment">### # plt.figure()</span></span><br><span class="line"><span class="comment"># plt.contourf(theta0_vals, theta1_vals, J_vals, 20, alpha = 0.6, cmap = plt.cm.hot)</span></span><br><span class="line"><span class="comment"># a = plt.contour(theta0_vals, theta1_vals, J_vals, colors = 'black')</span></span><br><span class="line"><span class="comment"># plt.clabel(a,inline=1,fontsize=10)</span></span><br><span class="line"><span class="comment"># plt.plot(theta[0,0],theta[1,0],'r',marker='x')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"><span class="comment">### </span></span><br><span class="line">data2 = pd.read_table(<span class="string">"ex1data2.txt"</span>, header=<span class="literal">None</span>, delimiter=<span class="string">","</span>, encoding=<span class="string">"gb2312"</span>)</span><br><span class="line"></span><br><span class="line">data2 = (data2 - data2.mean()) / data2.std()</span><br><span class="line">m = len(data2)</span><br><span class="line">data_x = np.array(data2)[:, <span class="number">0</span>:<span class="number">2</span>].reshape(m, <span class="number">2</span>)</span><br><span class="line">data_y = np.array(data2)[:, <span class="number">2</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line">data_x = np.concatenate((np.zeros((m,<span class="number">1</span>)),data_x),axis=<span class="number">1</span>)</span><br><span class="line">X = np.matrix(data_x)</span><br><span class="line">y = np.matrix(data_y)</span><br><span class="line">theta = np.matrix(np.zeros((<span class="number">3</span>,<span class="number">1</span>)))</span><br><span class="line">final_theta,cost = gradientDescent(X,y,theta,alpha,epoch)</span><br><span class="line"></span><br><span class="line">plt.plot(np.arange(epoch),cost,<span class="string">'r'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="PCA-主成分分析法"><a href="#PCA-主成分分析法" class="headerlink" title="PCA(主成分分析法)"></a>PCA(主成分分析法)</h1><ol><li>一个非监督的机器学习算法</li><li>主要用于数据的降维</li><li>通过降维，可以发现更便于人类理解的特征</li><li>可视化，去噪</li></ol><h3 id="注意pca只能demean，而不能使用数据标准化（StandardScaler），使用后会出现var为相等的情况"><a href="#注意pca只能demean，而不能使用数据标准化（StandardScaler），使用后会出现var为相等的情况" class="headerlink" title="注意pca只能demean，而不能使用数据标准化（StandardScaler），使用后会出现var为相等的情况"></a>注意pca只能demean，而不能使用数据标准化（StandardScaler），使用后会出现var为相等的情况</h3><p>确定主成分—主方向是某个方向的数据的方差最大—实质上求的是特征向量—-拉格朗日余子式<br>one-hot编码—就是将变量变成01的形式方便处理</p><h3 id="PCA-Principal-Component-Analysis-数据降维的方法"><a href="#PCA-Principal-Component-Analysis-数据降维的方法" class="headerlink" title="PCA(Principal Component Analysis)数据降维的方法"></a>PCA(Principal Component Analysis)数据降维的方法</h3><ol><li>他可以通过线性变换将原始数据变换为一组各维度线性无关的表示，以此来提取数据的主要线性成分</li><li>线性无关是因为构建的特征轴是正交的</li><li>主要线性分量，</li><li>PCA解释方差，对离群点很敏感，少量原远离中心的点对方差有很大的影响，从而也对特征向量有很大的影响</li></ol><h3 id="PCA实现"><a href="#PCA实现" class="headerlink" title="PCA实现"></a>PCA实现</h3><ol><li>去除平均值(demean)<br> 每组数据都减去每组数据的平均值</li><li>计算协方差矩阵（也可以通过梯度上升法）<br> 矩阵的对角线是每组数据的方差，协方差是衡量两个变量同时变化的变化程度，协方差大于0表示x和y变化相同，小于0，表示一个增加，另一个减少。如果ｘ和ｙ是统计独立的，那么二者之间的协方差就是０；但是协方差是０，并不能说明ｘ和ｙ是独立的。协方差绝对值越大，两者对彼此的影响越大，反之越小。协方差是没有单位的量<br> 保留最重要的k个特征（通常k要小于n），也可以自己制定，也可以选择一个阈值，然后通过前k个特征值之和减去后面n-k个特征值之和大于这个阈值，则选择这个k</li><li><p>计算协方差矩阵的特征值和特征向量</p></li><li><p>将特征值排序<br> 将特征值按照从大到小的顺序排序，选择其中最大的k个，然后将其对应的k个特征向量分别作为列向量组成特征向量矩阵</p></li><li>保留前N个最大的特征值对应的特征向量<br> 将数据转换到上面得到的N个特征向量构建的新空间中（实现了特征压缩）</li></ol><h3 id="PCA原理"><a href="#PCA原理" class="headerlink" title="PCA原理"></a>PCA原理</h3><p>其实PCA的本质就是对角化协方差矩阵。有必要解释下为什么将特征值按从大到小排序后再选。首先，要明白特征值表示的是什么？在线性代数里面我们求过无数次了，那么它具体有什么意义呢？对一个n*n的对称矩阵进行分解，我们可以求出它的特征值和特征向量，就会产生n个n维的正交基，每个正交基会对应一个特征值。然后把矩阵投影到这N个基上，此时特征值的模就表示矩阵在该基的投影长度。特征值越大，说明矩阵在对应的特征向量上的方差越大，样本点越离散，越容易区分，信息量也就越多。因此，特征值最大的对应的特征向量方向上所包含的信息量就越多，如果某几个特征值很小，那么就说明在该方向的信息量非常少，我们就可以删除小特征值对应方向的数据，只保留大特征值方向对应的数据，这样做以后数据量减小，但有用的信息量都保留下来了。PCA就是这个原理</p><p><a href="https://blog.csdn.net/u012162613/article/details/42177327?utm_source=blogxgwz2" target="_blank" rel="noopener">https://blog.csdn.net/u012162613/article/details/42177327?utm_source=blogxgwz2</a><br><a href="http://www.cnblogs.com/zhangchaoyang/articles/2222048.html" target="_blank" rel="noopener">http://www.cnblogs.com/zhangchaoyang/articles/2222048.html</a><br><a href="https://blog.csdn.net/u013719780/article/details/78352262?utm_source=blogxgwz1" target="_blank" rel="noopener">https://blog.csdn.net/u013719780/article/details/78352262?utm_source=blogxgwz1</a><br><a href="https://blog.csdn.net/watkinsong/article/details/38536463?utm_source=blogxgwz1" target="_blank" rel="noopener">https://blog.csdn.net/watkinsong/article/details/38536463?utm_source=blogxgwz1</a><br><a href="https://blog.csdn.net/bon_mot/article/details/76889559?utm_source=blogxgwz4" target="_blank" rel="noopener">https://blog.csdn.net/bon_mot/article/details/76889559?utm_source=blogxgwz4</a><br><a href="https://blog.csdn.net/u013082989/article/details/53792010?utm_source=blogxgwz3" target="_blank" rel="noopener">https://blog.csdn.net/u013082989/article/details/53792010?utm_source=blogxgwz3</a><br><a href="https://www.cnblogs.com/zy230530/p/7074215.html" target="_blank" rel="noopener">https://www.cnblogs.com/zy230530/p/7074215.html</a></p><h2 id="pca从高维数据向低维数据映射"><a href="#pca从高维数据向低维数据映射" class="headerlink" title="pca从高维数据向低维数据映射"></a>pca从高维数据向低维数据映射</h2><p>X（m<em>n） . W(k</em>n).T</p><p>pca降维后肯定会损失一定的信息的</p><h2 id="PCA的sklearn的使用"><a href="#PCA的sklearn的使用" class="headerlink" title="PCA的sklearn的使用"></a>PCA的sklearn的使用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line"><span class="comment"># 参数的含义是将数据降维几维</span></span><br><span class="line">pca = PCA(n_components=<span class="number">1</span>)</span><br><span class="line">pca.fit(x)</span><br><span class="line"><span class="comment"># 获取pca降维坐标</span></span><br><span class="line">print(pca.components_)</span><br><span class="line"><span class="comment"># 获取降维之后的数据</span></span><br><span class="line">X_prediction = pca.transform(x)</span><br><span class="line"><span class="comment"># 将数据恢复到原来的特征数目（注意pca的降维是不可逆的，就算恢复也是会造成信息损失的）</span></span><br><span class="line">x_restore = pca.inverse_transform(X_prediction)</span><br><span class="line"><span class="comment"># 表示数据降维之后各个降维后的特征能表示的原来数据信息的比例</span></span><br><span class="line">pca.explained_variance_ratio_</span><br><span class="line"><span class="comment"># 参数0.95表示的是原特征中信息的0.95</span></span><br><span class="line">pca = PCA(<span class="number">0.95</span>)</span><br></pre></td></tr></table></figure><h2 id="PCA也可以用于降噪和特征的提取"><a href="#PCA也可以用于降噪和特征的提取" class="headerlink" title="PCA也可以用于降噪和特征的提取"></a>PCA也可以用于降噪和特征的提取</h2><h3 id="降噪"><a href="#降噪" class="headerlink" title="降噪"></a>降噪</h3><p>先用pca降维，然后在inverse_transform()，这样虽然特征信息损失了部分，但是也可以去噪</p><h3 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h3>]]></content>
     
     <summary type="html">
     
@@ -123,7 +123,7 @@
         &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;Machine Learning notes&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&quot;李宏毅机
+&lt;h1 id=&quot;PCA-
       
     
     </summary>
@@ -132,9 +132,7 @@
       <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
     
     
-      <category term="matplotlib" scheme="http://yoursite.com/tags/matplotlib/"/>
-    
-      <category term="Axes3D" scheme="http://yoursite.com/tags/Axes3D/"/>
+      <category term="PCA" scheme="http://yoursite.com/tags/PCA/"/>
     
   </entry>
   
@@ -164,6 +162,37 @@
     
     
       <category term="logistic regression" scheme="http://yoursite.com/tags/logistic-regression/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>李宏毅机器学习课程线性回归训练题目一</title>
+    <link href="http://yoursite.com/2020/03/04/2020-3-3-Programming_Exercise_1_Linear_Regression-2020/"/>
+    <id>http://yoursite.com/2020/03/04/2020-3-3-Programming_Exercise_1_Linear_Regression-2020/</id>
+    <published>2020-03-04T04:08:25.000Z</published>
+    <updated>2020-03-04T06:24:14.443Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="李宏毅机器学习课程线性回归训练题目一"><a href="#李宏毅机器学习课程线性回归训练题目一" class="headerlink" title="李宏毅机器学习课程线性回归训练题目一"></a>李宏毅机器学习课程线性回归训练题目一</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line"></span><br><span class="line">data = pd.read_table(<span class="string">"ex1data1.txt"</span>, header=<span class="literal">None</span>, delimiter=<span class="string">","</span>, encoding=<span class="string">"gb2312"</span>)</span><br><span class="line">m = len(data)</span><br><span class="line">data_x = np.array(data)[:, <span class="number">0</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line">data_y = np.array(data)[:, <span class="number">1</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># the first task</span></span><br><span class="line">print(np.eye(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># the second task</span></span><br><span class="line"><span class="comment"># plt.scatter(data_x, data_y, color='r', marker='x',label="Training Data")</span></span><br><span class="line"><span class="comment"># plt.ylabel('Profit in $10,000s')</span></span><br><span class="line"><span class="comment"># plt.xlabel('Population of City in 10,000s')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># the third task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">computeCost</span><span class="params">(X, y, theta)</span>:</span></span><br><span class="line">    inner = np.power(((X * theta) - y), <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> np.sum(inner / (<span class="number">2</span> * len(X)))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradientDescent</span><span class="params">(X,y,theta,alpha,epoch)</span>:</span></span><br><span class="line">    cost = np.zeros(epoch)</span><br><span class="line"></span><br><span class="line">    m = X.shape[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(epoch):</span><br><span class="line">        temp = theta - (alpha / m) * ((X * theta - y).T * X).T</span><br><span class="line">        theta = temp</span><br><span class="line">        cost[i] = computeCost(X,y,theta)</span><br><span class="line">    <span class="keyword">return</span>  theta,cost</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">normal_equations</span><span class="params">(X,y)</span>:</span></span><br><span class="line">    theta = np.linalg.inv(X.T*X)*X.T*y</span><br><span class="line">    <span class="keyword">return</span> theta</span><br><span class="line"></span><br><span class="line">X = np.matrix(np.concatenate((np.ones((m, <span class="number">1</span>)), data_x), axis=<span class="number">1</span>))</span><br><span class="line">y = np.matrix(data_y)</span><br><span class="line">theta = np.matrix(np.zeros([<span class="number">2</span>, <span class="number">1</span>]))</span><br><span class="line">alpha = <span class="number">0.01</span></span><br><span class="line">epoch = <span class="number">1000</span></span><br><span class="line">final_theta,cost = gradientDescent(X,y,theta,alpha,epoch)</span><br><span class="line">print(final_theta)</span><br><span class="line">final_theta = normal_equations(X,y)</span><br><span class="line">print(final_theta)</span><br><span class="line">x = np.array(list(data_x[:,<span class="number">0</span>]))</span><br><span class="line">f = final_theta[<span class="number">0</span>,<span class="number">0</span>] + final_theta[<span class="number">1</span>,<span class="number">0</span>] * x</span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.scatter(data_x, data_y, color='r', marker='x',label="Training Data")</span></span><br><span class="line"><span class="comment"># plt.ylabel('Profit in $10,000s')</span></span><br><span class="line"><span class="comment"># plt.xlabel('Population of City in 10,000s')</span></span><br><span class="line"><span class="comment"># plt.plot(x,f,label="Prediction")</span></span><br><span class="line"><span class="comment"># plt.legend()</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.plot(np.arange(epoch),cost,'r')</span></span><br><span class="line"><span class="comment"># plt.xlabel("Iteration")</span></span><br><span class="line"><span class="comment"># plt.ylabel("Cost")</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line">theta0_vals = np.linspace(<span class="number">-10</span>,<span class="number">10</span>,<span class="number">100</span>)</span><br><span class="line">theta1_vals = np.linspace(<span class="number">-1</span>,<span class="number">4</span>,<span class="number">100</span>)</span><br><span class="line">J_vals = np.zeros((len(theta0_vals),len(theta1_vals)))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(theta0_vals)):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(len(theta1_vals)):</span><br><span class="line">        t = np.matrix(np.array([theta0_vals[i],theta1_vals[j]]).reshape((<span class="number">2</span>,<span class="number">1</span>)))</span><br><span class="line">        J_vals[i,j] = computeCost(X,y,t)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### # fig = plt.figure()</span></span><br><span class="line"><span class="comment"># ax = Axes3D(fig)</span></span><br><span class="line"><span class="comment"># ax.plot_surface(theta0_vals,theta1_vals,J_vals,rstride=1,cstride=1,cmap="rainbow")</span></span><br><span class="line"><span class="comment"># plt.xlabel('theta_0')</span></span><br><span class="line"><span class="comment"># plt.ylabel('theta_1')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"><span class="comment">### </span></span><br><span class="line"><span class="comment">### # plt.figure()</span></span><br><span class="line"><span class="comment"># plt.contourf(theta0_vals, theta1_vals, J_vals, 20, alpha = 0.6, cmap = plt.cm.hot)</span></span><br><span class="line"><span class="comment"># a = plt.contour(theta0_vals, theta1_vals, J_vals, colors = 'black')</span></span><br><span class="line"><span class="comment"># plt.clabel(a,inline=1,fontsize=10)</span></span><br><span class="line"><span class="comment"># plt.plot(theta[0,0],theta[1,0],'r',marker='x')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"><span class="comment">### </span></span><br><span class="line">data2 = pd.read_table(<span class="string">"ex1data2.txt"</span>, header=<span class="literal">None</span>, delimiter=<span class="string">","</span>, encoding=<span class="string">"gb2312"</span>)</span><br><span class="line"></span><br><span class="line">data2 = (data2 - data2.mean()) / data2.std()</span><br><span class="line">m = len(data2)</span><br><span class="line">data_x = np.array(data2)[:, <span class="number">0</span>:<span class="number">2</span>].reshape(m, <span class="number">2</span>)</span><br><span class="line">data_y = np.array(data2)[:, <span class="number">2</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line">data_x = np.concatenate((np.zeros((m,<span class="number">1</span>)),data_x),axis=<span class="number">1</span>)</span><br><span class="line">X = np.matrix(data_x)</span><br><span class="line">y = np.matrix(data_y)</span><br><span class="line">theta = np.matrix(np.zeros((<span class="number">3</span>,<span class="number">1</span>)))</span><br><span class="line">final_theta,cost = gradientDescent(X,y,theta,alpha,epoch)</span><br><span class="line"></span><br><span class="line">plt.plot(np.arange(epoch),cost,<span class="string">'r'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Machine Learning notes&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;李宏毅机
+      
+    
+    </summary>
+    
+    
+      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
+    
+    
+      <category term="matplotlib" scheme="http://yoursite.com/tags/matplotlib/"/>
+    
+      <category term="Axes3D" scheme="http://yoursite.com/tags/Axes3D/"/>
     
   </entry>
   
@@ -201,6 +230,35 @@
   </entry>
   
   <entry>
+    <title>AUC、ROC详解</title>
+    <link href="http://yoursite.com/2020/03/04/2020-3-3-auc_roc-2020/"/>
+    <id>http://yoursite.com/2020/03/04/2020-3-3-auc_roc-2020/</id>
+    <published>2020-03-04T04:08:25.000Z</published>
+    <updated>2020-03-04T06:38:10.897Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="AUC、ROC详解"><a href="#AUC、ROC详解" class="headerlink" title="AUC、ROC详解"></a>AUC、ROC详解</h1><p>AUC:一个正例，一个负例，预测为正的概率值比预测为负的概率还要大的可能性</p><p>根据定义：我们最直观的有两种计算auc的方法</p><ol><li>绘制ROC曲线，roc曲线下面的面积就是AUC的值</li><li>假设共有（m+n）个样本，其中正样本m个，负样本n个，共有m<em> n 个样本对，计数，正样本预测为正样本的概率概率大于负样本预测为正样本的概率记为1，累加计数，然后除以（m</em>  n）就是AUC的值</li></ol><h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>ROC曲线：接受者操作特征（receiveroperating characteristic），roc曲线上的每个点反应着对同一信号刺激的感受性。</p><p>横轴：负正类率（false postive rate FPR）特异度，划分实例中所有的负例占所有负例的比例 （1-Specificity）</p><p>纵轴：真正类率 （true postive rate TPR）灵敏度，Sensitivity(正类覆盖率)</p><p>2针对一个二分类问题，将实例分成正类(postive)或者负类(negative)。但是实际中分类时，会出现四种情况.</p><p>(1)若一个实例是正类并且被预测为正类，即为真正类(True Postive TP)</p><p>(2)若一个实例是正类，但是被预测成为负类，即为假负类(False Negative FN)</p><p>(3)若一个实例是负类，但是被预测成为正类，即为假正类(False Postive FP)</p><p>(4)若一个实例是负类，但是被预测成为负类，即为真负类(True Negative TN)</p><p>TP:正确的肯定数目</p><p>FN:漏报，没有找到正确匹配的数目</p><p>FP:误报，没有的匹配不正确</p><p>(1)真正类率(True Postive Rate)TPR: TP/(TP+FN),代表分类器预测的正类中实际正实例占所有正实例的比例。Sensitivity</p><p>(2)负正类率(False Postive Rate)FPR: FP/(FP+TN)，代表分类器预测的正类中实际负实例占所有负实例的比例。1-Specificity</p><p>AUC(Area under Curve)：Roc曲线下的面积，介于0.1和1之间。Auc作为数值可以直观的评价分类器的好坏，值越大越好。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Machine Learning notes&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;AUC、
+      
+    
+    </summary>
+    
+    
+      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
+    
+    
+      <category term="Machine Learning metrics" scheme="http://yoursite.com/tags/Machine-Learning-metrics/"/>
+    
+  </entry>
+  
+  <entry>
     <title>sklearn中RandomForestClassifier</title>
     <link href="http://yoursite.com/2020/03/04/2020-3-3-Sklearn_RandomForest-2020/"/>
     <id>http://yoursite.com/2020/03/04/2020-3-3-Sklearn_RandomForest-2020/</id>
@@ -228,35 +286,6 @@
       <category term="RandomForest" scheme="http://yoursite.com/tags/RandomForest/"/>
     
       <category term="scikit-learn" scheme="http://yoursite.com/tags/scikit-learn/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>AUC、ROC详解</title>
-    <link href="http://yoursite.com/2020/03/04/2020-3-3-auc_roc-2020/"/>
-    <id>http://yoursite.com/2020/03/04/2020-3-3-auc_roc-2020/</id>
-    <published>2020-03-04T04:08:25.000Z</published>
-    <updated>2020-03-04T06:38:10.897Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="AUC、ROC详解"><a href="#AUC、ROC详解" class="headerlink" title="AUC、ROC详解"></a>AUC、ROC详解</h1><p>AUC:一个正例，一个负例，预测为正的概率值比预测为负的概率还要大的可能性</p><p>根据定义：我们最直观的有两种计算auc的方法</p><ol><li>绘制ROC曲线，roc曲线下面的面积就是AUC的值</li><li>假设共有（m+n）个样本，其中正样本m个，负样本n个，共有m<em> n 个样本对，计数，正样本预测为正样本的概率概率大于负样本预测为正样本的概率记为1，累加计数，然后除以（m</em>  n）就是AUC的值</li></ol><h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>ROC曲线：接受者操作特征（receiveroperating characteristic），roc曲线上的每个点反应着对同一信号刺激的感受性。</p><p>横轴：负正类率（false postive rate FPR）特异度，划分实例中所有的负例占所有负例的比例 （1-Specificity）</p><p>纵轴：真正类率 （true postive rate TPR）灵敏度，Sensitivity(正类覆盖率)</p><p>2针对一个二分类问题，将实例分成正类(postive)或者负类(negative)。但是实际中分类时，会出现四种情况.</p><p>(1)若一个实例是正类并且被预测为正类，即为真正类(True Postive TP)</p><p>(2)若一个实例是正类，但是被预测成为负类，即为假负类(False Negative FN)</p><p>(3)若一个实例是负类，但是被预测成为正类，即为假正类(False Postive FP)</p><p>(4)若一个实例是负类，但是被预测成为负类，即为真负类(True Negative TN)</p><p>TP:正确的肯定数目</p><p>FN:漏报，没有找到正确匹配的数目</p><p>FP:误报，没有的匹配不正确</p><p>(1)真正类率(True Postive Rate)TPR: TP/(TP+FN),代表分类器预测的正类中实际正实例占所有正实例的比例。Sensitivity</p><p>(2)负正类率(False Postive Rate)FPR: FP/(FP+TN)，代表分类器预测的正类中实际负实例占所有负实例的比例。1-Specificity</p><p>AUC(Area under Curve)：Roc曲线下的面积，介于0.1和1之间。Auc作为数值可以直观的评价分类器的好坏，值越大越好。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;Machine Learning notes&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;AUC、
-      
-    
-    </summary>
-    
-    
-      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
-    
-    
-      <category term="Machine Learning metrics" scheme="http://yoursite.com/tags/Machine-Learning-metrics/"/>
     
   </entry>
   
@@ -290,13 +319,13 @@
   </entry>
   
   <entry>
-    <title>PCA(主成分分析法)</title>
-    <link href="http://yoursite.com/2020/03/04/2020-3-3-PCA-2020/"/>
-    <id>http://yoursite.com/2020/03/04/2020-3-3-PCA-2020/</id>
+    <title>损失函数（loss function）</title>
+    <link href="http://yoursite.com/2020/03/04/2020-3-3-cost_function-2020/"/>
+    <id>http://yoursite.com/2020/03/04/2020-3-3-cost_function-2020/</id>
     <published>2020-03-04T04:08:25.000Z</published>
-    <updated>2020-03-04T06:41:14.983Z</updated>
+    <updated>2020-03-04T05:58:37.791Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="PCA-主成分分析法"><a href="#PCA-主成分分析法" class="headerlink" title="PCA(主成分分析法)"></a>PCA(主成分分析法)</h1><ol><li>一个非监督的机器学习算法</li><li>主要用于数据的降维</li><li>通过降维，可以发现更便于人类理解的特征</li><li>可视化，去噪</li></ol><h3 id="注意pca只能demean，而不能使用数据标准化（StandardScaler），使用后会出现var为相等的情况"><a href="#注意pca只能demean，而不能使用数据标准化（StandardScaler），使用后会出现var为相等的情况" class="headerlink" title="注意pca只能demean，而不能使用数据标准化（StandardScaler），使用后会出现var为相等的情况"></a>注意pca只能demean，而不能使用数据标准化（StandardScaler），使用后会出现var为相等的情况</h3><p>确定主成分—主方向是某个方向的数据的方差最大—实质上求的是特征向量—-拉格朗日余子式<br>one-hot编码—就是将变量变成01的形式方便处理</p><h3 id="PCA-Principal-Component-Analysis-数据降维的方法"><a href="#PCA-Principal-Component-Analysis-数据降维的方法" class="headerlink" title="PCA(Principal Component Analysis)数据降维的方法"></a>PCA(Principal Component Analysis)数据降维的方法</h3><ol><li>他可以通过线性变换将原始数据变换为一组各维度线性无关的表示，以此来提取数据的主要线性成分</li><li>线性无关是因为构建的特征轴是正交的</li><li>主要线性分量，</li><li>PCA解释方差，对离群点很敏感，少量原远离中心的点对方差有很大的影响，从而也对特征向量有很大的影响</li></ol><h3 id="PCA实现"><a href="#PCA实现" class="headerlink" title="PCA实现"></a>PCA实现</h3><ol><li>去除平均值(demean)<br> 每组数据都减去每组数据的平均值</li><li>计算协方差矩阵（也可以通过梯度上升法）<br> 矩阵的对角线是每组数据的方差，协方差是衡量两个变量同时变化的变化程度，协方差大于0表示x和y变化相同，小于0，表示一个增加，另一个减少。如果ｘ和ｙ是统计独立的，那么二者之间的协方差就是０；但是协方差是０，并不能说明ｘ和ｙ是独立的。协方差绝对值越大，两者对彼此的影响越大，反之越小。协方差是没有单位的量<br> 保留最重要的k个特征（通常k要小于n），也可以自己制定，也可以选择一个阈值，然后通过前k个特征值之和减去后面n-k个特征值之和大于这个阈值，则选择这个k</li><li><p>计算协方差矩阵的特征值和特征向量</p></li><li><p>将特征值排序<br> 将特征值按照从大到小的顺序排序，选择其中最大的k个，然后将其对应的k个特征向量分别作为列向量组成特征向量矩阵</p></li><li>保留前N个最大的特征值对应的特征向量<br> 将数据转换到上面得到的N个特征向量构建的新空间中（实现了特征压缩）</li></ol><h3 id="PCA原理"><a href="#PCA原理" class="headerlink" title="PCA原理"></a>PCA原理</h3><p>其实PCA的本质就是对角化协方差矩阵。有必要解释下为什么将特征值按从大到小排序后再选。首先，要明白特征值表示的是什么？在线性代数里面我们求过无数次了，那么它具体有什么意义呢？对一个n*n的对称矩阵进行分解，我们可以求出它的特征值和特征向量，就会产生n个n维的正交基，每个正交基会对应一个特征值。然后把矩阵投影到这N个基上，此时特征值的模就表示矩阵在该基的投影长度。特征值越大，说明矩阵在对应的特征向量上的方差越大，样本点越离散，越容易区分，信息量也就越多。因此，特征值最大的对应的特征向量方向上所包含的信息量就越多，如果某几个特征值很小，那么就说明在该方向的信息量非常少，我们就可以删除小特征值对应方向的数据，只保留大特征值方向对应的数据，这样做以后数据量减小，但有用的信息量都保留下来了。PCA就是这个原理</p><p><a href="https://blog.csdn.net/u012162613/article/details/42177327?utm_source=blogxgwz2" target="_blank" rel="noopener">https://blog.csdn.net/u012162613/article/details/42177327?utm_source=blogxgwz2</a><br><a href="http://www.cnblogs.com/zhangchaoyang/articles/2222048.html" target="_blank" rel="noopener">http://www.cnblogs.com/zhangchaoyang/articles/2222048.html</a><br><a href="https://blog.csdn.net/u013719780/article/details/78352262?utm_source=blogxgwz1" target="_blank" rel="noopener">https://blog.csdn.net/u013719780/article/details/78352262?utm_source=blogxgwz1</a><br><a href="https://blog.csdn.net/watkinsong/article/details/38536463?utm_source=blogxgwz1" target="_blank" rel="noopener">https://blog.csdn.net/watkinsong/article/details/38536463?utm_source=blogxgwz1</a><br><a href="https://blog.csdn.net/bon_mot/article/details/76889559?utm_source=blogxgwz4" target="_blank" rel="noopener">https://blog.csdn.net/bon_mot/article/details/76889559?utm_source=blogxgwz4</a><br><a href="https://blog.csdn.net/u013082989/article/details/53792010?utm_source=blogxgwz3" target="_blank" rel="noopener">https://blog.csdn.net/u013082989/article/details/53792010?utm_source=blogxgwz3</a><br><a href="https://www.cnblogs.com/zy230530/p/7074215.html" target="_blank" rel="noopener">https://www.cnblogs.com/zy230530/p/7074215.html</a></p><h2 id="pca从高维数据向低维数据映射"><a href="#pca从高维数据向低维数据映射" class="headerlink" title="pca从高维数据向低维数据映射"></a>pca从高维数据向低维数据映射</h2><p>X（m<em>n） . W(k</em>n).T</p><p>pca降维后肯定会损失一定的信息的</p><h2 id="PCA的sklearn的使用"><a href="#PCA的sklearn的使用" class="headerlink" title="PCA的sklearn的使用"></a>PCA的sklearn的使用</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.decomposition <span class="keyword">import</span> PCA</span><br><span class="line"><span class="comment"># 参数的含义是将数据降维几维</span></span><br><span class="line">pca = PCA(n_components=<span class="number">1</span>)</span><br><span class="line">pca.fit(x)</span><br><span class="line"><span class="comment"># 获取pca降维坐标</span></span><br><span class="line">print(pca.components_)</span><br><span class="line"><span class="comment"># 获取降维之后的数据</span></span><br><span class="line">X_prediction = pca.transform(x)</span><br><span class="line"><span class="comment"># 将数据恢复到原来的特征数目（注意pca的降维是不可逆的，就算恢复也是会造成信息损失的）</span></span><br><span class="line">x_restore = pca.inverse_transform(X_prediction)</span><br><span class="line"><span class="comment"># 表示数据降维之后各个降维后的特征能表示的原来数据信息的比例</span></span><br><span class="line">pca.explained_variance_ratio_</span><br><span class="line"><span class="comment"># 参数0.95表示的是原特征中信息的0.95</span></span><br><span class="line">pca = PCA(<span class="number">0.95</span>)</span><br></pre></td></tr></table></figure><h2 id="PCA也可以用于降噪和特征的提取"><a href="#PCA也可以用于降噪和特征的提取" class="headerlink" title="PCA也可以用于降噪和特征的提取"></a>PCA也可以用于降噪和特征的提取</h2><h3 id="降噪"><a href="#降噪" class="headerlink" title="降噪"></a>降噪</h3><p>先用pca降维，然后在inverse_transform()，这样虽然特征信息损失了部分，但是也可以去噪</p><h3 id="特征提取"><a href="#特征提取" class="headerlink" title="特征提取"></a>特征提取</h3>]]></content>
+    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="损失函数（loss-function）"><a href="#损失函数（loss-function）" class="headerlink" title="损失函数（loss function）"></a>损失函数（loss function）</h1><p>损失函数（loss function）是用来估量你模型的预测值f(x)与真实值Y的不一致程度，它是一个非负实值函数,通常使用L(Y, f(x))来表示，损失函数越小，模型的鲁棒性就越好。损失函数是<strong>经验风险函数</strong>的核心部分，也是<strong>结构风险函数</strong>重要组成部分。模型的结构风险函数包括了经验风险项和正则项，通常可以表示成如下式子：</p><script type="math/tex; mode=display">\theta^* = \arg \min_\theta \frac{1}{N}{}\sum_{i=1}^{N} L(y_i, f(x_i; \theta)) + \lambda\  \Phi(\theta)</script><p>其中，前面的均值函数表示的是经验风险函数，L代表的是损失函数，后面的Φ是正则化项（regularizer）或者叫惩罚项（penalty term），它可以是L1，也可以是L2，或者其他的正则函数。整个式子表示的意思是<strong>找到使目标函数最小时的θθ值</strong>。下面主要列出几种常见的损失函数。</p>]]></content>
     
     <summary type="html">
     
@@ -305,7 +334,7 @@
         &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;Machine Learning notes&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&quot;PCA-
+&lt;h1 id=&quot;损失函数
       
     
     </summary>
@@ -314,7 +343,7 @@
       <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
     
     
-      <category term="PCA" scheme="http://yoursite.com/tags/PCA/"/>
+      <category term="matplotlib" scheme="http://yoursite.com/tags/matplotlib/"/>
     
   </entry>
   
@@ -350,64 +379,6 @@
   </entry>
   
   <entry>
-    <title>损失函数（loss function）</title>
-    <link href="http://yoursite.com/2020/03/04/2020-3-3-cost_function-2020/"/>
-    <id>http://yoursite.com/2020/03/04/2020-3-3-cost_function-2020/</id>
-    <published>2020-03-04T04:08:25.000Z</published>
-    <updated>2020-03-04T05:58:37.791Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="损失函数（loss-function）"><a href="#损失函数（loss-function）" class="headerlink" title="损失函数（loss function）"></a>损失函数（loss function）</h1><p>损失函数（loss function）是用来估量你模型的预测值f(x)与真实值Y的不一致程度，它是一个非负实值函数,通常使用L(Y, f(x))来表示，损失函数越小，模型的鲁棒性就越好。损失函数是<strong>经验风险函数</strong>的核心部分，也是<strong>结构风险函数</strong>重要组成部分。模型的结构风险函数包括了经验风险项和正则项，通常可以表示成如下式子：</p><script type="math/tex; mode=display">\theta^* = \arg \min_\theta \frac{1}{N}{}\sum_{i=1}^{N} L(y_i, f(x_i; \theta)) + \lambda\  \Phi(\theta)</script><p>其中，前面的均值函数表示的是经验风险函数，L代表的是损失函数，后面的Φ是正则化项（regularizer）或者叫惩罚项（penalty term），它可以是L1，也可以是L2，或者其他的正则函数。整个式子表示的意思是<strong>找到使目标函数最小时的θθ值</strong>。下面主要列出几种常见的损失函数。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;Machine Learning notes&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;损失函数
-      
-    
-    </summary>
-    
-    
-      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
-    
-    
-      <category term="matplotlib" scheme="http://yoursite.com/tags/matplotlib/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Cross Validation</title>
-    <link href="http://yoursite.com/2020/03/04/2020-3-3-cross_valadation_sklearn-2020/"/>
-    <id>http://yoursite.com/2020/03/04/2020-3-3-cross_valadation_sklearn-2020/</id>
-    <published>2020-03-04T04:08:25.000Z</published>
-    <updated>2020-03-04T05:55:03.582Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><h2 id="有关交叉验证的sklearn的方法和原理"><a href="#有关交叉验证的sklearn的方法和原理" class="headerlink" title="有关交叉验证的sklearn的方法和原理"></a>有关交叉验证的sklearn的方法和原理</h2><h3 id="cross-val-score"><a href="#cross-val-score" class="headerlink" title="cross_val_score"></a>cross_val_score</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cross_val_score 用训练集来评估模型的好坏，注意交叉验证都是使用的是训练集来进行测验，而不是测试集</span></span><br><span class="line"><span class="comment"># 其返回的是，几折交叉验证就返回几个模型训练的评估分数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="comment"># 这里的model(),传入的是个模型实例，后传入的两个数据集合，cv表示交叉验证的次数，scoring表示评价方法</span></span><br><span class="line">cross_val_score(model(),X_train,y_train,cv=<span class="number">3</span>,scoring=<span class="string">"accuracy"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面则使用python实现一个cross_val_score函数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedKFold</span><br><span class="line"><span class="keyword">from</span> sklean.base <span class="keyword">import</span> clone</span><br><span class="line"><span class="comment"># 将数据集划分为几份</span></span><br><span class="line">skfolds = StratifiedKFold(n_splits=<span class="number">3</span>,random_state=<span class="number">42</span>)</span><br><span class="line"><span class="keyword">for</span> train_index,test_index <span class="keyword">in</span> skfolds.split(X_train,y_train):</span><br><span class="line">    <span class="comment"># 克隆原来模型</span></span><br><span class="line">    clone_clf = clone(model())</span><br><span class="line">    X_train_folds = X_train[trian_index]</span><br><span class="line">    y_train_folds = y_train[train_index]</span><br><span class="line">    X_test_folds = X_train[test_index]</span><br><span class="line">    y_test_folds= y_train[test_index]</span><br><span class="line">    clone_clf.fit(X_train_folds,y_train_folds)</span><br><span class="line">    y_pred = clone_clf.predict(X_test_folds)</span><br><span class="line">    n_correct = sum(y_pred == y_test_folds)</span><br><span class="line">    print(n_correct / len(y_pred) )</span><br></pre></td></tr></table></figure><h3 id="cross-val-predict"><a href="#cross-val-predict" class="headerlink" title="cross_val_predict"></a>cross_val_predict</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">就像 cross_val_score(),cross_val_predict()也使用 K 折交叉验证。它不是返回一个评估分数，而是返回基于每一个测试折做出的一个预测值。这意味着，对于每一个训练集的样例，你得到一个干净的预测（“干净”是说一个模型在训练过程当中没有用到测试集的数据）。"""</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_predict</span><br><span class="line">y_train_pred = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;Machine Learning notes&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;Cros
-      
-    
-    </summary>
-    
-    
-      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
-    
-    
-      <category term="scikit-learn" scheme="http://yoursite.com/tags/scikit-learn/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Cross Validation 详解</title>
     <link href="http://yoursite.com/2020/03/04/2020-3-3-cross_validation-2020/"/>
     <id>http://yoursite.com/2020/03/04/2020-3-3-cross_validation-2020/</id>
@@ -437,6 +408,35 @@
       <category term="cross validation" scheme="http://yoursite.com/tags/cross-validation/"/>
     
       <category term="validation" scheme="http://yoursite.com/tags/validation/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Cross Validation</title>
+    <link href="http://yoursite.com/2020/03/04/2020-3-3-cross_valadation_sklearn-2020/"/>
+    <id>http://yoursite.com/2020/03/04/2020-3-3-cross_valadation_sklearn-2020/</id>
+    <published>2020-03-04T04:08:25.000Z</published>
+    <updated>2020-03-04T05:55:03.582Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><h2 id="有关交叉验证的sklearn的方法和原理"><a href="#有关交叉验证的sklearn的方法和原理" class="headerlink" title="有关交叉验证的sklearn的方法和原理"></a>有关交叉验证的sklearn的方法和原理</h2><h3 id="cross-val-score"><a href="#cross-val-score" class="headerlink" title="cross_val_score"></a>cross_val_score</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cross_val_score 用训练集来评估模型的好坏，注意交叉验证都是使用的是训练集来进行测验，而不是测试集</span></span><br><span class="line"><span class="comment"># 其返回的是，几折交叉验证就返回几个模型训练的评估分数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="comment"># 这里的model(),传入的是个模型实例，后传入的两个数据集合，cv表示交叉验证的次数，scoring表示评价方法</span></span><br><span class="line">cross_val_score(model(),X_train,y_train,cv=<span class="number">3</span>,scoring=<span class="string">"accuracy"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面则使用python实现一个cross_val_score函数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedKFold</span><br><span class="line"><span class="keyword">from</span> sklean.base <span class="keyword">import</span> clone</span><br><span class="line"><span class="comment"># 将数据集划分为几份</span></span><br><span class="line">skfolds = StratifiedKFold(n_splits=<span class="number">3</span>,random_state=<span class="number">42</span>)</span><br><span class="line"><span class="keyword">for</span> train_index,test_index <span class="keyword">in</span> skfolds.split(X_train,y_train):</span><br><span class="line">    <span class="comment"># 克隆原来模型</span></span><br><span class="line">    clone_clf = clone(model())</span><br><span class="line">    X_train_folds = X_train[trian_index]</span><br><span class="line">    y_train_folds = y_train[train_index]</span><br><span class="line">    X_test_folds = X_train[test_index]</span><br><span class="line">    y_test_folds= y_train[test_index]</span><br><span class="line">    clone_clf.fit(X_train_folds,y_train_folds)</span><br><span class="line">    y_pred = clone_clf.predict(X_test_folds)</span><br><span class="line">    n_correct = sum(y_pred == y_test_folds)</span><br><span class="line">    print(n_correct / len(y_pred) )</span><br></pre></td></tr></table></figure><h3 id="cross-val-predict"><a href="#cross-val-predict" class="headerlink" title="cross_val_predict"></a>cross_val_predict</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">就像 cross_val_score(),cross_val_predict()也使用 K 折交叉验证。它不是返回一个评估分数，而是返回基于每一个测试折做出的一个预测值。这意味着，对于每一个训练集的样例，你得到一个干净的预测（“干净”是说一个模型在训练过程当中没有用到测试集的数据）。"""</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_predict</span><br><span class="line">y_train_pred = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Machine Learning notes&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;Cros
+      
+    
+    </summary>
+    
+    
+      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
+    
+    
+      <category term="scikit-learn" scheme="http://yoursite.com/tags/scikit-learn/"/>
     
   </entry>
   
@@ -565,6 +565,33 @@
   </entry>
   
   <entry>
+    <title>完整机器学习项目流程</title>
+    <link href="http://yoursite.com/2020/03/04/2020-3-3-machie_learning_procedure-2020/"/>
+    <id>http://yoursite.com/2020/03/04/2020-3-3-machie_learning_procedure-2020/</id>
+    <published>2020-03-04T04:08:25.000Z</published>
+    <updated>2020-03-04T06:44:14.093Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="完整机器学习项目流程"><a href="#完整机器学习项目流程" class="headerlink" title="完整机器学习项目流程"></a>完整机器学习项目流程</h1><ol><li>观察大局</li><li>获得数据</li><li>从数据探索和可视化中获得东西</li><li>数据预处理</li><li>选择和训练模型</li><li>微调模型</li><li>展示解决方案</li><li>启动、监护和维护系统</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Machine Learning notes&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;完整机器
+      
+    
+    </summary>
+    
+    
+      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>Machine Learning Procedure</title>
     <link href="http://yoursite.com/2020/03/04/2020-3-3-machine_learning_procedure-2020/"/>
     <id>http://yoursite.com/2020/03/04/2020-3-3-machine_learning_procedure-2020/</id>
@@ -592,33 +619,6 @@
       <category term="matplotlib" scheme="http://yoursite.com/tags/matplotlib/"/>
     
       <category term="pandas" scheme="http://yoursite.com/tags/pandas/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>完整机器学习项目流程</title>
-    <link href="http://yoursite.com/2020/03/04/2020-3-3-machie_learning_procedure-2020/"/>
-    <id>http://yoursite.com/2020/03/04/2020-3-3-machie_learning_procedure-2020/</id>
-    <published>2020-03-04T04:08:25.000Z</published>
-    <updated>2020-03-04T06:44:14.093Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="完整机器学习项目流程"><a href="#完整机器学习项目流程" class="headerlink" title="完整机器学习项目流程"></a>完整机器学习项目流程</h1><ol><li>观察大局</li><li>获得数据</li><li>从数据探索和可视化中获得东西</li><li>数据预处理</li><li>选择和训练模型</li><li>微调模型</li><li>展示解决方案</li><li>启动、监护和维护系统</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;Machine Learning notes&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;完整机器
-      
-    
-    </summary>
-    
-    
-      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
-    
     
   </entry>
   

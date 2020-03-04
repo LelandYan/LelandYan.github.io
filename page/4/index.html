@@ -195,7 +195,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-spare_matrix-2020/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-unbalance_data-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -209,7 +209,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/04/2020-3-3-spare_matrix-2020/" class="post-title-link" itemprop="url">sklearn稀疏矩阵</a>
+            <a href="/2020/03/04/2020-3-3-unbalance_data-2020/" class="post-title-link" itemprop="url">如何处理不平衡的数据</a>
         </h1>
 
         <div class="post-meta">
@@ -220,7 +220,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:17:55" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:23:14" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -246,8 +246,59 @@
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes</p>
 </blockquote>
-<h1 id="sklearn稀疏矩阵"><a href="#sklearn稀疏矩阵" class="headerlink" title="sklearn稀疏矩阵"></a>sklearn稀疏矩阵</h1><h3 id="lil-matrix-使用两个列表储存非0元素，data保存每行中的非零元素-rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。"><a href="#lil-matrix-使用两个列表储存非0元素，data保存每行中的非零元素-rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。" class="headerlink" title="lil_matrix 使用两个列表储存非0元素，data保存每行中的非零元素,rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。"></a>lil_matrix 使用两个列表储存非0元素，data保存每行中的非零元素,rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.sparse <span class="keyword">import</span> lil_matrix</span><br><span class="line">l = lil_matrix((<span class="number">6</span>,<span class="number">5</span>))</span><br><span class="line">l[<span class="number">2</span>,<span class="number">3</span>] = <span class="number">1</span></span><br><span class="line">l[<span class="number">3</span>,<span class="number">4</span>] = <span class="number">2</span></span><br><span class="line">l[<span class="number">3</span>,<span class="number">2</span>] = <span class="number">3</span></span><br><span class="line">print(l.toarray())</span><br><span class="line">[[ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">1.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">3.</span>  <span class="number">0.</span>  <span class="number">2.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> l.data</span><br><span class="line">[[] [] [<span class="number">1.0</span>] [<span class="number">3.0</span>, <span class="number">2.0</span>] [] []]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> l.rows</span><br><span class="line">[[] [] [<span class="number">3</span>] [<span class="number">2</span>, <span class="number">4</span>] [] []]</span><br></pre></td></tr></table></figure>
-<h3 id="dok-matrix和lil-matrix适用的场景是逐渐添加矩阵的元素。doc-matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的元祖，value是记录元素的具体值。"><a href="#dok-matrix和lil-matrix适用的场景是逐渐添加矩阵的元素。doc-matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的元祖，value是记录元素的具体值。" class="headerlink" title="dok_matrix和lil_matrix适用的场景是逐渐添加矩阵的元素。doc_matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的元祖，value是记录元素的具体值。"></a>dok_matrix和lil_matrix适用的场景是逐渐添加矩阵的元素。doc_matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的<a href="https://www.baidu.com/s?wd=%E5%85%83%E7%A5%96&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">元祖</a>，value是记录元素的具体值。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy.sparse <span class="keyword">import</span> dok_matrix</span><br><span class="line">S = dok_matrix((<span class="number">5</span>,<span class="number">5</span>), dtype=np.float32)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        S[i,j] = i + j</span><br><span class="line"><span class="comment"># 返回的是非零元素的row_index,column_index</span></span><br><span class="line">S.nonzero()</span><br><span class="line">print(S.toarray())</span><br></pre></td></tr></table></figure>
+<h1 id="如何处理不平衡的数据"><a href="#如何处理不平衡的数据" class="headerlink" title="如何处理不平衡的数据"></a>如何处理不平衡的数据</h1><p>对于不平衡数据集，一般的分类算法都倾向于将样本划分到多数类，体现在模型整体的准确率很好。但是模型并不是很好。常用的分类算法一般假设不同类的比例是均衡的，现实生活中经常遇到不平衡的数据集，比如广告点击预测（点击转化率一般都很小）、商品推荐（推荐的商品被购买的比例很低）、信用卡欺诈检测（欺诈的总数小数）等。</p>
+<h4 id="在类别不平衡的情况下，对模型使用F值或者AUC值是更好的选择。"><a href="#在类别不平衡的情况下，对模型使用F值或者AUC值是更好的选择。" class="headerlink" title="在类别不平衡的情况下，对模型使用F值或者AUC值是更好的选择。"></a>在类别不平衡的情况下，对模型使用F值或者AUC值是更好的选择。</h4><h4 id="处理不平衡的数据，可以从两个方面考虑"><a href="#处理不平衡的数据，可以从两个方面考虑" class="headerlink" title="处理不平衡的数据，可以从两个方面考虑"></a>处理不平衡的数据，可以从两个方面考虑</h4><ol>
+<li>是改变数据分布，从数据层面使得类别更为平衡<ol>
+<li>欠采样 Undersampling 减少多数类样本的数量</li>
+<li>过采样 Oversampling 增加少数样本的数据量</li>
+<li>总和采样：将过采样和欠采样的结合</li>
+</ol>
+</li>
+<li>改变分类算法，在传统分类基础上对不同的类别采用不同的加权方式，使得模型更加看重少数类。</li>
+</ol>
+<h2 id="欠采样"><a href="#欠采样" class="headerlink" title="欠采样"></a>欠采样</h2><h4 id="随机欠采样方法"><a href="#随机欠采样方法" class="headerlink" title="随机欠采样方法"></a>随机欠采样方法</h4><p>减少多数类样本的数量的最简单的方法便是随机剔除多数类的样本，可以事先设置多类数与少数类最终的数量比例ratio，在保留少数类样本不变的情况下，根据ratio随机选择多数类样本。</p>
+<p>优点：操作简单，只依赖与样本分布，不依赖任何的距离信息，属于非启发式方法</p>
+<p>缺点：会丢失一部分多类数的样本的信息，无法充分的利用已有的信息</p>
+<h3 id="Tomek-link-用途"><a href="#Tomek-link-用途" class="headerlink" title="Tomek link 用途"></a>Tomek link 用途</h3><ol>
+<li>欠采样：将Tomek link对中属于多数类的样本剔除</li>
+<li>数据清洗：及那个Tomek link对中的两个样本都剔除</li>
+</ol>
+<h3 id="NearMiss方法"><a href="#NearMiss方法" class="headerlink" title="NearMiss方法"></a>NearMiss方法</h3><p>NearMiss方法是利用距离的远近剔除多数类样本的方法，实际操作中也是借助KNN</p>
+<p>NearMiss-1:在多数类样本中选择与最近的3个少数类样本的平均距离最小的样本</p>
+<p>NearMiss-2:在多数类样本中选择与最远的3个少数类样本的平均距离最小的样本</p>
+<p>NearMiss-3:对于每个少数类样本，选择离它最近的给定的数量的多数样本</p>
+<p><strong>NearMiss1考虑的是局部的，更倾向于比较集中的少数类附近找到更多的多数类样本。NearMiss2是考虑的是全局的</strong></p>
+<p><strong>NearMiss3方法则会使得每一个少数类样本的附近都有足够多的多类样本，显然会使得模型的精确率高，召回率低</strong></p>
+<p><strong>一般的情况下，NearMiss-2的效果较好</strong>。</p>
+<h3 id="One-Sided-Selection"><a href="#One-Sided-Selection" class="headerlink" title="One-Sided Selection"></a>One-Sided Selection</h3><p>One-Sided Selection利用从上图得到的启发式想法，多数类样本包含四种情况：</p>
+<ol>
+<li>多数类中的噪声（noise），它们都各自紧贴着一个少数样本</li>
+<li>边界样本，此类样本很容易被分错</li>
+<li>多余（redundant）样本，因为在训练模型的时候，此类样本没有提供额外的有用信息，其类别信息可以容易地通过其他样本信息得到，此类冗余地样本会提供分类地代价，使得边界曲线移动。</li>
+<li>安全样本，对于分类模型有着重要地作用。</li>
+</ol>
+<p>One-Sided Selection算法地目的是剔除多类数样本中样本中地噪声、边界样本和多余样本，其利用Tomek links剔除多数类样本中的噪声和边界样本，未被1-NN分类器错分的样本则被视为多余的样本，最终得到一个类别分布更为平衡的样本集合。</p>
+<h2 id="过采样"><a href="#过采样" class="headerlink" title="过采样"></a>过采样</h2><h3 id="随机过采样"><a href="#随机过采样" class="headerlink" title="随机过采样"></a>随机过采样</h3><p>于前采样对应，增加少数类样本数类最简单的方法便是随机复制少数样本，可以事先设置多数类与少数类最终的数量比例ratio，在保留多数类样本不变的情况下，根据ratio随机复制少数类样本。</p>
+<p>优点：操作简单，只依赖于样本的分布，不依赖于任何距离信息，属于非启发式方法</p>
+<p>缺点：重复样本过多，容易造成分类器的过拟合</p>
+<h3 id="SMOTE-Synthetic-Minority-Over-sampling-Technique-即合成少数类样本的过采样技术"><a href="#SMOTE-Synthetic-Minority-Over-sampling-Technique-即合成少数类样本的过采样技术" class="headerlink" title="SMOTE(Synthetic Minority Over-sampling Technique)即合成少数类样本的过采样技术"></a>SMOTE(Synthetic Minority Over-sampling Technique)即合成少数类样本的过采样技术</h3><p>SMOTE的主要思想是通过一些位置相近的少数类样本中生成新的样本平衡类别的目的，由于不是简单的复制少数类样本，因此可以一定程度上避免分类器过度拟合，</p>
+<h3 id="Borderline-SMOTE"><a href="#Borderline-SMOTE" class="headerlink" title="Borderline SMOTE"></a>Borderline SMOTE</h3><p>相对于SMOTE算法对所有少数类样本都是一视同仁的，其利用边界位置的样本信息产生新的样本</p>
+<p>Borderline SMOTE-1：从少数类样本集合P中得到k个最近邻样本，在随机选择样本点和xi做随机的线性插值产生新的少数类样本</p>
+<p>Borderline SMOTE-2：从少数类样本集合P和多数类样本集合N中分别得到k个最近邻样本<br>Pk和Nk。设定一个比例α，在Pk中选出a比例的样本点和xi作随机的线性插值产生新的少数<br>类样本，方法同Borderline SMOTE-1；在Nk中选出1-a比例的样本点和xi作随机的线性插<br>值产生新的少数类样本，此处的随机数范围选择的是(0,0.5)，即使得产生的新的样本点更靠<br>近少数类样本 </p>
+<h2 id="综合采样"><a href="#综合采样" class="headerlink" title="综合采样"></a>综合采样</h2><h3 id="SMOTE-Tomek-links"><a href="#SMOTE-Tomek-links" class="headerlink" title="SMOTE+Tomek links"></a>SMOTE+Tomek links</h3><ol>
+<li>利用SMOTE方法生成新的少数类样本，得到扩充后的数据集</li>
+<li>剔除数据集中Tomek links对</li>
+</ol>
+<p>普通SMOTE方法生成的少数类样本是通过线性差值得到的，在平衡类别分布的同时也扩张<br>了少数类的样本空间，产生的问题是可能原本属于多数类样本的空间被少数类“入<br>侵”（invade），容易造成模型的过拟合。<br>Tomek links对寻找的是那种噪声点或者边界点，可以很好地解决“入侵”的问题。 </p>
+<h3 id="SMOTE-KNN"><a href="#SMOTE-KNN" class="headerlink" title="SMOTE+KNN"></a>SMOTE+KNN</h3><ol>
+<li>利用SMOTE方法生成新的少数类样本，得到扩充后的数据集T；</li>
+<li>对T中的每一个样本使用KNN（一般k取3）方法预测，若预测结果和实际类别标签不<br>符，则剔除该样本 </li>
+</ol>
+<h2 id="Informed-Undersampling"><a href="#Informed-Undersampling" class="headerlink" title="Informed Undersampling"></a>Informed Undersampling</h2><p>是对欠采样的补充</p>
+<p>随机欠采样会导致信息的缺失，EasyEnsemble的想法则是多次随机欠采样，尽可能全面地全面包含所有地信息，算法的特点是利用boosting减少偏差（AdaBoost）,bagging减少方差（集成分类器），实际应用中时候可以采用不同的分类器提高分类的效果。</p>
+<ol>
+<li>随机欠采样方法</li>
+</ol>
 
       
     </div>
@@ -502,6 +553,61 @@ window.addEventListener('pjax:success', () => {
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 

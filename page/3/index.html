@@ -487,6 +487,78 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-sample_data-2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="LelandYan">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LelandYan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/04/2020-3-3-sample_data-2020/" class="post-title-link" itemprop="url">数据集划分</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:47:33" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes</p>
+</blockquote>
+<h1 id="样本抽样以及数据集划分"><a href="#样本抽样以及数据集划分" class="headerlink" title="样本抽样以及数据集划分"></a>样本抽样以及数据集划分</h1><h2 id="1-随机取样，将数据集分为训练集和测试集"><a href="#1-随机取样，将数据集分为训练集和测试集" class="headerlink" title="1. 随机取样，将数据集分为训练集和测试集"></a>1. 随机取样，将数据集分为训练集和测试集</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一种方法</span></span><br><span class="line"><span class="comment"># 使用sklearn中的train_test_split</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">train_set, test_set = train_test_split(housing, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二种方法</span></span><br><span class="line"><span class="comment"># 当数据的数量是不确定的时候</span></span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_set_check</span><span class="params">(identifier,test_ratio,hash=hashlib.md5)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> hash(np.int64(identifier)).digest()[<span class="number">-1</span>] &lt; <span class="number">256</span> * test_ratio</span><br><span class="line"><span class="comment"># 这样可以避免原本的训练集中的数据进入测试集中 这里的id_column可以是组合的</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">split_train_test_by_id</span><span class="params">(data,test_ratio,id_column)</span>:</span></span><br><span class="line">    ids = data[id_column]</span><br><span class="line">    in_test_set = ids.apply(<span class="keyword">lambda</span> id_:test_set_check(id_,test_ratio))</span><br><span class="line">    <span class="keyword">return</span> data.loc[~in_test_set],data.loc[in_test_set]</span><br></pre></td></tr></table></figure>
+<h2 id="2-分层抽样"><a href="#2-分层抽样" class="headerlink" title="2. 分层抽样"></a>2. 分层抽样</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对数据根据median_income进行分层</span></span><br><span class="line">housing[<span class="string">"income_cat"</span>] = pd.cut(housing[<span class="string">"median_income"</span>],bins=[<span class="number">0</span>,<span class="number">1.5</span>,<span class="number">3.0</span>,<span class="number">4.5</span>,<span class="number">6</span>,np.inf],labels=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line"><span class="comment"># 对每层的数量进行计数</span></span><br><span class="line">housing[<span class="string">"income_cat"</span>].value_counts()</span><br><span class="line"><span class="comment"># 可视化</span></span><br><span class="line">housing[<span class="string">"income_cat"</span>].hist()</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedShuffleSplit</span><br><span class="line">split = StratifiedShuffleSplit(n_split=<span class="number">1</span>,test_size=<span class="number">0.2</span>,random_state=<span class="number">42</span>)</span><br><span class="line"><span class="keyword">for</span> train_index,test_index <span class="keyword">in</span> split.split(housing,housing[<span class="string">"income_cat"</span>]):</span><br><span class="line">   strat_train_set = housing.loc[train_index]</span><br><span class="line">   srat_test_set = housing.loc[test_index]</span><br><span class="line">strat_test_set[<span class="string">"income_cat"</span>].value_counts() / len(strat_test_set)</span><br><span class="line">housing[<span class="string">"income_cat"</span>].value_count() / len(strat_test_set)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对median_cat进行删除</span></span><br><span class="line"><span class="keyword">for</span> set_ <span class="keyword">in</span> (strat_train_set,strat_test_set):</span><br><span class="line">    set_.drop(<span class="string">"income_cat"</span>,axis=<span class="number">1</span>,inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-regulation_overfitting-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -586,7 +658,7 @@ J(\theta) = -\frac{ 1 }{ m }[\sum_{ i=1 }^{ m } ({y^{(i)} \log h_\theta(x^{(i)})
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-sample_data-2020/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-sklearn_feature_engineer-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -600,7 +672,7 @@ J(\theta) = -\frac{ 1 }{ m }[\sum_{ i=1 }^{ m } ({y^{(i)} \log h_\theta(x^{(i)})
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/04/2020-3-3-sample_data-2020/" class="post-title-link" itemprop="url">数据集划分</a>
+            <a href="/2020/03/04/2020-3-3-sklearn_feature_engineer-2020/" class="post-title-link" itemprop="url">sklearn中的数据预处理代码</a>
         </h1>
 
         <div class="post-meta">
@@ -611,7 +683,7 @@ J(\theta) = -\frac{ 1 }{ m }[\sum_{ i=1 }^{ m } ({y^{(i)} \log h_\theta(x^{(i)})
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:47:33" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:26:01" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -637,8 +709,207 @@ J(\theta) = -\frac{ 1 }{ m }[\sum_{ i=1 }^{ m } ({y^{(i)} \log h_\theta(x^{(i)})
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes</p>
 </blockquote>
-<h1 id="样本抽样以及数据集划分"><a href="#样本抽样以及数据集划分" class="headerlink" title="样本抽样以及数据集划分"></a>样本抽样以及数据集划分</h1><h2 id="1-随机取样，将数据集分为训练集和测试集"><a href="#1-随机取样，将数据集分为训练集和测试集" class="headerlink" title="1. 随机取样，将数据集分为训练集和测试集"></a>1. 随机取样，将数据集分为训练集和测试集</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 第一种方法</span></span><br><span class="line"><span class="comment"># 使用sklearn中的train_test_split</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">train_set, test_set = train_test_split(housing, test_size=<span class="number">0.2</span>, random_state=<span class="number">42</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 第二种方法</span></span><br><span class="line"><span class="comment"># 当数据的数量是不确定的时候</span></span><br><span class="line"><span class="keyword">import</span> hashlib</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test_set_check</span><span class="params">(identifier,test_ratio,hash=hashlib.md5)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> hash(np.int64(identifier)).digest()[<span class="number">-1</span>] &lt; <span class="number">256</span> * test_ratio</span><br><span class="line"><span class="comment"># 这样可以避免原本的训练集中的数据进入测试集中 这里的id_column可以是组合的</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">split_train_test_by_id</span><span class="params">(data,test_ratio,id_column)</span>:</span></span><br><span class="line">    ids = data[id_column]</span><br><span class="line">    in_test_set = ids.apply(<span class="keyword">lambda</span> id_:test_set_check(id_,test_ratio))</span><br><span class="line">    <span class="keyword">return</span> data.loc[~in_test_set],data.loc[in_test_set]</span><br></pre></td></tr></table></figure>
-<h2 id="2-分层抽样"><a href="#2-分层抽样" class="headerlink" title="2. 分层抽样"></a>2. 分层抽样</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 对数据根据median_income进行分层</span></span><br><span class="line">housing[<span class="string">"income_cat"</span>] = pd.cut(housing[<span class="string">"median_income"</span>],bins=[<span class="number">0</span>,<span class="number">1.5</span>,<span class="number">3.0</span>,<span class="number">4.5</span>,<span class="number">6</span>,np.inf],labels=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>])</span><br><span class="line"><span class="comment"># 对每层的数量进行计数</span></span><br><span class="line">housing[<span class="string">"income_cat"</span>].value_counts()</span><br><span class="line"><span class="comment"># 可视化</span></span><br><span class="line">housing[<span class="string">"income_cat"</span>].hist()</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedShuffleSplit</span><br><span class="line">split = StratifiedShuffleSplit(n_split=<span class="number">1</span>,test_size=<span class="number">0.2</span>,random_state=<span class="number">42</span>)</span><br><span class="line"><span class="keyword">for</span> train_index,test_index <span class="keyword">in</span> split.split(housing,housing[<span class="string">"income_cat"</span>]):</span><br><span class="line">   strat_train_set = housing.loc[train_index]</span><br><span class="line">   srat_test_set = housing.loc[test_index]</span><br><span class="line">strat_test_set[<span class="string">"income_cat"</span>].value_counts() / len(strat_test_set)</span><br><span class="line">housing[<span class="string">"income_cat"</span>].value_count() / len(strat_test_set)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对median_cat进行删除</span></span><br><span class="line"><span class="keyword">for</span> set_ <span class="keyword">in</span> (strat_train_set,strat_test_set):</span><br><span class="line">    set_.drop(<span class="string">"income_cat"</span>,axis=<span class="number">1</span>,inplace=<span class="literal">True</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="sklearn中的数据预处理代码"><a href="#sklearn中的数据预处理代码" class="headerlink" title="sklearn中的数据预处理代码"></a>sklearn中的数据预处理代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 标准化</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line">StandardScaler.fit_transform(iris.data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 区间放缩法</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> MinMaxScaler</span><br><span class="line">MinMaxScaler.fit_transform(iris.data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 归一化</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Normalizer</span><br><span class="line"><span class="comment">#归一化，返回值为归一化后的数据</span></span><br><span class="line">Normalizer().fit_transform(iris.data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对特定的特征二值化</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Binarizer</span><br><span class="line"><span class="comment"># 二值化，阀值设为3，返回二值化后的数据</span></span><br><span class="line">Binarizer(threshold=<span class="number">3</span>).fit_transform(iris.data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对定性特征哑编码</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> OneHotEncoder</span><br><span class="line"><span class="comment">#哑编码，对IRIS数据集的目标值，返回值为哑编码后的数据</span></span><br><span class="line">OneHotEncoder().fit_transform(iris.target.reshape((<span class="number">-1</span>,<span class="number">1</span>)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 缺失值计算</span></span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> vstack, array, nan</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Imputer</span><br><span class="line"><span class="comment">#缺失值计算，返回值为计算缺失值后的数据</span></span><br><span class="line"><span class="comment">#参数missing_value为缺失值的表示形式，默认为NaN</span></span><br><span class="line"><span class="comment">#参数strategy为缺失值填充方式，默认为mean（均值）</span></span><br><span class="line">Imputer().fit_transform(vstack((array([nan, nan, nan, nan]), iris.data)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据变化</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures</span><br><span class="line"><span class="comment">#多项式转换</span></span><br><span class="line"><span class="comment">#参数degree为度，默认值为2</span></span><br><span class="line">PolynomialFeatures().fit_transform(iris.data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> log1p</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> FunctionTransformer</span><br><span class="line"><span class="comment">#自定义转换函数为对数函数的数据变换</span></span><br><span class="line"><span class="comment">#第一个参数是单变元函数</span></span><br><span class="line">FunctionTransformer(log1p).fit_transform(iris.data)</span><br></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>功能</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>StandardScaler</td>
+<td>无量纲化</td>
+<td>标准化，基于特征矩阵的列，将特征值转换至服从标准正态分布</td>
+</tr>
+<tr>
+<td>MinMaxScaler</td>
+<td>无量纲化</td>
+<td>区间缩放，基于最大最小值，将特征值转换到[0, 1]区间上</td>
+</tr>
+<tr>
+<td>Normalizer</td>
+<td>归一化</td>
+<td>基于特征矩阵的行，将样本向量转换为“单位向量”</td>
+</tr>
+<tr>
+<td>Binarizer</td>
+<td>二值化</td>
+<td>基于给定阈值，将定量特征按阈值划分</td>
+</tr>
+<tr>
+<td>OneHotEncoder</td>
+<td>哑编码</td>
+<td>将定性数据编码为定量数据</td>
+</tr>
+<tr>
+<td>Imputer</td>
+<td>缺失值计算</td>
+<td>计算缺失值，缺失值可填充为均值等</td>
+</tr>
+<tr>
+<td>PolynomialFeatures</td>
+<td>多项式数据转换</td>
+<td>多项式数据转换</td>
+</tr>
+<tr>
+<td>FunctionTransformer</td>
+<td>自定义单元数据转换</td>
+<td>使用单变元的函数来转换数据</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h2><p>　　当数据预处理完成后，我们需要选择有意义的特征输入机器学习的算法和模型进行训练。通常来说，从两个方面考虑来选择特征：</p>
+<ul>
+<li>特征是否发散：如果一个特征不发散，例如方差接近于0，也就是说样本在这个特征上基本上没有差异，这个特征对于样本的区分并没有什么用。</li>
+<li>特征与目标的相关性：这点比较显见，与目标相关性高的特征，应当优选选择。除方差法外，本文介绍的其他方法均从相关性考虑。</li>
+</ul>
+<p>　　根据特征选择的形式又可以将特征选择方法分为3种：</p>
+<ul>
+<li>Filter：过滤法，按照发散性或者相关性对各个特征进行评分，设定阈值或者待选择阈值的个数，选择特征。</li>
+<li>Wrapper：包装法，根据目标函数（通常是预测效果评分），每次选择若干特征，或者排除若干特征。</li>
+<li>Embedded：嵌入法，先使用某些机器学习的算法和模型进行训练，得到各个特征的权值系数，根据系数从大到小选择特征。类似于Filter方法，但是是通过训练来确定特征的优劣。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># filter ########################################################################################</span></span><br><span class="line"><span class="comment"># 方差选择法</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> VarianceTreshold</span><br><span class="line"><span class="comment"># 方差选择法，返回值为特征选择后的数据</span></span><br><span class="line"><span class="comment"># 参数为threshold为方差的阀值</span></span><br><span class="line">VarianceThreshold(threshold=<span class="number">3</span>).fit_transform(iris.data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 相关系数法</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> SelectKBest</span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> pearsonr</span><br><span class="line"><span class="comment">#选择K个最好的特征，返回选择特征后的数据</span></span><br><span class="line"><span class="comment">#第一个参数为计算评估特征是否好的函数，该函数输入特征矩阵和目标向量，输出二元组（评分，P值）的数组，数组第i项为第i个特征的评分和P值。在此定义为计算相关系数</span></span><br><span class="line"><span class="comment">#参数k为选择的特征个数</span></span><br><span class="line">SelectKBest(<span class="keyword">lambda</span> X, Y: array(map(<span class="keyword">lambda</span> x:pearsonr(x, Y), X.T)).T, k=<span class="number">2</span>).fit_transform(iris.data, iris.target)</span><br><span class="line"></span><br><span class="line"> <span class="comment"># 卡方分布</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> SelectKBest</span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> chi2 </span><br><span class="line"><span class="comment">#选择K个最好的特征，返回选择特征后的数据</span></span><br><span class="line">SelectKBest(chi2, k=<span class="number">2</span>).fit_transform(iris.data, iris.target)  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 互信息法</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> SelectKBest</span><br><span class="line"><span class="keyword">from</span> minepy <span class="keyword">import</span> MINE</span><br><span class="line"></span><br><span class="line"><span class="comment">#由于MINE的设计不是函数式的，定义mic方法将其为函数式的，返回一个二元组，二元组的第2项设置成固定的P值0.5</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mic</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    m = MINE()</span><br><span class="line">    m.compute_score(x, y)</span><br><span class="line">    <span class="keyword">return</span> (m.mic(), <span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#选择K个最好的特征，返回特征选择后的数据</span></span><br><span class="line">SelectKBest(<span class="keyword">lambda</span> X, Y: array(map(<span class="keyword">lambda</span> x:mic(x, Y), X.T)).T, k=<span class="number">2</span>).fit_transform(iris.data, iris.target)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># wrapper######################################################################################</span></span><br><span class="line"><span class="comment">#递归消除特征法使用一个基模型来进行多轮训练，每轮训练后，消除若干权值系数的特征，再基于新的特征集进行下一轮#训练</span></span><br><span class="line"><span class="comment"># 递归特征消除法</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> RFE</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="comment">#递归特征消除法，返回特征选择后的数据</span></span><br><span class="line"><span class="comment">#参数estimator为基模型</span></span><br><span class="line"><span class="comment">#参数n_features_to_select为选择的特征个数</span></span><br><span class="line">RFE(estimator=LogisticRegression(), n_features_to_select=<span class="number">2</span>).fit_transform(iris.data, iris.target)</span><br><span class="line"></span><br><span class="line"><span class="comment"># embedded #################################################################################3####</span></span><br><span class="line"><span class="comment"># 使用带惩罚项的基模型，除了筛选出特征外，同时也进行了降维。</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> SelectFromModel</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression </span><br><span class="line"><span class="comment">#带L1惩罚项的逻辑回归作为基模型的特征选择</span></span><br><span class="line">SelectFromModel(LogisticRegression(penalty=<span class="string">"l1"</span>, C=<span class="number">0.1</span>)).fit_transform(iris.data, iris.target)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基于树模型的特征选择法</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> SelectFromModel</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment">#GBDT作为基模型的特征选择</span></span><br><span class="line">SelectFromModel(GradientBoostingClassifier()).fit_transform(iris.data, iris.target)</span><br></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>类</th>
+<th>所属方式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VarianceThreshold</td>
+<td>Filter</td>
+<td>方差选择法</td>
+</tr>
+<tr>
+<td>SelectKBest</td>
+<td>Filter</td>
+<td>可选关联系数、卡方校验、最大信息系数作为得分计算的方法</td>
+</tr>
+<tr>
+<td>RFE</td>
+<td>Wrapper</td>
+<td>递归地训练基模型，将权值系数较小的特征从特征集合中消除</td>
+</tr>
+<tr>
+<td>SelectFromModel</td>
+<td>Embedded</td>
+<td>训练基模型，选择权值系数较高的特征</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="降维"><a href="#降维" class="headerlink" title="降维"></a>降维</h2><p>当特征选择完成后，可以直接训练模型了，但是可能由于特征矩阵过大，导致计算量大，训练时间长的问题，因此降低特征矩阵维度也是必不可少的。常见的降维方法除了以上提到的基于L1惩罚项的模型以外，另外还有主成分分析法（PCA）和线性判别分析（LDA），线性判别分析本身也是一个分类模型。PCA和LDA有很多的相似点，其本质是要将原始的样本映射到维度更低的样本空间中，但是PCA和LDA的映射目标不一样：<a href="http://www.cnblogs.com/LeftNotEasy/archive/2011/01/08/lda-and-pca-machine-learning.html" target="_blank" rel="noopener">PCA是为了让映射后的样本具有最大的发散性；而LDA是为了让映射后的样本有最好的分类性能</a>。所以说PCA是一种无监督的降维方法，而LDA是一种有监督的降维方法。</p>
+<h2 id="4-1-主成分分析法（PCA）"><a href="#4-1-主成分分析法（PCA）" class="headerlink" title="4.1 主成分分析法（PCA）"></a>4.1 主成分分析法（PCA）</h2><p>　　使用decomposition库的PCA类选择特征的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 from sklearn.decomposition import PCA</span><br><span class="line">2 </span><br><span class="line">3 #主成分分析法，返回降维后的数据</span><br><span class="line">4 #参数n_components为主成分数目</span><br><span class="line">5 PCA(n_components&#x3D;2).fit_transform(iris.data)</span><br></pre></td></tr></table></figure>
+<h2 id="4-2-线性判别分析法（LDA）"><a href="#4-2-线性判别分析法（LDA）" class="headerlink" title="4.2 线性判别分析法（LDA）"></a>4.2 线性判别分析法（LDA）</h2><p>　　使用lda库的LDA类选择特征的代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 from sklearn.lda import LDA</span><br><span class="line">2 </span><br><span class="line">3 #线性判别分析法，返回降维后的数据</span><br><span class="line">4 #参数n_components为降维后的维数</span><br><span class="line">5 LDA(n_components&#x3D;2).fit_transform(iris.data, iris.target)</span><br></pre></td></tr></table></figure>
+<h2 id="4-3-回顾"><a href="#4-3-回顾" class="headerlink" title="4.3 回顾"></a>4.3 回顾</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>库</th>
+<th>类</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>decomposition</td>
+<td>PCA</td>
+<td>主成分分析法</td>
+</tr>
+<tr>
+<td>lda</td>
+<td>LDA</td>
+<td>线性判别分析法</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-skearn_learning-2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="LelandYan">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LelandYan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/04/2020-3-3-skearn_learning-2020/" class="post-title-link" itemprop="url">sklearn的非数值进行数值性编码与sklearn的库进行准确率的计算</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:24:57" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes</p>
+</blockquote>
+<h1 id="skearn的非数值进行数值性编码与sklearn的库进行准确率的计算"><a href="#skearn的非数值进行数值性编码与sklearn的库进行准确率的计算" class="headerlink" title="skearn的非数值进行数值性编码与sklearn的库进行准确率的计算"></a>skearn的非数值进行数值性编码与sklearn的库进行准确率的计算</h1><p>1.可以使用python自带的skearn对result的非数值进行数值性编码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">y = LabelEncoder().fit_transform(data[<span class="number">4</span>])</span><br></pre></td></tr></table></figure>
+<p>2.可以使用sklearn的库进行准确率的计算</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_socre</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">1</span>)</span><br><span class="line">model = DecisionTreeClassifier(criterion=<span class="string">'entorpy'</span>)</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line">y_test_hat = model.predict(x_test)</span><br><span class="line"><span class="comment"># 第一种方法</span></span><br><span class="line">print(<span class="string">"accuracy_score"</span>,accuracy_socre(y_test_hat,y_test))</span><br><span class="line"><span class="comment"># 第二种方法</span></span><br><span class="line">y_test = y_test.reshape(<span class="number">-1</span>)<span class="comment"># 变成一维</span></span><br><span class="line">result = (y_test_hat==y_test)</span><br><span class="line">acc = np.mean(result)</span><br><span class="line">print(<span class="string">f"准确率:<span class="subst">&#123;<span class="number">100</span>*acc&#125;</span>"</span>)</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1408,277 +1679,6 @@ with 0 stored elements (blocksize = 3x2) in Block Sparse Row format></li>
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-sklearn_feature_engineer-2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="LelandYan">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LelandYan">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/04/2020-3-3-sklearn_feature_engineer-2020/" class="post-title-link" itemprop="url">sklearn中的数据预处理代码</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:26:01" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="sklearn中的数据预处理代码"><a href="#sklearn中的数据预处理代码" class="headerlink" title="sklearn中的数据预处理代码"></a>sklearn中的数据预处理代码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 标准化</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line">StandardScaler.fit_transform(iris.data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 区间放缩法</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> MinMaxScaler</span><br><span class="line">MinMaxScaler.fit_transform(iris.data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 归一化</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Normalizer</span><br><span class="line"><span class="comment">#归一化，返回值为归一化后的数据</span></span><br><span class="line">Normalizer().fit_transform(iris.data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对特定的特征二值化</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Binarizer</span><br><span class="line"><span class="comment"># 二值化，阀值设为3，返回二值化后的数据</span></span><br><span class="line">Binarizer(threshold=<span class="number">3</span>).fit_transform(iris.data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 对定性特征哑编码</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> OneHotEncoder</span><br><span class="line"><span class="comment">#哑编码，对IRIS数据集的目标值，返回值为哑编码后的数据</span></span><br><span class="line">OneHotEncoder().fit_transform(iris.target.reshape((<span class="number">-1</span>,<span class="number">1</span>)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 缺失值计算</span></span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> vstack, array, nan</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> Imputer</span><br><span class="line"><span class="comment">#缺失值计算，返回值为计算缺失值后的数据</span></span><br><span class="line"><span class="comment">#参数missing_value为缺失值的表示形式，默认为NaN</span></span><br><span class="line"><span class="comment">#参数strategy为缺失值填充方式，默认为mean（均值）</span></span><br><span class="line">Imputer().fit_transform(vstack((array([nan, nan, nan, nan]), iris.data)))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据变化</span></span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> PolynomialFeatures</span><br><span class="line"><span class="comment">#多项式转换</span></span><br><span class="line"><span class="comment">#参数degree为度，默认值为2</span></span><br><span class="line">PolynomialFeatures().fit_transform(iris.data)</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> numpy <span class="keyword">import</span> log1p</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> FunctionTransformer</span><br><span class="line"><span class="comment">#自定义转换函数为对数函数的数据变换</span></span><br><span class="line"><span class="comment">#第一个参数是单变元函数</span></span><br><span class="line">FunctionTransformer(log1p).fit_transform(iris.data)</span><br></pre></td></tr></table></figure>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>类</th>
-<th>功能</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>StandardScaler</td>
-<td>无量纲化</td>
-<td>标准化，基于特征矩阵的列，将特征值转换至服从标准正态分布</td>
-</tr>
-<tr>
-<td>MinMaxScaler</td>
-<td>无量纲化</td>
-<td>区间缩放，基于最大最小值，将特征值转换到[0, 1]区间上</td>
-</tr>
-<tr>
-<td>Normalizer</td>
-<td>归一化</td>
-<td>基于特征矩阵的行，将样本向量转换为“单位向量”</td>
-</tr>
-<tr>
-<td>Binarizer</td>
-<td>二值化</td>
-<td>基于给定阈值，将定量特征按阈值划分</td>
-</tr>
-<tr>
-<td>OneHotEncoder</td>
-<td>哑编码</td>
-<td>将定性数据编码为定量数据</td>
-</tr>
-<tr>
-<td>Imputer</td>
-<td>缺失值计算</td>
-<td>计算缺失值，缺失值可填充为均值等</td>
-</tr>
-<tr>
-<td>PolynomialFeatures</td>
-<td>多项式数据转换</td>
-<td>多项式数据转换</td>
-</tr>
-<tr>
-<td>FunctionTransformer</td>
-<td>自定义单元数据转换</td>
-<td>使用单变元的函数来转换数据</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="特征选择"><a href="#特征选择" class="headerlink" title="特征选择"></a>特征选择</h2><p>　　当数据预处理完成后，我们需要选择有意义的特征输入机器学习的算法和模型进行训练。通常来说，从两个方面考虑来选择特征：</p>
-<ul>
-<li>特征是否发散：如果一个特征不发散，例如方差接近于0，也就是说样本在这个特征上基本上没有差异，这个特征对于样本的区分并没有什么用。</li>
-<li>特征与目标的相关性：这点比较显见，与目标相关性高的特征，应当优选选择。除方差法外，本文介绍的其他方法均从相关性考虑。</li>
-</ul>
-<p>　　根据特征选择的形式又可以将特征选择方法分为3种：</p>
-<ul>
-<li>Filter：过滤法，按照发散性或者相关性对各个特征进行评分，设定阈值或者待选择阈值的个数，选择特征。</li>
-<li>Wrapper：包装法，根据目标函数（通常是预测效果评分），每次选择若干特征，或者排除若干特征。</li>
-<li>Embedded：嵌入法，先使用某些机器学习的算法和模型进行训练，得到各个特征的权值系数，根据系数从大到小选择特征。类似于Filter方法，但是是通过训练来确定特征的优劣。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># filter ########################################################################################</span></span><br><span class="line"><span class="comment"># 方差选择法</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> VarianceTreshold</span><br><span class="line"><span class="comment"># 方差选择法，返回值为特征选择后的数据</span></span><br><span class="line"><span class="comment"># 参数为threshold为方差的阀值</span></span><br><span class="line">VarianceThreshold(threshold=<span class="number">3</span>).fit_transform(iris.data)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 相关系数法</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> SelectKBest</span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> pearsonr</span><br><span class="line"><span class="comment">#选择K个最好的特征，返回选择特征后的数据</span></span><br><span class="line"><span class="comment">#第一个参数为计算评估特征是否好的函数，该函数输入特征矩阵和目标向量，输出二元组（评分，P值）的数组，数组第i项为第i个特征的评分和P值。在此定义为计算相关系数</span></span><br><span class="line"><span class="comment">#参数k为选择的特征个数</span></span><br><span class="line">SelectKBest(<span class="keyword">lambda</span> X, Y: array(map(<span class="keyword">lambda</span> x:pearsonr(x, Y), X.T)).T, k=<span class="number">2</span>).fit_transform(iris.data, iris.target)</span><br><span class="line"></span><br><span class="line"> <span class="comment"># 卡方分布</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> SelectKBest</span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> chi2 </span><br><span class="line"><span class="comment">#选择K个最好的特征，返回选择特征后的数据</span></span><br><span class="line">SelectKBest(chi2, k=<span class="number">2</span>).fit_transform(iris.data, iris.target)  </span><br><span class="line"></span><br><span class="line"><span class="comment"># 互信息法</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> SelectKBest</span><br><span class="line"><span class="keyword">from</span> minepy <span class="keyword">import</span> MINE</span><br><span class="line"></span><br><span class="line"><span class="comment">#由于MINE的设计不是函数式的，定义mic方法将其为函数式的，返回一个二元组，二元组的第2项设置成固定的P值0.5</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">mic</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    m = MINE()</span><br><span class="line">    m.compute_score(x, y)</span><br><span class="line">    <span class="keyword">return</span> (m.mic(), <span class="number">0.5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">#选择K个最好的特征，返回特征选择后的数据</span></span><br><span class="line">SelectKBest(<span class="keyword">lambda</span> X, Y: array(map(<span class="keyword">lambda</span> x:mic(x, Y), X.T)).T, k=<span class="number">2</span>).fit_transform(iris.data, iris.target)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># wrapper######################################################################################</span></span><br><span class="line"><span class="comment">#递归消除特征法使用一个基模型来进行多轮训练，每轮训练后，消除若干权值系数的特征，再基于新的特征集进行下一轮#训练</span></span><br><span class="line"><span class="comment"># 递归特征消除法</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> RFE</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="comment">#递归特征消除法，返回特征选择后的数据</span></span><br><span class="line"><span class="comment">#参数estimator为基模型</span></span><br><span class="line"><span class="comment">#参数n_features_to_select为选择的特征个数</span></span><br><span class="line">RFE(estimator=LogisticRegression(), n_features_to_select=<span class="number">2</span>).fit_transform(iris.data, iris.target)</span><br><span class="line"></span><br><span class="line"><span class="comment"># embedded #################################################################################3####</span></span><br><span class="line"><span class="comment"># 使用带惩罚项的基模型，除了筛选出特征外，同时也进行了降维。</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> SelectFromModel</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression </span><br><span class="line"><span class="comment">#带L1惩罚项的逻辑回归作为基模型的特征选择</span></span><br><span class="line">SelectFromModel(LogisticRegression(penalty=<span class="string">"l1"</span>, C=<span class="number">0.1</span>)).fit_transform(iris.data, iris.target)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 基于树模型的特征选择法</span></span><br><span class="line"><span class="keyword">from</span> sklearn.feature_selection <span class="keyword">import</span> SelectFromModel</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingClassifier</span><br><span class="line"></span><br><span class="line"><span class="comment">#GBDT作为基模型的特征选择</span></span><br><span class="line">SelectFromModel(GradientBoostingClassifier()).fit_transform(iris.data, iris.target)</span><br></pre></td></tr></table></figure>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>类</th>
-<th>所属方式</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>VarianceThreshold</td>
-<td>Filter</td>
-<td>方差选择法</td>
-</tr>
-<tr>
-<td>SelectKBest</td>
-<td>Filter</td>
-<td>可选关联系数、卡方校验、最大信息系数作为得分计算的方法</td>
-</tr>
-<tr>
-<td>RFE</td>
-<td>Wrapper</td>
-<td>递归地训练基模型，将权值系数较小的特征从特征集合中消除</td>
-</tr>
-<tr>
-<td>SelectFromModel</td>
-<td>Embedded</td>
-<td>训练基模型，选择权值系数较高的特征</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="降维"><a href="#降维" class="headerlink" title="降维"></a>降维</h2><p>当特征选择完成后，可以直接训练模型了，但是可能由于特征矩阵过大，导致计算量大，训练时间长的问题，因此降低特征矩阵维度也是必不可少的。常见的降维方法除了以上提到的基于L1惩罚项的模型以外，另外还有主成分分析法（PCA）和线性判别分析（LDA），线性判别分析本身也是一个分类模型。PCA和LDA有很多的相似点，其本质是要将原始的样本映射到维度更低的样本空间中，但是PCA和LDA的映射目标不一样：<a href="http://www.cnblogs.com/LeftNotEasy/archive/2011/01/08/lda-and-pca-machine-learning.html" target="_blank" rel="noopener">PCA是为了让映射后的样本具有最大的发散性；而LDA是为了让映射后的样本有最好的分类性能</a>。所以说PCA是一种无监督的降维方法，而LDA是一种有监督的降维方法。</p>
-<h2 id="4-1-主成分分析法（PCA）"><a href="#4-1-主成分分析法（PCA）" class="headerlink" title="4.1 主成分分析法（PCA）"></a>4.1 主成分分析法（PCA）</h2><p>　　使用decomposition库的PCA类选择特征的代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 from sklearn.decomposition import PCA</span><br><span class="line">2 </span><br><span class="line">3 #主成分分析法，返回降维后的数据</span><br><span class="line">4 #参数n_components为主成分数目</span><br><span class="line">5 PCA(n_components&#x3D;2).fit_transform(iris.data)</span><br></pre></td></tr></table></figure>
-<h2 id="4-2-线性判别分析法（LDA）"><a href="#4-2-线性判别分析法（LDA）" class="headerlink" title="4.2 线性判别分析法（LDA）"></a>4.2 线性判别分析法（LDA）</h2><p>　　使用lda库的LDA类选择特征的代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1 from sklearn.lda import LDA</span><br><span class="line">2 </span><br><span class="line">3 #线性判别分析法，返回降维后的数据</span><br><span class="line">4 #参数n_components为降维后的维数</span><br><span class="line">5 LDA(n_components&#x3D;2).fit_transform(iris.data, iris.target)</span><br></pre></td></tr></table></figure>
-<h2 id="4-3-回顾"><a href="#4-3-回顾" class="headerlink" title="4.3 回顾"></a>4.3 回顾</h2><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>库</th>
-<th>类</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>decomposition</td>
-<td>PCA</td>
-<td>主成分分析法</td>
-</tr>
-<tr>
-<td>lda</td>
-<td>LDA</td>
-<td>线性判别分析法</td>
-</tr>
-</tbody>
-</table>
-</div>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-skearn_learning-2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="LelandYan">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LelandYan">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/04/2020-3-3-skearn_learning-2020/" class="post-title-link" itemprop="url">sklearn的非数值进行数值性编码与sklearn的库进行准确率的计算</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:24:57" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="skearn的非数值进行数值性编码与sklearn的库进行准确率的计算"><a href="#skearn的非数值进行数值性编码与sklearn的库进行准确率的计算" class="headerlink" title="skearn的非数值进行数值性编码与sklearn的库进行准确率的计算"></a>skearn的非数值进行数值性编码与sklearn的库进行准确率的计算</h1><p>1.可以使用python自带的skearn对result的非数值进行数值性编码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line">y = LabelEncoder().fit_transform(data[<span class="number">4</span>])</span><br></pre></td></tr></table></figure>
-<p>2.可以使用sklearn的库进行准确率的计算</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_socre</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> LabelEncoder</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line">x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=<span class="number">0.7</span>, random_state=<span class="number">1</span>)</span><br><span class="line">model = DecisionTreeClassifier(criterion=<span class="string">'entorpy'</span>)</span><br><span class="line">model.fit(x_train,y_train)</span><br><span class="line">y_test_hat = model.predict(x_test)</span><br><span class="line"><span class="comment"># 第一种方法</span></span><br><span class="line">print(<span class="string">"accuracy_score"</span>,accuracy_socre(y_test_hat,y_test))</span><br><span class="line"><span class="comment"># 第二种方法</span></span><br><span class="line">y_test = y_test.reshape(<span class="number">-1</span>)<span class="comment"># 变成一维</span></span><br><span class="line">result = (y_test_hat==y_test)</span><br><span class="line">acc = np.mean(result)</span><br><span class="line">print(<span class="string">f"准确率:<span class="subst">&#123;<span class="number">100</span>*acc&#125;</span>"</span>)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-softmax_function-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1756,7 +1756,7 @@ L_i=-log\frac{e^{S_{y_i}}}{\sum_{j=1}^Ce^{S_j}}=-(s_{y_i}-log\sum_{j=1}^Ce^{s_j}
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-unbalance_data-2020/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-spare_matrix-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -1770,7 +1770,7 @@ L_i=-log\frac{e^{S_{y_i}}}{\sum_{j=1}^Ce^{S_j}}=-(s_{y_i}-log\sum_{j=1}^Ce^{s_j}
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/04/2020-3-3-unbalance_data-2020/" class="post-title-link" itemprop="url">如何处理不平衡的数据</a>
+            <a href="/2020/03/04/2020-3-3-spare_matrix-2020/" class="post-title-link" itemprop="url">sklearn稀疏矩阵</a>
         </h1>
 
         <div class="post-meta">
@@ -1781,7 +1781,7 @@ L_i=-log\frac{e^{S_{y_i}}}{\sum_{j=1}^Ce^{S_j}}=-(s_{y_i}-log\sum_{j=1}^Ce^{s_j}
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:23:14" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:17:55" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1807,59 +1807,8 @@ L_i=-log\frac{e^{S_{y_i}}}{\sum_{j=1}^Ce^{S_j}}=-(s_{y_i}-log\sum_{j=1}^Ce^{s_j}
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes</p>
 </blockquote>
-<h1 id="如何处理不平衡的数据"><a href="#如何处理不平衡的数据" class="headerlink" title="如何处理不平衡的数据"></a>如何处理不平衡的数据</h1><p>对于不平衡数据集，一般的分类算法都倾向于将样本划分到多数类，体现在模型整体的准确率很好。但是模型并不是很好。常用的分类算法一般假设不同类的比例是均衡的，现实生活中经常遇到不平衡的数据集，比如广告点击预测（点击转化率一般都很小）、商品推荐（推荐的商品被购买的比例很低）、信用卡欺诈检测（欺诈的总数小数）等。</p>
-<h4 id="在类别不平衡的情况下，对模型使用F值或者AUC值是更好的选择。"><a href="#在类别不平衡的情况下，对模型使用F值或者AUC值是更好的选择。" class="headerlink" title="在类别不平衡的情况下，对模型使用F值或者AUC值是更好的选择。"></a>在类别不平衡的情况下，对模型使用F值或者AUC值是更好的选择。</h4><h4 id="处理不平衡的数据，可以从两个方面考虑"><a href="#处理不平衡的数据，可以从两个方面考虑" class="headerlink" title="处理不平衡的数据，可以从两个方面考虑"></a>处理不平衡的数据，可以从两个方面考虑</h4><ol>
-<li>是改变数据分布，从数据层面使得类别更为平衡<ol>
-<li>欠采样 Undersampling 减少多数类样本的数量</li>
-<li>过采样 Oversampling 增加少数样本的数据量</li>
-<li>总和采样：将过采样和欠采样的结合</li>
-</ol>
-</li>
-<li>改变分类算法，在传统分类基础上对不同的类别采用不同的加权方式，使得模型更加看重少数类。</li>
-</ol>
-<h2 id="欠采样"><a href="#欠采样" class="headerlink" title="欠采样"></a>欠采样</h2><h4 id="随机欠采样方法"><a href="#随机欠采样方法" class="headerlink" title="随机欠采样方法"></a>随机欠采样方法</h4><p>减少多数类样本的数量的最简单的方法便是随机剔除多数类的样本，可以事先设置多类数与少数类最终的数量比例ratio，在保留少数类样本不变的情况下，根据ratio随机选择多数类样本。</p>
-<p>优点：操作简单，只依赖与样本分布，不依赖任何的距离信息，属于非启发式方法</p>
-<p>缺点：会丢失一部分多类数的样本的信息，无法充分的利用已有的信息</p>
-<h3 id="Tomek-link-用途"><a href="#Tomek-link-用途" class="headerlink" title="Tomek link 用途"></a>Tomek link 用途</h3><ol>
-<li>欠采样：将Tomek link对中属于多数类的样本剔除</li>
-<li>数据清洗：及那个Tomek link对中的两个样本都剔除</li>
-</ol>
-<h3 id="NearMiss方法"><a href="#NearMiss方法" class="headerlink" title="NearMiss方法"></a>NearMiss方法</h3><p>NearMiss方法是利用距离的远近剔除多数类样本的方法，实际操作中也是借助KNN</p>
-<p>NearMiss-1:在多数类样本中选择与最近的3个少数类样本的平均距离最小的样本</p>
-<p>NearMiss-2:在多数类样本中选择与最远的3个少数类样本的平均距离最小的样本</p>
-<p>NearMiss-3:对于每个少数类样本，选择离它最近的给定的数量的多数样本</p>
-<p><strong>NearMiss1考虑的是局部的，更倾向于比较集中的少数类附近找到更多的多数类样本。NearMiss2是考虑的是全局的</strong></p>
-<p><strong>NearMiss3方法则会使得每一个少数类样本的附近都有足够多的多类样本，显然会使得模型的精确率高，召回率低</strong></p>
-<p><strong>一般的情况下，NearMiss-2的效果较好</strong>。</p>
-<h3 id="One-Sided-Selection"><a href="#One-Sided-Selection" class="headerlink" title="One-Sided Selection"></a>One-Sided Selection</h3><p>One-Sided Selection利用从上图得到的启发式想法，多数类样本包含四种情况：</p>
-<ol>
-<li>多数类中的噪声（noise），它们都各自紧贴着一个少数样本</li>
-<li>边界样本，此类样本很容易被分错</li>
-<li>多余（redundant）样本，因为在训练模型的时候，此类样本没有提供额外的有用信息，其类别信息可以容易地通过其他样本信息得到，此类冗余地样本会提供分类地代价，使得边界曲线移动。</li>
-<li>安全样本，对于分类模型有着重要地作用。</li>
-</ol>
-<p>One-Sided Selection算法地目的是剔除多类数样本中样本中地噪声、边界样本和多余样本，其利用Tomek links剔除多数类样本中的噪声和边界样本，未被1-NN分类器错分的样本则被视为多余的样本，最终得到一个类别分布更为平衡的样本集合。</p>
-<h2 id="过采样"><a href="#过采样" class="headerlink" title="过采样"></a>过采样</h2><h3 id="随机过采样"><a href="#随机过采样" class="headerlink" title="随机过采样"></a>随机过采样</h3><p>于前采样对应，增加少数类样本数类最简单的方法便是随机复制少数样本，可以事先设置多数类与少数类最终的数量比例ratio，在保留多数类样本不变的情况下，根据ratio随机复制少数类样本。</p>
-<p>优点：操作简单，只依赖于样本的分布，不依赖于任何距离信息，属于非启发式方法</p>
-<p>缺点：重复样本过多，容易造成分类器的过拟合</p>
-<h3 id="SMOTE-Synthetic-Minority-Over-sampling-Technique-即合成少数类样本的过采样技术"><a href="#SMOTE-Synthetic-Minority-Over-sampling-Technique-即合成少数类样本的过采样技术" class="headerlink" title="SMOTE(Synthetic Minority Over-sampling Technique)即合成少数类样本的过采样技术"></a>SMOTE(Synthetic Minority Over-sampling Technique)即合成少数类样本的过采样技术</h3><p>SMOTE的主要思想是通过一些位置相近的少数类样本中生成新的样本平衡类别的目的，由于不是简单的复制少数类样本，因此可以一定程度上避免分类器过度拟合，</p>
-<h3 id="Borderline-SMOTE"><a href="#Borderline-SMOTE" class="headerlink" title="Borderline SMOTE"></a>Borderline SMOTE</h3><p>相对于SMOTE算法对所有少数类样本都是一视同仁的，其利用边界位置的样本信息产生新的样本</p>
-<p>Borderline SMOTE-1：从少数类样本集合P中得到k个最近邻样本，在随机选择样本点和xi做随机的线性插值产生新的少数类样本</p>
-<p>Borderline SMOTE-2：从少数类样本集合P和多数类样本集合N中分别得到k个最近邻样本<br>Pk和Nk。设定一个比例α，在Pk中选出a比例的样本点和xi作随机的线性插值产生新的少数<br>类样本，方法同Borderline SMOTE-1；在Nk中选出1-a比例的样本点和xi作随机的线性插<br>值产生新的少数类样本，此处的随机数范围选择的是(0,0.5)，即使得产生的新的样本点更靠<br>近少数类样本 </p>
-<h2 id="综合采样"><a href="#综合采样" class="headerlink" title="综合采样"></a>综合采样</h2><h3 id="SMOTE-Tomek-links"><a href="#SMOTE-Tomek-links" class="headerlink" title="SMOTE+Tomek links"></a>SMOTE+Tomek links</h3><ol>
-<li>利用SMOTE方法生成新的少数类样本，得到扩充后的数据集</li>
-<li>剔除数据集中Tomek links对</li>
-</ol>
-<p>普通SMOTE方法生成的少数类样本是通过线性差值得到的，在平衡类别分布的同时也扩张<br>了少数类的样本空间，产生的问题是可能原本属于多数类样本的空间被少数类“入<br>侵”（invade），容易造成模型的过拟合。<br>Tomek links对寻找的是那种噪声点或者边界点，可以很好地解决“入侵”的问题。 </p>
-<h3 id="SMOTE-KNN"><a href="#SMOTE-KNN" class="headerlink" title="SMOTE+KNN"></a>SMOTE+KNN</h3><ol>
-<li>利用SMOTE方法生成新的少数类样本，得到扩充后的数据集T；</li>
-<li>对T中的每一个样本使用KNN（一般k取3）方法预测，若预测结果和实际类别标签不<br>符，则剔除该样本 </li>
-</ol>
-<h2 id="Informed-Undersampling"><a href="#Informed-Undersampling" class="headerlink" title="Informed Undersampling"></a>Informed Undersampling</h2><p>是对欠采样的补充</p>
-<p>随机欠采样会导致信息的缺失，EasyEnsemble的想法则是多次随机欠采样，尽可能全面地全面包含所有地信息，算法的特点是利用boosting减少偏差（AdaBoost）,bagging减少方差（集成分类器），实际应用中时候可以采用不同的分类器提高分类的效果。</p>
-<ol>
-<li>随机欠采样方法</li>
-</ol>
+<h1 id="sklearn稀疏矩阵"><a href="#sklearn稀疏矩阵" class="headerlink" title="sklearn稀疏矩阵"></a>sklearn稀疏矩阵</h1><h3 id="lil-matrix-使用两个列表储存非0元素，data保存每行中的非零元素-rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。"><a href="#lil-matrix-使用两个列表储存非0元素，data保存每行中的非零元素-rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。" class="headerlink" title="lil_matrix 使用两个列表储存非0元素，data保存每行中的非零元素,rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。"></a>lil_matrix 使用两个列表储存非0元素，data保存每行中的非零元素,rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.sparse <span class="keyword">import</span> lil_matrix</span><br><span class="line">l = lil_matrix((<span class="number">6</span>,<span class="number">5</span>))</span><br><span class="line">l[<span class="number">2</span>,<span class="number">3</span>] = <span class="number">1</span></span><br><span class="line">l[<span class="number">3</span>,<span class="number">4</span>] = <span class="number">2</span></span><br><span class="line">l[<span class="number">3</span>,<span class="number">2</span>] = <span class="number">3</span></span><br><span class="line">print(l.toarray())</span><br><span class="line">[[ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">1.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">3.</span>  <span class="number">0.</span>  <span class="number">2.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> l.data</span><br><span class="line">[[] [] [<span class="number">1.0</span>] [<span class="number">3.0</span>, <span class="number">2.0</span>] [] []]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> l.rows</span><br><span class="line">[[] [] [<span class="number">3</span>] [<span class="number">2</span>, <span class="number">4</span>] [] []]</span><br></pre></td></tr></table></figure>
+<h3 id="dok-matrix和lil-matrix适用的场景是逐渐添加矩阵的元素。doc-matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的元祖，value是记录元素的具体值。"><a href="#dok-matrix和lil-matrix适用的场景是逐渐添加矩阵的元素。doc-matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的元祖，value是记录元素的具体值。" class="headerlink" title="dok_matrix和lil_matrix适用的场景是逐渐添加矩阵的元素。doc_matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的元祖，value是记录元素的具体值。"></a>dok_matrix和lil_matrix适用的场景是逐渐添加矩阵的元素。doc_matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的<a href="https://www.baidu.com/s?wd=%E5%85%83%E7%A5%96&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">元祖</a>，value是记录元素的具体值。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy.sparse <span class="keyword">import</span> dok_matrix</span><br><span class="line">S = dok_matrix((<span class="number">5</span>,<span class="number">5</span>), dtype=np.float32)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        S[i,j] = i + j</span><br><span class="line"><span class="comment"># 返回的是非零元素的row_index,column_index</span></span><br><span class="line">S.nonzero()</span><br><span class="line">print(S.toarray())</span><br></pre></td></tr></table></figure>
 
       
     </div>
