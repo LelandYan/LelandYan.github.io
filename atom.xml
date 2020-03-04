@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-04T05:56:38.655Z</updated>
+  <updated>2020-03-04T06:15:40.380Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,37 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Hypothesis Testing</title>
-    <link href="http://yoursite.com/2020/03/04/2020-3-3-Hypothesis_Testing-2020/"/>
-    <id>http://yoursite.com/2020/03/04/2020-3-3-Hypothesis_Testing-2020/</id>
-    <published>2020-03-04T04:08:25.000Z</published>
-    <updated>2020-03-04T05:56:38.655Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="Hypothesis-Testing"><a href="#Hypothesis-Testing" class="headerlink" title="Hypothesis Testing"></a>Hypothesis Testing</h1><p>是推断统计的最后一步，是根据一定的假设条件由假设条件由样本推断总体的一种方法</p><p>首先提出你的假设</p><p>其实检验假设其实就是假设和检验两步，先提出假设，之后在验证假设时候合理</p><p>4、显著水平<br>总共猜10次，那么是出现7次猜对，可以认为有特殊能力，还是9次猜对之后我才能确认有特殊能力，这是一个较为主观的标准。</p><p>我们一般认为</p><p>P-value&lt;=0.05</p><p>就可以认为假设是不正确的。</p><p>0.05这个标准就是显著水平，当然选择多少作为显著水平也是主观的。</p><p>比如，我们猜奶茶的例子，如果取单侧P值，那么根据我们的计算，如果10次猜对9次：</p><h2 id="P-value-P-9-lt-X-lt-10-0-01-lt-0-05"><a href="#P-value-P-9-lt-X-lt-10-0-01-lt-0-05" class="headerlink" title="P-value=P(9&lt;=X&lt;=10)=0.01&lt;=0.05"></a>P-value=P(9&lt;=X&lt;=10)=0.01&lt;=0.05</h2><p><strong>检验统计量</strong>是用于假设检验计算的统计量。在零假设情况下，这项统计量服从一个给定的概率分布，而这在另一种假设下则不然。从而若检验统计量的值落在上述分布的临界值之外，则可认为前述零假设未必正确。统计学中，用于检验假设量是否正确的量。常用的检验统计量有t统计量，Z统计量等。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;Machine Learning notes&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;Hypo
-      
-    
-    </summary>
-    
-    
-      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
-    
-      <category term="数理统计" scheme="http://yoursite.com/categories/Machine-Learning/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
-    
-    
-      <category term="Hypothesis Testing" scheme="http://yoursite.com/tags/Hypothesis-Testing/"/>
-    
-  </entry>
   
   <entry>
     <title>Linear Regression for Classification</title>
@@ -79,6 +48,37 @@
   </entry>
   
   <entry>
+    <title>Hypothesis Testing</title>
+    <link href="http://yoursite.com/2020/03/04/2020-3-3-Hypothesis_Testing-2020/"/>
+    <id>http://yoursite.com/2020/03/04/2020-3-3-Hypothesis_Testing-2020/</id>
+    <published>2020-03-04T04:08:25.000Z</published>
+    <updated>2020-03-04T06:18:11.477Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="Hypothesis-Testing"><a href="#Hypothesis-Testing" class="headerlink" title="Hypothesis Testing"></a>Hypothesis Testing</h1><p>是推断统计的最后一步，是根据一定的假设条件由假设条件由样本推断总体的一种方法</p><p>首先提出你的假设</p><p>其实检验假设其实就是假设和检验两步，先提出假设，之后在验证假设时候合理</p><p>4、显著水平<br>总共猜10次，那么是出现7次猜对，可以认为有特殊能力，还是9次猜对之后我才能确认有特殊能力，这是一个较为主观的标准。</p><p>我们一般认为</p><p>P-value&lt;=0.05</p><p>就可以认为假设是不正确的。</p><p>0.05这个标准就是显著水平，当然选择多少作为显著水平也是主观的。</p><p>比如，我们猜奶茶的例子，如果取单侧P值，那么根据我们的计算，如果10次猜对9次：</p><h2 id="P-value-P-9-lt-X-lt-10-0-01-lt-0-05"><a href="#P-value-P-9-lt-X-lt-10-0-01-lt-0-05" class="headerlink" title="P-value=P(9&lt;=X&lt;=10)=0.01&lt;=0.05"></a>P-value=P(9&lt;=X&lt;=10)=0.01&lt;=0.05</h2><p><strong>检验统计量</strong>是用于假设检验计算的统计量。在零假设情况下，这项统计量服从一个给定的概率分布，而这在另一种假设下则不然。从而若检验统计量的值落在上述分布的临界值之外，则可认为前述零假设未必正确。统计学中，用于检验假设量是否正确的量。常用的检验统计量有t统计量，Z统计量等。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Machine Learning notes&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;Hypo
+      
+    
+    </summary>
+    
+    
+      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
+    
+    
+      <category term="Hypothesis Testing" scheme="http://yoursite.com/tags/Hypothesis-Testing/"/>
+    
+      <category term="数理统计" scheme="http://yoursite.com/tags/%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Classifition metrics</title>
     <link href="http://yoursite.com/2020/03/04/2020-3-3-classifition_metrics-2020/"/>
     <id>http://yoursite.com/2020/03/04/2020-3-3-classifition_metrics-2020/</id>
@@ -104,35 +104,6 @@
     
     
       <category term="Machin Learning metrics" scheme="http://yoursite.com/tags/Machin-Learning-metrics/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>损失函数（loss function）</title>
-    <link href="http://yoursite.com/2020/03/04/2020-3-3-cost_function-2020/"/>
-    <id>http://yoursite.com/2020/03/04/2020-3-3-cost_function-2020/</id>
-    <published>2020-03-04T04:08:25.000Z</published>
-    <updated>2020-03-04T05:58:37.791Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="损失函数（loss-function）"><a href="#损失函数（loss-function）" class="headerlink" title="损失函数（loss function）"></a>损失函数（loss function）</h1><p>损失函数（loss function）是用来估量你模型的预测值f(x)与真实值Y的不一致程度，它是一个非负实值函数,通常使用L(Y, f(x))来表示，损失函数越小，模型的鲁棒性就越好。损失函数是<strong>经验风险函数</strong>的核心部分，也是<strong>结构风险函数</strong>重要组成部分。模型的结构风险函数包括了经验风险项和正则项，通常可以表示成如下式子：</p><script type="math/tex; mode=display">\theta^* = \arg \min_\theta \frac{1}{N}{}\sum_{i=1}^{N} L(y_i, f(x_i; \theta)) + \lambda\  \Phi(\theta)</script><p>其中，前面的均值函数表示的是经验风险函数，L代表的是损失函数，后面的Φ是正则化项（regularizer）或者叫惩罚项（penalty term），它可以是L1，也可以是L2，或者其他的正则函数。整个式子表示的意思是<strong>找到使目标函数最小时的θθ值</strong>。下面主要列出几种常见的损失函数。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;Machine Learning notes&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;h1 id=&quot;损失函数
-      
-    
-    </summary>
-    
-    
-      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
-    
-    
-      <category term="matplotlib" scheme="http://yoursite.com/tags/matplotlib/"/>
     
   </entry>
   
@@ -166,13 +137,13 @@
   </entry>
   
   <entry>
-    <title>Ensemble Learning</title>
-    <link href="http://yoursite.com/2020/03/04/2020-3-3-enseemble_learning-2020/"/>
-    <id>http://yoursite.com/2020/03/04/2020-3-3-enseemble_learning-2020/</id>
+    <title>损失函数（loss function）</title>
+    <link href="http://yoursite.com/2020/03/04/2020-3-3-cost_function-2020/"/>
+    <id>http://yoursite.com/2020/03/04/2020-3-3-cost_function-2020/</id>
     <published>2020-03-04T04:08:25.000Z</published>
-    <updated>2020-03-04T05:57:36.779Z</updated>
+    <updated>2020-03-04T05:58:37.791Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="Ensemble-Learning"><a href="#Ensemble-Learning" class="headerlink" title="Ensemble Learning"></a>Ensemble Learning</h1><h2 id="集成学习"><a href="#集成学习" class="headerlink" title="集成学习"></a>集成学习</h2><h3 id="集成学习概述"><a href="#集成学习概述" class="headerlink" title="集成学习概述"></a>集成学习概述</h3><p>从下图，我们可以对集成学习的思想做一个概括。对于训练集数据，我们通过训练若干个个体学习器，通过一定的结合策略，就可以最终形成一个强学习器，以达到博采众长的目的</p><p>也就是说，集成学习有两个主要的问题需要解决，第一是如何得到若干个个体学习器，第二是如何选择一种结合策略，将这些个体学习器集合成一个强学习器</p><h3 id="集成学习之个体学习器"><a href="#集成学习之个体学习器" class="headerlink" title="集成学习之个体学习器"></a>集成学习之个体学习器</h3><p>上一节我们讲到，集成学习的第一个问题就是如何得到若干个个体学习器。这里我们有两种选择。</p><p>　　　　第一种就是所有的个体学习器都是一个种类的，或者说是同质的。比如都是决策树个体学习器，或者都是神经网络个体学习器。第二种是所有的个体学习器不全是一个种类的，或者说是异质的。比如我们有一个分类问题，对训练集采用支持向量机个体学习器，逻辑回归个体学习器和朴素贝叶斯个体学习器来学习，再通过某种结合策略来确定最终的分类强学习器。</p><p>　　　　目前来说，同质个体学习器的应用是最广泛的，一般我们常说的集成学习的方法都是指的同质个体学习器。而同质个体学习器使用最多的模型是CART决策树和神经网络。同质个体学习器按照个体学习器之间是否存在依赖关系可以分为两类，第一个是个体学习器之间存在强依赖关系，一系列个体学习器基本都需要串行生成，代表算法是boosting系列算法，第二个是个体学习器之间不存在强依赖关系，一系列个体学习器可以并行生成，代表算法是bagging和随机森林（Random Forest）系列算法。下面就分别对这两类算法做一个概括总结。</p><h3 id="boostsing集成学习"><a href="#boostsing集成学习" class="headerlink" title="boostsing集成学习"></a>boostsing集成学习</h3><p>　从图中可以看出，Boosting算法的工作机制是首先从训练集用初始权重训练出一个弱学习器1，根据弱学习的学习误差率表现来更新训练样本的权重，使得之前弱学习器1学习误差率高的训练样本点的权重变高，使得这些误差率高的点在后面的弱学习器2中得到更多的重视。然后基于调整权重后的训练集来训练弱学习器2.，如此重复进行，直到弱学习器数达到事先指定的数目T，最终将这T个弱学习器通过集合策略进行整合，得到最终的强学习器。</p><p>Boosting系列算法里最著名算法主要有AdaBoost算法和提升树(boosting tree)系列算法。提升树系列算法里面应用最广泛的是梯度提升树(Gradient Boosting Tree)</p><p>这里对Adaboost算法的优缺点做一个总结。</p><p>Adaboost的主要优点有：</p><p>1）Adaboost作为分类器时，分类精度很高</p><p>2）在Adaboost的框架下，可以使用各种回归分类模型来构建弱学习器，非常灵活。</p><p>3）作为简单的二元分类器时，构造简单，结果可理解。</p><p>4）不容易发生过拟合</p><p>Adaboost的主要缺点有：</p><p>1）对异常样本敏感，异常样本在迭代中可能会获得较高的权重，影响最终的强学习器的预测准确性。</p><p>由于GBDT的卓越性能，只要是研究机器学习都应该掌握这个算法，包括背后的原理和应用调参方法。目前GBDT的算法比较好的库是xgboost。当然scikit-learn也可以。</p><p>最后总结下GBDT的优缺点。</p><p>GBDT主要的优点有：</p><p>1) 可以灵活处理各种类型的数据，包括连续值和离散值。</p><p>2) 在相对少的调参时间情况下，预测的准确率也可以比较高。这个是相对SVM来说的。</p><p>3）使用一些健壮的损失函数，对异常值的鲁棒性非常强。比如 Huber损失函数和Quantile损失函数。</p><p>GBDT的主要缺点有：</p><p>1)由于弱学习器之间存在依赖关系，难以并行训练数据。不过可以通过自采样的SGBT来达到部分并行。</p><h3 id="集成学习之bagging"><a href="#集成学习之bagging" class="headerlink" title="集成学习之bagging"></a>集成学习之bagging</h3><p>Bagging的算法原理和 boosting不同，它的弱学习器之间没有依赖关系，可以并行生成，我们可以用一张图做一个概括如下：从上图可以看出，bagging的个体弱学习器的训练集是通过随机采样得到的。通过T次的随机采样，我们就可以得到T个采样集，对于这T个采样集，我们可以分别独立的训练出T个弱学习器，再对这T个弱学习器通过集合策略来得到最终的强学习器。</p><p>　　　　对于这里的随机采样有必要做进一步的介绍，这里一般采用的是自助采样法（Bootstrap sampling）,即对于m个样本的原始训练集，我们每次先随机采集一个样本放入采样集，接着把该样本放回，也就是说下次采样时该样本仍有可能被采集到，这样采集m次，最终可以得到m个样本的采样集，由于是随机采样，这样每次的采样集是和原始训练集不同的，和其他采样集也是不同的，这样得到多个不同的弱学习器。</p><p>　　　　随机森林是bagging的一个特化进阶版，所谓的特化是因为随机森林的弱学习器都是决策树。所谓的进阶是随机森林在bagging的样本随机采样基础上，又加上了特征的随机选择，其基本思想没有脱离bagging的范畴。bagging和随机森林算法的原理在后面的文章中会专门来讲。</p><h3 id="集成学习之结合策略"><a href="#集成学习之结合策略" class="headerlink" title="集成学习之结合策略"></a>集成学习之结合策略</h3><ol><li><p>平均法 </p></li><li><p>投票法 （投票法也可以设置权重）</p></li><li><p>学习法 （代表的方法是stacking）当使用stacking的结合策略时， 我们不是对弱学习器的结果做简单的逻辑处理，而是再加上一层学习器，也就是说，我们将训练集弱学习器的学习结果作为输入，将训练集的输出作为输出，重新训练一个学习器来得到最终结果。</p><p>　　　　在这种情况下，我们将弱学习器称为初级学习器，将用于结合的学习器称为次级学习器。对于测试集，我们首先用初级学习器预测一次，得到次级学习器的输入样本，再用次级学习器预测一次，得到最终的预测结果。</p></li></ol>]]></content>
+    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="损失函数（loss-function）"><a href="#损失函数（loss-function）" class="headerlink" title="损失函数（loss function）"></a>损失函数（loss function）</h1><p>损失函数（loss function）是用来估量你模型的预测值f(x)与真实值Y的不一致程度，它是一个非负实值函数,通常使用L(Y, f(x))来表示，损失函数越小，模型的鲁棒性就越好。损失函数是<strong>经验风险函数</strong>的核心部分，也是<strong>结构风险函数</strong>重要组成部分。模型的结构风险函数包括了经验风险项和正则项，通常可以表示成如下式子：</p><script type="math/tex; mode=display">\theta^* = \arg \min_\theta \frac{1}{N}{}\sum_{i=1}^{N} L(y_i, f(x_i; \theta)) + \lambda\  \Phi(\theta)</script><p>其中，前面的均值函数表示的是经验风险函数，L代表的是损失函数，后面的Φ是正则化项（regularizer）或者叫惩罚项（penalty term），它可以是L1，也可以是L2，或者其他的正则函数。整个式子表示的意思是<strong>找到使目标函数最小时的θθ值</strong>。下面主要列出几种常见的损失函数。</p>]]></content>
     
     <summary type="html">
     
@@ -181,7 +152,7 @@
         &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;Machine Learning notes&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&quot;Ense
+&lt;h1 id=&quot;损失函数
       
     
     </summary>
@@ -190,7 +161,7 @@
       <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
     
     
-      <category term="Ensemble Learning" scheme="http://yoursite.com/tags/Ensemble-Learning/"/>
+      <category term="matplotlib" scheme="http://yoursite.com/tags/matplotlib/"/>
     
   </entry>
   
@@ -228,13 +199,13 @@
   </entry>
   
   <entry>
-    <title>如何处理多分类问题</title>
-    <link href="http://yoursite.com/2020/03/04/2020-3-3-mult_classifition-2020/"/>
-    <id>http://yoursite.com/2020/03/04/2020-3-3-mult_classifition-2020/</id>
+    <title>Ensemble Learning</title>
+    <link href="http://yoursite.com/2020/03/04/2020-3-3-enseemble_learning-2020/"/>
+    <id>http://yoursite.com/2020/03/04/2020-3-3-enseemble_learning-2020/</id>
     <published>2020-03-04T04:08:25.000Z</published>
-    <updated>2020-03-04T06:02:29.794Z</updated>
+    <updated>2020-03-04T05:57:36.779Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="如何处理多分类问题"><a href="#如何处理多分类问题" class="headerlink" title="如何处理多分类问题"></a>如何处理多分类问题</h1><h2 id="有关多分类问题有两种方法"><a href="#有关多分类问题有两种方法" class="headerlink" title="有关多分类问题有两种方法"></a>有关多分类问题有两种方法</h2><p>二分类器只能区分两个类，而多类分类器（也被叫做多项式分类器）可以区分多于两个类。</p><p>一些算法（比如随机森林分类器或者朴素贝叶斯分类器）可以直接处理多类分类问题。其他一些算法（比如 SVM 分类器或者线性分类器）则是严格的二分类器。然后，有许多策略可以让你用二分类器去执行多类分类。</p><p>举例子，创建一个可以将图片分成 10 类（从 0 到 9）的系统的一个方法是：训练10个二分类器，每一个对应一个数字（探测器 0，探测器 1，探测器 2，以此类推）。然后当你想对某张图片进行分类的时候，让每一个分类器对这个图片进行分类，选出决策分数最高的那个分类器。这叫做“一对所有”（OvA）策略（也被叫做“一对其他”）。</p><p>另一个策略是对每一对数字都训练一个二分类器：一个分类器用来处理数字 0 和数字 1，一个用来处理数字 0 和数字 2，一个用来处理数字 1 和 2，以此类推。这叫做“一对一”（OvO）策略。如果有 N 个类。你需要训练<code>N*(N-1)/2</code>个分类器。对于 MNIST 问题，需要训练 45 个二分类器！当你想对一张图片进行分类，你必须将这张图片跑在全部45个二分类器上。然后看哪个类胜出。OvO 策略的主要优点是：每个分类器只需要在训练集的部分数据上面进行训练。这部分数据是它所需要区分的那两个类对应的数据。</p><p>一些算法（比如 SVM 分类器）在训练集的大小上很难扩展，所以对于这些算法，OvO 是比较好的，因为它可以在小的数据集上面可以更多地训练，较之于巨大的数据集而言。但是，对于大部分的二分类器来说，OvA 是更好的选择。</p><p>Scikit-Learn 可以探测出你想使用一个二分类器去完成多分类的任务，它会自动地执行 OvA（除了 SVM 分类器，它使用 OvO）。让我们试一下<code>SGDClassifier</code>.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.fit(X_train, y_train) <span class="comment"># y_train, not y_train_5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.predict([some_digit])</span><br><span class="line">array([ <span class="number">5.</span>])</span><br></pre></td></tr></table></figure><p>很容易。上面的代码在训练集上训练了一个<code>SGDClassifier</code>。这个分类器处理原始的目标class，从 0 到 9（<code>y_train</code>），而不是仅仅探测是否为 5 （<code>y_train_5</code>）。然后它做出一个判断（在这个案例下只有一个正确的数字）。在幕后，Scikit-Learn 实际上训练了 10 个二分类器，每个分类器都产到一张图片的决策数值，选择数值最高的那个类。</p><p>为了证明这是真实的，你可以调用<code>decision_function()</code>方法。不是返回每个样例的一个数值，而是返回 10 个数值，一个数值对应于一个类。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_digit_scores = sgd_clf.decision_function([some_digit])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_digit_scores</span><br><span class="line">array([[<span class="number">-311402.62954431</span>, <span class="number">-363517.28355739</span>, <span class="number">-446449.5306454</span> ,</span><br><span class="line">        <span class="number">-183226.61023518</span>, <span class="number">-414337.15339485</span>, <span class="number">161855.74572176</span>,</span><br><span class="line">        <span class="number">-452576.39616343</span>, <span class="number">-471957.14962573</span>, <span class="number">-518542.33997148</span>,</span><br><span class="line">        <span class="number">-536774.63961222</span>]])</span><br></pre></td></tr></table></figure><p>最高数值是对应于类别 5 ：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.argmax(some_digit_scores)</span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.classes_</span><br><span class="line">array([ <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">2.</span>, <span class="number">3.</span>, <span class="number">4.</span>, <span class="number">5.</span>, <span class="number">6.</span>, <span class="number">7.</span>, <span class="number">8.</span>, <span class="number">9.</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.classes_[<span class="number">5</span>]</span><br><span class="line"><span class="number">5.0</span></span><br></pre></td></tr></table></figure><blockquote><p>一个分类器被训练好了之后，它会保存目标类别列表到它的属性<code>classes_</code> 中去，按照值排序。在本例子当中，在<code>classes_</code> 数组当中的每个类的索引方便地匹配了类本身，比如，索引为 5 的类恰好是类别 5 本身。但通常不会这么幸运。</p></blockquote><p>如果你想强制 Scikit-Learn 使用 OvO 策略或者 OvA 策略，你可以使用<code>OneVsOneClassifier</code>类或者<code>OneVsRestClassifier</code>类。创建一个样例，传递一个二分类器给它的构造函数。举例子，下面的代码会创建一个多类分类器，使用 OvO 策略，基于<code>SGDClassifier</code>。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.multiclass <span class="keyword">import</span> OneVsOneClassifier</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ovo_clf = OneVsOneClassifier(SGDClassifier(random_state=<span class="number">42</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ovo_clf.fit(X_train, y_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ovo_clf.predict([some_digit])</span><br><span class="line">array([ <span class="number">5.</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>len(ovo_clf.estimators_)</span><br><span class="line"><span class="number">45</span></span><br></pre></td></tr></table></figure><p>训练一个<code>RandomForestClassifier</code>同样简单：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>forest_clf.fit(X_train, y_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>forest_clf.predict([some_digit])</span><br><span class="line">array([ <span class="number">5.</span>])</span><br></pre></td></tr></table></figure><p>这次 Scikit-Learn 没有必要去运行 OvO 或者 OvA，因为随机森林分类器能够直接将一个样例分到多个类别。你可以调用<code>predict_proba()</code>，得到样例对应的类别的概率值的列表：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>forest_clf.predict_proba([some_digit])</span><br><span class="line">array([[ <span class="number">0.1</span>, <span class="number">0.</span> , <span class="number">0.</span> , <span class="number">0.1</span>, <span class="number">0.</span> , <span class="number">0.8</span>, <span class="number">0.</span> , <span class="number">0.</span> , <span class="number">0.</span> , <span class="number">0.</span> ]])</span><br></pre></td></tr></table></figure><p>你可以看到这个分类器相当确信它的预测：在数组的索引 5 上的 0.8，意味着这个模型以 80% 的概率估算这张图片代表数字 5。它也认为这个图片可能是数字 0 或者数字 3，分别都是 10% 的几率。</p><p>现在当然你想评估这些分类器。像平常一样，你想使用交叉验证。让我们用<code>cross_val_score()</code>来评估<code>SGDClassifier</code>的精度。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>cross_val_score(sgd_clf, X_train, y_train, cv=<span class="number">3</span>, scoring=<span class="string">"accuracy"</span>)</span><br><span class="line">array([ <span class="number">0.84063187</span>, <span class="number">0.84899245</span>, <span class="number">0.86652998</span>])</span><br></pre></td></tr></table></figure><p>在所有测试折（test fold）上，它有 84% 的精度。如果你是用一个随机的分类器，你将会得到 10% 的正确率。所以这不是一个坏的分数，但是你可以做的更好。举例子，简单将输入正则化，将会提高精度到 90% 以上。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scaler = StandardScaler()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X_train_scaled = scaler.fit_transform(X_train.astype(np.float64))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>cross_val_score(sgd_clf, X_train_scaled, y_train, cv=<span class="number">3</span>, scoring=<span class="string">"accuracy"</span>)</span><br><span class="line">array([ <span class="number">0.91011798</span>, <span class="number">0.90874544</span>, <span class="number">0.906636</span> ])</span><br></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="Ensemble-Learning"><a href="#Ensemble-Learning" class="headerlink" title="Ensemble Learning"></a>Ensemble Learning</h1><h2 id="集成学习"><a href="#集成学习" class="headerlink" title="集成学习"></a>集成学习</h2><h3 id="集成学习概述"><a href="#集成学习概述" class="headerlink" title="集成学习概述"></a>集成学习概述</h3><p>从下图，我们可以对集成学习的思想做一个概括。对于训练集数据，我们通过训练若干个个体学习器，通过一定的结合策略，就可以最终形成一个强学习器，以达到博采众长的目的</p><p>也就是说，集成学习有两个主要的问题需要解决，第一是如何得到若干个个体学习器，第二是如何选择一种结合策略，将这些个体学习器集合成一个强学习器</p><h3 id="集成学习之个体学习器"><a href="#集成学习之个体学习器" class="headerlink" title="集成学习之个体学习器"></a>集成学习之个体学习器</h3><p>上一节我们讲到，集成学习的第一个问题就是如何得到若干个个体学习器。这里我们有两种选择。</p><p>　　　　第一种就是所有的个体学习器都是一个种类的，或者说是同质的。比如都是决策树个体学习器，或者都是神经网络个体学习器。第二种是所有的个体学习器不全是一个种类的，或者说是异质的。比如我们有一个分类问题，对训练集采用支持向量机个体学习器，逻辑回归个体学习器和朴素贝叶斯个体学习器来学习，再通过某种结合策略来确定最终的分类强学习器。</p><p>　　　　目前来说，同质个体学习器的应用是最广泛的，一般我们常说的集成学习的方法都是指的同质个体学习器。而同质个体学习器使用最多的模型是CART决策树和神经网络。同质个体学习器按照个体学习器之间是否存在依赖关系可以分为两类，第一个是个体学习器之间存在强依赖关系，一系列个体学习器基本都需要串行生成，代表算法是boosting系列算法，第二个是个体学习器之间不存在强依赖关系，一系列个体学习器可以并行生成，代表算法是bagging和随机森林（Random Forest）系列算法。下面就分别对这两类算法做一个概括总结。</p><h3 id="boostsing集成学习"><a href="#boostsing集成学习" class="headerlink" title="boostsing集成学习"></a>boostsing集成学习</h3><p>　从图中可以看出，Boosting算法的工作机制是首先从训练集用初始权重训练出一个弱学习器1，根据弱学习的学习误差率表现来更新训练样本的权重，使得之前弱学习器1学习误差率高的训练样本点的权重变高，使得这些误差率高的点在后面的弱学习器2中得到更多的重视。然后基于调整权重后的训练集来训练弱学习器2.，如此重复进行，直到弱学习器数达到事先指定的数目T，最终将这T个弱学习器通过集合策略进行整合，得到最终的强学习器。</p><p>Boosting系列算法里最著名算法主要有AdaBoost算法和提升树(boosting tree)系列算法。提升树系列算法里面应用最广泛的是梯度提升树(Gradient Boosting Tree)</p><p>这里对Adaboost算法的优缺点做一个总结。</p><p>Adaboost的主要优点有：</p><p>1）Adaboost作为分类器时，分类精度很高</p><p>2）在Adaboost的框架下，可以使用各种回归分类模型来构建弱学习器，非常灵活。</p><p>3）作为简单的二元分类器时，构造简单，结果可理解。</p><p>4）不容易发生过拟合</p><p>Adaboost的主要缺点有：</p><p>1）对异常样本敏感，异常样本在迭代中可能会获得较高的权重，影响最终的强学习器的预测准确性。</p><p>由于GBDT的卓越性能，只要是研究机器学习都应该掌握这个算法，包括背后的原理和应用调参方法。目前GBDT的算法比较好的库是xgboost。当然scikit-learn也可以。</p><p>最后总结下GBDT的优缺点。</p><p>GBDT主要的优点有：</p><p>1) 可以灵活处理各种类型的数据，包括连续值和离散值。</p><p>2) 在相对少的调参时间情况下，预测的准确率也可以比较高。这个是相对SVM来说的。</p><p>3）使用一些健壮的损失函数，对异常值的鲁棒性非常强。比如 Huber损失函数和Quantile损失函数。</p><p>GBDT的主要缺点有：</p><p>1)由于弱学习器之间存在依赖关系，难以并行训练数据。不过可以通过自采样的SGBT来达到部分并行。</p><h3 id="集成学习之bagging"><a href="#集成学习之bagging" class="headerlink" title="集成学习之bagging"></a>集成学习之bagging</h3><p>Bagging的算法原理和 boosting不同，它的弱学习器之间没有依赖关系，可以并行生成，我们可以用一张图做一个概括如下：从上图可以看出，bagging的个体弱学习器的训练集是通过随机采样得到的。通过T次的随机采样，我们就可以得到T个采样集，对于这T个采样集，我们可以分别独立的训练出T个弱学习器，再对这T个弱学习器通过集合策略来得到最终的强学习器。</p><p>　　　　对于这里的随机采样有必要做进一步的介绍，这里一般采用的是自助采样法（Bootstrap sampling）,即对于m个样本的原始训练集，我们每次先随机采集一个样本放入采样集，接着把该样本放回，也就是说下次采样时该样本仍有可能被采集到，这样采集m次，最终可以得到m个样本的采样集，由于是随机采样，这样每次的采样集是和原始训练集不同的，和其他采样集也是不同的，这样得到多个不同的弱学习器。</p><p>　　　　随机森林是bagging的一个特化进阶版，所谓的特化是因为随机森林的弱学习器都是决策树。所谓的进阶是随机森林在bagging的样本随机采样基础上，又加上了特征的随机选择，其基本思想没有脱离bagging的范畴。bagging和随机森林算法的原理在后面的文章中会专门来讲。</p><h3 id="集成学习之结合策略"><a href="#集成学习之结合策略" class="headerlink" title="集成学习之结合策略"></a>集成学习之结合策略</h3><ol><li><p>平均法 </p></li><li><p>投票法 （投票法也可以设置权重）</p></li><li><p>学习法 （代表的方法是stacking）当使用stacking的结合策略时， 我们不是对弱学习器的结果做简单的逻辑处理，而是再加上一层学习器，也就是说，我们将训练集弱学习器的学习结果作为输入，将训练集的输出作为输出，重新训练一个学习器来得到最终结果。</p><p>　　　　在这种情况下，我们将弱学习器称为初级学习器，将用于结合的学习器称为次级学习器。对于测试集，我们首先用初级学习器预测一次，得到次级学习器的输入样本，再用次级学习器预测一次，得到最终的预测结果。</p></li></ol>]]></content>
     
     <summary type="html">
     
@@ -243,7 +214,7 @@
         &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
 &lt;p&gt;Machine Learning notes&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;h1 id=&quot;如何处理
+&lt;h1 id=&quot;Ense
       
     
     </summary>
@@ -252,9 +223,7 @@
       <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
     
     
-      <category term="scikit-learn" scheme="http://yoursite.com/tags/scikit-learn/"/>
-    
-      <category term="multi-classifition" scheme="http://yoursite.com/tags/multi-classifition/"/>
+      <category term="Ensemble Learning" scheme="http://yoursite.com/tags/Ensemble-Learning/"/>
     
   </entry>
   
@@ -286,6 +255,37 @@
       <category term="matplotlib" scheme="http://yoursite.com/tags/matplotlib/"/>
     
       <category term="pandas" scheme="http://yoursite.com/tags/pandas/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>如何处理多分类问题</title>
+    <link href="http://yoursite.com/2020/03/04/2020-3-3-mult_classifition-2020/"/>
+    <id>http://yoursite.com/2020/03/04/2020-3-3-mult_classifition-2020/</id>
+    <published>2020-03-04T04:08:25.000Z</published>
+    <updated>2020-03-04T06:02:29.794Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="如何处理多分类问题"><a href="#如何处理多分类问题" class="headerlink" title="如何处理多分类问题"></a>如何处理多分类问题</h1><h2 id="有关多分类问题有两种方法"><a href="#有关多分类问题有两种方法" class="headerlink" title="有关多分类问题有两种方法"></a>有关多分类问题有两种方法</h2><p>二分类器只能区分两个类，而多类分类器（也被叫做多项式分类器）可以区分多于两个类。</p><p>一些算法（比如随机森林分类器或者朴素贝叶斯分类器）可以直接处理多类分类问题。其他一些算法（比如 SVM 分类器或者线性分类器）则是严格的二分类器。然后，有许多策略可以让你用二分类器去执行多类分类。</p><p>举例子，创建一个可以将图片分成 10 类（从 0 到 9）的系统的一个方法是：训练10个二分类器，每一个对应一个数字（探测器 0，探测器 1，探测器 2，以此类推）。然后当你想对某张图片进行分类的时候，让每一个分类器对这个图片进行分类，选出决策分数最高的那个分类器。这叫做“一对所有”（OvA）策略（也被叫做“一对其他”）。</p><p>另一个策略是对每一对数字都训练一个二分类器：一个分类器用来处理数字 0 和数字 1，一个用来处理数字 0 和数字 2，一个用来处理数字 1 和 2，以此类推。这叫做“一对一”（OvO）策略。如果有 N 个类。你需要训练<code>N*(N-1)/2</code>个分类器。对于 MNIST 问题，需要训练 45 个二分类器！当你想对一张图片进行分类，你必须将这张图片跑在全部45个二分类器上。然后看哪个类胜出。OvO 策略的主要优点是：每个分类器只需要在训练集的部分数据上面进行训练。这部分数据是它所需要区分的那两个类对应的数据。</p><p>一些算法（比如 SVM 分类器）在训练集的大小上很难扩展，所以对于这些算法，OvO 是比较好的，因为它可以在小的数据集上面可以更多地训练，较之于巨大的数据集而言。但是，对于大部分的二分类器来说，OvA 是更好的选择。</p><p>Scikit-Learn 可以探测出你想使用一个二分类器去完成多分类的任务，它会自动地执行 OvA（除了 SVM 分类器，它使用 OvO）。让我们试一下<code>SGDClassifier</code>.</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.fit(X_train, y_train) <span class="comment"># y_train, not y_train_5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.predict([some_digit])</span><br><span class="line">array([ <span class="number">5.</span>])</span><br></pre></td></tr></table></figure><p>很容易。上面的代码在训练集上训练了一个<code>SGDClassifier</code>。这个分类器处理原始的目标class，从 0 到 9（<code>y_train</code>），而不是仅仅探测是否为 5 （<code>y_train_5</code>）。然后它做出一个判断（在这个案例下只有一个正确的数字）。在幕后，Scikit-Learn 实际上训练了 10 个二分类器，每个分类器都产到一张图片的决策数值，选择数值最高的那个类。</p><p>为了证明这是真实的，你可以调用<code>decision_function()</code>方法。不是返回每个样例的一个数值，而是返回 10 个数值，一个数值对应于一个类。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_digit_scores = sgd_clf.decision_function([some_digit])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_digit_scores</span><br><span class="line">array([[<span class="number">-311402.62954431</span>, <span class="number">-363517.28355739</span>, <span class="number">-446449.5306454</span> ,</span><br><span class="line">        <span class="number">-183226.61023518</span>, <span class="number">-414337.15339485</span>, <span class="number">161855.74572176</span>,</span><br><span class="line">        <span class="number">-452576.39616343</span>, <span class="number">-471957.14962573</span>, <span class="number">-518542.33997148</span>,</span><br><span class="line">        <span class="number">-536774.63961222</span>]])</span><br></pre></td></tr></table></figure><p>最高数值是对应于类别 5 ：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.argmax(some_digit_scores)</span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.classes_</span><br><span class="line">array([ <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">2.</span>, <span class="number">3.</span>, <span class="number">4.</span>, <span class="number">5.</span>, <span class="number">6.</span>, <span class="number">7.</span>, <span class="number">8.</span>, <span class="number">9.</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.classes_[<span class="number">5</span>]</span><br><span class="line"><span class="number">5.0</span></span><br></pre></td></tr></table></figure><blockquote><p>一个分类器被训练好了之后，它会保存目标类别列表到它的属性<code>classes_</code> 中去，按照值排序。在本例子当中，在<code>classes_</code> 数组当中的每个类的索引方便地匹配了类本身，比如，索引为 5 的类恰好是类别 5 本身。但通常不会这么幸运。</p></blockquote><p>如果你想强制 Scikit-Learn 使用 OvO 策略或者 OvA 策略，你可以使用<code>OneVsOneClassifier</code>类或者<code>OneVsRestClassifier</code>类。创建一个样例，传递一个二分类器给它的构造函数。举例子，下面的代码会创建一个多类分类器，使用 OvO 策略，基于<code>SGDClassifier</code>。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.multiclass <span class="keyword">import</span> OneVsOneClassifier</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ovo_clf = OneVsOneClassifier(SGDClassifier(random_state=<span class="number">42</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ovo_clf.fit(X_train, y_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ovo_clf.predict([some_digit])</span><br><span class="line">array([ <span class="number">5.</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>len(ovo_clf.estimators_)</span><br><span class="line"><span class="number">45</span></span><br></pre></td></tr></table></figure><p>训练一个<code>RandomForestClassifier</code>同样简单：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>forest_clf.fit(X_train, y_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>forest_clf.predict([some_digit])</span><br><span class="line">array([ <span class="number">5.</span>])</span><br></pre></td></tr></table></figure><p>这次 Scikit-Learn 没有必要去运行 OvO 或者 OvA，因为随机森林分类器能够直接将一个样例分到多个类别。你可以调用<code>predict_proba()</code>，得到样例对应的类别的概率值的列表：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>forest_clf.predict_proba([some_digit])</span><br><span class="line">array([[ <span class="number">0.1</span>, <span class="number">0.</span> , <span class="number">0.</span> , <span class="number">0.1</span>, <span class="number">0.</span> , <span class="number">0.8</span>, <span class="number">0.</span> , <span class="number">0.</span> , <span class="number">0.</span> , <span class="number">0.</span> ]])</span><br></pre></td></tr></table></figure><p>你可以看到这个分类器相当确信它的预测：在数组的索引 5 上的 0.8，意味着这个模型以 80% 的概率估算这张图片代表数字 5。它也认为这个图片可能是数字 0 或者数字 3，分别都是 10% 的几率。</p><p>现在当然你想评估这些分类器。像平常一样，你想使用交叉验证。让我们用<code>cross_val_score()</code>来评估<code>SGDClassifier</code>的精度。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>cross_val_score(sgd_clf, X_train, y_train, cv=<span class="number">3</span>, scoring=<span class="string">"accuracy"</span>)</span><br><span class="line">array([ <span class="number">0.84063187</span>, <span class="number">0.84899245</span>, <span class="number">0.86652998</span>])</span><br></pre></td></tr></table></figure><p>在所有测试折（test fold）上，它有 84% 的精度。如果你是用一个随机的分类器，你将会得到 10% 的正确率。所以这不是一个坏的分数，但是你可以做的更好。举例子，简单将输入正则化，将会提高精度到 90% 以上。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scaler = StandardScaler()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X_train_scaled = scaler.fit_transform(X_train.astype(np.float64))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>cross_val_score(sgd_clf, X_train_scaled, y_train, cv=<span class="number">3</span>, scoring=<span class="string">"accuracy"</span>)</span><br><span class="line">array([ <span class="number">0.91011798</span>, <span class="number">0.90874544</span>, <span class="number">0.906636</span> ])</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Hey&quot;&gt;&lt;a href=&quot;#Hey&quot; class=&quot;headerlink&quot; title=&quot;Hey&quot;&gt;&lt;/a&gt;Hey&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Machine Learning notes&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;如何处理
+      
+    
+    </summary>
+    
+    
+      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
+    
+    
+      <category term="scikit-learn" scheme="http://yoursite.com/tags/scikit-learn/"/>
+    
+      <category term="multi-classifition" scheme="http://yoursite.com/tags/multi-classifition/"/>
     
   </entry>
   
@@ -358,7 +358,7 @@
     <link href="http://yoursite.com/2020/03/04/2020-3-3-spare_matrix-2020/"/>
     <id>http://yoursite.com/2020/03/04/2020-3-3-spare_matrix-2020/</id>
     <published>2020-03-04T04:08:25.000Z</published>
-    <updated>2020-03-04T06:03:08.267Z</updated>
+    <updated>2020-03-04T06:17:55.040Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote><p>Machine Learning notes</p></blockquote><h1 id="sklearn稀疏矩阵"><a href="#sklearn稀疏矩阵" class="headerlink" title="sklearn稀疏矩阵"></a>sklearn稀疏矩阵</h1><h3 id="lil-matrix-使用两个列表储存非0元素，data保存每行中的非零元素-rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。"><a href="#lil-matrix-使用两个列表储存非0元素，data保存每行中的非零元素-rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。" class="headerlink" title="lil_matrix 使用两个列表储存非0元素，data保存每行中的非零元素,rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。"></a>lil_matrix 使用两个列表储存非0元素，data保存每行中的非零元素,rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.sparse <span class="keyword">import</span> lil_matrix</span><br><span class="line">l = lil_matrix((<span class="number">6</span>,<span class="number">5</span>))</span><br><span class="line">l[<span class="number">2</span>,<span class="number">3</span>] = <span class="number">1</span></span><br><span class="line">l[<span class="number">3</span>,<span class="number">4</span>] = <span class="number">2</span></span><br><span class="line">l[<span class="number">3</span>,<span class="number">2</span>] = <span class="number">3</span></span><br><span class="line">print(l.toarray())</span><br><span class="line">[[ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">1.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">3.</span>  <span class="number">0.</span>  <span class="number">2.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> l.data</span><br><span class="line">[[] [] [<span class="number">1.0</span>] [<span class="number">3.0</span>, <span class="number">2.0</span>] [] []]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> l.rows</span><br><span class="line">[[] [] [<span class="number">3</span>] [<span class="number">2</span>, <span class="number">4</span>] [] []]</span><br></pre></td></tr></table></figure><h3 id="dok-matrix和lil-matrix适用的场景是逐渐添加矩阵的元素。doc-matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的元祖，value是记录元素的具体值。"><a href="#dok-matrix和lil-matrix适用的场景是逐渐添加矩阵的元素。doc-matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的元祖，value是记录元素的具体值。" class="headerlink" title="dok_matrix和lil_matrix适用的场景是逐渐添加矩阵的元素。doc_matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的元祖，value是记录元素的具体值。"></a>dok_matrix和lil_matrix适用的场景是逐渐添加矩阵的元素。doc_matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的<a href="https://www.baidu.com/s?wd=%E5%85%83%E7%A5%96&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">元祖</a>，value是记录元素的具体值。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy.sparse <span class="keyword">import</span> dok_matrix</span><br><span class="line">S = dok_matrix((<span class="number">5</span>,<span class="number">5</span>), dtype=np.float32)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        S[i,j] = i + j</span><br><span class="line"><span class="comment"># 返回的是非零元素的row_index,column_index</span></span><br><span class="line">S.nonzero()</span><br><span class="line">print(S.toarray())</span><br></pre></td></tr></table></figure>]]></content>
     
@@ -375,7 +375,7 @@
     </summary>
     
     
-      <category term="Machine Learnin" scheme="http://yoursite.com/categories/Machine-Learnin/"/>
+      <category term="Machine Learning" scheme="http://yoursite.com/categories/Machine-Learning/"/>
     
     
       <category term="scipy" scheme="http://yoursite.com/tags/scipy/"/>
