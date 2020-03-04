@@ -304,7 +304,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:07:31" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:15:40" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -620,79 +620,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-cross_validation-2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="LelandYan">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LelandYan">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/04/2020-3-3-cross_validation-2020/" class="post-title-link" itemprop="url">Cross Validation 详解</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:05:07" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="Cross-Validation-详解"><a href="#Cross-Validation-详解" class="headerlink" title="Cross Validation 详解"></a>Cross Validation 详解</h1><p><img src="https://github.com/LelandYan/lelandyan.github.io/raw/master/img/cross_validation.png" alt="Image text"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line">knn_clf = KNeighborsClassifier()</span><br><span class="line"><span class="comment"># cv参数为交叉时候分成几份（k-folds）</span></span><br><span class="line">scores = cross_val_score(knn_clf,x_train,y_train,cv=<span class="number">10</span>)</span><br><span class="line">scores = np.mean(scores)</span><br></pre></td></tr></table></figure>
-<h2 id="交叉验证的目的就是找到最好的超参数所以传入的数据只是train的数据"><a href="#交叉验证的目的就是找到最好的超参数所以传入的数据只是train的数据" class="headerlink" title="交叉验证的目的就是找到最好的超参数所以传入的数据只是train的数据"></a>交叉验证的目的就是找到最好的超参数所以传入的数据只是train的数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line"><span class="comment"># 事实上网格搜受已经使用了交叉验证了</span></span><br><span class="line">para,_grid = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">'weights'</span>:[<span class="string">'uniform'</span>],</span><br><span class="line">        <span class="string">'n_neighbors'</span>:[i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>)]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">'weights'</span>:[<span class="string">'distance'</span>],</span><br><span class="line">        <span class="string">'n_neighbors'</span>:[i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>)],</span><br><span class="line">        <span class="string">'p'</span>:[i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">6</span>)]</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"><span class="comment"># n_jobs表示的处理的计算的核数,verbose可以在运行的程序的时候，可以显示信息</span></span><br><span class="line">knn_clf = KneighborsClassifier()</span><br><span class="line">grid_search = GridSearchCV(knn_clf,param_grid,n_jobs=<span class="number">-1</span>，verbose=<span class="number">2</span>)</span><br><span class="line">grid_search.fit(X_train,y_train)</span><br><span class="line"><span class="comment"># 获取训练集的最好结果</span></span><br><span class="line">grid_search.best_score_</span><br><span class="line"><span class="comment"># 获取训练集的最好超参数</span></span><br><span class="line">grid_search.best_params_</span><br><span class="line"><span class="comment"># 获得最好的分类器</span></span><br><span class="line">grid_search.best_estimator_</span><br></pre></td></tr></table></figure>
-<h3 id="留一法-LOO-CV-虽然准确，但是计算量巨大"><a href="#留一法-LOO-CV-虽然准确，但是计算量巨大" class="headerlink" title="留一法(LOO-CV) 虽然准确，但是计算量巨大"></a>留一法(LOO-CV) 虽然准确，但是计算量巨大</h3>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-enseemble_learning-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -798,7 +725,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-machine_learning_procedure-2020/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-cross_validation-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -812,7 +739,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/04/2020-3-3-machine_learning_procedure-2020/" class="post-title-link" itemprop="url">Machine Learning Procedure</a>
+            <a href="/2020/03/04/2020-3-3-cross_validation-2020/" class="post-title-link" itemprop="url">Cross Validation 详解</a>
         </h1>
 
         <div class="post-meta">
@@ -823,7 +750,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：13:59:29" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:05:07" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -849,23 +776,10 @@
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes</p>
 </blockquote>
-<h1 id="Machine-Learning-Procedure"><a href="#Machine-Learning-Procedure" class="headerlink" title="Machine Learning Procedure"></a>Machine Learning Procedure</h1><h2 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
-<h2 id="数据预览"><a href="#数据预览" class="headerlink" title="数据预览"></a>数据预览</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">X = pd.DataFrame(X)</span><br><span class="line"><span class="comment"># 取前10行数据</span></span><br><span class="line">X.head(n=<span class="number">10</span>)</span><br><span class="line"><span class="comment"># 取数据中任意的10行</span></span><br><span class="line">X.sample(n=<span class="number">10</span>)</span><br><span class="line"><span class="comment"># 查看数据的大体数据分布以及大小</span></span><br><span class="line">X.describe()</span><br></pre></td></tr></table></figure>
-<h2 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h2><p>通过箱线图可以发现异常值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X.plot(kind=<span class="string">'box'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>通过条形图可以看出数据结构的分布特征，是否满足正太分布</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X.hist(figsize=(<span class="number">12</span>,<span class="number">5</span>),xlabelsize=<span class="number">1</span>,ylabelsize=<span class="number">1</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>通过折线图可以看出数据值的大小密度的分布情况</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X.plot(kind=<span class="string">"density"</span>,subplot=<span class="literal">True</span>,layout=(<span class="number">4</span>,<span class="number">4</span>),figsize=(<span class="number">12</span>,<span class="number">5</span>))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>通过特征相关图我们能够知道哪些特征存在明显的相关性</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pd.scatter_matrix(X,figsize=(<span class="number">10</span>,<span class="number">10</span>))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>通过热力图可以更加清晰的看出各个特征之间的关系</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(<span class="number">10</span>,<span class="number">10</span>))</span><br><span class="line">ax = fig.add_subplot(<span class="number">111</span>)</span><br><span class="line">cax = ax.matshow(X.corr(),vmin=<span class="number">-1</span>,vmax=<span class="number">1</span>,interploation=<span class="string">"none"</span>)</span><br><span class="line">fig.colorbar(cax)</span><br><span class="line"><span class="comment"># 这里为数据特征关联的分布大小</span></span><br><span class="line">ticks = np.arange(<span class="number">0</span>,<span class="number">4</span>,<span class="number">1</span>)</span><br><span class="line">ax.set_xticks(ticks)</span><br><span class="line">ax.set_yticks(ticks)</span><br><span class="line"><span class="comment"># 这里的col_name为特征的名称</span></span><br><span class="line">ax.set_xticklabels(col_name)</span><br><span class="line">ax.set_yticklabels(col_name)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<h2 id="查找最优模型"><a href="#查找最优模型" class="headerlink" title="查找最优模型"></a>查找最优模型</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> AdaBoostClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> ExtraTreesClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> GaussianNB</span><br><span class="line"><span class="keyword">from</span> sklearn.discriminant_analysis <span class="keyword">import</span> LinearDiscriminantAnalysis</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold, cross_val_score,GridSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"></span><br><span class="line">models = []</span><br><span class="line">models.append((<span class="string">"AB"</span>, AdaBoostClassifier()))</span><br><span class="line">models.append((<span class="string">"GBM"</span>, GradientBoostingClassifier()))</span><br><span class="line">models.append((<span class="string">"RF"</span>, RandomForestClassifier()))</span><br><span class="line">models.append((<span class="string">"ET"</span>, ExtraTreesClassifier()))</span><br><span class="line">models.append((<span class="string">"SVC"</span>, SVC()))</span><br><span class="line">models.append((<span class="string">"KNN"</span>, KNeighborsClassifier()))</span><br><span class="line">models.append((<span class="string">"LR"</span>, LogisticRegression()))</span><br><span class="line">models.append((<span class="string">"GNB"</span>, GaussianNB()))</span><br><span class="line">models.append((<span class="string">"LDA"</span>, LinearDiscriminantAnalysis()))</span><br><span class="line"></span><br><span class="line">names = []</span><br><span class="line">results = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name, model <span class="keyword">in</span> models:</span><br><span class="line">    kfold = KFold(n_splits=<span class="number">5</span>, random_state=<span class="number">42</span>)</span><br><span class="line">    result = cross_val_score(model, X, y, scoring=<span class="string">'accuracy'</span>, cv=kfold)</span><br><span class="line">    names.append(name)</span><br><span class="line">    results.append(result)</span><br><span class="line">    print(<span class="string">"&#123;&#125; Mean:&#123;:.4f&#125;(Std:&#123;:.4f&#125;)"</span>.format(name, result.mean(), result.std()))</span><br></pre></td></tr></table></figure>
-<h2 id="使用Pipeline"><a href="#使用Pipeline" class="headerlink" title="使用Pipeline"></a>使用Pipeline</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"></span><br><span class="line">pipeline = []</span><br><span class="line">pipeline.append((<span class="string">"ScalerET"</span>, Pipeline([(<span class="string">"Scaler"</span>,StandardScaler()),</span><br><span class="line"> (<span class="string">"ET"</span>,ExtraTreesClassifier())])))</span><br><span class="line">pipeline.append((<span class="string">"ScalerGBM"</span>, Pipeline([(<span class="string">"Scaler"</span>,StandardScaler()),</span><br><span class="line">   (<span class="string">"GBM"</span>,GradientBoostingClassifier())])))</span><br><span class="line">pipeline.append((<span class="string">"ScalerRF"</span>, Pipeline([(<span class="string">"Scaler"</span>,StandardScaler()),</span><br><span class="line"> (<span class="string">"RF"</span>,RandomForestClassifier())])))</span><br><span class="line"></span><br><span class="line">names = []</span><br><span class="line">results = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name, model <span class="keyword">in</span> pipeline:</span><br><span class="line">    kfold = KFold(n_splits=<span class="number">5</span>, random_state=<span class="number">42</span>)</span><br><span class="line">    result = cross_val_score(model, X, y, scoring=<span class="string">'accuracy'</span>, cv=kfold)</span><br><span class="line">    names.append(name)</span><br><span class="line">    results.append(result)</span><br><span class="line">    print(<span class="string">"&#123;&#125; Mean:&#123;:.4f&#125;(Std:&#123;:.4f&#125;)"</span>.format(name, result.mean(), result.std()))</span><br></pre></td></tr></table></figure>
-<h2 id="模型调节"><a href="#模型调节" class="headerlink" title="模型调节"></a>模型调节</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">param_grid = &#123;</span><br><span class="line">    <span class="string">"C"</span>:[<span class="number">0.1</span>,<span class="number">0.3</span>,<span class="number">0.5</span>,<span class="number">0.7</span>,<span class="number">0.9</span>,<span class="number">1.0</span>,<span class="number">1.3</span>,<span class="number">1.5</span>,<span class="number">1.7</span>,<span class="number">2.0</span>],</span><br><span class="line">    <span class="string">"kernel"</span>:[<span class="string">"linear"</span>,<span class="string">"poly"</span>,<span class="string">"rbf"</span>,<span class="string">"sigmoid"</span>]</span><br><span class="line">&#125;</span><br><span class="line">model = SVC()</span><br><span class="line">kfold = KFold(n_splits=<span class="number">5</span>,random_state=<span class="number">42</span>)</span><br><span class="line">grid = GridSearchCV(estimator=model,param_grid=param_grid,scoring=<span class="string">"accuracy"</span>,cv=kfold)</span><br><span class="line">grid_result = grid.fit(X,y)</span><br><span class="line">print(<span class="string">"Best: &#123;&#125; using &#123;&#125;"</span>.format(grid_result.best_score_,grid_result.best_params_))</span><br><span class="line">means = grid_result.cv_results_[<span class="string">"mean_test_score"</span>]</span><br><span class="line">stds = grid_result.cv_results_[<span class="string">"std_test_score"</span>]</span><br><span class="line">params = grid_result.cv_results_[<span class="string">"params"</span>]</span><br><span class="line"><span class="keyword">for</span> mean,stdev,param <span class="keyword">in</span> zip(means,stds,params):</span><br><span class="line">    print(<span class="string">"&#123;&#125; (&#123;&#125;) with &#123;&#125;"</span>.format(mean,stdev,param))</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 使用随机梯度下降法</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> RandomizedSearchCV</span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> randint</span><br><span class="line"></span><br><span class="line">param_distribs = &#123;</span><br><span class="line">        <span class="string">'n_estimators'</span>: randint(low=<span class="number">1</span>, high=<span class="number">200</span>),</span><br><span class="line">        <span class="string">'max_features'</span>: randint(low=<span class="number">1</span>, high=<span class="number">8</span>),</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">forest_reg = RandomForestRegressor(random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search = RandomizedSearchCV(forest_reg, param_distributions=param_distribs,</span><br><span class="line">                                n_iter=<span class="number">10</span>, cv=<span class="number">5</span>, scoring=<span class="string">'neg_mean_squared_error'</span>, random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search.fit(housing_prepared, housing_labels)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># svm 调参</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> RandomizedSearchCV</span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> expon, reciprocal</span><br><span class="line"></span><br><span class="line"><span class="comment"># see https://docs.scipy.org/doc/scipy/reference/stats.html</span></span><br><span class="line"><span class="comment"># for `expon()` and `reciprocal()` documentation and more probability distribution functions.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Note: gamma is ignored when kernel is "linear"</span></span><br><span class="line">param_distribs = &#123;</span><br><span class="line">        <span class="string">'kernel'</span>: [<span class="string">'linear'</span>, <span class="string">'rbf'</span>],</span><br><span class="line">        <span class="string">'C'</span>: reciprocal(<span class="number">20</span>, <span class="number">200000</span>),</span><br><span class="line">        <span class="string">'gamma'</span>: expon(scale=<span class="number">1.0</span>),</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">svm_reg = SVR()</span><br><span class="line">rnd_search = RandomizedSearchCV(svm_reg, param_distributions=param_distribs,</span><br><span class="line">                                n_iter=<span class="number">50</span>, cv=<span class="number">5</span>, scoring=<span class="string">'neg_mean_squared_error'</span>,</span><br><span class="line">                                verbose=<span class="number">2</span>, random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search.fit(housing_prepared, housing_labels)</span><br></pre></td></tr></table></figure>
-
+<h1 id="Cross-Validation-详解"><a href="#Cross-Validation-详解" class="headerlink" title="Cross Validation 详解"></a>Cross Validation 详解</h1><p><img src="https://github.com/LelandYan/lelandyan.github.io/raw/master/img/cross_validation.png" alt="Image text"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line">knn_clf = KNeighborsClassifier()</span><br><span class="line"><span class="comment"># cv参数为交叉时候分成几份（k-folds）</span></span><br><span class="line">scores = cross_val_score(knn_clf,x_train,y_train,cv=<span class="number">10</span>)</span><br><span class="line">scores = np.mean(scores)</span><br></pre></td></tr></table></figure>
+<h2 id="交叉验证的目的就是找到最好的超参数所以传入的数据只是train的数据"><a href="#交叉验证的目的就是找到最好的超参数所以传入的数据只是train的数据" class="headerlink" title="交叉验证的目的就是找到最好的超参数所以传入的数据只是train的数据"></a>交叉验证的目的就是找到最好的超参数所以传入的数据只是train的数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line"><span class="comment"># 事实上网格搜受已经使用了交叉验证了</span></span><br><span class="line">para,_grid = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">'weights'</span>:[<span class="string">'uniform'</span>],</span><br><span class="line">        <span class="string">'n_neighbors'</span>:[i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>)]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">'weights'</span>:[<span class="string">'distance'</span>],</span><br><span class="line">        <span class="string">'n_neighbors'</span>:[i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>)],</span><br><span class="line">        <span class="string">'p'</span>:[i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">6</span>)]</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"><span class="comment"># n_jobs表示的处理的计算的核数,verbose可以在运行的程序的时候，可以显示信息</span></span><br><span class="line">knn_clf = KneighborsClassifier()</span><br><span class="line">grid_search = GridSearchCV(knn_clf,param_grid,n_jobs=<span class="number">-1</span>，verbose=<span class="number">2</span>)</span><br><span class="line">grid_search.fit(X_train,y_train)</span><br><span class="line"><span class="comment"># 获取训练集的最好结果</span></span><br><span class="line">grid_search.best_score_</span><br><span class="line"><span class="comment"># 获取训练集的最好超参数</span></span><br><span class="line">grid_search.best_params_</span><br><span class="line"><span class="comment"># 获得最好的分类器</span></span><br><span class="line">grid_search.best_estimator_</span><br></pre></td></tr></table></figure>
+<h3 id="留一法-LOO-CV-虽然准确，但是计算量巨大"><a href="#留一法-LOO-CV-虽然准确，但是计算量巨大" class="headerlink" title="留一法(LOO-CV) 虽然准确，但是计算量巨大"></a>留一法(LOO-CV) 虽然准确，但是计算量巨大</h3>
       
     </div>
 
@@ -979,7 +893,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-sciPy-2020/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-machine_learning_procedure-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -993,7 +907,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/04/2020-3-3-sciPy-2020/" class="post-title-link" itemprop="url">如何处理不平衡的数据</a>
+            <a href="/2020/03/04/2020-3-3-machine_learning_procedure-2020/" class="post-title-link" itemprop="url">Machine Learning Procedure</a>
         </h1>
 
         <div class="post-meta">
@@ -1004,7 +918,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：13:53:40" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：13:59:29" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1030,686 +944,99 @@
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes</p>
 </blockquote>
-<h1 id="2-5-SciPy中稀疏矩阵"><a href="#2-5-SciPy中稀疏矩阵" class="headerlink" title="2.5 SciPy中稀疏矩阵"></a>2.5 SciPy中稀疏矩阵</h1><p>In [3]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">%matplotlib inline</span><br><span class="line">import numpy as np</span><br></pre></td></tr></table></figure>
-<h2 id="2-5-1-介绍"><a href="#2-5-1-介绍" class="headerlink" title="2.5.1 介绍"></a>2.5.1 介绍</h2><p>(密集) 矩阵是:</p>
-<ul>
-<li>数据对象</li>
-<li>存储二维值数组的数据结构</li>
-</ul>
-<p>重要特征:</p>
-<ul>
-<li>一次分配所有项目的内存<ul>
-<li>通常是一个连续组块，想一想Numpy数组</li>
-</ul>
-</li>
-<li><em>快速</em>访问个项目(*)</li>
-</ul>
-<h3 id="2-5-1-1-为什么有稀疏矩阵？"><a href="#2-5-1-1-为什么有稀疏矩阵？" class="headerlink" title="2.5.1.1 为什么有稀疏矩阵？"></a>2.5.1.1 为什么有稀疏矩阵？</h3><ul>
-<li>内存，增长是n**2</li>
-<li>小例子（双精度矩阵）:</li>
-</ul>
-<p>In [5]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import matplotlib.pyplot as plt</span><br><span class="line">x &#x3D; np.linspace(0, 1e6, 10)</span><br><span class="line">plt.plot(x, 8.0 * (x**2) &#x2F; 1e6, lw&#x3D;5)   </span><br><span class="line">plt.xlabel(&#39;size n&#39;)</span><br><span class="line">plt.ylabel(&#39;memory [MB]&#39;)</span><br></pre></td></tr></table></figure>
-<p>Out[5]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;matplotlib.text.Text at 0x105b08dd0&gt;</span><br></pre></td></tr></table></figure>
-<p><img src="https://wizardforcel.gitbooks.io/scipy-lecture-notes/content/img/C3AAAAAElFTkSuQmCC.png" alt="img"></p>
-<h3 id="2-5-1-2-稀疏矩阵-vs-稀疏矩阵存储方案"><a href="#2-5-1-2-稀疏矩阵-vs-稀疏矩阵存储方案" class="headerlink" title="2.5.1.2 稀疏矩阵 vs. 稀疏矩阵存储方案"></a>2.5.1.2 稀疏矩阵 vs. 稀疏矩阵存储方案</h3><ul>
-<li>稀疏矩阵是一个矩阵，巨大多数是空的</li>
-<li>存储所有的0是浪费 -&gt; 只存储非0项目</li>
-<li>想一下<strong>压缩</strong></li>
-<li>有利: 巨大的内存节省</li>
-<li>不利: 依赖实际的存储方案, (*) 通常并不能满足</li>
-</ul>
-<h3 id="2-5-1-3-典型应用"><a href="#2-5-1-3-典型应用" class="headerlink" title="2.5.1.3 典型应用"></a>2.5.1.3 典型应用</h3><ul>
-<li>偏微分方程（PDES）的解<ul>
-<li>有限元素法</li>
-<li>机械工程、电子、物理…</li>
-</ul>
-</li>
-<li>图论<ul>
-<li>（i，j）不是0表示节点i与节点j是联接的</li>
-</ul>
-</li>
-<li>…</li>
-</ul>
-<h3 id="2-5-1-4-先决条件"><a href="#2-5-1-4-先决条件" class="headerlink" title="2.5.1.4 先决条件"></a>2.5.1.4 先决条件</h3><p>最新版本的</p>
-<ul>
-<li><code>numpy</code></li>
-<li><code>scipy</code></li>
-<li><code>matplotlib</code> (可选)</li>
-<li><code>ipython</code> (那些增强很方便)</li>
-</ul>
-<h3 id="2-5-1-5-稀疏结构可视化"><a href="#2-5-1-5-稀疏结构可视化" class="headerlink" title="2.5.1.5 稀疏结构可视化"></a>2.5.1.5 稀疏结构可视化</h3><ul>
-<li>matplotlib中的<code>spy()</code></li>
-<li>样例绘图:</li>
-</ul>
-<p><img src="http://scipy-lectures.github.io/_images/graph.png" alt="img"> <img src="http://scipy-lectures.github.io/_images/graph_g.png" alt="img"> <img src="http://scipy-lectures.github.io/_images/graph_rcm.png" alt="img"></p>
-<h2 id="2-5-2-存储机制"><a href="#2-5-2-存储机制" class="headerlink" title="2.5.2 存储机制"></a>2.5.2 存储机制</h2><ul>
-<li>scipy.sparse中有七类稀疏矩阵:<ol>
-<li>csc_matrix: 压缩列格式</li>
-<li>csr_matrix: 压缩行格式</li>
-<li>bsr_matrix: 块压缩行格式</li>
-<li>lil_matrix: 列表的列表格式</li>
-<li>dok_matrix: 值的字典格式</li>
-<li>coo_matrix: 座标格式 (即 IJV, 三维格式)</li>
-<li>dia_matrix: 对角线格式</li>
-</ol>
-</li>
-<li>每一个类型适用于一些任务</li>
-<li>许多都利用了由Nathan Bell提供的稀疏工具 C ++ 模块</li>
-<li>假设导入了下列模块:</li>
-</ul>
-<p>In [1]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import numpy as np</span><br><span class="line">import scipy.sparse as sparse</span><br><span class="line">import matplotlib.pyplot as plt</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>给Numpy用户的</p>
-<p>warning</p>
-<p>:</p>
-<ul>
-<li>使用’<em>‘的乘是</em>矩阵相乘* (点积)</li>
-<li>并不是Numpy的一部分!<ul>
-<li>向Numpy函数传递一个稀疏矩阵希望一个ndarray/矩阵是没用的</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="2-5-2-1-通用方法"><a href="#2-5-2-1-通用方法" class="headerlink" title="2.5.2.1 通用方法"></a>2.5.2.1 通用方法</h3><ul>
-<li>所有scipy.sparse类都是spmatrix的子类<ul>
-<li>算术操作的默认实现<ul>
-<li>通常转化为CSR</li>
-<li>为了效率而子类覆盖</li>
-</ul>
-</li>
-<li>形状、数据类型设置/获取</li>
-<li>非0索引</li>
-<li>格式转化、与Numpy交互(toarray(), todense())</li>
-<li>…</li>
-</ul>
-</li>
-<li>属性:<ul>
-<li>mtx.A - 与mtx.toarray()相同</li>
-<li>mtx.T - 转置 (与mtx.transpose()相同)</li>
-<li>mtx.H - Hermitian (列举) 转置</li>
-<li>mtx.real - 复矩阵的真部</li>
-<li>mtx.imag - 复矩阵的虚部</li>
-<li>mtx.size - 非零数 (与self.getnnz()相同)</li>
-<li>mtx.shape - 行数和列数 (元组)</li>
-</ul>
-</li>
-<li>数据通常储存在Numpy数组中</li>
-</ul>
-<h3 id="2-5-2-2-稀疏矩阵类"><a href="#2-5-2-2-稀疏矩阵类" class="headerlink" title="2.5.2.2 稀疏矩阵类"></a>2.5.2.2 稀疏矩阵类</h3><h4 id="2-5-2-2-1-对角线格式-DIA"><a href="#2-5-2-2-1-对角线格式-DIA" class="headerlink" title="2.5.2.2.1 对角线格式 (DIA))"></a>2.5.2.2.1 对角线格式 (DIA))</h4><ul>
-<li>非常简单的格式</li>
-<li>形状 (n_diag, length) 的密集Numpy数组的对角线<ul>
-<li>固定长度 -&gt; 当离主对角线比较远时会浪费空间</li>
-<li>_data_matrix的子类 (带数据属性的稀疏矩阵类)</li>
-</ul>
-</li>
-<li>每个对角线的偏移<ul>
-<li>0 是主对角线</li>
-<li>负偏移 = 下面</li>
-<li>正偏移 = 上面</li>
-</ul>
-</li>
-<li>快速矩阵 * 向量 (sparsetools)</li>
-<li>快速方便的关于项目的操作<ul>
-<li>直接操作数据数组 (快速的NumPy机件)</li>
-</ul>
-</li>
-<li>构建器接受 :<ul>
-<li>密集矩阵 (数组)</li>
-<li>稀疏矩阵</li>
-<li>形状元组 (创建空矩阵)</li>
-<li>(数据, 偏移) 元组</li>
-</ul>
-</li>
-<li>没有切片、没有单个项目访问</li>
-<li>用法 :<ul>
-<li>非常专业</li>
-<li>通过有限微分解偏微分方程</li>
-<li>有一个迭代求解器 ##### 2.5.2.2.1.1 示例</li>
-</ul>
-</li>
-<li>创建一些DIA矩阵 :</li>
-</ul>
-<p>In [3]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data &#x3D; np.array([[1, 2, 3, 4]]).repeat(3, axis&#x3D;0)</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
-<p>Out[3]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array([[1, 2, 3, 4],</span><br><span class="line">       [1, 2, 3, 4],</span><br><span class="line">       [1, 2, 3, 4]])</span><br></pre></td></tr></table></figure>
-<p>In [6]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">offsets &#x3D; np.array([0, -1, 2])</span><br><span class="line">mtx &#x3D; sparse.dia_matrix((data, offsets), shape&#x3D;(4, 4))</span><br><span class="line">mtx</span><br></pre></td></tr></table></figure>
-<p>Out[6]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;4x4 sparse matrix of type &#39;&lt;type &#39;numpy.int64&#39;&gt;&#39;</span><br><span class="line">    with 9 stored elements (3 diagonals) in DIAgonal format&gt;</span><br></pre></td></tr></table></figure>
-<p>In [7]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx.todense()</span><br></pre></td></tr></table></figure>
-<p>Out[7]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">matrix([[1, 0, 3, 0],</span><br><span class="line">        [1, 2, 0, 4],</span><br><span class="line">        [0, 2, 3, 0],</span><br><span class="line">        [0, 0, 3, 4]])</span><br></pre></td></tr></table></figure>
-<p>In [9]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">data &#x3D; np.arange(12).reshape((3, 4)) + 1</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
-<p>Out[9]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array([[ 1,  2,  3,  4],</span><br><span class="line">       [ 5,  6,  7,  8],</span><br><span class="line">       [ 9, 10, 11, 12]])</span><br></pre></td></tr></table></figure>
-<p>In [10]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mtx &#x3D; sparse.dia_matrix((data, offsets), shape&#x3D;(4, 4))</span><br><span class="line">mtx.data</span><br></pre></td></tr></table></figure>
-<p>Out[10]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">array([[ 1,  2,  3,  4],</span><br><span class="line">       [ 5,  6,  7,  8],</span><br><span class="line">       [ 9, 10, 11, 12]])</span><br></pre></td></tr></table></figure>
-<p>In [11]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx.offsets</span><br></pre></td></tr></table></figure>
-<p>Out[11]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array([ 0, -1,  2], dtype&#x3D;int32)</span><br></pre></td></tr></table></figure>
-<p>In [12]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">print mtx</span><br><span class="line">  (0, 0)    1</span><br><span class="line">  (1, 1)    2</span><br><span class="line">  (2, 2)    3</span><br><span class="line">  (3, 3)    4</span><br><span class="line">  (1, 0)    5</span><br><span class="line">  (2, 1)    6</span><br><span class="line">  (3, 2)    7</span><br><span class="line">  (0, 2)    11</span><br><span class="line">  (1, 3)    12</span><br></pre></td></tr></table></figure>
-<p>In [13]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx.todense()</span><br></pre></td></tr></table></figure>
-<p>Out[13]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">matrix([[ 1,  0, 11,  0],</span><br><span class="line">        [ 5,  2,  0, 12],</span><br><span class="line">        [ 0,  6,  3,  0],</span><br><span class="line">        [ 0,  0,  7,  4]])</span><br></pre></td></tr></table></figure>
-<ul>
-<li>机制的解释 :</li>
-</ul>
-<p>偏移: 行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"> 2:  9</span><br><span class="line"> 1:  --10------</span><br><span class="line"> 0:  1  . 11  .</span><br><span class="line">-1:  5  2  . 12</span><br><span class="line">-2:  .  6  3  .</span><br><span class="line">-3:  .  .  7  4</span><br><span class="line">     ---------8</span><br></pre></td></tr></table></figure>
-<ul>
-<li>矩阵-向量相乘</li>
-</ul>
-<p>In [15]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vec &#x3D; np.ones((4, ))</span><br><span class="line">vec</span><br></pre></td></tr></table></figure>
-<p>Out[15]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array([ 1.,  1.,  1.,  1.])</span><br></pre></td></tr></table></figure>
-<p>In [16]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx * vec</span><br></pre></td></tr></table></figure>
-<p>Out[16]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array([ 12.,  19.,   9.,  11.])</span><br></pre></td></tr></table></figure>
-<p>In [17]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx.toarray() * vec</span><br></pre></td></tr></table></figure>
-<p>Out[17]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">array([[  1.,   0.,  11.,   0.],</span><br><span class="line">       [  5.,   2.,   0.,  12.],</span><br><span class="line">       [  0.,   6.,   3.,   0.],</span><br><span class="line">       [  0.,   0.,   7.,   4.]])</span><br></pre></td></tr></table></figure>
-<h4 id="2-5-2-2-2-列表的列表格式-LIL"><a href="#2-5-2-2-2-列表的列表格式-LIL" class="headerlink" title="2.5.2.2.2 列表的列表格式 (LIL))"></a>2.5.2.2.2 列表的列表格式 (LIL))</h4><ul>
-<li>基于行的联接列表<ul>
-<li>每一行是一个Python列表（排序的）非零元素的列索引</li>
-<li>行存储在Numpy数组中 (dtype=np.object)</li>
-<li>非零值也近似存储</li>
-</ul>
-</li>
-<li>高效增量构建稀疏矩阵</li>
-<li>构建器接受 :<ul>
-<li>密集矩阵 (数组)</li>
-<li>稀疏矩阵</li>
-<li>形状元组 (创建一个空矩阵)</li>
-</ul>
-</li>
-<li>灵活切片、高效改变稀疏结构</li>
-<li>由于是基于行的，算术和行切片慢</li>
-<li>用途 :<ul>
-<li>当稀疏模式并不是已知的逻辑或改变</li>
-<li>例子：从一个文本文件读取稀疏矩阵 ##### 2.5.2.2.2.1 示例</li>
-</ul>
-</li>
-<li>创建一个空的LIL矩阵 :</li>
-</ul>
-<p>In [2]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx &#x3D; sparse.lil_matrix((4, 5))</span><br></pre></td></tr></table></figure>
-<ul>
-<li>准备随机数据:</li>
-</ul>
-<p>In [4]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">from numpy.random import rand</span><br><span class="line">data &#x3D; np.round(rand(2, 3))</span><br><span class="line">data</span><br></pre></td></tr></table></figure>
-<p>Out[4]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">array([[ 0.,  0.,  0.],</span><br><span class="line">       [ 1.,  0.,  0.]])</span><br></pre></td></tr></table></figure>
-<ul>
-<li>使用象征所以分配数据:</li>
-</ul>
-<p>In [6]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mtx[:2, [1, 2, 3]] &#x3D; data</span><br><span class="line">mtx</span><br></pre></td></tr></table></figure>
-<p>Out[6]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;4x5 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span><br><span class="line">    with 3 stored elements in LInked List format&gt;</span><br></pre></td></tr></table></figure>
-<p>In [7]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">print mtx</span><br><span class="line">  (0, 1)    1.0</span><br><span class="line">  (0, 3)    1.0</span><br><span class="line">  (1, 2)    1.0</span><br></pre></td></tr></table></figure>
-<p>In [8]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx.todense()</span><br></pre></td></tr></table></figure>
-<p>Out[8]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">matrix([[ 0.,  1.,  0.,  1.,  0.],</span><br><span class="line">        [ 0.,  0.,  1.,  0.,  0.],</span><br><span class="line">        [ 0.,  0.,  0.,  0.,  0.],</span><br><span class="line">        [ 0.,  0.,  0.,  0.,  0.]])</span><br></pre></td></tr></table></figure>
-<p>In [9]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx.toarray()</span><br></pre></td></tr></table></figure>
-<p>Out[9]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">array([[ 0.,  1.,  0.,  1.,  0.],</span><br><span class="line">       [ 0.,  0.,  1.,  0.,  0.],</span><br><span class="line">       [ 0.,  0.,  0.,  0.,  0.],</span><br><span class="line">       [ 0.,  0.,  0.,  0.,  0.]])</span><br></pre></td></tr></table></figure>
-<p>更多的切片和索引:</p>
-<p>In [10]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mtx &#x3D; sparse.lil_matrix([[0, 1, 2, 0], [3, 0, 1, 0], [1, 0, 0, 1]])</span><br><span class="line">mtx.todense()</span><br></pre></td></tr></table></figure>
-<p>Out[10]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">matrix([[0, 1, 2, 0],</span><br><span class="line">        [3, 0, 1, 0],</span><br><span class="line">        [1, 0, 0, 1]])</span><br></pre></td></tr></table></figure>
-<p>In [11]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">print mtx</span><br><span class="line">  (0, 1)    1</span><br><span class="line">  (0, 2)    2</span><br><span class="line">  (1, 0)    3</span><br><span class="line">  (1, 2)    1</span><br><span class="line">  (2, 0)    1</span><br><span class="line">  (2, 3)    1</span><br></pre></td></tr></table></figure>
-<p>In [12]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx[:2, :]</span><br></pre></td></tr></table></figure>
-<p>Out[12]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;2x4 sparse matrix of type &#39;&lt;type &#39;numpy.int64&#39;&gt;&#39;</span><br><span class="line">    with 4 stored elements in LInked List format&gt;</span><br></pre></td></tr></table></figure>
-<p>In [13]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx[:2, :].todense()</span><br></pre></td></tr></table></figure>
-<p>Out[13]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">matrix([[0, 1, 2, 0],</span><br><span class="line">        [3, 0, 1, 0]])</span><br></pre></td></tr></table></figure>
-<p>In [14]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx[1:2, [0,2]].todense()</span><br></pre></td></tr></table></figure>
-<p>Out[14]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">matrix([[3, 1]])</span><br></pre></td></tr></table></figure>
-<p>In [15]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx.todense()</span><br></pre></td></tr></table></figure>
-<p>Out[15]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">matrix([[0, 1, 2, 0],</span><br><span class="line">        [3, 0, 1, 0],</span><br><span class="line">        [1, 0, 0, 1]])</span><br></pre></td></tr></table></figure>
-<h4 id="2-5-2-2-3-值的字典格式-DOK"><a href="#2-5-2-2-3-值的字典格式-DOK" class="headerlink" title="2.5.2.2.3 值的字典格式 (DOK))"></a>2.5.2.2.3 值的字典格式 (DOK))</h4><ul>
-<li>Python字典的子类<ul>
-<li>键是 (行, 列) 索引元组 (不允许重复的条目)</li>
-<li>值是对应的非零值</li>
-</ul>
-</li>
-<li>高效增量构建稀疏矩阵</li>
-<li>构建器支持:<ul>
-<li>密集矩阵 (数组)</li>
-<li>稀疏矩阵</li>
-<li>形状元组 (创建空矩阵)</li>
-</ul>
-</li>
-<li>高效 O(1) 对单个元素的访问</li>
-<li>灵活索引，改变稀疏结构是高效</li>
-<li>一旦创建完成后可以被高效转换为coo_matrix</li>
-<li>算术很慢 (循环用<code>dict.iteritems()</code>)</li>
-<li>用法:<ul>
-<li>当稀疏模式是未知的假设或改变时</li>
-</ul>
-</li>
-</ul>
-<h5 id="2-5-2-2-3-1-示例"><a href="#2-5-2-2-3-1-示例" class="headerlink" title="2.5.2.2.3.1 示例"></a>2.5.2.2.3.1 示例</h5><ul>
-<li>逐个元素创建一个DOK矩阵:</li>
-</ul>
-<p>In [16]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mtx &#x3D; sparse.dok_matrix((5, 5), dtype&#x3D;np.float64)</span><br><span class="line">mtx</span><br></pre></td></tr></table></figure>
-<p>Out[16]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;5x5 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span><br><span class="line">    with 0 stored elements in Dictionary Of Keys format&gt;</span><br></pre></td></tr></table></figure>
-<p>In [17]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for ir in range(5):</span><br><span class="line">    for ic in range(5):</span><br><span class="line">        mtx[ir, ic] &#x3D; 1.0 * (ir !&#x3D; ic)</span><br><span class="line">mtx</span><br></pre></td></tr></table></figure>
-<p>Out[17]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;5x5 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span><br><span class="line">    with 20 stored elements in Dictionary Of Keys format&gt;</span><br></pre></td></tr></table></figure>
-<p>In [18]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx.todense()</span><br></pre></td></tr></table></figure>
-<p>Out[18]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">matrix([[ 0.,  1.,  1.,  1.,  1.],</span><br><span class="line">        [ 1.,  0.,  1.,  1.,  1.],</span><br><span class="line">        [ 1.,  1.,  0.,  1.,  1.],</span><br><span class="line">        [ 1.,  1.,  1.,  0.,  1.],</span><br><span class="line">        [ 1.,  1.,  1.,  1.,  0.]])</span><br></pre></td></tr></table></figure>
-<ul>
-<li>切片与索引:</li>
-</ul>
-<p>In [19]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx[1, 1]</span><br></pre></td></tr></table></figure>
-<p>Out[19]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0.0</span><br></pre></td></tr></table></figure>
-<p>In [20]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx[1, 1:3]</span><br></pre></td></tr></table></figure>
-<p>Out[20]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;1x2 sparse matrix of type &#39;&lt;type &#39;numpy.float64&#39;&gt;&#39;</span><br><span class="line">    with 1 stored elements in Dictionary Of Keys format&gt;</span><br></pre></td></tr></table></figure>
-<p>In [21]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx[1, 1:3].todense()</span><br></pre></td></tr></table></figure>
-<p>Out[21]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">matrix([[ 0.,  1.]])</span><br></pre></td></tr></table></figure>
-<p>In [22]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx[[2,1], 1:3].todense()</span><br></pre></td></tr></table></figure>
-<p>Out[22]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">matrix([[ 1.,  0.],</span><br><span class="line">        [ 0.,  1.]])</span><br></pre></td></tr></table></figure>
-<h4 id="2-5-2-2-4-座标格式-COO"><a href="#2-5-2-2-4-座标格式-COO" class="headerlink" title="2.5.2.2.4 座标格式 (COO))"></a>2.5.2.2.4 座标格式 (COO))</h4><ul>
-<li>也被称为 ‘ijv’ 或 ‘triplet’ 格式<ul>
-<li>三个NumPy数组: row, col, data</li>
-<li><code>data[i]</code>是在 (row[i], col[i]) 位置的值</li>
-<li>允许重复值</li>
-</ul>
-</li>
-<li><code>\_data\_matrix</code>的子类 (带有<code>data</code>属性的稀疏矩阵类)</li>
-<li>构建稀疏矩阵的高速模式</li>
-<li>构建器接受:<ul>
-<li>密集矩阵 (数组)</li>
-<li>稀疏矩阵</li>
-<li>形状元组 (创建空数组)</li>
-<li><code>(data, ij)</code>元组</li>
-</ul>
-</li>
-<li>与CSR/CSC格式非常快的互相转换</li>
-<li>快速的矩阵 * 向量 (sparsetools)</li>
-<li>快速而简便的逐项操作<ul>
-<li>直接操作数据数组 (快速NumPy机制)</li>
-</ul>
-</li>
-<li>没有切片，没有算术 (直接)</li>
-<li>使用:<ul>
-<li>在各种稀疏格式间的灵活转换</li>
-<li>当转化到其他形式 (通常是 CSR 或 CSC), 重复的条目被加总到一起<ul>
-<li>有限元素矩阵的快速高效创建</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h5 id="2-5-2-2-4-1-示例"><a href="#2-5-2-2-4-1-示例" class="headerlink" title="2.5.2.2.4.1 示例"></a>2.5.2.2.4.1 示例</h5><ul>
-<li>创建空的COO矩阵:</li>
-</ul>
-<p>In [23]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mtx &#x3D; sparse.coo_matrix((3, 4), dtype&#x3D;np.int8)</span><br><span class="line">mtx.todense()</span><br></pre></td></tr></table></figure>
-<p>Out[23]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">matrix([[0, 0, 0, 0],</span><br><span class="line">        [0, 0, 0, 0],</span><br><span class="line">        [0, 0, 0, 0]], dtype&#x3D;int8)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>用 (data, ij) 元组创建:</li>
-</ul>
-<p>In [24]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">row &#x3D; np.array([0, 3, 1, 0])</span><br><span class="line">col &#x3D; np.array([0, 3, 1, 2])</span><br><span class="line">data &#x3D; np.array([4, 5, 7, 9])</span><br><span class="line">mtx &#x3D; sparse.coo_matrix((data, (row, col)), shape&#x3D;(4, 4))</span><br><span class="line">mtx</span><br></pre></td></tr></table></figure>
-<p>Out[24]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;4x4 sparse matrix of type &#39;&lt;type &#39;numpy.int64&#39;&gt;&#39;</span><br><span class="line">    with 4 stored elements in COOrdinate format&gt;</span><br></pre></td></tr></table></figure>
-<p>In [25]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx.todense()</span><br></pre></td></tr></table></figure>
-<p>Out[25]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">matrix([[4, 0, 9, 0],</span><br><span class="line">        [0, 7, 0, 0],</span><br><span class="line">        [0, 0, 0, 0],</span><br><span class="line">        [0, 0, 0, 5]])</span><br></pre></td></tr></table></figure>
-<h4 id="2-5-2-2-5-压缩稀疏行格式-CSR"><a href="#2-5-2-2-5-压缩稀疏行格式-CSR" class="headerlink" title="2.5.2.2.5 压缩稀疏行格式 (CSR))"></a>2.5.2.2.5 压缩稀疏行格式 (CSR))</h4><ul>
-<li><p>面向行</p>
-<ul>
-<li>三个Numpy数组:</li>
-</ul>
-</li>
-</ul>
-<pre><code><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">indices</span><br></pre></td></tr></table></figure>
+<h1 id="Machine-Learning-Procedure"><a href="#Machine-Learning-Procedure" class="headerlink" title="Machine Learning Procedure"></a>Machine Learning Procedure</h1><h2 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
+<h2 id="数据预览"><a href="#数据预览" class="headerlink" title="数据预览"></a>数据预览</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">X = pd.DataFrame(X)</span><br><span class="line"><span class="comment"># 取前10行数据</span></span><br><span class="line">X.head(n=<span class="number">10</span>)</span><br><span class="line"><span class="comment"># 取数据中任意的10行</span></span><br><span class="line">X.sample(n=<span class="number">10</span>)</span><br><span class="line"><span class="comment"># 查看数据的大体数据分布以及大小</span></span><br><span class="line">X.describe()</span><br></pre></td></tr></table></figure>
+<h2 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h2><p>通过箱线图可以发现异常值</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X.plot(kind=<span class="string">'box'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>通过条形图可以看出数据结构的分布特征，是否满足正太分布</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X.hist(figsize=(<span class="number">12</span>,<span class="number">5</span>),xlabelsize=<span class="number">1</span>,ylabelsize=<span class="number">1</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>通过折线图可以看出数据值的大小密度的分布情况</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X.plot(kind=<span class="string">"density"</span>,subplot=<span class="literal">True</span>,layout=(<span class="number">4</span>,<span class="number">4</span>),figsize=(<span class="number">12</span>,<span class="number">5</span>))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>通过特征相关图我们能够知道哪些特征存在明显的相关性</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pd.scatter_matrix(X,figsize=(<span class="number">10</span>,<span class="number">10</span>))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>通过热力图可以更加清晰的看出各个特征之间的关系</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(<span class="number">10</span>,<span class="number">10</span>))</span><br><span class="line">ax = fig.add_subplot(<span class="number">111</span>)</span><br><span class="line">cax = ax.matshow(X.corr(),vmin=<span class="number">-1</span>,vmax=<span class="number">1</span>,interploation=<span class="string">"none"</span>)</span><br><span class="line">fig.colorbar(cax)</span><br><span class="line"><span class="comment"># 这里为数据特征关联的分布大小</span></span><br><span class="line">ticks = np.arange(<span class="number">0</span>,<span class="number">4</span>,<span class="number">1</span>)</span><br><span class="line">ax.set_xticks(ticks)</span><br><span class="line">ax.set_yticks(ticks)</span><br><span class="line"><span class="comment"># 这里的col_name为特征的名称</span></span><br><span class="line">ax.set_xticklabels(col_name)</span><br><span class="line">ax.set_yticklabels(col_name)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<h2 id="查找最优模型"><a href="#查找最优模型" class="headerlink" title="查找最优模型"></a>查找最优模型</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> AdaBoostClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> ExtraTreesClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> GaussianNB</span><br><span class="line"><span class="keyword">from</span> sklearn.discriminant_analysis <span class="keyword">import</span> LinearDiscriminantAnalysis</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold, cross_val_score,GridSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"></span><br><span class="line">models = []</span><br><span class="line">models.append((<span class="string">"AB"</span>, AdaBoostClassifier()))</span><br><span class="line">models.append((<span class="string">"GBM"</span>, GradientBoostingClassifier()))</span><br><span class="line">models.append((<span class="string">"RF"</span>, RandomForestClassifier()))</span><br><span class="line">models.append((<span class="string">"ET"</span>, ExtraTreesClassifier()))</span><br><span class="line">models.append((<span class="string">"SVC"</span>, SVC()))</span><br><span class="line">models.append((<span class="string">"KNN"</span>, KNeighborsClassifier()))</span><br><span class="line">models.append((<span class="string">"LR"</span>, LogisticRegression()))</span><br><span class="line">models.append((<span class="string">"GNB"</span>, GaussianNB()))</span><br><span class="line">models.append((<span class="string">"LDA"</span>, LinearDiscriminantAnalysis()))</span><br><span class="line"></span><br><span class="line">names = []</span><br><span class="line">results = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name, model <span class="keyword">in</span> models:</span><br><span class="line">    kfold = KFold(n_splits=<span class="number">5</span>, random_state=<span class="number">42</span>)</span><br><span class="line">    result = cross_val_score(model, X, y, scoring=<span class="string">'accuracy'</span>, cv=kfold)</span><br><span class="line">    names.append(name)</span><br><span class="line">    results.append(result)</span><br><span class="line">    print(<span class="string">"&#123;&#125; Mean:&#123;:.4f&#125;(Std:&#123;:.4f&#125;)"</span>.format(name, result.mean(), result.std()))</span><br></pre></td></tr></table></figure>
+<h2 id="使用Pipeline"><a href="#使用Pipeline" class="headerlink" title="使用Pipeline"></a>使用Pipeline</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"></span><br><span class="line">pipeline = []</span><br><span class="line">pipeline.append((<span class="string">"ScalerET"</span>, Pipeline([(<span class="string">"Scaler"</span>,StandardScaler()),</span><br><span class="line"> (<span class="string">"ET"</span>,ExtraTreesClassifier())])))</span><br><span class="line">pipeline.append((<span class="string">"ScalerGBM"</span>, Pipeline([(<span class="string">"Scaler"</span>,StandardScaler()),</span><br><span class="line">   (<span class="string">"GBM"</span>,GradientBoostingClassifier())])))</span><br><span class="line">pipeline.append((<span class="string">"ScalerRF"</span>, Pipeline([(<span class="string">"Scaler"</span>,StandardScaler()),</span><br><span class="line"> (<span class="string">"RF"</span>,RandomForestClassifier())])))</span><br><span class="line"></span><br><span class="line">names = []</span><br><span class="line">results = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name, model <span class="keyword">in</span> pipeline:</span><br><span class="line">    kfold = KFold(n_splits=<span class="number">5</span>, random_state=<span class="number">42</span>)</span><br><span class="line">    result = cross_val_score(model, X, y, scoring=<span class="string">'accuracy'</span>, cv=kfold)</span><br><span class="line">    names.append(name)</span><br><span class="line">    results.append(result)</span><br><span class="line">    print(<span class="string">"&#123;&#125; Mean:&#123;:.4f&#125;(Std:&#123;:.4f&#125;)"</span>.format(name, result.mean(), result.std()))</span><br></pre></td></tr></table></figure>
+<h2 id="模型调节"><a href="#模型调节" class="headerlink" title="模型调节"></a>模型调节</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">param_grid = &#123;</span><br><span class="line">    <span class="string">"C"</span>:[<span class="number">0.1</span>,<span class="number">0.3</span>,<span class="number">0.5</span>,<span class="number">0.7</span>,<span class="number">0.9</span>,<span class="number">1.0</span>,<span class="number">1.3</span>,<span class="number">1.5</span>,<span class="number">1.7</span>,<span class="number">2.0</span>],</span><br><span class="line">    <span class="string">"kernel"</span>:[<span class="string">"linear"</span>,<span class="string">"poly"</span>,<span class="string">"rbf"</span>,<span class="string">"sigmoid"</span>]</span><br><span class="line">&#125;</span><br><span class="line">model = SVC()</span><br><span class="line">kfold = KFold(n_splits=<span class="number">5</span>,random_state=<span class="number">42</span>)</span><br><span class="line">grid = GridSearchCV(estimator=model,param_grid=param_grid,scoring=<span class="string">"accuracy"</span>,cv=kfold)</span><br><span class="line">grid_result = grid.fit(X,y)</span><br><span class="line">print(<span class="string">"Best: &#123;&#125; using &#123;&#125;"</span>.format(grid_result.best_score_,grid_result.best_params_))</span><br><span class="line">means = grid_result.cv_results_[<span class="string">"mean_test_score"</span>]</span><br><span class="line">stds = grid_result.cv_results_[<span class="string">"std_test_score"</span>]</span><br><span class="line">params = grid_result.cv_results_[<span class="string">"params"</span>]</span><br><span class="line"><span class="keyword">for</span> mean,stdev,param <span class="keyword">in</span> zip(means,stds,params):</span><br><span class="line">    print(<span class="string">"&#123;&#125; (&#123;&#125;) with &#123;&#125;"</span>.format(mean,stdev,param))</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 使用随机梯度下降法</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> RandomizedSearchCV</span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> randint</span><br><span class="line"></span><br><span class="line">param_distribs = &#123;</span><br><span class="line">        <span class="string">'n_estimators'</span>: randint(low=<span class="number">1</span>, high=<span class="number">200</span>),</span><br><span class="line">        <span class="string">'max_features'</span>: randint(low=<span class="number">1</span>, high=<span class="number">8</span>),</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">forest_reg = RandomForestRegressor(random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search = RandomizedSearchCV(forest_reg, param_distributions=param_distribs,</span><br><span class="line">                                n_iter=<span class="number">10</span>, cv=<span class="number">5</span>, scoring=<span class="string">'neg_mean_squared_error'</span>, random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search.fit(housing_prepared, housing_labels)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># svm 调参</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> RandomizedSearchCV</span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> expon, reciprocal</span><br><span class="line"></span><br><span class="line"><span class="comment"># see https://docs.scipy.org/doc/scipy/reference/stats.html</span></span><br><span class="line"><span class="comment"># for `expon()` and `reciprocal()` documentation and more probability distribution functions.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Note: gamma is ignored when kernel is "linear"</span></span><br><span class="line">param_distribs = &#123;</span><br><span class="line">        <span class="string">'kernel'</span>: [<span class="string">'linear'</span>, <span class="string">'rbf'</span>],</span><br><span class="line">        <span class="string">'C'</span>: reciprocal(<span class="number">20</span>, <span class="number">200000</span>),</span><br><span class="line">        <span class="string">'gamma'</span>: expon(scale=<span class="number">1.0</span>),</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">svm_reg = SVR()</span><br><span class="line">rnd_search = RandomizedSearchCV(svm_reg, param_distributions=param_distribs,</span><br><span class="line">                                n_iter=<span class="number">50</span>, cv=<span class="number">5</span>, scoring=<span class="string">'neg_mean_squared_error'</span>,</span><br><span class="line">                                verbose=<span class="number">2</span>, random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search.fit(housing_prepared, housing_labels)</span><br></pre></td></tr></table></figure>
 
-,
+      
+    </div>
 
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
 
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-softmax_function-2020/">
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">indptr</span><br></pre></td></tr></table></figure>
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="LelandYan">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
+    </span>
 
-,
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LelandYan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/04/2020-3-3-softmax_function-2020/" class="post-title-link" itemprop="url">softmaxa Regression</a>
+        </h1>
 
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
 
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:01:39" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+                </span>
+            </span>
 
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">data</span><br></pre></td></tr></table></figure>
+          
 
-- `indices`是列索引的数组
-- `data`是对应的非零值数组
-- `indptr`指向行开始的所以和数据
-- 长度是`n_row + 1`, 最后一个项目 = 值数量 = `indices`和`data`的长度
-- i-th行的非零值是列索引为`indices[indptr[i]:indptr[i+1]]`的`data[indptr[i]:indptr[i+1]]`
-- 项目 (i, j) 可以通过`data[indptr[i]+k]`, k是j在`indices[indptr[i]:indptr[i+1]]`的位置来访问
-</code></pre><ul>
-<li><p><code>_cs_matrix</code> (常规 CSR/CSC 功能) 的子类</p>
-</li>
-<li><p><code>_data_matrix</code> (带有<code>data</code>属性的稀疏矩阵类) 的子类</p>
-</li>
-</ul>
-<ul>
-<li><p>快速矩阵向量相乘和其他算术 (sparsetools)</p>
-</li>
-<li><p>构建器接受:</p>
-<ul>
-<li>密集矩阵 (数组)</li>
-<li>稀疏矩阵</li>
-<li>形状元组 (创建空矩阵)</li>
-<li><code>(data, ij)</code> 元组</li>
-<li><code>(data, indices, indptr)</code> 元组</li>
-</ul>
-</li>
-<li><p>高效行切片，面向行的操作</p>
-</li>
-<li><p>较慢的列切片，改变稀疏结构代价昂贵</p>
-</li>
-<li><p>用途:</p>
-<ul>
-<li>实际计算 (大多数线性求解器都支持这个格式)</li>
-</ul>
-</li>
-</ul>
-<h5 id="2-5-2-2-5-1-示例"><a href="#2-5-2-2-5-1-示例" class="headerlink" title="2.5.2.2.5.1 示例"></a>2.5.2.2.5.1 示例</h5><ul>
-<li>创建空的CSR矩阵:</li>
-</ul>
-<p>In [26]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mtx &#x3D; sparse.csr_matrix((3, 4), dtype&#x3D;np.int8)</span><br><span class="line">mtx.todense()</span><br></pre></td></tr></table></figure>
-<p>Out[26]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">matrix([[0, 0, 0, 0],</span><br><span class="line">        [0, 0, 0, 0],</span><br><span class="line">        [0, 0, 0, 0]], dtype&#x3D;int8)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>用<code>(data, ij)</code>元组创建:</li>
-</ul>
-<p>In [27]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">row &#x3D; np.array([0, 0, 1, 2, 2, 2])</span><br><span class="line">col &#x3D; np.array([0, 2, 2, 0, 1, 2])</span><br><span class="line">data &#x3D; np.array([1, 2, 3, 4, 5, 6])</span><br><span class="line">mtx &#x3D; sparse.csr_matrix((data, (row, col)), shape&#x3D;(3, 3))</span><br><span class="line">mtx</span><br></pre></td></tr></table></figure>
-<p>Out[27]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;3x3 sparse matrix of type &#39;&lt;type &#39;numpy.int64&#39;&gt;&#39;</span><br><span class="line">    with 6 stored elements in Compressed Sparse Row format&gt;</span><br></pre></td></tr></table></figure>
-<p>In [28]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx.todense()</span><br></pre></td></tr></table></figure>
-<p>Out[28]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">matrix([[1, 0, 2],</span><br><span class="line">        [0, 0, 3],</span><br><span class="line">        [4, 5, 6]])</span><br></pre></td></tr></table></figure>
-<p>In [29]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx.data</span><br></pre></td></tr></table></figure>
-<p>Out[29]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array([1, 2, 3, 4, 5, 6])</span><br></pre></td></tr></table></figure>
-<p>In [30]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx.indices</span><br></pre></td></tr></table></figure>
-<p>Out[30]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array([0, 2, 2, 0, 1, 2], dtype&#x3D;int32)</span><br></pre></td></tr></table></figure>
-<p>In [31]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mtx.indptr</span><br></pre></td></tr></table></figure>
-<p>Out[31]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">array([0, 2, 3, 6], dtype&#x3D;int32)</span><br></pre></td></tr></table></figure>
-<p>用<code>(data, indices, indptr)</code>元组创建:</p>
-<p>In [32]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">data &#x3D; np.array([1, 2, 3, 4, 5, 6])</span><br><span class="line">indices &#x3D; np.array([0, 2, 2, 0, 1, 2])</span><br><span class="line">indptr &#x3D; np.array([0, 2, 3, 6])</span><br><span class="line">mtx &#x3D; sparse.csr_matrix((data, indices, indptr), shape&#x3D;(3, 3))</span><br><span class="line">mtx.todense()</span><br></pre></td></tr></table></figure>
-<p>Out[32]:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">matrix([[1, 0, 2],</span><br><span class="line">        [0, 0, 3],</span><br><span class="line">        [4, 5, 6]])</span><br></pre></td></tr></table></figure>
-<h4 id="2-5-2-2-6-压缩稀疏列格式-CSC"><a href="#2-5-2-2-6-压缩稀疏列格式-CSC" class="headerlink" title="2.5.2.2.6 压缩稀疏列格式 (CSC))"></a>2.5.2.2.6 压缩稀疏列格式 (CSC))</h4><ul>
-<li><p>面向列</p>
-<ul>
-<li><p>三个Numpy数组: <code>indices</code>、<code>indptr</code>、<code>data</code></p>
-</li>
-<li><p><code>indices</code>是行索引的数组</p>
-</li>
-<li><p><code>data</code>是对应的非零值</p>
-</li>
-<li><p><code>indptr</code>指向<code>indices</code>和<code>data</code>开始的列</p>
-</li>
-<li><p>长度是<code>n_col + 1</code>, 最后一个条目 = 值数量 = <code>indices</code>和<code>data</code>的长度</p>
-</li>
-<li><p>第i列的非零值是行索引为<code>indices[indptr[i]:indptr[i+1]]</code>的<code>data[indptr[i]:indptr[i+1]]</code></p>
-</li>
-<li><p>项目 (i, j) 可以作为<code>data[indptr[j]+k]</code>访问, k是i在<code>indices[indptr[j]:indptr[j+1]]</code>的位置</p>
-</li>
-<li><p>```<br>_cs_matrix</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    的子类 (通用的 CSR&#x2F;CSC 功能性)</span><br><span class="line"></span><br><span class="line">    - &#96;_data_matrix&#96;的子类 (带有&#96;data&#96;属性的稀疏矩阵类)</span><br><span class="line"></span><br><span class="line">- 快速的矩阵和向量相乘及其他数学 (sparsetools)</span><br><span class="line"></span><br><span class="line">- 构建器接受：</span><br><span class="line"></span><br><span class="line">  - 密集矩阵 (数组)</span><br><span class="line">  - 稀疏矩阵</span><br><span class="line">  - 形状元组 (创建空矩阵)</span><br><span class="line">  - &#96;(data, ij)&#96;元组</span><br><span class="line">  - &#96;(data, indices, indptr)&#96;元组</span><br><span class="line"></span><br><span class="line">- 高效列切片、面向列的操作</span><br><span class="line"></span><br><span class="line">- 较慢的行切片、改变稀疏结构代价昂贵</span><br><span class="line"></span><br><span class="line">- 用途:</span><br><span class="line"></span><br><span class="line">  - 实际计算 (巨大多数线性求解器支持这个格式)</span><br><span class="line"></span><br><span class="line">##### 2.5.2.2.6.1 示例</span><br><span class="line"></span><br><span class="line">- 创建空CSC矩阵:</span><br><span class="line"></span><br><span class="line">In [33]:</span><br></pre></td></tr></table></figure>
-<p>mtx = sparse.csc_matrix((3, 4), dtype=np.int8)<br>mtx.todense()</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Out[33]:</span><br></pre></td></tr></table></figure>
-<p>matrix([[0, 0, 0, 0],</p>
-<pre><code>[0, 0, 0, 0],
-[0, 0, 0, 0]], dtype=int8)
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 用&#96;(data, ij)&#96;元组创建:</span><br><span class="line"></span><br><span class="line">In [34]:</span><br></pre></td></tr></table></figure>
-<p>row = np.array([0, 0, 1, 2, 2, 2])<br>col = np.array([0, 2, 2, 0, 1, 2])<br>data = np.array([1, 2, 3, 4, 5, 6])<br>mtx = sparse.csc_matrix((data, (row, col)), shape=(3, 3))<br>mtx</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Out[34]:</span><br></pre></td></tr></table></figure>
-<p><3x3 sparse matrix of type '<type 'numpy.int64'>'
-with 6 stored elements in Compressed Sparse Column format></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In [35]:</span><br></pre></td></tr></table></figure>
-<p>mtx.todense()</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Out[35]:</span><br></pre></td></tr></table></figure>
-<p>matrix([[1, 0, 2],</p>
-<pre><code>[0, 0, 3],
-[4, 5, 6]])
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In [36]:</span><br></pre></td></tr></table></figure>
-<p>mtx.data</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Out[36]:</span><br></pre></td></tr></table></figure>
-<p>array([1, 4, 5, 2, 3, 6])</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In [37]:</span><br></pre></td></tr></table></figure>
-<p>mtx.indices</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Out[37]:</span><br></pre></td></tr></table></figure>
-<p>array([0, 2, 2, 0, 1, 2], dtype=int32)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In [38]:</span><br></pre></td></tr></table></figure>
-<p>mtx.indptr</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Out[38]:</span><br></pre></td></tr></table></figure>
-<p>array([0, 2, 3, 6], dtype=int32)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 用&#96;(data, indices, indptr)&#96;元组创建:</span><br><span class="line"></span><br><span class="line">In [39]:</span><br></pre></td></tr></table></figure>
-<p>data = np.array([1, 4, 5, 2, 3, 6])<br>indices = np.array([0, 2, 2, 0, 1, 2])<br>indptr = np.array([0, 2, 3, 6])<br>mtx = sparse.csc_matrix((data, indices, indptr), shape=(3, 3))<br>mtx.todense()</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Out[39]:</span><br></pre></td></tr></table></figure>
-<p>matrix([[1, 0, 2],</p>
-<pre><code>[0, 0, 3],
-[4, 5, 6]])
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">#### 2.5.2.2.7 块压缩行格式 (BSR))</span><br><span class="line"></span><br><span class="line">- 本质上，CSR带有密集的固定形状的子矩阵而不是纯量的项目</span><br><span class="line"></span><br><span class="line">  - 块大小&#96;(R, C)&#96;必须可以整除矩阵的形状&#96;(M, N)&#96;</span><br><span class="line"></span><br><span class="line">  - 三个Numpy数组:</span><br></pre></td></tr></table></figure>
-<p>indices</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">、</span><br></pre></td></tr></table></figure>
-<p>indptr</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">、</span><br></pre></td></tr></table></figure>
-<p>data</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">    - &#96;indices&#96;是每个块列索引的数组</span><br><span class="line">    - &#96;data&#96;是形状为(nnz, R, C)对应的非零值</span><br><span class="line">    - ...</span><br><span class="line"></span><br><span class="line">  - &#96;_cs_matrix&#96;的子类 (通用的CSR&#x2F;CSC功能性)</span><br><span class="line"></span><br><span class="line">  - &#96;_data_matrix&#96;的子类 (带有&#96;data&#96;属性的稀疏矩阵类)</span><br><span class="line"></span><br><span class="line">- 快速矩阵向量相乘和其他的算术 (sparsetools)</span><br><span class="line"></span><br><span class="line">- 构建器接受:</span><br><span class="line"></span><br><span class="line">  - 密集矩阵 (数组)</span><br><span class="line">  - 稀疏矩阵</span><br><span class="line">  - 形状元组 (创建空的矩阵)</span><br><span class="line">  - &#96;(data, ij)&#96;元组</span><br><span class="line">  - &#96;(data, indices, indptr)&#96;元组</span><br><span class="line"></span><br><span class="line">- 许多对于带有密集子矩阵的稀疏矩阵算术操作比CSR更高效很多</span><br><span class="line"></span><br><span class="line">- 用途:</span><br><span class="line"></span><br><span class="line">  - 类似CSR</span><br><span class="line">  - 有限元素向量值离散化 ##### 2.5.2.2.7.1 示例</span><br><span class="line"></span><br><span class="line">- 创建空的&#96;(1, 1)&#96;块大小的（类似CSR...）的BSR矩阵:</span><br><span class="line"></span><br><span class="line">In [40]:</span><br></pre></td></tr></table></figure>
-<p>mtx = sparse.bsr_matrix((3, 4), dtype=np.int8)<br>mtx</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Out[40]:</span><br></pre></td></tr></table></figure>
-<p><3x4 sparse matrix of type '<type 'numpy.int8'>'
-with 0 stored elements (blocksize = 1x1) in Block Sparse Row format></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In [41]:</span><br></pre></td></tr></table></figure>
-<p>mtx.todense()</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Out[41]:</span><br></pre></td></tr></table></figure>
-<p>matrix([[0, 0, 0, 0],</p>
-<pre><code>[0, 0, 0, 0],
-[0, 0, 0, 0]], dtype=int8)
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 创建块大小&#96;(3, 2)&#96;的空BSR矩阵:</span><br><span class="line"></span><br><span class="line">In [42]:</span><br></pre></td></tr></table></figure>
-<p>mtx = sparse.bsr_matrix((3, 4), blocksize=(3, 2), dtype=np.int8)<br>mtx</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Out[42]:</span><br></pre></td></tr></table></figure>
-<3x4 sparse matrix of type '<type 'numpy.int8'>'
-with 0 stored elements (blocksize = 3x2) in Block Sparse Row format></li>
-</ul>
-</li>
-<li><p>一个bug?</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 用&#96;(1, 1)&#96;块大小 (类似 CSR...)&#96;(data, ij)&#96;的元组创建:</span><br><span class="line"></span><br><span class="line">In [43]:</span><br></pre></td></tr></table></figure>
-<p>row = np.array([0, 0, 1, 2, 2, 2])<br>col = np.array([0, 2, 2, 0, 1, 2])<br>data = np.array([1, 2, 3, 4, 5, 6])<br>mtx = sparse.bsr_matrix((data, (row, col)), shape=(3, 3))<br>mtx</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Out[43]:</span><br></pre></td></tr></table></figure>
-<p><3x3 sparse matrix of type '<type 'numpy.int64'>'
-  with 6 stored elements (blocksize = 1x1) in Block Sparse Row format></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In [44]:</span><br></pre></td></tr></table></figure>
-<p>mtx.todense()</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Out[44]:</span><br></pre></td></tr></table></figure>
-<p>matrix([[1, 0, 2],</p>
-<pre><code>  [0, 0, 3],
-  [4, 5, 6]])
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In [45]:</span><br></pre></td></tr></table></figure>
-<p>mtx.indices</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Out[45]:</span><br></pre></td></tr></table></figure>
-<p>array([0, 2, 2, 0, 1, 2], dtype=int32)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In [46]:</span><br></pre></td></tr></table></figure>
-<p>mtx.indptr</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Out[46]:</span><br></pre></td></tr></table></figure>
-<p>array([0, 2, 3, 6], dtype=int32)</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- 用&#96;(2, 1)&#96;块大小&#96;(data, indices, indptr)&#96;的元组创建:</span><br><span class="line"></span><br><span class="line">In [47]:</span><br></pre></td></tr></table></figure>
-<p>indptr = np.array([0, 2, 3, 6])<br>indices = np.array([0, 2, 2, 0, 1, 2])<br>data = np.array([1, 2, 3, 4, 5, 6]).repeat(4).reshape(6, 2, 2)<br>mtx = sparse.bsr_matrix((data, indices, indptr), shape=(6, 6))<br>mtx.todense()</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Out[47]:</span><br></pre></td></tr></table></figure>
-<p>matrix([[1, 1, 0, 0, 2, 2],</p>
-<pre><code>  [1, 1, 0, 0, 2, 2],
-  [0, 0, 0, 0, 3, 3],
-  [0, 0, 0, 0, 3, 3],
-  [4, 4, 5, 5, 6, 6],
-  [4, 4, 5, 5, 6, 6]])
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">In [48]:</span><br></pre></td></tr></table></figure>
-<p>data</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Out[48]:</span><br></pre></td></tr></table></figure>
-<p>array([[[1, 1],</p>
-<pre><code>  [1, 1]],
+        </div>
+      </header>
 
- [[2, 2],
-  [2, 2]],
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
- [[3, 3],
-  [3, 3]],
-
- [[4, 4],
-  [4, 4]],
-
- [[5, 5],
-  [5, 5]],
-
- [[6, 6],
-  [6, 6]]])
-</code></pre><p>```</p>
-</li>
-</ul>
-<h3 id="2-5-2-3-总结"><a href="#2-5-2-3-总结" class="headerlink" title="2.5.2.3 总结"></a>2.5.2.3 总结</h3><p>存储机制的总结</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>格式</th>
-<th>矩阵 * 向量</th>
-<th>提取项目</th>
-<th>灵活提取</th>
-<th>设置项目</th>
-<th>灵活设置</th>
-<th>求解器</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>DIA</td>
-<td>sparsetools</td>
-<td>.</td>
-<td>.</td>
-<td>.</td>
-<td>.</td>
-<td>迭代</td>
-<td>有数据数组，专门化</td>
-</tr>
-<tr>
-<td>LIL</td>
-<td>通过 CSR</td>
-<td>是</td>
-<td>是</td>
-<td>是</td>
-<td>是</td>
-<td>迭代</td>
-<td>通过CSR的算术, 增量构建</td>
-</tr>
-<tr>
-<td>DOK</td>
-<td>python</td>
-<td>是</td>
-<td>只有一个轴</td>
-<td>是</td>
-<td>是</td>
-<td>迭代</td>
-<td><code>O(1)</code>条目访问, 增量构建</td>
-</tr>
-<tr>
-<td>COO</td>
-<td>sparsetools</td>
-<td>.</td>
-<td>.</td>
-<td>.</td>
-<td>.</td>
-<td>迭代</td>
-<td>有数据数组, 便利的快速转换</td>
-</tr>
-<tr>
-<td>CSR</td>
-<td>sparsetools</td>
-<td>是</td>
-<td>是</td>
-<td>慢</td>
-<td>.</td>
-<td>任何</td>
-<td>有数据数组, 快速以行为主的操作</td>
-</tr>
-<tr>
-<td>CSC</td>
-<td>sparsetools</td>
-<td>是</td>
-<td>是</td>
-<td>慢</td>
-<td>.</td>
-<td>任何</td>
-<td>有数据数组, 快速以列为主的操作</td>
-</tr>
-<tr>
-<td>BSR</td>
-<td>sparsetools</td>
-<td>.</td>
-<td>.</td>
-<td>.</td>
-<td>.</td>
-<td>专门化</td>
-<td>有数据数组，专门化</td>
-</tr>
-</tbody>
-</table>
-</div>
+      
+          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes</p>
+</blockquote>
+<h1 id="softmaxa-Regression"><a href="#softmaxa-Regression" class="headerlink" title="softmaxa Regression"></a>softmaxa Regression</h1><p>为LR在多分类上的推广，与LR一样，同属于广义线性模型（Generalized Linear Model）</p>
+<p>​    </p>
+<script type="math/tex; mode=display">
+S_i=\frac{e^{V_i}}{\sum_i^Ce^{V_i}}</script><p>其中，Vi 是分类器前级输出单元的输出。i 表示类别索引，总的类别个数为 C。Si 表示的是当前元素的指数与所有元素指数和的比值。Softmax 将多分类的输出数值转化为相对概率，更容易理解和比较。我们来看下面这个例子</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 什么是Softmax函数</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">实际应用中，使用 Softmax 需要注意数值溢出的问题。因为有指数运算，</span></span><br><span class="line"><span class="string">如果 V 数值很大，经过指数运算后的数值往往可能有溢出的可能。</span></span><br><span class="line"><span class="string">所以，需要对 V 进行一些数值处理：即 V 中的每个元素减去 V 中的最大值。"""</span></span><br><span class="line">scores = np.array([<span class="number">123</span>,<span class="number">456</span>,<span class="number">789</span>])</span><br><span class="line">scores -= np.max(scores)</span><br><span class="line">p = np.exp(scores) / np.sum(np.exp(scores))</span><br><span class="line"><span class="comment"># print(p)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Softmax损失函数</span></span><br><span class="line"><span class="comment"># 其中，Syi是正确类别对应的线性得分函数，Si 是正确类别对应的 Softmax输出。</span></span><br><span class="line"><span class="comment"># 由于 log 运算符不会影响函数的单调性，我们对 Si 进行 log 操作：</span></span><br><span class="line"><span class="comment"># 我们希望 Si 越大越好，即正确类别对应的相对概率越大越好，那么就可以对 Si 前面加个负号，来表示损失函数</span></span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">
+L_i=-log\frac{e^{S_{y_i}}}{\sum_{j=1}^Ce^{S_j}}=-(s_{y_i}-log\sum_{j=1}^Ce^{s_j})=-s_{y_i}+log\sum_{j=1}^Ce^{s_j}</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax_loss_naive</span><span class="params">(W,X,y,reg)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Softmax loss function ,naive implementation(with loops)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Inputs have dimension D,there are C classes,and we operate on minibatches of N examples</span></span><br><span class="line"><span class="string">    :param W: A numpy array of shape(D,C) containing weights</span></span><br><span class="line"><span class="string">    :param X: A numpy array of shaep(N,D) containing a minibatch of data</span></span><br><span class="line"><span class="string">    :param y:A numpy array of shape(N,) containing training,labels,y[i] = c means</span></span><br><span class="line"><span class="string">    :param reg:(float) regularization strength</span></span><br><span class="line"><span class="string">    :return: A tuple of (loss as single float, gradient with respect to weights W,an array of same shape as  W)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment"># initialize the loss and gradient to zero</span></span><br><span class="line">    loss = <span class="number">0.0</span></span><br><span class="line">    dW = np.zeros_like(W)</span><br><span class="line"></span><br><span class="line">    num_train = X.shape[<span class="number">0</span>]</span><br><span class="line">    num_classes = W.shape[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_train):</span><br><span class="line">        scores = X[i,:].dot(W)</span><br><span class="line">        scores_shift = scores - np.max(scores)</span><br><span class="line">        right_class = y[i]</span><br><span class="line">        loss += (-scores_shift[right_class] + np.log(np.sum(np.exp(scores_shift))))</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(num_classes):</span><br><span class="line">            softmax_output = np.exp(scores_shift[j]) / np.sum(np.exp(scores_shift))</span><br><span class="line">            <span class="keyword">if</span> j == y[i]:</span><br><span class="line">                dW[:,j] += (<span class="number">-1</span> + softmax_output) * X[i,:]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dW[:,j] += softmax_output * X[i,:]</span><br><span class="line">    loss /= num_train</span><br><span class="line">    loss += <span class="number">0.5</span> * reg * np.sum(W*W)</span><br><span class="line">    dW /= num_train</span><br><span class="line">    dW += reg * W</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> loss,dW</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax_loss_vectorized</span><span class="params">(W,X,y,reg)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Softmax loss function,vectorized version</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Inputs and outputs are the same as softmax_loss_naive</span></span><br><span class="line"><span class="string">    :param W:</span></span><br><span class="line"><span class="string">    :param X:</span></span><br><span class="line"><span class="string">    :param y:</span></span><br><span class="line"><span class="string">    :param reg:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    loss = <span class="number">0.0</span></span><br><span class="line">    dW = np.zeros_like(W)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获得样本的数量</span></span><br><span class="line">    num_train = X.shape[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># 获取样本的分裂数量</span></span><br><span class="line">    num_classes = W.shape[<span class="number">1</span>]</span><br><span class="line">    <span class="comment"># 获取到每个样本所对应的分类的得分</span></span><br><span class="line">    scores = X.dot(W)</span><br><span class="line">    scores_shift = scores - np.max(scores, axis=<span class="number">1</span>)</span><br><span class="line">    softmax_output = np.exp(scores_shift) / np.sum(np.exp(scores_shift), axis=<span class="number">1</span>)</span><br><span class="line">    loss = -np.sum(np.log(softmax_output[range(num_train), list(y)]))</span><br><span class="line">    loss /= num_train</span><br><span class="line">    loss += <span class="number">0.5</span> * reg * np.sum(W * W)</span><br><span class="line"></span><br><span class="line">    dS = softmax_output.copy()</span><br><span class="line">    dS[range(num_train), list(y)] += <span class="number">-1</span></span><br><span class="line">    dW = (X.T).dot(dS)</span><br><span class="line">    dW = dW / num_train + reg * W</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> loss, dW</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1964,6 +1291,61 @@ window.addEventListener('pjax:success', () => {
   
 
   
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
 
   
 
