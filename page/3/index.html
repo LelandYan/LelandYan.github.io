@@ -195,7 +195,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-gridsearch-2020/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-matplotlib_learning-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -209,7 +209,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/04/2020-3-3-gridsearch-2020/" class="post-title-link" itemprop="url">网格搜索与交叉验证</a>
+            <a href="/2020/03/04/2020-3-3-matplotlib_learning-2020/" class="post-title-link" itemprop="url">matplotlib防止中文乱码</a>
         </h1>
 
         <div class="post-meta">
@@ -220,7 +220,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:42:34" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:23:30" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -246,208 +246,7 @@
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes</p>
 </blockquote>
-<h1 id="网格搜索与交叉验证（网格搜索必须要在main下定义）"><a href="#网格搜索与交叉验证（网格搜索必须要在main下定义）" class="headerlink" title="网格搜索与交叉验证（网格搜索必须要在main下定义）"></a>网格搜索与交叉验证（网格搜索必须要在main下定义）</h1><h2 id="k折交叉验证调节超参数"><a href="#k折交叉验证调节超参数" class="headerlink" title="k折交叉验证调节超参数"></a>k折交叉验证调节超参数</h2><p>使用与样本数量较小的数据样本(以万基)</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_breast_cancer</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> make_scorer, accuracy_score</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">data = load_breast_cancer()</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(data[<span class="string">'data'</span>], data[<span class="string">'target'</span>], test_size=<span class="number">0.2</span>, random_state=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># print(X_train.shape,y_train.shape,X_test.shape,y_test.shape)</span></span><br><span class="line">dec_clf = DecisionTreeClassifier(random_state=<span class="number">0</span>)</span><br><span class="line">dec_clf.fit(X_train, y_train)</span><br><span class="line">print(dec_clf.score(X_test, y_test))</span><br><span class="line"></span><br><span class="line">parameters = &#123;<span class="string">'max_depth'</span>: range(<span class="number">1</span>, <span class="number">6</span>), <span class="string">'min_samples_leaf'</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]&#125;</span><br><span class="line"><span class="comment"># 构建一个打分器</span></span><br><span class="line">scoring_fnc = make_scorer(accuracy_score)</span><br><span class="line">kfold = KFold(n_splits=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># for train_index,test_index in kfold.split(range(10)):</span></span><br><span class="line"><span class="comment">#     print(train_index,test_index)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 网格搜索</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line"></span><br><span class="line">grid = GridSearchCV(dec_clf, parameters, scoring_fnc, cv=kfold)</span><br><span class="line">grid = grid.fit(X_train, y_train)</span><br><span class="line">reg = grid.best_estimator_</span><br><span class="line"></span><br><span class="line">print(<span class="string">"best score:"</span>, grid.best_score_)</span><br><span class="line">print(<span class="string">'best parameters: '</span>, grid.best_params_)</span><br><span class="line">print(reg.score(X_test, y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment"># for key in parameters.keys():</span></span><br><span class="line"><span class="comment">#     print(key," : ",reg.get_params()[key])</span></span><br><span class="line"><span class="comment"># 显示交叉验证的过程</span></span><br><span class="line">print(pd.DataFrame(grid.cv_results_).T)</span><br></pre></td></tr></table></figure>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>k折交叉验证法是将训练集分为k组，用每1组作为测试集而剩下的k-1组的训练集作为训练数据集，从而可以测试k个训练模型</p>
-<p>交叉验证是用于调节参数，最大的利用训练集寻找最优的超参数</p>
-<p>过拟合：训练集准确率高，测试集准确率较低</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># sklearn进行交叉验证----单一超参数</span></span><br><span class="line"><span class="comment"># 交叉验证得分cross_val_score()</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="comment"># estimator 训练器的选择</span></span><br><span class="line"><span class="comment"># X为训练集上的特征</span></span><br><span class="line"><span class="comment"># y是训练集中要预测的标签</span></span><br><span class="line"><span class="comment"># cv是交叉验证分为几折</span></span><br><span class="line">cross_val_score(estimator,X,y=<span class="literal">None</span>,cv=<span class="literal">None</span>)</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"></span><br><span class="line">k_range = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">10</span>] <span class="comment">#k选择2，4，5，10四个参数</span></span><br><span class="line">cv_scores = [] <span class="comment">#分别放用4个参数训练得到的精确度</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> k_range:</span><br><span class="line">    knn = KNeighborsClassifier(n_neighbors=k)</span><br><span class="line">    <span class="comment">#*****下面这句进行了交叉验证**********</span></span><br><span class="line">    scores = cross_val_score(knn, X_train_scaled, y_train, cv=<span class="number">3</span>)<span class="comment">#进行3折交叉验证，返回的是3个值即每次验证的精确度</span></span><br><span class="line"></span><br><span class="line">    cv_score = np.mean(scores)<span class="comment"># 把某个k对应的精确度求平均值</span></span><br><span class="line">    print(<span class="string">'k=&#123;&#125;，验证集上的准确率=&#123;:.3f&#125;'</span>.format(k, cv_score))</span><br><span class="line">    cv_scores.append(cv_score)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 验证曲线validation_curve()</span></span><br><span class="line">    sklearn.model_selection.validation_curve(estimator, X, y, param_name, param_range, cv=<span class="literal">None</span>, scoring=<span class="literal">None</span>) </span><br><span class="line">参数： </span><br><span class="line">- estimator： 训练器 </span><br><span class="line">- X： 训练集上选择的特征 </span><br><span class="line">- y：训练集上的要预测值 </span><br><span class="line">- param_name ：变化的参数的名称 </span><br><span class="line">- param_range ： 参数变化的范围 </span><br><span class="line">- cv：交叉验证的折数 </span><br><span class="line">- scoring：采用的模型评价标准</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> validation_curve</span><br><span class="line">train_scores, test_scores = validation_curve(SVC(kernel=<span class="string">'linear'</span>), X_train_scaled, y_train, param_name=<span class="string">'C'</span>, param_range=c_range, cv=<span class="number">5</span>, scoring=<span class="string">'accuracy'</span>)<span class="comment"># 通过验证曲线得到不同取值的C在验证集合训练集上的得分。</span></span><br></pre></td></tr></table></figure>
-<h1 id="随机搜索"><a href="#随机搜索" class="headerlink" title="随机搜索"></a>随机搜索</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> RandomizedSearchCV</span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> randint</span><br><span class="line"></span><br><span class="line">param_distribs = &#123;</span><br><span class="line">        <span class="string">'n_estimators'</span>: randint(low=<span class="number">1</span>, high=<span class="number">200</span>),</span><br><span class="line">        <span class="string">'max_features'</span>: randint(low=<span class="number">1</span>, high=<span class="number">8</span>),</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">forest_reg = RandomForestRegressor(random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search = RandomizedSearchCV(forest_reg, param_distributions=param_distribs,</span><br><span class="line">                                n_iter=<span class="number">10</span>, cv=<span class="number">5</span>, scoring=<span class="string">'neg_mean_squared_error'</span>, random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search.fit(housing_prepared, housing_labels)</span><br><span class="line"></span><br><span class="line">cvres = rnd_search.cv_results_</span><br><span class="line"><span class="keyword">for</span> mean_score, params <span class="keyword">in</span> zip(cvres[<span class="string">"mean_test_score"</span>], cvres[<span class="string">"params"</span>]):</span><br><span class="line">    print(np.sqrt(-mean_score), params)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-regulation_overfitting-2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="LelandYan">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LelandYan">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/04/2020-3-3-regulation_overfitting-2020/" class="post-title-link" itemprop="url">Addressing overfitting</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:29:11" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="Addressing-overfitting"><a href="#Addressing-overfitting" class="headerlink" title="Addressing overfitting"></a>Addressing overfitting</h1><h3 id="options"><a href="#options" class="headerlink" title="options:"></a>options:</h3><p>​    1 .Reduce number of features</p>
-<p>​        Manually select which features to keep</p>
-<p>​        Model selection algorithm()</p>
-<p>​    2.Regularization</p>
-<p>​        Keep all the features,but reduce magnitude/value parameters</p>
-<p>​        Works well when we have a lot of    features,each of which contributes a bit ot predicting        </p>
-<p>​    small values for parameters</p>
-<p>​    3. Regularized linear regression<br>   <img src="/images/regulation.png" alt=""></p>
-<ol>
-<li>Gradient descent<br><img src="/images/regularization_gradient.png" alt="Image text"></li>
-</ol>
-<ol>
-<li><p>normalization equation</p>
-<ol>
-<li><p>奇异矩阵的判断方法：</p>
-<p>首先，看这个矩阵是不是方阵（即行数和列数相等的矩阵。若行数和列数不相等，那就谈不上奇异矩阵和非奇异矩阵）。 然后，再看此方阵的行列式| A |是否等于0，若等于0，称矩阵A为奇异矩阵；若不等于0，称矩阵A为非奇异矩阵。 同时，由| A |≠0可知矩阵A可逆，这样可以得出另外一个重要结论:可逆矩阵就是非奇异矩阵，非奇异矩阵也是可逆矩阵。</p>
-</li>
-</ol>
-<p><img src="/images/normalization_regualization.png" alt="Image text"></p>
-</li>
-</ol>
-<p>   <strong>这里一定是可逆的的矩阵，虽然X^TX可能不可逆，但是加入惩罚因子后，其和的行列式不为0，所以其可逆</strong></p>
-<ol>
-<li><p>regularization logistic regression</p>
-<p>logistic regression 和 linear regression 区别在与costFunction和是否使用sigimoid function</p>
-<script type="math/tex; mode=display">
-J(\theta) = -\frac{ 1 }{ m }[\sum_{ i=1 }^{ m } ({y^{(i)} \log h_\theta(x^{(i)}) + (1-y^{(i)}) \log (1-h_\theta(x^{(i)})})]+\frac{k}{2m}\sum_{ i=1 }^{ n }\theta_j^2</script><p><img src="/images/regulariation_logistic_1545615172826.png" alt="Image text"></p>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-mult_classifition-2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="LelandYan">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LelandYan">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/04/2020-3-3-mult_classifition-2020/" class="post-title-link" itemprop="url">如何处理多分类问题</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:02:29" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="如何处理多分类问题"><a href="#如何处理多分类问题" class="headerlink" title="如何处理多分类问题"></a>如何处理多分类问题</h1><h2 id="有关多分类问题有两种方法"><a href="#有关多分类问题有两种方法" class="headerlink" title="有关多分类问题有两种方法"></a>有关多分类问题有两种方法</h2><p>二分类器只能区分两个类，而多类分类器（也被叫做多项式分类器）可以区分多于两个类。</p>
-<p>一些算法（比如随机森林分类器或者朴素贝叶斯分类器）可以直接处理多类分类问题。其他一些算法（比如 SVM 分类器或者线性分类器）则是严格的二分类器。然后，有许多策略可以让你用二分类器去执行多类分类。</p>
-<p>举例子，创建一个可以将图片分成 10 类（从 0 到 9）的系统的一个方法是：训练10个二分类器，每一个对应一个数字（探测器 0，探测器 1，探测器 2，以此类推）。然后当你想对某张图片进行分类的时候，让每一个分类器对这个图片进行分类，选出决策分数最高的那个分类器。这叫做“一对所有”（OvA）策略（也被叫做“一对其他”）。</p>
-<p>另一个策略是对每一对数字都训练一个二分类器：一个分类器用来处理数字 0 和数字 1，一个用来处理数字 0 和数字 2，一个用来处理数字 1 和 2，以此类推。这叫做“一对一”（OvO）策略。如果有 N 个类。你需要训练<code>N*(N-1)/2</code>个分类器。对于 MNIST 问题，需要训练 45 个二分类器！当你想对一张图片进行分类，你必须将这张图片跑在全部45个二分类器上。然后看哪个类胜出。OvO 策略的主要优点是：每个分类器只需要在训练集的部分数据上面进行训练。这部分数据是它所需要区分的那两个类对应的数据。</p>
-<p>一些算法（比如 SVM 分类器）在训练集的大小上很难扩展，所以对于这些算法，OvO 是比较好的，因为它可以在小的数据集上面可以更多地训练，较之于巨大的数据集而言。但是，对于大部分的二分类器来说，OvA 是更好的选择。</p>
-<p>Scikit-Learn 可以探测出你想使用一个二分类器去完成多分类的任务，它会自动地执行 OvA（除了 SVM 分类器，它使用 OvO）。让我们试一下<code>SGDClassifier</code>.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.fit(X_train, y_train) <span class="comment"># y_train, not y_train_5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.predict([some_digit])</span><br><span class="line">array([ <span class="number">5.</span>])</span><br></pre></td></tr></table></figure>
-<p>很容易。上面的代码在训练集上训练了一个<code>SGDClassifier</code>。这个分类器处理原始的目标class，从 0 到 9（<code>y_train</code>），而不是仅仅探测是否为 5 （<code>y_train_5</code>）。然后它做出一个判断（在这个案例下只有一个正确的数字）。在幕后，Scikit-Learn 实际上训练了 10 个二分类器，每个分类器都产到一张图片的决策数值，选择数值最高的那个类。</p>
-<p>为了证明这是真实的，你可以调用<code>decision_function()</code>方法。不是返回每个样例的一个数值，而是返回 10 个数值，一个数值对应于一个类。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_digit_scores = sgd_clf.decision_function([some_digit])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_digit_scores</span><br><span class="line">array([[<span class="number">-311402.62954431</span>, <span class="number">-363517.28355739</span>, <span class="number">-446449.5306454</span> ,</span><br><span class="line">        <span class="number">-183226.61023518</span>, <span class="number">-414337.15339485</span>, <span class="number">161855.74572176</span>,</span><br><span class="line">        <span class="number">-452576.39616343</span>, <span class="number">-471957.14962573</span>, <span class="number">-518542.33997148</span>,</span><br><span class="line">        <span class="number">-536774.63961222</span>]])</span><br></pre></td></tr></table></figure>
-<p>最高数值是对应于类别 5 ：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.argmax(some_digit_scores)</span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.classes_</span><br><span class="line">array([ <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">2.</span>, <span class="number">3.</span>, <span class="number">4.</span>, <span class="number">5.</span>, <span class="number">6.</span>, <span class="number">7.</span>, <span class="number">8.</span>, <span class="number">9.</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.classes_[<span class="number">5</span>]</span><br><span class="line"><span class="number">5.0</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>一个分类器被训练好了之后，它会保存目标类别列表到它的属性<code>classes_</code> 中去，按照值排序。在本例子当中，在<code>classes_</code> 数组当中的每个类的索引方便地匹配了类本身，比如，索引为 5 的类恰好是类别 5 本身。但通常不会这么幸运。</p>
-</blockquote>
-<p>如果你想强制 Scikit-Learn 使用 OvO 策略或者 OvA 策略，你可以使用<code>OneVsOneClassifier</code>类或者<code>OneVsRestClassifier</code>类。创建一个样例，传递一个二分类器给它的构造函数。举例子，下面的代码会创建一个多类分类器，使用 OvO 策略，基于<code>SGDClassifier</code>。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.multiclass <span class="keyword">import</span> OneVsOneClassifier</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ovo_clf = OneVsOneClassifier(SGDClassifier(random_state=<span class="number">42</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ovo_clf.fit(X_train, y_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ovo_clf.predict([some_digit])</span><br><span class="line">array([ <span class="number">5.</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>len(ovo_clf.estimators_)</span><br><span class="line"><span class="number">45</span></span><br></pre></td></tr></table></figure>
-<p>训练一个<code>RandomForestClassifier</code>同样简单：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>forest_clf.fit(X_train, y_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>forest_clf.predict([some_digit])</span><br><span class="line">array([ <span class="number">5.</span>])</span><br></pre></td></tr></table></figure>
-<p>这次 Scikit-Learn 没有必要去运行 OvO 或者 OvA，因为随机森林分类器能够直接将一个样例分到多个类别。你可以调用<code>predict_proba()</code>，得到样例对应的类别的概率值的列表：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>forest_clf.predict_proba([some_digit])</span><br><span class="line">array([[ <span class="number">0.1</span>, <span class="number">0.</span> , <span class="number">0.</span> , <span class="number">0.1</span>, <span class="number">0.</span> , <span class="number">0.8</span>, <span class="number">0.</span> , <span class="number">0.</span> , <span class="number">0.</span> , <span class="number">0.</span> ]])</span><br></pre></td></tr></table></figure>
-<p>你可以看到这个分类器相当确信它的预测：在数组的索引 5 上的 0.8，意味着这个模型以 80% 的概率估算这张图片代表数字 5。它也认为这个图片可能是数字 0 或者数字 3，分别都是 10% 的几率。</p>
-<p>现在当然你想评估这些分类器。像平常一样，你想使用交叉验证。让我们用<code>cross_val_score()</code>来评估<code>SGDClassifier</code>的精度。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>cross_val_score(sgd_clf, X_train, y_train, cv=<span class="number">3</span>, scoring=<span class="string">"accuracy"</span>)</span><br><span class="line">array([ <span class="number">0.84063187</span>, <span class="number">0.84899245</span>, <span class="number">0.86652998</span>])</span><br></pre></td></tr></table></figure>
-<p>在所有测试折（test fold）上，它有 84% 的精度。如果你是用一个随机的分类器，你将会得到 10% 的正确率。所以这不是一个坏的分数，但是你可以做的更好。举例子，简单将输入正则化，将会提高精度到 90% 以上。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scaler = StandardScaler()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X_train_scaled = scaler.fit_transform(X_train.astype(np.float64))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>cross_val_score(sgd_clf, X_train_scaled, y_train, cv=<span class="number">3</span>, scoring=<span class="string">"accuracy"</span>)</span><br><span class="line">array([ <span class="number">0.91011798</span>, <span class="number">0.90874544</span>, <span class="number">0.906636</span> ])</span><br></pre></td></tr></table></figure>
+<h1 id="matplotlib防止中文乱码"><a href="#matplotlib防止中文乱码" class="headerlink" title="matplotlib防止中文乱码"></a>matplotlib防止中文乱码</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 绘图时候防止在图像的中文乱码</span></span><br><span class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">'simHei'</span>]</span><br><span class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="literal">False</span></span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -574,6 +373,200 @@ J(\theta) = -\frac{ 1 }{ m }[\sum_{ i=1 }^{ m } ({y^{(i)} \log h_\theta(x^{(i)})
     a1n      & a2n      & \cdots & amn      \\
    \end{matrix}
    \right]=A^T</script><p><img src="/images/matrix.png" alt=""></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-mult_classifition-2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="LelandYan">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LelandYan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/04/2020-3-3-mult_classifition-2020/" class="post-title-link" itemprop="url">如何处理多分类问题</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:02:29" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes</p>
+</blockquote>
+<h1 id="如何处理多分类问题"><a href="#如何处理多分类问题" class="headerlink" title="如何处理多分类问题"></a>如何处理多分类问题</h1><h2 id="有关多分类问题有两种方法"><a href="#有关多分类问题有两种方法" class="headerlink" title="有关多分类问题有两种方法"></a>有关多分类问题有两种方法</h2><p>二分类器只能区分两个类，而多类分类器（也被叫做多项式分类器）可以区分多于两个类。</p>
+<p>一些算法（比如随机森林分类器或者朴素贝叶斯分类器）可以直接处理多类分类问题。其他一些算法（比如 SVM 分类器或者线性分类器）则是严格的二分类器。然后，有许多策略可以让你用二分类器去执行多类分类。</p>
+<p>举例子，创建一个可以将图片分成 10 类（从 0 到 9）的系统的一个方法是：训练10个二分类器，每一个对应一个数字（探测器 0，探测器 1，探测器 2，以此类推）。然后当你想对某张图片进行分类的时候，让每一个分类器对这个图片进行分类，选出决策分数最高的那个分类器。这叫做“一对所有”（OvA）策略（也被叫做“一对其他”）。</p>
+<p>另一个策略是对每一对数字都训练一个二分类器：一个分类器用来处理数字 0 和数字 1，一个用来处理数字 0 和数字 2，一个用来处理数字 1 和 2，以此类推。这叫做“一对一”（OvO）策略。如果有 N 个类。你需要训练<code>N*(N-1)/2</code>个分类器。对于 MNIST 问题，需要训练 45 个二分类器！当你想对一张图片进行分类，你必须将这张图片跑在全部45个二分类器上。然后看哪个类胜出。OvO 策略的主要优点是：每个分类器只需要在训练集的部分数据上面进行训练。这部分数据是它所需要区分的那两个类对应的数据。</p>
+<p>一些算法（比如 SVM 分类器）在训练集的大小上很难扩展，所以对于这些算法，OvO 是比较好的，因为它可以在小的数据集上面可以更多地训练，较之于巨大的数据集而言。但是，对于大部分的二分类器来说，OvA 是更好的选择。</p>
+<p>Scikit-Learn 可以探测出你想使用一个二分类器去完成多分类的任务，它会自动地执行 OvA（除了 SVM 分类器，它使用 OvO）。让我们试一下<code>SGDClassifier</code>.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.fit(X_train, y_train) <span class="comment"># y_train, not y_train_5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.predict([some_digit])</span><br><span class="line">array([ <span class="number">5.</span>])</span><br></pre></td></tr></table></figure>
+<p>很容易。上面的代码在训练集上训练了一个<code>SGDClassifier</code>。这个分类器处理原始的目标class，从 0 到 9（<code>y_train</code>），而不是仅仅探测是否为 5 （<code>y_train_5</code>）。然后它做出一个判断（在这个案例下只有一个正确的数字）。在幕后，Scikit-Learn 实际上训练了 10 个二分类器，每个分类器都产到一张图片的决策数值，选择数值最高的那个类。</p>
+<p>为了证明这是真实的，你可以调用<code>decision_function()</code>方法。不是返回每个样例的一个数值，而是返回 10 个数值，一个数值对应于一个类。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_digit_scores = sgd_clf.decision_function([some_digit])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_digit_scores</span><br><span class="line">array([[<span class="number">-311402.62954431</span>, <span class="number">-363517.28355739</span>, <span class="number">-446449.5306454</span> ,</span><br><span class="line">        <span class="number">-183226.61023518</span>, <span class="number">-414337.15339485</span>, <span class="number">161855.74572176</span>,</span><br><span class="line">        <span class="number">-452576.39616343</span>, <span class="number">-471957.14962573</span>, <span class="number">-518542.33997148</span>,</span><br><span class="line">        <span class="number">-536774.63961222</span>]])</span><br></pre></td></tr></table></figure>
+<p>最高数值是对应于类别 5 ：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.argmax(some_digit_scores)</span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.classes_</span><br><span class="line">array([ <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">2.</span>, <span class="number">3.</span>, <span class="number">4.</span>, <span class="number">5.</span>, <span class="number">6.</span>, <span class="number">7.</span>, <span class="number">8.</span>, <span class="number">9.</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.classes_[<span class="number">5</span>]</span><br><span class="line"><span class="number">5.0</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>一个分类器被训练好了之后，它会保存目标类别列表到它的属性<code>classes_</code> 中去，按照值排序。在本例子当中，在<code>classes_</code> 数组当中的每个类的索引方便地匹配了类本身，比如，索引为 5 的类恰好是类别 5 本身。但通常不会这么幸运。</p>
+</blockquote>
+<p>如果你想强制 Scikit-Learn 使用 OvO 策略或者 OvA 策略，你可以使用<code>OneVsOneClassifier</code>类或者<code>OneVsRestClassifier</code>类。创建一个样例，传递一个二分类器给它的构造函数。举例子，下面的代码会创建一个多类分类器，使用 OvO 策略，基于<code>SGDClassifier</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.multiclass <span class="keyword">import</span> OneVsOneClassifier</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ovo_clf = OneVsOneClassifier(SGDClassifier(random_state=<span class="number">42</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ovo_clf.fit(X_train, y_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ovo_clf.predict([some_digit])</span><br><span class="line">array([ <span class="number">5.</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>len(ovo_clf.estimators_)</span><br><span class="line"><span class="number">45</span></span><br></pre></td></tr></table></figure>
+<p>训练一个<code>RandomForestClassifier</code>同样简单：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>forest_clf.fit(X_train, y_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>forest_clf.predict([some_digit])</span><br><span class="line">array([ <span class="number">5.</span>])</span><br></pre></td></tr></table></figure>
+<p>这次 Scikit-Learn 没有必要去运行 OvO 或者 OvA，因为随机森林分类器能够直接将一个样例分到多个类别。你可以调用<code>predict_proba()</code>，得到样例对应的类别的概率值的列表：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>forest_clf.predict_proba([some_digit])</span><br><span class="line">array([[ <span class="number">0.1</span>, <span class="number">0.</span> , <span class="number">0.</span> , <span class="number">0.1</span>, <span class="number">0.</span> , <span class="number">0.8</span>, <span class="number">0.</span> , <span class="number">0.</span> , <span class="number">0.</span> , <span class="number">0.</span> ]])</span><br></pre></td></tr></table></figure>
+<p>你可以看到这个分类器相当确信它的预测：在数组的索引 5 上的 0.8，意味着这个模型以 80% 的概率估算这张图片代表数字 5。它也认为这个图片可能是数字 0 或者数字 3，分别都是 10% 的几率。</p>
+<p>现在当然你想评估这些分类器。像平常一样，你想使用交叉验证。让我们用<code>cross_val_score()</code>来评估<code>SGDClassifier</code>的精度。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>cross_val_score(sgd_clf, X_train, y_train, cv=<span class="number">3</span>, scoring=<span class="string">"accuracy"</span>)</span><br><span class="line">array([ <span class="number">0.84063187</span>, <span class="number">0.84899245</span>, <span class="number">0.86652998</span>])</span><br></pre></td></tr></table></figure>
+<p>在所有测试折（test fold）上，它有 84% 的精度。如果你是用一个随机的分类器，你将会得到 10% 的正确率。所以这不是一个坏的分数，但是你可以做的更好。举例子，简单将输入正则化，将会提高精度到 90% 以上。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scaler = StandardScaler()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X_train_scaled = scaler.fit_transform(X_train.astype(np.float64))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>cross_val_score(sgd_clf, X_train_scaled, y_train, cv=<span class="number">3</span>, scoring=<span class="string">"accuracy"</span>)</span><br><span class="line">array([ <span class="number">0.91011798</span>, <span class="number">0.90874544</span>, <span class="number">0.906636</span> ])</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-regulation_overfitting-2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="LelandYan">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LelandYan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/04/2020-3-3-regulation_overfitting-2020/" class="post-title-link" itemprop="url">Addressing overfitting</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:29:11" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes</p>
+</blockquote>
+<h1 id="Addressing-overfitting"><a href="#Addressing-overfitting" class="headerlink" title="Addressing overfitting"></a>Addressing overfitting</h1><h3 id="options"><a href="#options" class="headerlink" title="options:"></a>options:</h3><p>​    1 .Reduce number of features</p>
+<p>​        Manually select which features to keep</p>
+<p>​        Model selection algorithm()</p>
+<p>​    2.Regularization</p>
+<p>​        Keep all the features,but reduce magnitude/value parameters</p>
+<p>​        Works well when we have a lot of    features,each of which contributes a bit ot predicting        </p>
+<p>​    small values for parameters</p>
+<p>​    3. Regularized linear regression<br>   <img src="/images/regulation.png" alt=""></p>
+<ol>
+<li>Gradient descent<br><img src="/images/regularization_gradient.png" alt="Image text"></li>
+</ol>
+<ol>
+<li><p>normalization equation</p>
+<ol>
+<li><p>奇异矩阵的判断方法：</p>
+<p>首先，看这个矩阵是不是方阵（即行数和列数相等的矩阵。若行数和列数不相等，那就谈不上奇异矩阵和非奇异矩阵）。 然后，再看此方阵的行列式| A |是否等于0，若等于0，称矩阵A为奇异矩阵；若不等于0，称矩阵A为非奇异矩阵。 同时，由| A |≠0可知矩阵A可逆，这样可以得出另外一个重要结论:可逆矩阵就是非奇异矩阵，非奇异矩阵也是可逆矩阵。</p>
+</li>
+</ol>
+<p><img src="/images/normalization_regualization.png" alt="Image text"></p>
+</li>
+</ol>
+<p>   <strong>这里一定是可逆的的矩阵，虽然X^TX可能不可逆，但是加入惩罚因子后，其和的行列式不为0，所以其可逆</strong></p>
+<ol>
+<li><p>regularization logistic regression</p>
+<p>logistic regression 和 linear regression 区别在与costFunction和是否使用sigimoid function</p>
+<script type="math/tex; mode=display">
+J(\theta) = -\frac{ 1 }{ m }[\sum_{ i=1 }^{ m } ({y^{(i)} \log h_\theta(x^{(i)}) + (1-y^{(i)}) \log (1-h_\theta(x^{(i)})})]+\frac{k}{2m}\sum_{ i=1 }^{ n }\theta_j^2</script><p><img src="/images/regulariation_logistic_1545615172826.png" alt="Image text"></p>
+</li>
+</ol>
 
       
     </div>
@@ -1763,7 +1756,7 @@ L_i=-log\frac{e^{S_{y_i}}}{\sum_{j=1}^Ce^{S_j}}=-(s_{y_i}-log\sum_{j=1}^Ce^{s_j}
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-spare_matrix-2020/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-unbalance_data-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -1777,7 +1770,7 @@ L_i=-log\frac{e^{S_{y_i}}}{\sum_{j=1}^Ce^{S_j}}=-(s_{y_i}-log\sum_{j=1}^Ce^{s_j}
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/04/2020-3-3-spare_matrix-2020/" class="post-title-link" itemprop="url">sklearn稀疏矩阵</a>
+            <a href="/2020/03/04/2020-3-3-unbalance_data-2020/" class="post-title-link" itemprop="url">如何处理不平衡的数据</a>
         </h1>
 
         <div class="post-meta">
@@ -1788,7 +1781,7 @@ L_i=-log\frac{e^{S_{y_i}}}{\sum_{j=1}^Ce^{S_j}}=-(s_{y_i}-log\sum_{j=1}^Ce^{s_j}
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:17:55" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:23:14" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -1814,8 +1807,59 @@ L_i=-log\frac{e^{S_{y_i}}}{\sum_{j=1}^Ce^{S_j}}=-(s_{y_i}-log\sum_{j=1}^Ce^{s_j}
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes</p>
 </blockquote>
-<h1 id="sklearn稀疏矩阵"><a href="#sklearn稀疏矩阵" class="headerlink" title="sklearn稀疏矩阵"></a>sklearn稀疏矩阵</h1><h3 id="lil-matrix-使用两个列表储存非0元素，data保存每行中的非零元素-rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。"><a href="#lil-matrix-使用两个列表储存非0元素，data保存每行中的非零元素-rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。" class="headerlink" title="lil_matrix 使用两个列表储存非0元素，data保存每行中的非零元素,rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。"></a>lil_matrix 使用两个列表储存非0元素，data保存每行中的非零元素,rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.sparse <span class="keyword">import</span> lil_matrix</span><br><span class="line">l = lil_matrix((<span class="number">6</span>,<span class="number">5</span>))</span><br><span class="line">l[<span class="number">2</span>,<span class="number">3</span>] = <span class="number">1</span></span><br><span class="line">l[<span class="number">3</span>,<span class="number">4</span>] = <span class="number">2</span></span><br><span class="line">l[<span class="number">3</span>,<span class="number">2</span>] = <span class="number">3</span></span><br><span class="line">print(l.toarray())</span><br><span class="line">[[ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">1.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">3.</span>  <span class="number">0.</span>  <span class="number">2.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> l.data</span><br><span class="line">[[] [] [<span class="number">1.0</span>] [<span class="number">3.0</span>, <span class="number">2.0</span>] [] []]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> l.rows</span><br><span class="line">[[] [] [<span class="number">3</span>] [<span class="number">2</span>, <span class="number">4</span>] [] []]</span><br></pre></td></tr></table></figure>
-<h3 id="dok-matrix和lil-matrix适用的场景是逐渐添加矩阵的元素。doc-matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的元祖，value是记录元素的具体值。"><a href="#dok-matrix和lil-matrix适用的场景是逐渐添加矩阵的元素。doc-matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的元祖，value是记录元素的具体值。" class="headerlink" title="dok_matrix和lil_matrix适用的场景是逐渐添加矩阵的元素。doc_matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的元祖，value是记录元素的具体值。"></a>dok_matrix和lil_matrix适用的场景是逐渐添加矩阵的元素。doc_matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的<a href="https://www.baidu.com/s?wd=%E5%85%83%E7%A5%96&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">元祖</a>，value是记录元素的具体值。</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy.sparse <span class="keyword">import</span> dok_matrix</span><br><span class="line">S = dok_matrix((<span class="number">5</span>,<span class="number">5</span>), dtype=np.float32)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        S[i,j] = i + j</span><br><span class="line"><span class="comment"># 返回的是非零元素的row_index,column_index</span></span><br><span class="line">S.nonzero()</span><br><span class="line">print(S.toarray())</span><br></pre></td></tr></table></figure>
+<h1 id="如何处理不平衡的数据"><a href="#如何处理不平衡的数据" class="headerlink" title="如何处理不平衡的数据"></a>如何处理不平衡的数据</h1><p>对于不平衡数据集，一般的分类算法都倾向于将样本划分到多数类，体现在模型整体的准确率很好。但是模型并不是很好。常用的分类算法一般假设不同类的比例是均衡的，现实生活中经常遇到不平衡的数据集，比如广告点击预测（点击转化率一般都很小）、商品推荐（推荐的商品被购买的比例很低）、信用卡欺诈检测（欺诈的总数小数）等。</p>
+<h4 id="在类别不平衡的情况下，对模型使用F值或者AUC值是更好的选择。"><a href="#在类别不平衡的情况下，对模型使用F值或者AUC值是更好的选择。" class="headerlink" title="在类别不平衡的情况下，对模型使用F值或者AUC值是更好的选择。"></a>在类别不平衡的情况下，对模型使用F值或者AUC值是更好的选择。</h4><h4 id="处理不平衡的数据，可以从两个方面考虑"><a href="#处理不平衡的数据，可以从两个方面考虑" class="headerlink" title="处理不平衡的数据，可以从两个方面考虑"></a>处理不平衡的数据，可以从两个方面考虑</h4><ol>
+<li>是改变数据分布，从数据层面使得类别更为平衡<ol>
+<li>欠采样 Undersampling 减少多数类样本的数量</li>
+<li>过采样 Oversampling 增加少数样本的数据量</li>
+<li>总和采样：将过采样和欠采样的结合</li>
+</ol>
+</li>
+<li>改变分类算法，在传统分类基础上对不同的类别采用不同的加权方式，使得模型更加看重少数类。</li>
+</ol>
+<h2 id="欠采样"><a href="#欠采样" class="headerlink" title="欠采样"></a>欠采样</h2><h4 id="随机欠采样方法"><a href="#随机欠采样方法" class="headerlink" title="随机欠采样方法"></a>随机欠采样方法</h4><p>减少多数类样本的数量的最简单的方法便是随机剔除多数类的样本，可以事先设置多类数与少数类最终的数量比例ratio，在保留少数类样本不变的情况下，根据ratio随机选择多数类样本。</p>
+<p>优点：操作简单，只依赖与样本分布，不依赖任何的距离信息，属于非启发式方法</p>
+<p>缺点：会丢失一部分多类数的样本的信息，无法充分的利用已有的信息</p>
+<h3 id="Tomek-link-用途"><a href="#Tomek-link-用途" class="headerlink" title="Tomek link 用途"></a>Tomek link 用途</h3><ol>
+<li>欠采样：将Tomek link对中属于多数类的样本剔除</li>
+<li>数据清洗：及那个Tomek link对中的两个样本都剔除</li>
+</ol>
+<h3 id="NearMiss方法"><a href="#NearMiss方法" class="headerlink" title="NearMiss方法"></a>NearMiss方法</h3><p>NearMiss方法是利用距离的远近剔除多数类样本的方法，实际操作中也是借助KNN</p>
+<p>NearMiss-1:在多数类样本中选择与最近的3个少数类样本的平均距离最小的样本</p>
+<p>NearMiss-2:在多数类样本中选择与最远的3个少数类样本的平均距离最小的样本</p>
+<p>NearMiss-3:对于每个少数类样本，选择离它最近的给定的数量的多数样本</p>
+<p><strong>NearMiss1考虑的是局部的，更倾向于比较集中的少数类附近找到更多的多数类样本。NearMiss2是考虑的是全局的</strong></p>
+<p><strong>NearMiss3方法则会使得每一个少数类样本的附近都有足够多的多类样本，显然会使得模型的精确率高，召回率低</strong></p>
+<p><strong>一般的情况下，NearMiss-2的效果较好</strong>。</p>
+<h3 id="One-Sided-Selection"><a href="#One-Sided-Selection" class="headerlink" title="One-Sided Selection"></a>One-Sided Selection</h3><p>One-Sided Selection利用从上图得到的启发式想法，多数类样本包含四种情况：</p>
+<ol>
+<li>多数类中的噪声（noise），它们都各自紧贴着一个少数样本</li>
+<li>边界样本，此类样本很容易被分错</li>
+<li>多余（redundant）样本，因为在训练模型的时候，此类样本没有提供额外的有用信息，其类别信息可以容易地通过其他样本信息得到，此类冗余地样本会提供分类地代价，使得边界曲线移动。</li>
+<li>安全样本，对于分类模型有着重要地作用。</li>
+</ol>
+<p>One-Sided Selection算法地目的是剔除多类数样本中样本中地噪声、边界样本和多余样本，其利用Tomek links剔除多数类样本中的噪声和边界样本，未被1-NN分类器错分的样本则被视为多余的样本，最终得到一个类别分布更为平衡的样本集合。</p>
+<h2 id="过采样"><a href="#过采样" class="headerlink" title="过采样"></a>过采样</h2><h3 id="随机过采样"><a href="#随机过采样" class="headerlink" title="随机过采样"></a>随机过采样</h3><p>于前采样对应，增加少数类样本数类最简单的方法便是随机复制少数样本，可以事先设置多数类与少数类最终的数量比例ratio，在保留多数类样本不变的情况下，根据ratio随机复制少数类样本。</p>
+<p>优点：操作简单，只依赖于样本的分布，不依赖于任何距离信息，属于非启发式方法</p>
+<p>缺点：重复样本过多，容易造成分类器的过拟合</p>
+<h3 id="SMOTE-Synthetic-Minority-Over-sampling-Technique-即合成少数类样本的过采样技术"><a href="#SMOTE-Synthetic-Minority-Over-sampling-Technique-即合成少数类样本的过采样技术" class="headerlink" title="SMOTE(Synthetic Minority Over-sampling Technique)即合成少数类样本的过采样技术"></a>SMOTE(Synthetic Minority Over-sampling Technique)即合成少数类样本的过采样技术</h3><p>SMOTE的主要思想是通过一些位置相近的少数类样本中生成新的样本平衡类别的目的，由于不是简单的复制少数类样本，因此可以一定程度上避免分类器过度拟合，</p>
+<h3 id="Borderline-SMOTE"><a href="#Borderline-SMOTE" class="headerlink" title="Borderline SMOTE"></a>Borderline SMOTE</h3><p>相对于SMOTE算法对所有少数类样本都是一视同仁的，其利用边界位置的样本信息产生新的样本</p>
+<p>Borderline SMOTE-1：从少数类样本集合P中得到k个最近邻样本，在随机选择样本点和xi做随机的线性插值产生新的少数类样本</p>
+<p>Borderline SMOTE-2：从少数类样本集合P和多数类样本集合N中分别得到k个最近邻样本<br>Pk和Nk。设定一个比例α，在Pk中选出a比例的样本点和xi作随机的线性插值产生新的少数<br>类样本，方法同Borderline SMOTE-1；在Nk中选出1-a比例的样本点和xi作随机的线性插<br>值产生新的少数类样本，此处的随机数范围选择的是(0,0.5)，即使得产生的新的样本点更靠<br>近少数类样本 </p>
+<h2 id="综合采样"><a href="#综合采样" class="headerlink" title="综合采样"></a>综合采样</h2><h3 id="SMOTE-Tomek-links"><a href="#SMOTE-Tomek-links" class="headerlink" title="SMOTE+Tomek links"></a>SMOTE+Tomek links</h3><ol>
+<li>利用SMOTE方法生成新的少数类样本，得到扩充后的数据集</li>
+<li>剔除数据集中Tomek links对</li>
+</ol>
+<p>普通SMOTE方法生成的少数类样本是通过线性差值得到的，在平衡类别分布的同时也扩张<br>了少数类的样本空间，产生的问题是可能原本属于多数类样本的空间被少数类“入<br>侵”（invade），容易造成模型的过拟合。<br>Tomek links对寻找的是那种噪声点或者边界点，可以很好地解决“入侵”的问题。 </p>
+<h3 id="SMOTE-KNN"><a href="#SMOTE-KNN" class="headerlink" title="SMOTE+KNN"></a>SMOTE+KNN</h3><ol>
+<li>利用SMOTE方法生成新的少数类样本，得到扩充后的数据集T；</li>
+<li>对T中的每一个样本使用KNN（一般k取3）方法预测，若预测结果和实际类别标签不<br>符，则剔除该样本 </li>
+</ol>
+<h2 id="Informed-Undersampling"><a href="#Informed-Undersampling" class="headerlink" title="Informed Undersampling"></a>Informed Undersampling</h2><p>是对欠采样的补充</p>
+<p>随机欠采样会导致信息的缺失，EasyEnsemble的想法则是多次随机欠采样，尽可能全面地全面包含所有地信息，算法的特点是利用boosting减少偏差（AdaBoost）,bagging减少方差（集成分类器），实际应用中时候可以采用不同的分类器提高分类的效果。</p>
+<ol>
+<li>随机欠采样方法</li>
+</ol>
 
       
     </div>
