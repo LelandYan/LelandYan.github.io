@@ -220,7 +220,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:15:40" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:20:34" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -271,14 +271,14 @@
 <li>Gradient descent is suitable for a large number for features(<br>  <img src="/images/feature_scaling.png" alt="">)<br>但是受数据的影响较大，所以对与Gradient descent来说需要进行feature scaling)</li>
 <li><p>normalize equation(正规方程)的公式推导</p>
 <p>代价函数</p>
+<p> ​    <script type="math/tex">J(\theta)=J(\theta_0,\ldots,\theta_n)=\frac {1} {2m} \sum_{i=1}^{m} {(h_\theta(x^{(i)})-y^{(i)})^2}</script></p>
+<p> ​    <script type="math/tex">J(\theta)=\frac {1}{2m}(X\theta-y)^T(X\theta-y)</script></p>
+<p> ​    <script type="math/tex">J(\theta)=\theta^TX^TX\theta-(X\theta)^Ty-y^TX\theta+y^Ty</script></p>
+<p> ​    <script type="math/tex">J(\theta)=\theta^TX^TX\theta-2(X\theta)^Ty+y^Ty</script></p>
+<p> ​    <script type="math/tex">\frac {\partial}{\partial\theta}J(\theta)=2X^TX\theta-2X^Ty=0</script></p>
+<p> ​    <script type="math/tex">\theta=(X^TX)^{-1}X^Ty</script></p>
 </li>
 </ol>
-<p>​    <script type="math/tex">J(\theta)=J(\theta_0,\ldots,\theta_n)=\frac {1} {2m} \sum_{i=1}^{m} {(h_\theta(x^{(i)})-y^{(i)})^2}</script></p>
-<p>​    <script type="math/tex">J(\theta)=\frac {1}{2m}(X\theta-y)^T(X\theta-y)</script></p>
-<p>​    <script type="math/tex">J(\theta)=\theta^TX^TX\theta-(X\theta)^Ty-y^TX\theta+y^Ty</script></p>
-<p>​    <script type="math/tex">J(\theta)=\theta^TX^TX\theta-2(X\theta)^Ty+y^Ty</script></p>
-<p>​    <script type="math/tex">\frac {\partial}{\partial\theta}J(\theta)=2X^TX\theta-2X^Ty=0</script></p>
-<p>​    <script type="math/tex">\theta=(X^TX)^{-1}X^Ty</script></p>
 </li>
 <li><p>矩阵不可逆：</p>
 <p>1.矩阵存在线性相关的特征之值</p>
@@ -386,6 +386,456 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-Liner_Regression%20with%20multiple%20variable-2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="LelandYan">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LelandYan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/04/2020-3-3-Liner_Regression%20with%20multiple%20variable-2020/" class="post-title-link" itemprop="url">多元线性回归问题</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:33:10" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes</p>
+</blockquote>
+<h1 id="多元线性回归问题"><a href="#多元线性回归问题" class="headerlink" title="多元线性回归问题"></a>多元线性回归问题</h1><ol>
+<li><p>代价函数(整体数据集)，损失函数(对于每个数据的误差)</p>
+</li>
+<li><p>learning_rate(从小的尝试比如0.0006)</p>
+</li>
+</ol>
+<h3 id="scaling-the-features-特征缩放-—适用与梯度下降改进-Mean-normalization-均值归一化"><a href="#scaling-the-features-特征缩放-—适用与梯度下降改进-Mean-normalization-均值归一化" class="headerlink" title="scaling the features(特征缩放)—适用与梯度下降改进 -Mean normalization(均值归一化)"></a>scaling the features(特征缩放)—适用与梯度下降改进 -Mean normalization(均值归一化)</h3><pre><code>1.min-max标准化
+
+X(每个数据) - U(特征值均值))/(Max-Min)
+
+2.Z-score标准化方法
+
+X(每个数据) - U(特征值均值))/(std)
+
+3.归一化
+
+把数据变成(0,1)或者(1,1)之间的小数。主要是为了数据处理方便提出来的，把数据映射到0～1范围之内处理，更加便捷快速 
+</code></pre><h3 id="normal-equation-正规方程-or-Gradient-Descent"><a href="#normal-equation-正规方程-or-Gradient-Descent" class="headerlink" title="normal equation(正规方程) or Gradient Descent"></a>normal equation(正规方程) or Gradient Descent</h3><ol>
+<li><p>normal equation is suitable for samll features(计算量比较大)</p>
+</li>
+<li><p>Gradient descent is suitable for a large number for features(<br> <img src="/images/feature_scaling.png" alt="">)<br> 但是受数据的影响较大，所以对与Gradient descent来说需要进行feature scaling)</p>
+</li>
+<li><p>normalize equation(正规方程)的公式推导 代价函数</p>
+<script type="math/tex; mode=display">
+ J(\theta)=J(\theta_0,\ldots,\theta_n)=\frac {1} {2m} \sum_{i=1}^{m} {(h_\theta(x^{(i)})-y^{(i)})^2}</script><script type="math/tex; mode=display">
+ J(\theta)=\frac {1}{2m}(X\theta-y)^T(X\theta-y)</script><script type="math/tex; mode=display">
+   J(\theta)=\theta^TX^TX\theta-(X\theta)^Ty-y^TX\theta+y^Ty</script><script type="math/tex; mode=display">
+   J(\theta)=\theta^TX^TX\theta-2(X\theta)^Ty+y^Ty</script><script type="math/tex; mode=display">
+ \frac {\partial}{\partial\theta}J(\theta)=2X^TX\theta-2X^Ty=0</script><p> ​                                            <script type="math/tex">\theta=(X^TX)^{-1}X^Ty</script></p>
+</li>
+<li><p>矩阵不可逆：</p>
+<p> 1.矩阵存在线性相关的特征之值</p>
+<p> 2.矩阵所对应的行列式为0</p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-Logistic_Regression_Classification-2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="LelandYan">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LelandYan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/04/2020-3-3-Logistic_Regression_Classification-2020/" class="post-title-link" itemprop="url">logistic regression(classification)</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:32:16" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes</p>
+</blockquote>
+<h1 id="logistic-regression-classification"><a href="#logistic-regression-classification" class="headerlink" title="logistic regression(classification)"></a>logistic regression(classification)</h1><p>1.Hypothesis Representation</p>
+<p>​    运用sigmoid function(logistic function)来将函数的值域映射到[0-1]</p>
+<p>​    </p>
+<script type="math/tex; mode=display">
+sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img src="/images/sigmoid.png" alt=""></p>
+<p>2.decision boundary<br><img src="/images/decision_boudary.png" alt=""></p>
+<p><img src="/images/decision_boudary2.png" alt=""></p>
+<ol>
+<li><p>cost function</p>
+<p>这里的代价函数不再使用平方差的均值的方法，因为使用的话，通过非线性函数sigimoid函数，可能变成非凸函数，也就是说，可能存在多个局部最优的解，这将导致梯度下降算法不再有效</p>
+<p><img src="/images/square_functino.png" alt="Image text"></p>
+<p>这里可以更改代价函数为</p>
+<p><img src="/images/cost_functinon.png" alt=""></p>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-Programming_Exercise_1_Linear_Regression-2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="LelandYan">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LelandYan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/04/2020-3-3-Programming_Exercise_1_Linear_Regression-2020/" class="post-title-link" itemprop="url">李宏毅机器学习课程线性回归训练题目一</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:24:14" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes</p>
+</blockquote>
+<h1 id="李宏毅机器学习课程线性回归训练题目一"><a href="#李宏毅机器学习课程线性回归训练题目一" class="headerlink" title="李宏毅机器学习课程线性回归训练题目一"></a>李宏毅机器学习课程线性回归训练题目一</h1><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line"></span><br><span class="line">data = pd.read_table(<span class="string">"ex1data1.txt"</span>, header=<span class="literal">None</span>, delimiter=<span class="string">","</span>, encoding=<span class="string">"gb2312"</span>)</span><br><span class="line">m = len(data)</span><br><span class="line">data_x = np.array(data)[:, <span class="number">0</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line">data_y = np.array(data)[:, <span class="number">1</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># the first task</span></span><br><span class="line">print(np.eye(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># the second task</span></span><br><span class="line"><span class="comment"># plt.scatter(data_x, data_y, color='r', marker='x',label="Training Data")</span></span><br><span class="line"><span class="comment"># plt.ylabel('Profit in $10,000s')</span></span><br><span class="line"><span class="comment"># plt.xlabel('Population of City in 10,000s')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># the third task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">computeCost</span><span class="params">(X, y, theta)</span>:</span></span><br><span class="line">    inner = np.power(((X * theta) - y), <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> np.sum(inner / (<span class="number">2</span> * len(X)))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradientDescent</span><span class="params">(X,y,theta,alpha,epoch)</span>:</span></span><br><span class="line">    cost = np.zeros(epoch)</span><br><span class="line"></span><br><span class="line">    m = X.shape[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(epoch):</span><br><span class="line">        temp = theta - (alpha / m) * ((X * theta - y).T * X).T</span><br><span class="line">        theta = temp</span><br><span class="line">        cost[i] = computeCost(X,y,theta)</span><br><span class="line">    <span class="keyword">return</span>  theta,cost</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">normal_equations</span><span class="params">(X,y)</span>:</span></span><br><span class="line">    theta = np.linalg.inv(X.T*X)*X.T*y</span><br><span class="line">    <span class="keyword">return</span> theta</span><br><span class="line"></span><br><span class="line">X = np.matrix(np.concatenate((np.ones((m, <span class="number">1</span>)), data_x), axis=<span class="number">1</span>))</span><br><span class="line">y = np.matrix(data_y)</span><br><span class="line">theta = np.matrix(np.zeros([<span class="number">2</span>, <span class="number">1</span>]))</span><br><span class="line">alpha = <span class="number">0.01</span></span><br><span class="line">epoch = <span class="number">1000</span></span><br><span class="line">final_theta,cost = gradientDescent(X,y,theta,alpha,epoch)</span><br><span class="line">print(final_theta)</span><br><span class="line">final_theta = normal_equations(X,y)</span><br><span class="line">print(final_theta)</span><br><span class="line">x = np.array(list(data_x[:,<span class="number">0</span>]))</span><br><span class="line">f = final_theta[<span class="number">0</span>,<span class="number">0</span>] + final_theta[<span class="number">1</span>,<span class="number">0</span>] * x</span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.scatter(data_x, data_y, color='r', marker='x',label="Training Data")</span></span><br><span class="line"><span class="comment"># plt.ylabel('Profit in $10,000s')</span></span><br><span class="line"><span class="comment"># plt.xlabel('Population of City in 10,000s')</span></span><br><span class="line"><span class="comment"># plt.plot(x,f,label="Prediction")</span></span><br><span class="line"><span class="comment"># plt.legend()</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.plot(np.arange(epoch),cost,'r')</span></span><br><span class="line"><span class="comment"># plt.xlabel("Iteration")</span></span><br><span class="line"><span class="comment"># plt.ylabel("Cost")</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line">theta0_vals = np.linspace(<span class="number">-10</span>,<span class="number">10</span>,<span class="number">100</span>)</span><br><span class="line">theta1_vals = np.linspace(<span class="number">-1</span>,<span class="number">4</span>,<span class="number">100</span>)</span><br><span class="line">J_vals = np.zeros((len(theta0_vals),len(theta1_vals)))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(theta0_vals)):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(len(theta1_vals)):</span><br><span class="line">        t = np.matrix(np.array([theta0_vals[i],theta1_vals[j]]).reshape((<span class="number">2</span>,<span class="number">1</span>)))</span><br><span class="line">        J_vals[i,j] = computeCost(X,y,t)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### # fig = plt.figure()</span></span><br><span class="line"><span class="comment"># ax = Axes3D(fig)</span></span><br><span class="line"><span class="comment"># ax.plot_surface(theta0_vals,theta1_vals,J_vals,rstride=1,cstride=1,cmap="rainbow")</span></span><br><span class="line"><span class="comment"># plt.xlabel('theta_0')</span></span><br><span class="line"><span class="comment"># plt.ylabel('theta_1')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"><span class="comment">### </span></span><br><span class="line"><span class="comment">### # plt.figure()</span></span><br><span class="line"><span class="comment"># plt.contourf(theta0_vals, theta1_vals, J_vals, 20, alpha = 0.6, cmap = plt.cm.hot)</span></span><br><span class="line"><span class="comment"># a = plt.contour(theta0_vals, theta1_vals, J_vals, colors = 'black')</span></span><br><span class="line"><span class="comment"># plt.clabel(a,inline=1,fontsize=10)</span></span><br><span class="line"><span class="comment"># plt.plot(theta[0,0],theta[1,0],'r',marker='x')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"><span class="comment">### </span></span><br><span class="line">data2 = pd.read_table(<span class="string">"ex1data2.txt"</span>, header=<span class="literal">None</span>, delimiter=<span class="string">","</span>, encoding=<span class="string">"gb2312"</span>)</span><br><span class="line"></span><br><span class="line">data2 = (data2 - data2.mean()) / data2.std()</span><br><span class="line">m = len(data2)</span><br><span class="line">data_x = np.array(data2)[:, <span class="number">0</span>:<span class="number">2</span>].reshape(m, <span class="number">2</span>)</span><br><span class="line">data_y = np.array(data2)[:, <span class="number">2</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line">data_x = np.concatenate((np.zeros((m,<span class="number">1</span>)),data_x),axis=<span class="number">1</span>)</span><br><span class="line">X = np.matrix(data_x)</span><br><span class="line">y = np.matrix(data_y)</span><br><span class="line">theta = np.matrix(np.zeros((<span class="number">3</span>,<span class="number">1</span>)))</span><br><span class="line">final_theta,cost = gradientDescent(X,y,theta,alpha,epoch)</span><br><span class="line"></span><br><span class="line">plt.plot(np.arange(epoch),cost,<span class="string">'r'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-auc_roc-2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="LelandYan">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LelandYan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/04/2020-3-3-auc_roc-2020/" class="post-title-link" itemprop="url">AUC、ROC详解</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:34:15" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+                </span>
+                  ，
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/machine-learning-metrics/" itemprop="url" rel="index"><span itemprop="name">machine learning metrics</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes</p>
+</blockquote>
+<h1 id="AUC、ROC详解"><a href="#AUC、ROC详解" class="headerlink" title="AUC、ROC详解"></a>AUC、ROC详解</h1><p>AUC:一个正例，一个负例，预测为正的概率值比预测为负的概率还要大的可能性</p>
+<p>根据定义：我们最直观的有两种计算auc的方法</p>
+<ol>
+<li>绘制ROC曲线，roc曲线下面的面积就是AUC的值</li>
+<li>假设共有（m+n）个样本，其中正样本m个，负样本n个，共有m<em> n 个样本对，计数，正样本预测为正样本的概率概率大于负样本预测为正样本的概率记为1，累加计数，然后除以（m</em>  n）就是AUC的值</li>
+</ol>
+<h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>ROC曲线：接受者操作特征（receiveroperating characteristic），roc曲线上的每个点反应着对同一信号刺激的感受性。</p>
+<p>横轴：负正类率（false postive rate FPR）特异度，划分实例中所有的负例占所有负例的比例 （1-Specificity）</p>
+<p>纵轴：真正类率 （true postive rate TPR）灵敏度，Sensitivity(正类覆盖率)</p>
+<p>2针对一个二分类问题，将实例分成正类(postive)或者负类(negative)。但是实际中分类时，会出现四种情况.</p>
+<p>(1)若一个实例是正类并且被预测为正类，即为真正类(True Postive TP)</p>
+<p>(2)若一个实例是正类，但是被预测成为负类，即为假负类(False Negative FN)</p>
+<p>(3)若一个实例是负类，但是被预测成为正类，即为假正类(False Postive FP)</p>
+<p>(4)若一个实例是负类，但是被预测成为负类，即为真负类(True Negative TN)</p>
+<p>TP:正确的肯定数目</p>
+<p>FN:漏报，没有找到正确匹配的数目</p>
+<p>FP:误报，没有的匹配不正确</p>
+<p>(1)真正类率(True Postive Rate)TPR: TP/(TP+FN),代表分类器预测的正类中实际正实例占所有正实例的比例。Sensitivity</p>
+<p>(2)负正类率(False Postive Rate)FPR: FP/(FP+TN)，代表分类器预测的正类中实际负实例占所有负实例的比例。1-Specificity</p>
+<p>AUC(Area under Curve)：Roc曲线下的面积，介于0.1和1之间。Auc作为数值可以直观的评价分类器的好坏，值越大越好。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-RandomForest-2020/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="LelandYan">
+      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="LelandYan">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/03/04/2020-3-3-RandomForest-2020/" class="post-title-link" itemprop="url">随机森林中有关熵概念</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:29:59" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes</p>
+</blockquote>
+<h1 id="随机森林中有关熵概念"><a href="#随机森林中有关熵概念" class="headerlink" title="随机森林中有关熵概念"></a>随机森林中有关熵概念</h1><ol>
+<li>使熵概率越大，熵越小,所以是减函数</li>
+<li>使熵可加，所以是log</li>
+<li>熵可以看成为目标函数的期望</li>
+<li>熵：H(X) = -P(x )logP(x)</li>
+<li>条件熵：H(X,Y)-H(X)=H(Y | X)</li>
+</ol>
+<p>2.信息增益</p>
+<ol>
+<li>互信息：H(X)+H(Y)-H(X,Y)=I(X,Y)</li>
+<li>信息增益表示特征a的信息使x的信息的不确定性减少的程度</li>
+<li>特征A对训练数据集D的信息增益g(D,A)=H(D)-H(D |A),也就互信息</li>
+<li>选择信息增益最大的特征作为当前的分类特征</li>
+</ol>
+<p>3.样本不均衡的常用方法</p>
+<ol>
+<li>对多的样本进行欠采样</li>
+<li>对多的样本进行聚类</li>
+<li>对少的数据进行过采样</li>
+<li>随机插值得到新的样本</li>
+</ol>
+<p>4.信息增益率 g(d,a) = g(D,a)-h(a)</p>
+<p>5.gini系数 p(x)（1-p(x)）</p>
+<p>6.决策树的评价</p>
+<p>7.决策树防止过拟合</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-classifition_metrics-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -411,7 +861,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:00:45" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:34:48" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -471,7 +921,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-cross_valadation_sklearn-2020/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-Sklearn_RandomForest-2020/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -485,7 +935,7 @@
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
           
-            <a href="/2020/03/04/2020-3-3-cross_valadation_sklearn-2020/" class="post-title-link" itemprop="url">Cross Validation</a>
+            <a href="/2020/03/04/2020-3-3-Sklearn_RandomForest-2020/" class="post-title-link" itemprop="url">sklearn中RandomForestClassifier</a>
         </h1>
 
         <div class="post-meta">
@@ -496,7 +946,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：13:55:03" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:26:39" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -522,8 +972,19 @@
           <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes</p>
 </blockquote>
-<h1 id="Cross-Validation"><a href="#Cross-Validation" class="headerlink" title="Cross Validation"></a>Cross Validation</h1><h2 id="有关交叉验证的sklearn的方法和原理"><a href="#有关交叉验证的sklearn的方法和原理" class="headerlink" title="有关交叉验证的sklearn的方法和原理"></a>有关交叉验证的sklearn的方法和原理</h2><h3 id="cross-val-score"><a href="#cross-val-score" class="headerlink" title="cross_val_score"></a>cross_val_score</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cross_val_score 用训练集来评估模型的好坏，注意交叉验证都是使用的是训练集来进行测验，而不是测试集</span></span><br><span class="line"><span class="comment"># 其返回的是，几折交叉验证就返回几个模型训练的评估分数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="comment"># 这里的model(),传入的是个模型实例，后传入的两个数据集合，cv表示交叉验证的次数，scoring表示评价方法</span></span><br><span class="line">cross_val_score(model(),X_train,y_train,cv=<span class="number">3</span>,scoring=<span class="string">"accuracy"</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 下面则使用python实现一个cross_val_score函数</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> StratifiedKFold</span><br><span class="line"><span class="keyword">from</span> sklean.base <span class="keyword">import</span> clone</span><br><span class="line"><span class="comment"># 将数据集划分为几份</span></span><br><span class="line">skfolds = StratifiedKFold(n_splits=<span class="number">3</span>,random_state=<span class="number">42</span>)</span><br><span class="line"><span class="keyword">for</span> train_index,test_index <span class="keyword">in</span> skfolds.split(X_train,y_train):</span><br><span class="line">    <span class="comment"># 克隆原来模型</span></span><br><span class="line">    clone_clf = clone(model())</span><br><span class="line">    X_train_folds = X_train[trian_index]</span><br><span class="line">    y_train_folds = y_train[train_index]</span><br><span class="line">    X_test_folds = X_train[test_index]</span><br><span class="line">    y_test_folds= y_train[test_index]</span><br><span class="line">    clone_clf.fit(X_train_folds,y_train_folds)</span><br><span class="line">    y_pred = clone_clf.predict(X_test_folds)</span><br><span class="line">    n_correct = sum(y_pred == y_test_folds)</span><br><span class="line">    print(n_correct / len(y_pred) )</span><br></pre></td></tr></table></figure>
-<h3 id="cross-val-predict"><a href="#cross-val-predict" class="headerlink" title="cross_val_predict"></a>cross_val_predict</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">就像 cross_val_score(),cross_val_predict()也使用 K 折交叉验证。它不是返回一个评估分数，而是返回基于每一个测试折做出的一个预测值。这意味着，对于每一个训练集的样例，你得到一个干净的预测（“干净”是说一个模型在训练过程当中没有用到测试集的数据）。"""</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_predict</span><br><span class="line">y_train_pred = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<h1 id="sklearn中RandomForestClassifier"><a href="#sklearn中RandomForestClassifier" class="headerlink" title="sklearn中RandomForestClassifier"></a>sklearn中RandomForestClassifier</h1><ol>
+<li><p>在scikit-learn中，RandomForest的分类器是RandomForestClassifier,回归类RandomFoestRegressor,需要调参的参数包括两部分，第一部分是Bagging框架的参数，第二部分是CART决策树的参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">classsklearn.ensemble.RandomForestClassifier(n_estimators=<span class="number">10</span>, criterion=<span class="string">'gini'</span>, max_depth=<span class="literal">None</span>,min_samples_split=<span class="number">2</span>, min_samples_leaf=<span class="number">1</span>, min_weight_fraction_leaf=<span class="number">0.0</span>,max_features=<span class="string">'auto'</span>, max_leaf_nodes=<span class="literal">None</span>, min_impurity_split=<span class="number">1e-07</span>,bootstrap=<span class="literal">True</span>, oob_score=<span class="literal">True</span>, n_jobs=<span class="number">1</span>, random_state=<span class="literal">None</span>, verbose=<span class="number">0</span>,warm_start=<span class="literal">False</span>, class_weight=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>n_estimators: 也就是弱学习器的最大迭代次数，或者说最大的弱学习器的个数，默认是10。一般来说n_estimators太小，容易欠拟合，n_estimators太大，又容易过拟合，一般选择一个适中的数值。对Random Forest来说，增加“子模型数”（n_estimators）可以明显降低整体模型的方差，且不会对子模型的偏差和方差有任何影响。模型的准确度会随着“子模型数”的增加而提高，由于减少的是整体模型方差公式的第二项，故准确度的提高有一个上限。在实际应用中，可以以10为单位，考察取值范围在1至201的调参情况。</p>
+</li>
+<li><p>对比，Random Forest的子模型都拥有较低的偏差，整体模型的训练过程旨在降低方差，故其需要较少的子模型（n_estimators默认值为10）且子模型不为弱模型（max_depth的默认值为None）；Gradient Tree Boosting的子模型都拥有较低的方差，整体模型的训练过程旨在降低偏差，故其需要较多的子模型（n_estimators默认值为100）且子模型为弱模型（max_depth的默认值为3）。</p>
+</li>
+<li><p>bootstrap：默认True，是否有放回的采样。</p>
+</li>
+<li><p>oob_score ：默认识False，即是否采用袋外样本来评估模型的好坏。有放回采样中大约36.8%的没有被采样到的数据，我们常常称之为袋外数据(Out Of Bag, 简称OOB)，这些数据没有参与训练集模型的拟合，因此可以用来检测模型的泛化能力。个人推荐设置为True，因为袋外分数反应了一个模型拟合后的泛化能力。对单个模型的参数训练，我们知道可以用cross validation（cv）来进行，但是特别消耗时间，而且对于随机森林这种情况也没有大的必要，所以就用这个数据对决策树模型进行验证，算是一个简单的交叉验证，性能消耗小，但是效果不错。</p>
+<h2 id="criterion：-即CART树做划分时对特征的评价标准，分类模型和回归模型的损失函数是不一样的。分类RF对应的CART分类树默认是基尼系数gini-另一个可选择的标准是信息增益entropy，是用来选择节点的最优特征和切分点的两个准则。回归RF对应的CART回归树默认是均方差mse，另一个可以选择的标准是绝对值差mae。一般来说选择默认的标准就已经很好的。"><a href="#criterion：-即CART树做划分时对特征的评价标准，分类模型和回归模型的损失函数是不一样的。分类RF对应的CART分类树默认是基尼系数gini-另一个可选择的标准是信息增益entropy，是用来选择节点的最优特征和切分点的两个准则。回归RF对应的CART回归树默认是均方差mse，另一个可以选择的标准是绝对值差mae。一般来说选择默认的标准就已经很好的。" class="headerlink" title="criterion： 即CART树做划分时对特征的评价标准，分类模型和回归模型的损失函数是不一样的。分类RF对应的CART分类树默认是基尼系数gini,另一个可选择的标准是信息增益entropy，是用来选择节点的最优特征和切分点的两个准则。回归RF对应的CART回归树默认是均方差mse，另一个可以选择的标准是绝对值差mae。一般来说选择默认的标准就已经很好的。"></a>criterion： 即CART树做划分时对特征的评价标准，分类模型和回归模型的损失函数是不一样的。分类RF对应的CART分类树默认是基尼系数gini,另一个可选择的标准是信息增益entropy，是用来选择节点的最优特征和切分点的两个准则。回归RF对应的CART回归树默认是均方差mse，另一个可以选择的标准是绝对值差mae。一般来说选择默认的标准就已经很好的。</h2></li>
+</ol>
 
       
     </div>
@@ -612,447 +1073,11 @@
   
   
 
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-cross_validation-2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="LelandYan">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LelandYan">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/04/2020-3-3-cross_validation-2020/" class="post-title-link" itemprop="url">Cross Validation 详解</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:05:07" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="Cross-Validation-详解"><a href="#Cross-Validation-详解" class="headerlink" title="Cross Validation 详解"></a>Cross Validation 详解</h1><p><img src="https://github.com/LelandYan/lelandyan.github.io/raw/master/img/cross_validation.png" alt="Image text"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line">knn_clf = KNeighborsClassifier()</span><br><span class="line"><span class="comment"># cv参数为交叉时候分成几份（k-folds）</span></span><br><span class="line">scores = cross_val_score(knn_clf,x_train,y_train,cv=<span class="number">10</span>)</span><br><span class="line">scores = np.mean(scores)</span><br></pre></td></tr></table></figure>
-<h2 id="交叉验证的目的就是找到最好的超参数所以传入的数据只是train的数据"><a href="#交叉验证的目的就是找到最好的超参数所以传入的数据只是train的数据" class="headerlink" title="交叉验证的目的就是找到最好的超参数所以传入的数据只是train的数据"></a>交叉验证的目的就是找到最好的超参数所以传入的数据只是train的数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line"><span class="comment"># 事实上网格搜受已经使用了交叉验证了</span></span><br><span class="line">para,_grid = [</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">'weights'</span>:[<span class="string">'uniform'</span>],</span><br><span class="line">        <span class="string">'n_neighbors'</span>:[i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>)]</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="string">'weights'</span>:[<span class="string">'distance'</span>],</span><br><span class="line">        <span class="string">'n_neighbors'</span>:[i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">11</span>)],</span><br><span class="line">        <span class="string">'p'</span>:[i <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">6</span>)]</span><br><span class="line">    &#125;</span><br><span class="line">]</span><br><span class="line"><span class="comment"># n_jobs表示的处理的计算的核数,verbose可以在运行的程序的时候，可以显示信息</span></span><br><span class="line">knn_clf = KneighborsClassifier()</span><br><span class="line">grid_search = GridSearchCV(knn_clf,param_grid,n_jobs=<span class="number">-1</span>，verbose=<span class="number">2</span>)</span><br><span class="line">grid_search.fit(X_train,y_train)</span><br><span class="line"><span class="comment"># 获取训练集的最好结果</span></span><br><span class="line">grid_search.best_score_</span><br><span class="line"><span class="comment"># 获取训练集的最好超参数</span></span><br><span class="line">grid_search.best_params_</span><br><span class="line"><span class="comment"># 获得最好的分类器</span></span><br><span class="line">grid_search.best_estimator_</span><br></pre></td></tr></table></figure>
-<h3 id="留一法-LOO-CV-虽然准确，但是计算量巨大"><a href="#留一法-LOO-CV-虽然准确，但是计算量巨大" class="headerlink" title="留一法(LOO-CV) 虽然准确，但是计算量巨大"></a>留一法(LOO-CV) 虽然准确，但是计算量巨大</h3>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-enseemble_learning-2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="LelandYan">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LelandYan">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/04/2020-3-3-enseemble_learning-2020/" class="post-title-link" itemprop="url">Ensemble Learning</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：13:57:36" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="Ensemble-Learning"><a href="#Ensemble-Learning" class="headerlink" title="Ensemble Learning"></a>Ensemble Learning</h1><h2 id="集成学习"><a href="#集成学习" class="headerlink" title="集成学习"></a>集成学习</h2><h3 id="集成学习概述"><a href="#集成学习概述" class="headerlink" title="集成学习概述"></a>集成学习概述</h3><p>从下图，我们可以对集成学习的思想做一个概括。对于训练集数据，我们通过训练若干个个体学习器，通过一定的结合策略，就可以最终形成一个强学习器，以达到博采众长的目的</p>
-<p>也就是说，集成学习有两个主要的问题需要解决，第一是如何得到若干个个体学习器，第二是如何选择一种结合策略，将这些个体学习器集合成一个强学习器</p>
-<h3 id="集成学习之个体学习器"><a href="#集成学习之个体学习器" class="headerlink" title="集成学习之个体学习器"></a>集成学习之个体学习器</h3><p>上一节我们讲到，集成学习的第一个问题就是如何得到若干个个体学习器。这里我们有两种选择。</p>
-<p>　　　　第一种就是所有的个体学习器都是一个种类的，或者说是同质的。比如都是决策树个体学习器，或者都是神经网络个体学习器。第二种是所有的个体学习器不全是一个种类的，或者说是异质的。比如我们有一个分类问题，对训练集采用支持向量机个体学习器，逻辑回归个体学习器和朴素贝叶斯个体学习器来学习，再通过某种结合策略来确定最终的分类强学习器。</p>
-<p>　　　　目前来说，同质个体学习器的应用是最广泛的，一般我们常说的集成学习的方法都是指的同质个体学习器。而同质个体学习器使用最多的模型是CART决策树和神经网络。同质个体学习器按照个体学习器之间是否存在依赖关系可以分为两类，第一个是个体学习器之间存在强依赖关系，一系列个体学习器基本都需要串行生成，代表算法是boosting系列算法，第二个是个体学习器之间不存在强依赖关系，一系列个体学习器可以并行生成，代表算法是bagging和随机森林（Random Forest）系列算法。下面就分别对这两类算法做一个概括总结。</p>
-<h3 id="boostsing集成学习"><a href="#boostsing集成学习" class="headerlink" title="boostsing集成学习"></a>boostsing集成学习</h3><p>　从图中可以看出，Boosting算法的工作机制是首先从训练集用初始权重训练出一个弱学习器1，根据弱学习的学习误差率表现来更新训练样本的权重，使得之前弱学习器1学习误差率高的训练样本点的权重变高，使得这些误差率高的点在后面的弱学习器2中得到更多的重视。然后基于调整权重后的训练集来训练弱学习器2.，如此重复进行，直到弱学习器数达到事先指定的数目T，最终将这T个弱学习器通过集合策略进行整合，得到最终的强学习器。</p>
-<p>Boosting系列算法里最著名算法主要有AdaBoost算法和提升树(boosting tree)系列算法。提升树系列算法里面应用最广泛的是梯度提升树(Gradient Boosting Tree)</p>
-<p>这里对Adaboost算法的优缺点做一个总结。</p>
-<p>Adaboost的主要优点有：</p>
-<p>1）Adaboost作为分类器时，分类精度很高</p>
-<p>2）在Adaboost的框架下，可以使用各种回归分类模型来构建弱学习器，非常灵活。</p>
-<p>3）作为简单的二元分类器时，构造简单，结果可理解。</p>
-<p>4）不容易发生过拟合</p>
-<p>Adaboost的主要缺点有：</p>
-<p>1）对异常样本敏感，异常样本在迭代中可能会获得较高的权重，影响最终的强学习器的预测准确性。</p>
-<p>由于GBDT的卓越性能，只要是研究机器学习都应该掌握这个算法，包括背后的原理和应用调参方法。目前GBDT的算法比较好的库是xgboost。当然scikit-learn也可以。</p>
-<p>最后总结下GBDT的优缺点。</p>
-<p>GBDT主要的优点有：</p>
-<p>1) 可以灵活处理各种类型的数据，包括连续值和离散值。</p>
-<p>2) 在相对少的调参时间情况下，预测的准确率也可以比较高。这个是相对SVM来说的。</p>
-<p>3）使用一些健壮的损失函数，对异常值的鲁棒性非常强。比如 Huber损失函数和Quantile损失函数。</p>
-<p>GBDT的主要缺点有：</p>
-<p>1)由于弱学习器之间存在依赖关系，难以并行训练数据。不过可以通过自采样的SGBT来达到部分并行。</p>
-<h3 id="集成学习之bagging"><a href="#集成学习之bagging" class="headerlink" title="集成学习之bagging"></a>集成学习之bagging</h3><p>Bagging的算法原理和 boosting不同，它的弱学习器之间没有依赖关系，可以并行生成，我们可以用一张图做一个概括如下：从上图可以看出，bagging的个体弱学习器的训练集是通过随机采样得到的。通过T次的随机采样，我们就可以得到T个采样集，对于这T个采样集，我们可以分别独立的训练出T个弱学习器，再对这T个弱学习器通过集合策略来得到最终的强学习器。</p>
-<p>　　　　对于这里的随机采样有必要做进一步的介绍，这里一般采用的是自助采样法（Bootstrap sampling）,即对于m个样本的原始训练集，我们每次先随机采集一个样本放入采样集，接着把该样本放回，也就是说下次采样时该样本仍有可能被采集到，这样采集m次，最终可以得到m个样本的采样集，由于是随机采样，这样每次的采样集是和原始训练集不同的，和其他采样集也是不同的，这样得到多个不同的弱学习器。</p>
-<p>　　　　随机森林是bagging的一个特化进阶版，所谓的特化是因为随机森林的弱学习器都是决策树。所谓的进阶是随机森林在bagging的样本随机采样基础上，又加上了特征的随机选择，其基本思想没有脱离bagging的范畴。bagging和随机森林算法的原理在后面的文章中会专门来讲。</p>
-<h3 id="集成学习之结合策略"><a href="#集成学习之结合策略" class="headerlink" title="集成学习之结合策略"></a>集成学习之结合策略</h3><ol>
-<li><p>平均法 </p>
-</li>
-<li><p>投票法 （投票法也可以设置权重）</p>
-</li>
-<li><p>学习法 （代表的方法是stacking）当使用stacking的结合策略时， 我们不是对弱学习器的结果做简单的逻辑处理，而是再加上一层学习器，也就是说，我们将训练集弱学习器的学习结果作为输入，将训练集的输出作为输出，重新训练一个学习器来得到最终结果。</p>
-<p>　　　　在这种情况下，我们将弱学习器称为初级学习器，将用于结合的学习器称为次级学习器。对于测试集，我们首先用初级学习器预测一次，得到次级学习器的输入样本，再用次级学习器预测一次，得到最终的预测结果。</p>
-</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-machine_learning_procedure-2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="LelandYan">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LelandYan">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/04/2020-3-3-machine_learning_procedure-2020/" class="post-title-link" itemprop="url">Machine Learning Procedure</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：13:59:29" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="Machine-Learning-Procedure"><a href="#Machine-Learning-Procedure" class="headerlink" title="Machine Learning Procedure"></a>Machine Learning Procedure</h1><h2 id="导入数据"><a href="#导入数据" class="headerlink" title="导入数据"></a>导入数据</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br></pre></td></tr></table></figure>
-<h2 id="数据预览"><a href="#数据预览" class="headerlink" title="数据预览"></a>数据预览</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">X = pd.DataFrame(X)</span><br><span class="line"><span class="comment"># 取前10行数据</span></span><br><span class="line">X.head(n=<span class="number">10</span>)</span><br><span class="line"><span class="comment"># 取数据中任意的10行</span></span><br><span class="line">X.sample(n=<span class="number">10</span>)</span><br><span class="line"><span class="comment"># 查看数据的大体数据分布以及大小</span></span><br><span class="line">X.describe()</span><br></pre></td></tr></table></figure>
-<h2 id="数据可视化"><a href="#数据可视化" class="headerlink" title="数据可视化"></a>数据可视化</h2><p>通过箱线图可以发现异常值</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X.plot(kind=<span class="string">'box'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>通过条形图可以看出数据结构的分布特征，是否满足正太分布</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X.hist(figsize=(<span class="number">12</span>,<span class="number">5</span>),xlabelsize=<span class="number">1</span>,ylabelsize=<span class="number">1</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>通过折线图可以看出数据值的大小密度的分布情况</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">X.plot(kind=<span class="string">"density"</span>,subplot=<span class="literal">True</span>,layout=(<span class="number">4</span>,<span class="number">4</span>),figsize=(<span class="number">12</span>,<span class="number">5</span>))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>通过特征相关图我们能够知道哪些特征存在明显的相关性</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pd.scatter_matrix(X,figsize=(<span class="number">10</span>,<span class="number">10</span>))</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>通过热力图可以更加清晰的看出各个特征之间的关系</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fig = plt.figure(figsize=(<span class="number">10</span>,<span class="number">10</span>))</span><br><span class="line">ax = fig.add_subplot(<span class="number">111</span>)</span><br><span class="line">cax = ax.matshow(X.corr(),vmin=<span class="number">-1</span>,vmax=<span class="number">1</span>,interploation=<span class="string">"none"</span>)</span><br><span class="line">fig.colorbar(cax)</span><br><span class="line"><span class="comment"># 这里为数据特征关联的分布大小</span></span><br><span class="line">ticks = np.arange(<span class="number">0</span>,<span class="number">4</span>,<span class="number">1</span>)</span><br><span class="line">ax.set_xticks(ticks)</span><br><span class="line">ax.set_yticks(ticks)</span><br><span class="line"><span class="comment"># 这里的col_name为特征的名称</span></span><br><span class="line">ax.set_xticklabels(col_name)</span><br><span class="line">ax.set_yticklabels(col_name)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<h2 id="查找最优模型"><a href="#查找最优模型" class="headerlink" title="查找最优模型"></a>查找最优模型</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> AdaBoostClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> GradientBoostingClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> ExtraTreesClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LogisticRegression</span><br><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> GaussianNB</span><br><span class="line"><span class="keyword">from</span> sklearn.discriminant_analysis <span class="keyword">import</span> LinearDiscriminantAnalysis</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold, cross_val_score,GridSearchCV</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"></span><br><span class="line">models = []</span><br><span class="line">models.append((<span class="string">"AB"</span>, AdaBoostClassifier()))</span><br><span class="line">models.append((<span class="string">"GBM"</span>, GradientBoostingClassifier()))</span><br><span class="line">models.append((<span class="string">"RF"</span>, RandomForestClassifier()))</span><br><span class="line">models.append((<span class="string">"ET"</span>, ExtraTreesClassifier()))</span><br><span class="line">models.append((<span class="string">"SVC"</span>, SVC()))</span><br><span class="line">models.append((<span class="string">"KNN"</span>, KNeighborsClassifier()))</span><br><span class="line">models.append((<span class="string">"LR"</span>, LogisticRegression()))</span><br><span class="line">models.append((<span class="string">"GNB"</span>, GaussianNB()))</span><br><span class="line">models.append((<span class="string">"LDA"</span>, LinearDiscriminantAnalysis()))</span><br><span class="line"></span><br><span class="line">names = []</span><br><span class="line">results = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name, model <span class="keyword">in</span> models:</span><br><span class="line">    kfold = KFold(n_splits=<span class="number">5</span>, random_state=<span class="number">42</span>)</span><br><span class="line">    result = cross_val_score(model, X, y, scoring=<span class="string">'accuracy'</span>, cv=kfold)</span><br><span class="line">    names.append(name)</span><br><span class="line">    results.append(result)</span><br><span class="line">    print(<span class="string">"&#123;&#125; Mean:&#123;:.4f&#125;(Std:&#123;:.4f&#125;)"</span>.format(name, result.mean(), result.std()))</span><br></pre></td></tr></table></figure>
-<h2 id="使用Pipeline"><a href="#使用Pipeline" class="headerlink" title="使用Pipeline"></a>使用Pipeline</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.pipeline <span class="keyword">import</span> Pipeline</span><br><span class="line"></span><br><span class="line">pipeline = []</span><br><span class="line">pipeline.append((<span class="string">"ScalerET"</span>, Pipeline([(<span class="string">"Scaler"</span>,StandardScaler()),</span><br><span class="line"> (<span class="string">"ET"</span>,ExtraTreesClassifier())])))</span><br><span class="line">pipeline.append((<span class="string">"ScalerGBM"</span>, Pipeline([(<span class="string">"Scaler"</span>,StandardScaler()),</span><br><span class="line">   (<span class="string">"GBM"</span>,GradientBoostingClassifier())])))</span><br><span class="line">pipeline.append((<span class="string">"ScalerRF"</span>, Pipeline([(<span class="string">"Scaler"</span>,StandardScaler()),</span><br><span class="line"> (<span class="string">"RF"</span>,RandomForestClassifier())])))</span><br><span class="line"></span><br><span class="line">names = []</span><br><span class="line">results = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> name, model <span class="keyword">in</span> pipeline:</span><br><span class="line">    kfold = KFold(n_splits=<span class="number">5</span>, random_state=<span class="number">42</span>)</span><br><span class="line">    result = cross_val_score(model, X, y, scoring=<span class="string">'accuracy'</span>, cv=kfold)</span><br><span class="line">    names.append(name)</span><br><span class="line">    results.append(result)</span><br><span class="line">    print(<span class="string">"&#123;&#125; Mean:&#123;:.4f&#125;(Std:&#123;:.4f&#125;)"</span>.format(name, result.mean(), result.std()))</span><br></pre></td></tr></table></figure>
-<h2 id="模型调节"><a href="#模型调节" class="headerlink" title="模型调节"></a>模型调节</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">param_grid = &#123;</span><br><span class="line">    <span class="string">"C"</span>:[<span class="number">0.1</span>,<span class="number">0.3</span>,<span class="number">0.5</span>,<span class="number">0.7</span>,<span class="number">0.9</span>,<span class="number">1.0</span>,<span class="number">1.3</span>,<span class="number">1.5</span>,<span class="number">1.7</span>,<span class="number">2.0</span>],</span><br><span class="line">    <span class="string">"kernel"</span>:[<span class="string">"linear"</span>,<span class="string">"poly"</span>,<span class="string">"rbf"</span>,<span class="string">"sigmoid"</span>]</span><br><span class="line">&#125;</span><br><span class="line">model = SVC()</span><br><span class="line">kfold = KFold(n_splits=<span class="number">5</span>,random_state=<span class="number">42</span>)</span><br><span class="line">grid = GridSearchCV(estimator=model,param_grid=param_grid,scoring=<span class="string">"accuracy"</span>,cv=kfold)</span><br><span class="line">grid_result = grid.fit(X,y)</span><br><span class="line">print(<span class="string">"Best: &#123;&#125; using &#123;&#125;"</span>.format(grid_result.best_score_,grid_result.best_params_))</span><br><span class="line">means = grid_result.cv_results_[<span class="string">"mean_test_score"</span>]</span><br><span class="line">stds = grid_result.cv_results_[<span class="string">"std_test_score"</span>]</span><br><span class="line">params = grid_result.cv_results_[<span class="string">"params"</span>]</span><br><span class="line"><span class="keyword">for</span> mean,stdev,param <span class="keyword">in</span> zip(means,stds,params):</span><br><span class="line">    print(<span class="string">"&#123;&#125; (&#123;&#125;) with &#123;&#125;"</span>.format(mean,stdev,param))</span><br><span class="line">    </span><br><span class="line"><span class="comment"># 使用随机梯度下降法</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> RandomizedSearchCV</span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> randint</span><br><span class="line"></span><br><span class="line">param_distribs = &#123;</span><br><span class="line">        <span class="string">'n_estimators'</span>: randint(low=<span class="number">1</span>, high=<span class="number">200</span>),</span><br><span class="line">        <span class="string">'max_features'</span>: randint(low=<span class="number">1</span>, high=<span class="number">8</span>),</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">forest_reg = RandomForestRegressor(random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search = RandomizedSearchCV(forest_reg, param_distributions=param_distribs,</span><br><span class="line">                                n_iter=<span class="number">10</span>, cv=<span class="number">5</span>, scoring=<span class="string">'neg_mean_squared_error'</span>, random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search.fit(housing_prepared, housing_labels)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># svm 调参</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> RandomizedSearchCV</span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> expon, reciprocal</span><br><span class="line"></span><br><span class="line"><span class="comment"># see https://docs.scipy.org/doc/scipy/reference/stats.html</span></span><br><span class="line"><span class="comment"># for `expon()` and `reciprocal()` documentation and more probability distribution functions.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Note: gamma is ignored when kernel is "linear"</span></span><br><span class="line">param_distribs = &#123;</span><br><span class="line">        <span class="string">'kernel'</span>: [<span class="string">'linear'</span>, <span class="string">'rbf'</span>],</span><br><span class="line">        <span class="string">'C'</span>: reciprocal(<span class="number">20</span>, <span class="number">200000</span>),</span><br><span class="line">        <span class="string">'gamma'</span>: expon(scale=<span class="number">1.0</span>),</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">svm_reg = SVR()</span><br><span class="line">rnd_search = RandomizedSearchCV(svm_reg, param_distributions=param_distribs,</span><br><span class="line">                                n_iter=<span class="number">50</span>, cv=<span class="number">5</span>, scoring=<span class="string">'neg_mean_squared_error'</span>,</span><br><span class="line">                                verbose=<span class="number">2</span>, random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search.fit(housing_prepared, housing_labels)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-mult_classifition-2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="LelandYan">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LelandYan">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/04/2020-3-3-mult_classifition-2020/" class="post-title-link" itemprop="url">如何处理多分类问题</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:02:29" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="如何处理多分类问题"><a href="#如何处理多分类问题" class="headerlink" title="如何处理多分类问题"></a>如何处理多分类问题</h1><h2 id="有关多分类问题有两种方法"><a href="#有关多分类问题有两种方法" class="headerlink" title="有关多分类问题有两种方法"></a>有关多分类问题有两种方法</h2><p>二分类器只能区分两个类，而多类分类器（也被叫做多项式分类器）可以区分多于两个类。</p>
-<p>一些算法（比如随机森林分类器或者朴素贝叶斯分类器）可以直接处理多类分类问题。其他一些算法（比如 SVM 分类器或者线性分类器）则是严格的二分类器。然后，有许多策略可以让你用二分类器去执行多类分类。</p>
-<p>举例子，创建一个可以将图片分成 10 类（从 0 到 9）的系统的一个方法是：训练10个二分类器，每一个对应一个数字（探测器 0，探测器 1，探测器 2，以此类推）。然后当你想对某张图片进行分类的时候，让每一个分类器对这个图片进行分类，选出决策分数最高的那个分类器。这叫做“一对所有”（OvA）策略（也被叫做“一对其他”）。</p>
-<p>另一个策略是对每一对数字都训练一个二分类器：一个分类器用来处理数字 0 和数字 1，一个用来处理数字 0 和数字 2，一个用来处理数字 1 和 2，以此类推。这叫做“一对一”（OvO）策略。如果有 N 个类。你需要训练<code>N*(N-1)/2</code>个分类器。对于 MNIST 问题，需要训练 45 个二分类器！当你想对一张图片进行分类，你必须将这张图片跑在全部45个二分类器上。然后看哪个类胜出。OvO 策略的主要优点是：每个分类器只需要在训练集的部分数据上面进行训练。这部分数据是它所需要区分的那两个类对应的数据。</p>
-<p>一些算法（比如 SVM 分类器）在训练集的大小上很难扩展，所以对于这些算法，OvO 是比较好的，因为它可以在小的数据集上面可以更多地训练，较之于巨大的数据集而言。但是，对于大部分的二分类器来说，OvA 是更好的选择。</p>
-<p>Scikit-Learn 可以探测出你想使用一个二分类器去完成多分类的任务，它会自动地执行 OvA（除了 SVM 分类器，它使用 OvO）。让我们试一下<code>SGDClassifier</code>.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.fit(X_train, y_train) <span class="comment"># y_train, not y_train_5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.predict([some_digit])</span><br><span class="line">array([ <span class="number">5.</span>])</span><br></pre></td></tr></table></figure>
-<p>很容易。上面的代码在训练集上训练了一个<code>SGDClassifier</code>。这个分类器处理原始的目标class，从 0 到 9（<code>y_train</code>），而不是仅仅探测是否为 5 （<code>y_train_5</code>）。然后它做出一个判断（在这个案例下只有一个正确的数字）。在幕后，Scikit-Learn 实际上训练了 10 个二分类器，每个分类器都产到一张图片的决策数值，选择数值最高的那个类。</p>
-<p>为了证明这是真实的，你可以调用<code>decision_function()</code>方法。不是返回每个样例的一个数值，而是返回 10 个数值，一个数值对应于一个类。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_digit_scores = sgd_clf.decision_function([some_digit])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>some_digit_scores</span><br><span class="line">array([[<span class="number">-311402.62954431</span>, <span class="number">-363517.28355739</span>, <span class="number">-446449.5306454</span> ,</span><br><span class="line">        <span class="number">-183226.61023518</span>, <span class="number">-414337.15339485</span>, <span class="number">161855.74572176</span>,</span><br><span class="line">        <span class="number">-452576.39616343</span>, <span class="number">-471957.14962573</span>, <span class="number">-518542.33997148</span>,</span><br><span class="line">        <span class="number">-536774.63961222</span>]])</span><br></pre></td></tr></table></figure>
-<p>最高数值是对应于类别 5 ：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>np.argmax(some_digit_scores)</span><br><span class="line"><span class="number">5</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.classes_</span><br><span class="line">array([ <span class="number">0.</span>, <span class="number">1.</span>, <span class="number">2.</span>, <span class="number">3.</span>, <span class="number">4.</span>, <span class="number">5.</span>, <span class="number">6.</span>, <span class="number">7.</span>, <span class="number">8.</span>, <span class="number">9.</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>sgd_clf.classes_[<span class="number">5</span>]</span><br><span class="line"><span class="number">5.0</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>一个分类器被训练好了之后，它会保存目标类别列表到它的属性<code>classes_</code> 中去，按照值排序。在本例子当中，在<code>classes_</code> 数组当中的每个类的索引方便地匹配了类本身，比如，索引为 5 的类恰好是类别 5 本身。但通常不会这么幸运。</p>
-</blockquote>
-<p>如果你想强制 Scikit-Learn 使用 OvO 策略或者 OvA 策略，你可以使用<code>OneVsOneClassifier</code>类或者<code>OneVsRestClassifier</code>类。创建一个样例，传递一个二分类器给它的构造函数。举例子，下面的代码会创建一个多类分类器，使用 OvO 策略，基于<code>SGDClassifier</code>。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.multiclass <span class="keyword">import</span> OneVsOneClassifier</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ovo_clf = OneVsOneClassifier(SGDClassifier(random_state=<span class="number">42</span>))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ovo_clf.fit(X_train, y_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>ovo_clf.predict([some_digit])</span><br><span class="line">array([ <span class="number">5.</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>len(ovo_clf.estimators_)</span><br><span class="line"><span class="number">45</span></span><br></pre></td></tr></table></figure>
-<p>训练一个<code>RandomForestClassifier</code>同样简单：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>forest_clf.fit(X_train, y_train)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>forest_clf.predict([some_digit])</span><br><span class="line">array([ <span class="number">5.</span>])</span><br></pre></td></tr></table></figure>
-<p>这次 Scikit-Learn 没有必要去运行 OvO 或者 OvA，因为随机森林分类器能够直接将一个样例分到多个类别。你可以调用<code>predict_proba()</code>，得到样例对应的类别的概率值的列表：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>forest_clf.predict_proba([some_digit])</span><br><span class="line">array([[ <span class="number">0.1</span>, <span class="number">0.</span> , <span class="number">0.</span> , <span class="number">0.1</span>, <span class="number">0.</span> , <span class="number">0.8</span>, <span class="number">0.</span> , <span class="number">0.</span> , <span class="number">0.</span> , <span class="number">0.</span> ]])</span><br></pre></td></tr></table></figure>
-<p>你可以看到这个分类器相当确信它的预测：在数组的索引 5 上的 0.8，意味着这个模型以 80% 的概率估算这张图片代表数字 5。它也认为这个图片可能是数字 0 或者数字 3，分别都是 10% 的几率。</p>
-<p>现在当然你想评估这些分类器。像平常一样，你想使用交叉验证。让我们用<code>cross_val_score()</code>来评估<code>SGDClassifier</code>的精度。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span>cross_val_score(sgd_clf, X_train, y_train, cv=<span class="number">3</span>, scoring=<span class="string">"accuracy"</span>)</span><br><span class="line">array([ <span class="number">0.84063187</span>, <span class="number">0.84899245</span>, <span class="number">0.86652998</span>])</span><br></pre></td></tr></table></figure>
-<p>在所有测试折（test fold）上，它有 84% 的精度。如果你是用一个随机的分类器，你将会得到 10% 的正确率。所以这不是一个坏的分数，但是你可以做的更好。举例子，简单将输入正则化，将会提高精度到 90% 以上。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>scaler = StandardScaler()</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>X_train_scaled = scaler.fit_transform(X_train.astype(np.float64))</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>cross_val_score(sgd_clf, X_train_scaled, y_train, cv=<span class="number">3</span>, scoring=<span class="string">"accuracy"</span>)</span><br><span class="line">array([ <span class="number">0.91011798</span>, <span class="number">0.90874544</span>, <span class="number">0.906636</span> ])</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-        
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/2020-3-3-softmax_function-2020/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="LelandYan">
-      <meta itemprop="description" content="涉猎的主要编程语言为 Python、matlab、C++、java，领域涵盖机器学校、爬虫、深度学习、python相关网页制作等。">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="LelandYan">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/03/04/2020-3-3-softmax_function-2020/" class="post-title-link" itemprop="url">softmaxa Regression</a>
-        </h1>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:01:39" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Machine-Learning/" itemprop="url" rel="index"><span itemprop="name">Machine Learning</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes</p>
-</blockquote>
-<h1 id="softmaxa-Regression"><a href="#softmaxa-Regression" class="headerlink" title="softmaxa Regression"></a>softmaxa Regression</h1><p>为LR在多分类上的推广，与LR一样，同属于广义线性模型（Generalized Linear Model）</p>
-<p>​    </p>
-<script type="math/tex; mode=display">
-S_i=\frac{e^{V_i}}{\sum_i^Ce^{V_i}}</script><p>其中，Vi 是分类器前级输出单元的输出。i 表示类别索引，总的类别个数为 C。Si 表示的是当前元素的指数与所有元素指数和的比值。Softmax 将多分类的输出数值转化为相对概率，更容易理解和比较。我们来看下面这个例子</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 什么是Softmax函数</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">实际应用中，使用 Softmax 需要注意数值溢出的问题。因为有指数运算，</span></span><br><span class="line"><span class="string">如果 V 数值很大，经过指数运算后的数值往往可能有溢出的可能。</span></span><br><span class="line"><span class="string">所以，需要对 V 进行一些数值处理：即 V 中的每个元素减去 V 中的最大值。"""</span></span><br><span class="line">scores = np.array([<span class="number">123</span>,<span class="number">456</span>,<span class="number">789</span>])</span><br><span class="line">scores -= np.max(scores)</span><br><span class="line">p = np.exp(scores) / np.sum(np.exp(scores))</span><br><span class="line"><span class="comment"># print(p)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Softmax损失函数</span></span><br><span class="line"><span class="comment"># 其中，Syi是正确类别对应的线性得分函数，Si 是正确类别对应的 Softmax输出。</span></span><br><span class="line"><span class="comment"># 由于 log 运算符不会影响函数的单调性，我们对 Si 进行 log 操作：</span></span><br><span class="line"><span class="comment"># 我们希望 Si 越大越好，即正确类别对应的相对概率越大越好，那么就可以对 Si 前面加个负号，来表示损失函数</span></span><br></pre></td></tr></table></figure>
-<script type="math/tex; mode=display">
-L_i=-log\frac{e^{S_{y_i}}}{\sum_{j=1}^Ce^{S_j}}=-(s_{y_i}-log\sum_{j=1}^Ce^{s_j})=-s_{y_i}+log\sum_{j=1}^Ce^{s_j}</script><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax_loss_naive</span><span class="params">(W,X,y,reg)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Softmax loss function ,naive implementation(with loops)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Inputs have dimension D,there are C classes,and we operate on minibatches of N examples</span></span><br><span class="line"><span class="string">    :param W: A numpy array of shape(D,C) containing weights</span></span><br><span class="line"><span class="string">    :param X: A numpy array of shaep(N,D) containing a minibatch of data</span></span><br><span class="line"><span class="string">    :param y:A numpy array of shape(N,) containing training,labels,y[i] = c means</span></span><br><span class="line"><span class="string">    :param reg:(float) regularization strength</span></span><br><span class="line"><span class="string">    :return: A tuple of (loss as single float, gradient with respect to weights W,an array of same shape as  W)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment"># initialize the loss and gradient to zero</span></span><br><span class="line">    loss = <span class="number">0.0</span></span><br><span class="line">    dW = np.zeros_like(W)</span><br><span class="line"></span><br><span class="line">    num_train = X.shape[<span class="number">0</span>]</span><br><span class="line">    num_classes = W.shape[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_train):</span><br><span class="line">        scores = X[i,:].dot(W)</span><br><span class="line">        scores_shift = scores - np.max(scores)</span><br><span class="line">        right_class = y[i]</span><br><span class="line">        loss += (-scores_shift[right_class] + np.log(np.sum(np.exp(scores_shift))))</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(num_classes):</span><br><span class="line">            softmax_output = np.exp(scores_shift[j]) / np.sum(np.exp(scores_shift))</span><br><span class="line">            <span class="keyword">if</span> j == y[i]:</span><br><span class="line">                dW[:,j] += (<span class="number">-1</span> + softmax_output) * X[i,:]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dW[:,j] += softmax_output * X[i,:]</span><br><span class="line">    loss /= num_train</span><br><span class="line">    loss += <span class="number">0.5</span> * reg * np.sum(W*W)</span><br><span class="line">    dW /= num_train</span><br><span class="line">    dW += reg * W</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> loss,dW</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax_loss_vectorized</span><span class="params">(W,X,y,reg)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Softmax loss function,vectorized version</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Inputs and outputs are the same as softmax_loss_naive</span></span><br><span class="line"><span class="string">    :param W:</span></span><br><span class="line"><span class="string">    :param X:</span></span><br><span class="line"><span class="string">    :param y:</span></span><br><span class="line"><span class="string">    :param reg:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    loss = <span class="number">0.0</span></span><br><span class="line">    dW = np.zeros_like(W)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获得样本的数量</span></span><br><span class="line">    num_train = X.shape[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># 获取样本的分裂数量</span></span><br><span class="line">    num_classes = W.shape[<span class="number">1</span>]</span><br><span class="line">    <span class="comment"># 获取到每个样本所对应的分类的得分</span></span><br><span class="line">    scores = X.dot(W)</span><br><span class="line">    scores_shift = scores - np.max(scores, axis=<span class="number">1</span>)</span><br><span class="line">    softmax_output = np.exp(scores_shift) / np.sum(np.exp(scores_shift), axis=<span class="number">1</span>)</span><br><span class="line">    loss = -np.sum(np.log(softmax_output[range(num_train), list(y)]))</span><br><span class="line">    loss /= num_train</span><br><span class="line">    loss += <span class="number">0.5</span> * reg * np.sum(W * W)</span><br><span class="line"></span><br><span class="line">    dS = softmax_output.copy()</span><br><span class="line">    dS[range(num_train), list(y)] += <span class="number">-1</span></span><br><span class="line">    dW = (X.T).dot(dS)</span><br><span class="line">    dW = dW / num_train + reg * W</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> loss, dW</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
   </div>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1120,20 +1145,20 @@ L_i=-log\frac{e^{S_{y_i}}}{\sum_{j=1}^Ce^{S_j}}=-(s_{y_i}-log\sum_{j=1}^Ce^{s_j}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>

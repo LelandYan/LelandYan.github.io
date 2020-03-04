@@ -29,7 +29,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/feature_scaling.png">
 <meta property="article:published_time" content="2020-03-04T04:08:25.000Z">
-<meta property="article:modified_time" content="2020-03-04T06:15:40.380Z">
+<meta property="article:modified_time" content="2020-03-04T06:20:34.382Z">
 <meta property="article:author" content="LelandYan">
 <meta property="article:tag" content="matplotlib">
 <meta property="article:tag" content="multi-regression">
@@ -218,7 +218,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:15:40" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
+              <time title="创建时间：2020-03-04 12:08:25 / 修改时间：14:20:34" itemprop="dateCreated datePublished" datetime="2020-03-04T12:08:25+08:00">2020-03-04</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -269,14 +269,14 @@
 <li>Gradient descent is suitable for a large number for features(<br>  <img src="/images/feature_scaling.png" alt="">)<br>但是受数据的影响较大，所以对与Gradient descent来说需要进行feature scaling)</li>
 <li><p>normalize equation(正规方程)的公式推导</p>
 <p>代价函数</p>
+<p> ​    <script type="math/tex">J(\theta)=J(\theta_0,\ldots,\theta_n)=\frac {1} {2m} \sum_{i=1}^{m} {(h_\theta(x^{(i)})-y^{(i)})^2}</script></p>
+<p> ​    <script type="math/tex">J(\theta)=\frac {1}{2m}(X\theta-y)^T(X\theta-y)</script></p>
+<p> ​    <script type="math/tex">J(\theta)=\theta^TX^TX\theta-(X\theta)^Ty-y^TX\theta+y^Ty</script></p>
+<p> ​    <script type="math/tex">J(\theta)=\theta^TX^TX\theta-2(X\theta)^Ty+y^Ty</script></p>
+<p> ​    <script type="math/tex">\frac {\partial}{\partial\theta}J(\theta)=2X^TX\theta-2X^Ty=0</script></p>
+<p> ​    <script type="math/tex">\theta=(X^TX)^{-1}X^Ty</script></p>
 </li>
 </ol>
-<p>​    <script type="math/tex">J(\theta)=J(\theta_0,\ldots,\theta_n)=\frac {1} {2m} \sum_{i=1}^{m} {(h_\theta(x^{(i)})-y^{(i)})^2}</script></p>
-<p>​    <script type="math/tex">J(\theta)=\frac {1}{2m}(X\theta-y)^T(X\theta-y)</script></p>
-<p>​    <script type="math/tex">J(\theta)=\theta^TX^TX\theta-(X\theta)^Ty-y^TX\theta+y^Ty</script></p>
-<p>​    <script type="math/tex">J(\theta)=\theta^TX^TX\theta-2(X\theta)^Ty+y^Ty</script></p>
-<p>​    <script type="math/tex">\frac {\partial}{\partial\theta}J(\theta)=2X^TX\theta-2X^Ty=0</script></p>
-<p>​    <script type="math/tex">\theta=(X^TX)^{-1}X^Ty</script></p>
 </li>
 <li><p>矩阵不可逆：</p>
 <p>1.矩阵存在线性相关的特征之值</p>
@@ -384,20 +384,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">24</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-count">2</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">26</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
