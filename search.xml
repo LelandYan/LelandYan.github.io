@@ -1,6 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>中国大学生数学建模比赛、美国大学生数学建模比赛等建模感想</title>
+    <url>/2020/03/16/2020-3-16-USAMathematicalModeling/</url>
+    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>一些关于数学建模的建议和感悟<br><a id="more"></a></p>
+</blockquote>
+<h1 id="关于大学生数学建模比赛一些感想"><a href="#关于大学生数学建模比赛一些感想" class="headerlink" title="关于大学生数学建模比赛一些感想"></a>关于大学生数学建模比赛一些感想</h1><p>下面我从几个方面说一下自己的感想吧。</p>
+<ol>
+<li><p>关于是否<strong>多多参加建模类的比赛</strong>的问题，这里可以分为<strong>两个方面</strong>。</p>
+<ol>
+<li>对于这类比赛都尝试一下？对于那些并不是很著名的比赛，我们是否有价值来参加？<ol>
+<li>我认为是有价值的，但是并不代表全部参加，可以挑选几个来全力参加（比赛等级比较高的），毕竟我们大学还要搞其他的比赛。其次我觉得多参加这类比赛，可以积累建模经验，检查自己知识体系的不足等。</li>
+</ol>
+</li>
+<li>对于什么时候开始搞建模比赛，是不是越早越好？<ol>
+<li>起码作为大三的我感觉是的，其实建模比赛的获奖，特别是国奖，挺考验人的运气，早点参加可能有更大的概率来得更好得奖。</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><p>关于国内的比赛和国外的建模比赛的<strong>不同点</strong></p>
+<ol>
+<li>对于<strong>国赛</strong>和<strong>MathorCup</strong>的C题来说，感觉这两比赛都是比较偏容易一点（1. 文献都可以查到，而且往往可以查到很多文献来进行选择和学习 2. 文献都是中文的，不存在还要翻译对于不对）但是国赛对于得国奖来说，说实话比较难（当然如果你已经把常见的模型都掌握并且可以编程实现的话不难），其实这里不只是一个人要厉害，而是三个人都要大佬（也就是三个人是一个层次水平），如果不是一个水平的话，要不失败，要么三个人都痛苦。</li>
+<li>对于<strong>美赛</strong>的C题的话，我也就是大三的参加一次，简单说一下就是美赛论文要偏重（要投入很多时间），非常可能你模型建完、代码跑完，论文更不上结果论文简单模糊然后gg。对于我参加的那次，我自己建模+编程，另外两个人写论文，结果最后还是没有把我的全部结果说明白。</li>
+</ol>
+</li>
+<li><p>关于建模比赛的<strong>注意点</strong></p>
+<ol>
+<li><strong>队友！！ </strong> <strong>队友！！</strong> <strong>队友！！</strong> 队友非常重要，真的。对我来说，预想的是队伍中的三人，我在队伍中是负责编程，一人负责写作，另一人负责建模，现实是我建模+编程实现，另外两人写作。所以比赛的时候一定要注意队友的选择，不要不好意思，如果你就是冲着得奖去的，该拒绝带妹就拒绝，该拒绝带弟弟就拒绝。</li>
+<li><strong>任务的分配一定要合理、队伍中自己一定要清楚自己的实力，不要硬撑！！！</strong>答应的事情一定要做完、做好。要不你就别揽任务，从队伍中的实际情况出发，选择模型和方法。</li>
+<li><strong>队伍中的冲突问题</strong>，我们队伍是没有遇见这方面的问题，因为基本上都是我说方法，然后她们进行缝补。但是有的队伍可能存在一个队伍两个核心的问题，如果这样的话，一定要有一个人来进行协调。其实避免这个问题，可以像我们队伍一样，建模+编程一个人来干，这样不会出现，建模人出来模型了，编程出不来，最后队伍凉凉。也可以是建模和编程两个人要时不时进行交流和协调。</li>
+<li><strong>论文！！！</strong> <strong>论文！！！</strong> <strong>论文！！！</strong> 论文真的是超级重要，不管你们的模型是否合理、新颖，还是你的编程是否实现，展示的窗口都是论文。其实如果你们队伍中那个负责写作的人，能力并不是太突出的话，建议还是两个人负责写作，论文有时候真的不是那么容易写的（在保证查重率、正确率、美观性）</li>
+<li><strong>队伍的核心的问题</strong>，一个队伍只能有一个核心。如果现在有两个队伍，一个队伍是能力并不是太强，但是队伍只有一个人集中领导，另一个队伍是能力很强，队伍有一个以上核心，那我感觉还是选择那个能力并不是太强的队伍。起码你们能达成同一意见，把题目做完，而不是半途而废。</li>
+</ol>
+</li>
+<li><p>关于怎么<strong>准备建模</strong>C题</p>
+<ol>
+<li>负责建模的人，最好是在老师科研小组的。这样可以能快速理解新的模型和解释。</li>
+<li>负责编程的人，一定要充分利用网上的代码，因为毕竟时间就是那么短，并不要求代码一定都是自己写，该用库的用库，该用软件的用软件。可视化可别求另外两个队友了，早学你早使用。</li>
+<li>负责写作的人，一方面要求其能快速理解模型，另一方面是要能够快速的写作和快速排版。这个能力往往决定你们能否完成功的提交论文。</li>
+<li>当然三个人，都是要看基础模型的和优秀论文的。</li>
+</ol>
+</li>
+</ol>
+]]></content>
+      <categories>
+        <category>杂谈和感想</category>
+      </categories>
+      <tags>
+        <tag>Mathematical Modeling</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Linear Regression for Classification</title>
     <url>/2020/03/04/2018-12-10-linear_regression-2018/</url>
     <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
@@ -57,32 +109,28 @@
       </tags>
   </entry>
   <entry>
-    <title>logistic regression(classification)</title>
-    <url>/2020/03/04/2020-3-3-Logistic_Regression_Classification-2020/</url>
+    <title>Hypothesis Testing</title>
+    <url>/2020/03/04/2020-3-3-Hypothesis_Testing-2020/</url>
     <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes<br><a id="more"></a></p>
-<h1 id="logistic-regression-classification"><a href="#logistic-regression-classification" class="headerlink" title="logistic regression(classification)"></a>logistic regression(classification)</h1></blockquote>
-<p>1.Hypothesis Representation</p>
-<p>​    运用sigmoid function(logistic function)来将函数的值域映射到[0-1]</p>
-<p>​    </p>
-<script type="math/tex; mode=display">
-sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img src="/images/sigmoid.png" alt=""></p>
-<p>2.decision boundary<br><img src="/images/decision_boudary.png" alt=""></p>
-<p><img src="/images/decision_boudary2.png" alt=""></p>
-<ol>
-<li><p>cost function</p>
-<p>这里的代价函数不再使用平方差的均值的方法，因为使用的话，通过非线性函数sigimoid函数，可能变成非凸函数，也就是说，可能存在多个局部最优的解，这将导致梯度下降算法不再有效</p>
-<p><img src="/images/square_functino.png" alt="Image text"></p>
-<p>这里可以更改代价函数为</p>
-<p><img src="/images/cost_functinon.png" alt=""></p>
-</li>
-</ol>
+<h1 id="Hypothesis-Testing"><a href="#Hypothesis-Testing" class="headerlink" title="Hypothesis Testing"></a>Hypothesis Testing</h1></blockquote>
+<p>是推断统计的最后一步，是根据一定的假设条件由假设条件由样本推断总体的一种方法</p>
+<p>首先提出你的假设</p>
+<p>其实检验假设其实就是假设和检验两步，先提出假设，之后在验证假设时候合理</p>
+<p>4、显著水平<br>总共猜10次，那么是出现7次猜对，可以认为有特殊能力，还是9次猜对之后我才能确认有特殊能力，这是一个较为主观的标准。</p>
+<p>我们一般认为</p>
+<p>P-value&lt;=0.05</p>
+<p>就可以认为假设是不正确的。</p>
+<p>0.05这个标准就是显著水平，当然选择多少作为显著水平也是主观的。</p>
+<p>比如，我们猜奶茶的例子，如果取单侧P值，那么根据我们的计算，如果10次猜对9次：</p>
+<h2 id="P-value-P-9-lt-X-lt-10-0-01-lt-0-05"><a href="#P-value-P-9-lt-X-lt-10-0-01-lt-0-05" class="headerlink" title="P-value=P(9&lt;=X&lt;=10)=0.01&lt;=0.05"></a>P-value=P(9&lt;=X&lt;=10)=0.01&lt;=0.05</h2><p><strong>检验统计量</strong>是用于假设检验计算的统计量。在零假设情况下，这项统计量服从一个给定的概率分布，而这在另一种假设下则不然。从而若检验统计量的值落在上述分布的临界值之外，则可认为前述零假设未必正确。统计学中，用于检验假设量是否正确的量。常用的检验统计量有t统计量，Z统计量等。</p>
 ]]></content>
       <categories>
         <category>Machine Learning</category>
       </categories>
       <tags>
-        <tag>logistic regression</tag>
+        <tag>Hypothesis Testing</tag>
+        <tag>数理统计</tag>
       </tags>
   </entry>
   <entry>
@@ -135,28 +183,32 @@ X(每个数据) - U(特征值均值))/(std)
       </tags>
   </entry>
   <entry>
-    <title>Hypothesis Testing</title>
-    <url>/2020/03/04/2020-3-3-Hypothesis_Testing-2020/</url>
+    <title>logistic regression(classification)</title>
+    <url>/2020/03/04/2020-3-3-Logistic_Regression_Classification-2020/</url>
     <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
 <p>Machine Learning notes<br><a id="more"></a></p>
-<h1 id="Hypothesis-Testing"><a href="#Hypothesis-Testing" class="headerlink" title="Hypothesis Testing"></a>Hypothesis Testing</h1></blockquote>
-<p>是推断统计的最后一步，是根据一定的假设条件由假设条件由样本推断总体的一种方法</p>
-<p>首先提出你的假设</p>
-<p>其实检验假设其实就是假设和检验两步，先提出假设，之后在验证假设时候合理</p>
-<p>4、显著水平<br>总共猜10次，那么是出现7次猜对，可以认为有特殊能力，还是9次猜对之后我才能确认有特殊能力，这是一个较为主观的标准。</p>
-<p>我们一般认为</p>
-<p>P-value&lt;=0.05</p>
-<p>就可以认为假设是不正确的。</p>
-<p>0.05这个标准就是显著水平，当然选择多少作为显著水平也是主观的。</p>
-<p>比如，我们猜奶茶的例子，如果取单侧P值，那么根据我们的计算，如果10次猜对9次：</p>
-<h2 id="P-value-P-9-lt-X-lt-10-0-01-lt-0-05"><a href="#P-value-P-9-lt-X-lt-10-0-01-lt-0-05" class="headerlink" title="P-value=P(9&lt;=X&lt;=10)=0.01&lt;=0.05"></a>P-value=P(9&lt;=X&lt;=10)=0.01&lt;=0.05</h2><p><strong>检验统计量</strong>是用于假设检验计算的统计量。在零假设情况下，这项统计量服从一个给定的概率分布，而这在另一种假设下则不然。从而若检验统计量的值落在上述分布的临界值之外，则可认为前述零假设未必正确。统计学中，用于检验假设量是否正确的量。常用的检验统计量有t统计量，Z统计量等。</p>
+<h1 id="logistic-regression-classification"><a href="#logistic-regression-classification" class="headerlink" title="logistic regression(classification)"></a>logistic regression(classification)</h1></blockquote>
+<p>1.Hypothesis Representation</p>
+<p>​    运用sigmoid function(logistic function)来将函数的值域映射到[0-1]</p>
+<p>​    </p>
+<script type="math/tex; mode=display">
+sigimoid=h_0(x)=\frac {1}{1+e^-x}</script><p>sigmoid函数图像的为<br><img src="/images/sigmoid.png" alt=""></p>
+<p>2.decision boundary<br><img src="/images/decision_boudary.png" alt=""></p>
+<p><img src="/images/decision_boudary2.png" alt=""></p>
+<ol>
+<li><p>cost function</p>
+<p>这里的代价函数不再使用平方差的均值的方法，因为使用的话，通过非线性函数sigimoid函数，可能变成非凸函数，也就是说，可能存在多个局部最优的解，这将导致梯度下降算法不再有效</p>
+<p><img src="/images/square_functino.png" alt="Image text"></p>
+<p>这里可以更改代价函数为</p>
+<p><img src="/images/cost_functinon.png" alt=""></p>
+</li>
+</ol>
 ]]></content>
       <categories>
         <category>Machine Learning</category>
       </categories>
       <tags>
-        <tag>Hypothesis Testing</tag>
-        <tag>数理统计</tag>
+        <tag>logistic regression</tag>
       </tags>
   </entry>
   <entry>
@@ -202,22 +254,6 @@ X(每个数据) - U(特征值均值))/(std)
       </tags>
   </entry>
   <entry>
-    <title>李宏毅机器学习课程线性回归训练题目一</title>
-    <url>/2020/03/04/2020-3-3-Programming_Exercise_1_Linear_Regression-2020/</url>
-    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes<br><a id="more"></a></p>
-<h1 id="李宏毅机器学习课程线性回归训练题目一"><a href="#李宏毅机器学习课程线性回归训练题目一" class="headerlink" title="李宏毅机器学习课程线性回归训练题目一"></a>李宏毅机器学习课程线性回归训练题目一</h1><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line"></span><br><span class="line">data = pd.read_table(<span class="string">"ex1data1.txt"</span>, header=<span class="literal">None</span>, delimiter=<span class="string">","</span>, encoding=<span class="string">"gb2312"</span>)</span><br><span class="line">m = len(data)</span><br><span class="line">data_x = np.array(data)[:, <span class="number">0</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line">data_y = np.array(data)[:, <span class="number">1</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># the first task</span></span><br><span class="line">print(np.eye(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># the second task</span></span><br><span class="line"><span class="comment"># plt.scatter(data_x, data_y, color='r', marker='x',label="Training Data")</span></span><br><span class="line"><span class="comment"># plt.ylabel('Profit in $10,000s')</span></span><br><span class="line"><span class="comment"># plt.xlabel('Population of City in 10,000s')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># the third task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">computeCost</span><span class="params">(X, y, theta)</span>:</span></span><br><span class="line">    inner = np.power(((X * theta) - y), <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> np.sum(inner / (<span class="number">2</span> * len(X)))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradientDescent</span><span class="params">(X,y,theta,alpha,epoch)</span>:</span></span><br><span class="line">    cost = np.zeros(epoch)</span><br><span class="line"></span><br><span class="line">    m = X.shape[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(epoch):</span><br><span class="line">        temp = theta - (alpha / m) * ((X * theta - y).T * X).T</span><br><span class="line">        theta = temp</span><br><span class="line">        cost[i] = computeCost(X,y,theta)</span><br><span class="line">    <span class="keyword">return</span>  theta,cost</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">normal_equations</span><span class="params">(X,y)</span>:</span></span><br><span class="line">    theta = np.linalg.inv(X.T*X)*X.T*y</span><br><span class="line">    <span class="keyword">return</span> theta</span><br><span class="line"></span><br><span class="line">X = np.matrix(np.concatenate((np.ones((m, <span class="number">1</span>)), data_x), axis=<span class="number">1</span>))</span><br><span class="line">y = np.matrix(data_y)</span><br><span class="line">theta = np.matrix(np.zeros([<span class="number">2</span>, <span class="number">1</span>]))</span><br><span class="line">alpha = <span class="number">0.01</span></span><br><span class="line">epoch = <span class="number">1000</span></span><br><span class="line">final_theta,cost = gradientDescent(X,y,theta,alpha,epoch)</span><br><span class="line">print(final_theta)</span><br><span class="line">final_theta = normal_equations(X,y)</span><br><span class="line">print(final_theta)</span><br><span class="line">x = np.array(list(data_x[:,<span class="number">0</span>]))</span><br><span class="line">f = final_theta[<span class="number">0</span>,<span class="number">0</span>] + final_theta[<span class="number">1</span>,<span class="number">0</span>] * x</span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.scatter(data_x, data_y, color='r', marker='x',label="Training Data")</span></span><br><span class="line"><span class="comment"># plt.ylabel('Profit in $10,000s')</span></span><br><span class="line"><span class="comment"># plt.xlabel('Population of City in 10,000s')</span></span><br><span class="line"><span class="comment"># plt.plot(x,f,label="Prediction")</span></span><br><span class="line"><span class="comment"># plt.legend()</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.plot(np.arange(epoch),cost,'r')</span></span><br><span class="line"><span class="comment"># plt.xlabel("Iteration")</span></span><br><span class="line"><span class="comment"># plt.ylabel("Cost")</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line">theta0_vals = np.linspace(<span class="number">-10</span>,<span class="number">10</span>,<span class="number">100</span>)</span><br><span class="line">theta1_vals = np.linspace(<span class="number">-1</span>,<span class="number">4</span>,<span class="number">100</span>)</span><br><span class="line">J_vals = np.zeros((len(theta0_vals),len(theta1_vals)))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(theta0_vals)):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(len(theta1_vals)):</span><br><span class="line">        t = np.matrix(np.array([theta0_vals[i],theta1_vals[j]]).reshape((<span class="number">2</span>,<span class="number">1</span>)))</span><br><span class="line">        J_vals[i,j] = computeCost(X,y,t)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### # fig = plt.figure()</span></span><br><span class="line"><span class="comment"># ax = Axes3D(fig)</span></span><br><span class="line"><span class="comment"># ax.plot_surface(theta0_vals,theta1_vals,J_vals,rstride=1,cstride=1,cmap="rainbow")</span></span><br><span class="line"><span class="comment"># plt.xlabel('theta_0')</span></span><br><span class="line"><span class="comment"># plt.ylabel('theta_1')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"><span class="comment">### </span></span><br><span class="line"><span class="comment">### # plt.figure()</span></span><br><span class="line"><span class="comment"># plt.contourf(theta0_vals, theta1_vals, J_vals, 20, alpha = 0.6, cmap = plt.cm.hot)</span></span><br><span class="line"><span class="comment"># a = plt.contour(theta0_vals, theta1_vals, J_vals, colors = 'black')</span></span><br><span class="line"><span class="comment"># plt.clabel(a,inline=1,fontsize=10)</span></span><br><span class="line"><span class="comment"># plt.plot(theta[0,0],theta[1,0],'r',marker='x')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"><span class="comment">### </span></span><br><span class="line">data2 = pd.read_table(<span class="string">"ex1data2.txt"</span>, header=<span class="literal">None</span>, delimiter=<span class="string">","</span>, encoding=<span class="string">"gb2312"</span>)</span><br><span class="line"></span><br><span class="line">data2 = (data2 - data2.mean()) / data2.std()</span><br><span class="line">m = len(data2)</span><br><span class="line">data_x = np.array(data2)[:, <span class="number">0</span>:<span class="number">2</span>].reshape(m, <span class="number">2</span>)</span><br><span class="line">data_y = np.array(data2)[:, <span class="number">2</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line">data_x = np.concatenate((np.zeros((m,<span class="number">1</span>)),data_x),axis=<span class="number">1</span>)</span><br><span class="line">X = np.matrix(data_x)</span><br><span class="line">y = np.matrix(data_y)</span><br><span class="line">theta = np.matrix(np.zeros((<span class="number">3</span>,<span class="number">1</span>)))</span><br><span class="line">final_theta,cost = gradientDescent(X,y,theta,alpha,epoch)</span><br><span class="line"></span><br><span class="line">plt.plot(np.arange(epoch),cost,<span class="string">'r'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-</blockquote>
-]]></content>
-      <categories>
-        <category>Machine Learning</category>
-      </categories>
-      <tags>
-        <tag>matplotlib</tag>
-        <tag>Axes3D</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>随机森林中有关熵概念</title>
     <url>/2020/03/04/2020-3-3-RandomForest-2020/</url>
     <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
@@ -259,6 +295,51 @@ X(每个数据) - U(特征值均值))/(std)
       </tags>
   </entry>
   <entry>
+    <title>李宏毅机器学习课程线性回归训练题目一</title>
+    <url>/2020/03/04/2020-3-3-Programming_Exercise_1_Linear_Regression-2020/</url>
+    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes<br><a id="more"></a></p>
+<h1 id="李宏毅机器学习课程线性回归训练题目一"><a href="#李宏毅机器学习课程线性回归训练题目一" class="headerlink" title="李宏毅机器学习课程线性回归训练题目一"></a>李宏毅机器学习课程线性回归训练题目一</h1><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> mpl_toolkits.mplot3d <span class="keyword">import</span> Axes3D</span><br><span class="line"></span><br><span class="line">data = pd.read_table(<span class="string">"ex1data1.txt"</span>, header=<span class="literal">None</span>, delimiter=<span class="string">","</span>, encoding=<span class="string">"gb2312"</span>)</span><br><span class="line">m = len(data)</span><br><span class="line">data_x = np.array(data)[:, <span class="number">0</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line">data_y = np.array(data)[:, <span class="number">1</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># the first task</span></span><br><span class="line">print(np.eye(<span class="number">5</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># the second task</span></span><br><span class="line"><span class="comment"># plt.scatter(data_x, data_y, color='r', marker='x',label="Training Data")</span></span><br><span class="line"><span class="comment"># plt.ylabel('Profit in $10,000s')</span></span><br><span class="line"><span class="comment"># plt.xlabel('Population of City in 10,000s')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># the third task</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">computeCost</span><span class="params">(X, y, theta)</span>:</span></span><br><span class="line">    inner = np.power(((X * theta) - y), <span class="number">2</span>)</span><br><span class="line">    <span class="keyword">return</span> np.sum(inner / (<span class="number">2</span> * len(X)))</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradientDescent</span><span class="params">(X,y,theta,alpha,epoch)</span>:</span></span><br><span class="line">    cost = np.zeros(epoch)</span><br><span class="line"></span><br><span class="line">    m = X.shape[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(epoch):</span><br><span class="line">        temp = theta - (alpha / m) * ((X * theta - y).T * X).T</span><br><span class="line">        theta = temp</span><br><span class="line">        cost[i] = computeCost(X,y,theta)</span><br><span class="line">    <span class="keyword">return</span>  theta,cost</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">normal_equations</span><span class="params">(X,y)</span>:</span></span><br><span class="line">    theta = np.linalg.inv(X.T*X)*X.T*y</span><br><span class="line">    <span class="keyword">return</span> theta</span><br><span class="line"></span><br><span class="line">X = np.matrix(np.concatenate((np.ones((m, <span class="number">1</span>)), data_x), axis=<span class="number">1</span>))</span><br><span class="line">y = np.matrix(data_y)</span><br><span class="line">theta = np.matrix(np.zeros([<span class="number">2</span>, <span class="number">1</span>]))</span><br><span class="line">alpha = <span class="number">0.01</span></span><br><span class="line">epoch = <span class="number">1000</span></span><br><span class="line">final_theta,cost = gradientDescent(X,y,theta,alpha,epoch)</span><br><span class="line">print(final_theta)</span><br><span class="line">final_theta = normal_equations(X,y)</span><br><span class="line">print(final_theta)</span><br><span class="line">x = np.array(list(data_x[:,<span class="number">0</span>]))</span><br><span class="line">f = final_theta[<span class="number">0</span>,<span class="number">0</span>] + final_theta[<span class="number">1</span>,<span class="number">0</span>] * x</span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.scatter(data_x, data_y, color='r', marker='x',label="Training Data")</span></span><br><span class="line"><span class="comment"># plt.ylabel('Profit in $10,000s')</span></span><br><span class="line"><span class="comment"># plt.xlabel('Population of City in 10,000s')</span></span><br><span class="line"><span class="comment"># plt.plot(x,f,label="Prediction")</span></span><br><span class="line"><span class="comment"># plt.legend()</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># plt.plot(np.arange(epoch),cost,'r')</span></span><br><span class="line"><span class="comment"># plt.xlabel("Iteration")</span></span><br><span class="line"><span class="comment"># plt.ylabel("Cost")</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"></span><br><span class="line">theta0_vals = np.linspace(<span class="number">-10</span>,<span class="number">10</span>,<span class="number">100</span>)</span><br><span class="line">theta1_vals = np.linspace(<span class="number">-1</span>,<span class="number">4</span>,<span class="number">100</span>)</span><br><span class="line">J_vals = np.zeros((len(theta0_vals),len(theta1_vals)))</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(len(theta0_vals)):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(len(theta1_vals)):</span><br><span class="line">        t = np.matrix(np.array([theta0_vals[i],theta1_vals[j]]).reshape((<span class="number">2</span>,<span class="number">1</span>)))</span><br><span class="line">        J_vals[i,j] = computeCost(X,y,t)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### # fig = plt.figure()</span></span><br><span class="line"><span class="comment"># ax = Axes3D(fig)</span></span><br><span class="line"><span class="comment"># ax.plot_surface(theta0_vals,theta1_vals,J_vals,rstride=1,cstride=1,cmap="rainbow")</span></span><br><span class="line"><span class="comment"># plt.xlabel('theta_0')</span></span><br><span class="line"><span class="comment"># plt.ylabel('theta_1')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"><span class="comment">### </span></span><br><span class="line"><span class="comment">### # plt.figure()</span></span><br><span class="line"><span class="comment"># plt.contourf(theta0_vals, theta1_vals, J_vals, 20, alpha = 0.6, cmap = plt.cm.hot)</span></span><br><span class="line"><span class="comment"># a = plt.contour(theta0_vals, theta1_vals, J_vals, colors = 'black')</span></span><br><span class="line"><span class="comment"># plt.clabel(a,inline=1,fontsize=10)</span></span><br><span class="line"><span class="comment"># plt.plot(theta[0,0],theta[1,0],'r',marker='x')</span></span><br><span class="line"><span class="comment"># plt.show()</span></span><br><span class="line"><span class="comment">### </span></span><br><span class="line">data2 = pd.read_table(<span class="string">"ex1data2.txt"</span>, header=<span class="literal">None</span>, delimiter=<span class="string">","</span>, encoding=<span class="string">"gb2312"</span>)</span><br><span class="line"></span><br><span class="line">data2 = (data2 - data2.mean()) / data2.std()</span><br><span class="line">m = len(data2)</span><br><span class="line">data_x = np.array(data2)[:, <span class="number">0</span>:<span class="number">2</span>].reshape(m, <span class="number">2</span>)</span><br><span class="line">data_y = np.array(data2)[:, <span class="number">2</span>].reshape(m, <span class="number">1</span>)</span><br><span class="line">data_x = np.concatenate((np.zeros((m,<span class="number">1</span>)),data_x),axis=<span class="number">1</span>)</span><br><span class="line">X = np.matrix(data_x)</span><br><span class="line">y = np.matrix(data_y)</span><br><span class="line">theta = np.matrix(np.zeros((<span class="number">3</span>,<span class="number">1</span>)))</span><br><span class="line">final_theta,cost = gradientDescent(X,y,theta,alpha,epoch)</span><br><span class="line"></span><br><span class="line">plt.plot(np.arange(epoch),cost,<span class="string">'r'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+</blockquote>
+]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>matplotlib</tag>
+        <tag>Axes3D</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sklearn中RandomForestClassifier</title>
+    <url>/2020/03/04/2020-3-3-Sklearn_RandomForest-2020/</url>
+    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes<br><a id="more"></a></p>
+<h1 id="sklearn中RandomForestClassifier"><a href="#sklearn中RandomForestClassifier" class="headerlink" title="sklearn中RandomForestClassifier"></a>sklearn中RandomForestClassifier</h1><ol>
+<li>在scikit-learn中，RandomForest的分类器是RandomForestClassifier,回归类RandomFoestRegressor,需要调参的参数包括两部分，第一部分是Bagging框架的参数，第二部分是CART决策树的参数</li>
+</ol>
+</blockquote>
+   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">classsklearn.ensemble.RandomForestClassifier(n_estimators=<span class="number">10</span>, criterion=<span class="string">'gini'</span>, max_depth=<span class="literal">None</span>,min_samples_split=<span class="number">2</span>, min_samples_leaf=<span class="number">1</span>, min_weight_fraction_leaf=<span class="number">0.0</span>,max_features=<span class="string">'auto'</span>, max_leaf_nodes=<span class="literal">None</span>, min_impurity_split=<span class="number">1e-07</span>,bootstrap=<span class="literal">True</span>, oob_score=<span class="literal">True</span>, n_jobs=<span class="number">1</span>, random_state=<span class="literal">None</span>, verbose=<span class="number">0</span>,warm_start=<span class="literal">False</span>, class_weight=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>n_estimators: 也就是弱学习器的最大迭代次数，或者说最大的弱学习器的个数，默认是10。一般来说n_estimators太小，容易欠拟合，n_estimators太大，又容易过拟合，一般选择一个适中的数值。对Random Forest来说，增加“子模型数”（n_estimators）可以明显降低整体模型的方差，且不会对子模型的偏差和方差有任何影响。模型的准确度会随着“子模型数”的增加而提高，由于减少的是整体模型方差公式的第二项，故准确度的提高有一个上限。在实际应用中，可以以10为单位，考察取值范围在1至201的调参情况。</p>
+</li>
+<li><p>对比，Random Forest的子模型都拥有较低的偏差，整体模型的训练过程旨在降低方差，故其需要较少的子模型（n_estimators默认值为10）且子模型不为弱模型（max_depth的默认值为None）；Gradient Tree Boosting的子模型都拥有较低的方差，整体模型的训练过程旨在降低偏差，故其需要较多的子模型（n_estimators默认值为100）且子模型为弱模型（max_depth的默认值为3）。</p>
+</li>
+<li><p>bootstrap：默认True，是否有放回的采样。</p>
+</li>
+<li><p>oob_score ：默认识False，即是否采用袋外样本来评估模型的好坏。有放回采样中大约36.8%的没有被采样到的数据，我们常常称之为袋外数据(Out Of Bag, 简称OOB)，这些数据没有参与训练集模型的拟合，因此可以用来检测模型的泛化能力。个人推荐设置为True，因为袋外分数反应了一个模型拟合后的泛化能力。对单个模型的参数训练，我们知道可以用cross validation（cv）来进行，但是特别消耗时间，而且对于随机森林这种情况也没有大的必要，所以就用这个数据对决策树模型进行验证，算是一个简单的交叉验证，性能消耗小，但是效果不错。</p>
+<h2 id="criterion：-即CART树做划分时对特征的评价标准，分类模型和回归模型的损失函数是不一样的。分类RF对应的CART分类树默认是基尼系数gini-另一个可选择的标准是信息增益entropy，是用来选择节点的最优特征和切分点的两个准则。回归RF对应的CART回归树默认是均方差mse，另一个可以选择的标准是绝对值差mae。一般来说选择默认的标准就已经很好的。"><a href="#criterion：-即CART树做划分时对特征的评价标准，分类模型和回归模型的损失函数是不一样的。分类RF对应的CART分类树默认是基尼系数gini-另一个可选择的标准是信息增益entropy，是用来选择节点的最优特征和切分点的两个准则。回归RF对应的CART回归树默认是均方差mse，另一个可以选择的标准是绝对值差mae。一般来说选择默认的标准就已经很好的。" class="headerlink" title="criterion： 即CART树做划分时对特征的评价标准，分类模型和回归模型的损失函数是不一样的。分类RF对应的CART分类树默认是基尼系数gini,另一个可选择的标准是信息增益entropy，是用来选择节点的最优特征和切分点的两个准则。回归RF对应的CART回归树默认是均方差mse，另一个可以选择的标准是绝对值差mae。一般来说选择默认的标准就已经很好的。"></a>criterion： 即CART树做划分时对特征的评价标准，分类模型和回归模型的损失函数是不一样的。分类RF对应的CART分类树默认是基尼系数gini,另一个可选择的标准是信息增益entropy，是用来选择节点的最优特征和切分点的两个准则。回归RF对应的CART回归树默认是均方差mse，另一个可以选择的标准是绝对值差mae。一般来说选择默认的标准就已经很好的。</h2></li>
+</ol>
+]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>RandomForest</tag>
+        <tag>scikit-learn</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>AUC、ROC详解</title>
     <url>/2020/03/04/2020-3-3-auc_roc-2020/</url>
     <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
@@ -284,35 +365,6 @@ X(每个数据) - U(特征值均值))/(std)
 <p>(1)真正类率(True Postive Rate)TPR: TP/(TP+FN),代表分类器预测的正类中实际正实例占所有正实例的比例。Sensitivity</p>
 <p>(2)负正类率(False Postive Rate)FPR: FP/(FP+TN)，代表分类器预测的正类中实际负实例占所有负实例的比例。1-Specificity</p>
 <p>AUC(Area under Curve)：Roc曲线下的面积，介于0.1和1之间。Auc作为数值可以直观的评价分类器的好坏，值越大越好。</p>
-]]></content>
-      <categories>
-        <category>Machine Learning</category>
-      </categories>
-      <tags>
-        <tag>Machine Learning metrics</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Classifition metrics</title>
-    <url>/2020/03/04/2020-3-3-classifition_metrics-2020/</url>
-    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes<br><a id="more"></a></p>
-<h1 id="Classifition-metrics"><a href="#Classifition-metrics" class="headerlink" title="Classifition metrics"></a>Classifition metrics</h1><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2></blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line">confusion_matrix(y_train_5, y_train_pred)</span><br><span class="line">array([[<span class="number">53272</span>, <span class="number">1307</span>],</span><br><span class="line">        [ <span class="number">1077</span>, <span class="number">4344</span>]])</span><br></pre></td></tr></table></figure>
-<h2 id="准确率和召回率"><a href="#准确率和召回率" class="headerlink" title="准确率和召回率"></a>准确率和召回率</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_score, recall_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>precision_score(y_train_5, y_pred) <span class="comment"># == 4344 / (4344 + 1307)</span></span><br><span class="line"><span class="number">0.76871350203503808</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>recall_score(y_train_5, y_train_pred) <span class="comment"># == 4344 / (4344 + 1077)</span></span><br><span class="line"><span class="number">0.7913669064748201</span></span><br></pre></td></tr></table></figure>
-<h3 id="F1-score"><a href="#F1-score" class="headerlink" title="F1 score"></a>F1 score</h3><p>通常结合准确率和召回率会更加方便，这个指标叫做“F1 值”，特别是当你需要一个简单的方法去比较两个分类器的优劣的时候。F1 值是准确率和召回率的调和平均。普通的平均值平等地看待所有的值，而调和平均会给小的值更大的权重。所以，要想分类器得到一个高的 F1 值，需要召回率和准确率同时高。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> f1_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f1_score(y_train_5, y_train_pred)</span><br><span class="line"><span class="number">0.78468208092485547</span></span><br></pre></td></tr></table></figure>
-<h3 id="准确率和召回率的关系"><a href="#准确率和召回率的关系" class="headerlink" title="准确率和召回率的关系"></a>准确率和召回率的关系</h3><p>Scikit-Learn 不让你直接设置阈值，但是它给你提供了设置决策分数的方法，这个决策分数可以用来产生预测。它不是调用分类器的<code>predict()</code>方法，而是调用<code>decision_function()</code>方法。这个方法返回每一个样例的分数值，然后基于这个分数值，使用你想要的任何阈值做出预测</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt; y_scores = sgd_clf.decision_function([some_digit])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_scores</span><br><span class="line">array([ <span class="number">161855.74572176</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>threshold = <span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred = (y_scores &gt; threshold)</span><br><span class="line">array([ <span class="literal">True</span>], dtype=bool)</span><br><span class="line"><span class="string">"""SGDClassifier用了一个等于 0 的阈值，所以前面的代码返回了跟predict()方法一样的结果（都返回了true）。让我们提高这个阈值"""</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>threshold = <span class="number">200000</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred = (y_scores &gt; threshold)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred</span><br><span class="line">array([<span class="literal">False</span>], dtype=bool)</span><br><span class="line"></span><br><span class="line"><span class="string">"""使用cross_val_predict()得到每一个样例的分数值，但是这一次指定返回一个决策分数，而不是预测值。"""</span></span><br><span class="line">y_scores = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>, </span><br><span class="line">                            method=<span class="string">"decision_function"</span>)</span><br><span class="line"><span class="comment"># y_scores返回和样本数量相同的决策分数</span></span><br><span class="line"><span class="keyword">if</span> y_scores.ndim == <span class="number">2</span>:</span><br><span class="line">    y_scores = y_scores[:, <span class="number">1</span>]</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_recall_curve</span><br><span class="line"></span><br><span class="line">precisions, recalls, thresholds = precision_recall_curve(y_train_5, y_scores)</span><br><span class="line"><span class="comment"># 绘制precisoin和recall曲线</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_precision_recall_vs_threshold</span><span class="params">(precisions, recalls, thresholds)</span>:</span></span><br><span class="line">    plt.plot(thresholds, precisions[:<span class="number">-1</span>], <span class="string">"b--"</span>, label=<span class="string">"Precision"</span>)</span><br><span class="line">    plt.plot(thresholds, recalls[:<span class="number">-1</span>], <span class="string">"g-"</span>, label=<span class="string">"Recall"</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"Threshold"</span>)</span><br><span class="line">    plt.legend(loc=<span class="string">"upper left"</span>)</span><br><span class="line">    plt.ylim([<span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">plot_precision_recall_vs_threshold(precisions, recalls, thresholds)</span><br><span class="line">plt.show()    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_precision_vs_recall</span><span class="params">(precisions, recalls)</span>:</span></span><br><span class="line">    plt.plot(recalls, precisions, <span class="string">"b-"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"Recall"</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">    plt.ylabel(<span class="string">"Precision"</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">    plt.axis([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">6</span>))</span><br><span class="line">plot_precision_vs_recall(precisions, recalls)</span><br><span class="line">save_fig(<span class="string">"precision_vs_recall_plot"</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.4.jpeg" alt="图3-4 准确率和召回率对决策阈值"></p>
-<p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.5.jpeg" alt="图3-5 准确率对召回率"></p>
-<h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>受试者工作特征（ROC）曲线是另一个二分类器常用的工具。它非常类似与准确率/召回率曲线，但不是画出准确率对召回率的曲线，ROC 曲线是真正例率（true positive rate，另一个名字叫做召回率）对假正例率（false positive rate, FPR）的曲线。FPR 是反例被错误分成正例的比率。它等于 1 减去真反例率（true negative rate， TNR）。TNR是反例被正确分类的比率。TNR也叫做特异性。所以 ROC 曲线画出召回率对（1 减特异性）的曲线。</p>
-<p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.6.jpeg" alt="图3-6 ROC曲线"></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_curve</span><br><span class="line"><span class="string">"""使用cross_val_predict()得到每一个样例的分数值，但是这一次指定返回一个决策分数，而不是预测值。"""</span></span><br><span class="line">y_scores = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>, </span><br><span class="line">                            method=<span class="string">"decision_function"</span>)</span><br><span class="line"><span class="comment"># y_scores返回和样本数量相同的决策分数</span></span><br><span class="line"><span class="keyword">if</span> y_scores.ndim == <span class="number">2</span>:</span><br><span class="line">    y_scores = y_scores[:, <span class="number">1</span>]</span><br><span class="line">fpr, tpr, thresholds = roc_curve(y_train_5, y_scores)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_roc_curve</span><span class="params">(fpr, tpr, label=None)</span>:</span></span><br><span class="line">    plt.plot(fpr, tpr, linewidth=<span class="number">2</span>, label=label)</span><br><span class="line">    plt.plot([<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>], <span class="string">'k--'</span>)</span><br><span class="line">    plt.axis([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">    plt.xlabel(<span class="string">'False Positive Rate'</span>)</span><br><span class="line">    plt.ylabel(<span class="string">'True Positive Rate'</span>)</span><br><span class="line">plot_roc_curve(fpr, tpr)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-<p>这里同样存在折衷的问题：召回率（TPR）越高，分类器就会产生越多的假正例（FPR）。图中的点线是一个完全随机的分类器生成的 ROC 曲线；一个好的分类器的 ROC 曲线应该尽可能远离这条线（即向左上角方向靠拢）。</p>
-<p>一个比较分类器之间优劣的方法是：测量ROC曲线下的面积（AUC）。一个完美的分类器的 ROC AUC 等于 1，而一个纯随机分类器的 ROC AUC 等于 0.5。Scikit-Learn 提供了一个函数来计算 ROC AUC：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_auc_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>roc_auc_score(y_train_5, y_scores)</span><br><span class="line"><span class="number">0.97061072797174941</span></span><br></pre></td></tr></table></figure>
-<p>因为 ROC 曲线跟准确率/召回率曲线（或者叫 PR）很类似，你或许会好奇如何决定使用哪一个曲线呢？一个笨拙的规则是，优先使用 PR 曲线当正例很少，或者当你关注假正例多于假反例的时候。其他情况使用 ROC 曲线。举例子，回顾前面的 ROC 曲线和 ROC AUC 数值，你或许认为这个分类器很棒。但是这几乎全是因为只有少数正例（“是 5”），而大部分是反例（“非 5”）。相反，PR 曲线清楚显示出这个分类器还有很大的改善空间（PR 曲线应该尽可能地靠近右上角）。</p>
 ]]></content>
       <categories>
         <category>Machine Learning</category>
@@ -400,6 +452,35 @@ X(每个数据) - U(特征值均值))/(std)
       </tags>
   </entry>
   <entry>
+    <title>Classifition metrics</title>
+    <url>/2020/03/04/2020-3-3-classifition_metrics-2020/</url>
+    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes<br><a id="more"></a></p>
+<h1 id="Classifition-metrics"><a href="#Classifition-metrics" class="headerlink" title="Classifition metrics"></a>Classifition metrics</h1><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2></blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> confusion_matrix</span><br><span class="line">confusion_matrix(y_train_5, y_train_pred)</span><br><span class="line">array([[<span class="number">53272</span>, <span class="number">1307</span>],</span><br><span class="line">        [ <span class="number">1077</span>, <span class="number">4344</span>]])</span><br></pre></td></tr></table></figure>
+<h2 id="准确率和召回率"><a href="#准确率和召回率" class="headerlink" title="准确率和召回率"></a>准确率和召回率</h2><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_score, recall_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>precision_score(y_train_5, y_pred) <span class="comment"># == 4344 / (4344 + 1307)</span></span><br><span class="line"><span class="number">0.76871350203503808</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>recall_score(y_train_5, y_train_pred) <span class="comment"># == 4344 / (4344 + 1077)</span></span><br><span class="line"><span class="number">0.7913669064748201</span></span><br></pre></td></tr></table></figure>
+<h3 id="F1-score"><a href="#F1-score" class="headerlink" title="F1 score"></a>F1 score</h3><p>通常结合准确率和召回率会更加方便，这个指标叫做“F1 值”，特别是当你需要一个简单的方法去比较两个分类器的优劣的时候。F1 值是准确率和召回率的调和平均。普通的平均值平等地看待所有的值，而调和平均会给小的值更大的权重。所以，要想分类器得到一个高的 F1 值，需要召回率和准确率同时高。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> f1_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>f1_score(y_train_5, y_train_pred)</span><br><span class="line"><span class="number">0.78468208092485547</span></span><br></pre></td></tr></table></figure>
+<h3 id="准确率和召回率的关系"><a href="#准确率和召回率的关系" class="headerlink" title="准确率和召回率的关系"></a>准确率和召回率的关系</h3><p>Scikit-Learn 不让你直接设置阈值，但是它给你提供了设置决策分数的方法，这个决策分数可以用来产生预测。它不是调用分类器的<code>predict()</code>方法，而是调用<code>decision_function()</code>方法。这个方法返回每一个样例的分数值，然后基于这个分数值，使用你想要的任何阈值做出预测</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt;&gt; y_scores = sgd_clf.decision_function([some_digit])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_scores</span><br><span class="line">array([ <span class="number">161855.74572176</span>])</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>threshold = <span class="number">0</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred = (y_scores &gt; threshold)</span><br><span class="line">array([ <span class="literal">True</span>], dtype=bool)</span><br><span class="line"><span class="string">"""SGDClassifier用了一个等于 0 的阈值，所以前面的代码返回了跟predict()方法一样的结果（都返回了true）。让我们提高这个阈值"""</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>threshold = <span class="number">200000</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred = (y_scores &gt; threshold)</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>y_some_digit_pred</span><br><span class="line">array([<span class="literal">False</span>], dtype=bool)</span><br><span class="line"></span><br><span class="line"><span class="string">"""使用cross_val_predict()得到每一个样例的分数值，但是这一次指定返回一个决策分数，而不是预测值。"""</span></span><br><span class="line">y_scores = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>, </span><br><span class="line">                            method=<span class="string">"decision_function"</span>)</span><br><span class="line"><span class="comment"># y_scores返回和样本数量相同的决策分数</span></span><br><span class="line"><span class="keyword">if</span> y_scores.ndim == <span class="number">2</span>:</span><br><span class="line">    y_scores = y_scores[:, <span class="number">1</span>]</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> precision_recall_curve</span><br><span class="line"></span><br><span class="line">precisions, recalls, thresholds = precision_recall_curve(y_train_5, y_scores)</span><br><span class="line"><span class="comment"># 绘制precisoin和recall曲线</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_precision_recall_vs_threshold</span><span class="params">(precisions, recalls, thresholds)</span>:</span></span><br><span class="line">    plt.plot(thresholds, precisions[:<span class="number">-1</span>], <span class="string">"b--"</span>, label=<span class="string">"Precision"</span>)</span><br><span class="line">    plt.plot(thresholds, recalls[:<span class="number">-1</span>], <span class="string">"g-"</span>, label=<span class="string">"Recall"</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"Threshold"</span>)</span><br><span class="line">    plt.legend(loc=<span class="string">"upper left"</span>)</span><br><span class="line">    plt.ylim([<span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">plot_precision_recall_vs_threshold(precisions, recalls, thresholds)</span><br><span class="line">plt.show()    </span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_precision_vs_recall</span><span class="params">(precisions, recalls)</span>:</span></span><br><span class="line">    plt.plot(recalls, precisions, <span class="string">"b-"</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">    plt.xlabel(<span class="string">"Recall"</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">    plt.ylabel(<span class="string">"Precision"</span>, fontsize=<span class="number">16</span>)</span><br><span class="line">    plt.axis([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">plt.figure(figsize=(<span class="number">8</span>, <span class="number">6</span>))</span><br><span class="line">plot_precision_vs_recall(precisions, recalls)</span><br><span class="line">save_fig(<span class="string">"precision_vs_recall_plot"</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.4.jpeg" alt="图3-4 准确率和召回率对决策阈值"></p>
+<p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.5.jpeg" alt="图3-5 准确率对召回率"></p>
+<h3 id="ROC曲线"><a href="#ROC曲线" class="headerlink" title="ROC曲线"></a>ROC曲线</h3><p>受试者工作特征（ROC）曲线是另一个二分类器常用的工具。它非常类似与准确率/召回率曲线，但不是画出准确率对召回率的曲线，ROC 曲线是真正例率（true positive rate，另一个名字叫做召回率）对假正例率（false positive rate, FPR）的曲线。FPR 是反例被错误分成正例的比率。它等于 1 减去真反例率（true negative rate， TNR）。TNR是反例被正确分类的比率。TNR也叫做特异性。所以 ROC 曲线画出召回率对（1 减特异性）的曲线。</p>
+<p><img src="https://hand2st.apachecn.org/images/chapter_3/chapter3.6.jpeg" alt="图3-6 ROC曲线"></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_curve</span><br><span class="line"><span class="string">"""使用cross_val_predict()得到每一个样例的分数值，但是这一次指定返回一个决策分数，而不是预测值。"""</span></span><br><span class="line">y_scores = cross_val_predict(sgd_clf, X_train, y_train_5, cv=<span class="number">3</span>, </span><br><span class="line">                            method=<span class="string">"decision_function"</span>)</span><br><span class="line"><span class="comment"># y_scores返回和样本数量相同的决策分数</span></span><br><span class="line"><span class="keyword">if</span> y_scores.ndim == <span class="number">2</span>:</span><br><span class="line">    y_scores = y_scores[:, <span class="number">1</span>]</span><br><span class="line">fpr, tpr, thresholds = roc_curve(y_train_5, y_scores)</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">plot_roc_curve</span><span class="params">(fpr, tpr, label=None)</span>:</span></span><br><span class="line">    plt.plot(fpr, tpr, linewidth=<span class="number">2</span>, label=label)</span><br><span class="line">    plt.plot([<span class="number">0</span>, <span class="number">1</span>], [<span class="number">0</span>, <span class="number">1</span>], <span class="string">'k--'</span>)</span><br><span class="line">    plt.axis([<span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">    plt.xlabel(<span class="string">'False Positive Rate'</span>)</span><br><span class="line">    plt.ylabel(<span class="string">'True Positive Rate'</span>)</span><br><span class="line">plot_roc_curve(fpr, tpr)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>这里同样存在折衷的问题：召回率（TPR）越高，分类器就会产生越多的假正例（FPR）。图中的点线是一个完全随机的分类器生成的 ROC 曲线；一个好的分类器的 ROC 曲线应该尽可能远离这条线（即向左上角方向靠拢）。</p>
+<p>一个比较分类器之间优劣的方法是：测量ROC曲线下的面积（AUC）。一个完美的分类器的 ROC AUC 等于 1，而一个纯随机分类器的 ROC AUC 等于 0.5。Scikit-Learn 提供了一个函数来计算 ROC AUC：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> roc_auc_score</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>roc_auc_score(y_train_5, y_scores)</span><br><span class="line"><span class="number">0.97061072797174941</span></span><br></pre></td></tr></table></figure>
+<p>因为 ROC 曲线跟准确率/召回率曲线（或者叫 PR）很类似，你或许会好奇如何决定使用哪一个曲线呢？一个笨拙的规则是，优先使用 PR 曲线当正例很少，或者当你关注假正例多于假反例的时候。其他情况使用 ROC 曲线。举例子，回顾前面的 ROC 曲线和 ROC AUC 数值，你或许认为这个分类器很棒。但是这几乎全是因为只有少数正例（“是 5”），而大部分是反例（“非 5”）。相反，PR 曲线清楚显示出这个分类器还有很大的改善空间（PR 曲线应该尽可能地靠近右上角）。</p>
+]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>Machine Learning metrics</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>损失函数（loss function）</title>
     <url>/2020/03/04/2020-3-3-cost_function-2020/</url>
     <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
@@ -429,35 +510,6 @@ X(每个数据) - U(特征值均值))/(std)
         <category>Machine Learning</category>
       </categories>
       <tags>
-        <tag>scikit-learn</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>sklearn中RandomForestClassifier</title>
-    <url>/2020/03/04/2020-3-3-Sklearn_RandomForest-2020/</url>
-    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes<br><a id="more"></a></p>
-<h1 id="sklearn中RandomForestClassifier"><a href="#sklearn中RandomForestClassifier" class="headerlink" title="sklearn中RandomForestClassifier"></a>sklearn中RandomForestClassifier</h1><ol>
-<li>在scikit-learn中，RandomForest的分类器是RandomForestClassifier,回归类RandomFoestRegressor,需要调参的参数包括两部分，第一部分是Bagging框架的参数，第二部分是CART决策树的参数</li>
-</ol>
-</blockquote>
-   <figure class="highlight python"><table><tr><td class="code"><pre><span class="line">classsklearn.ensemble.RandomForestClassifier(n_estimators=<span class="number">10</span>, criterion=<span class="string">'gini'</span>, max_depth=<span class="literal">None</span>,min_samples_split=<span class="number">2</span>, min_samples_leaf=<span class="number">1</span>, min_weight_fraction_leaf=<span class="number">0.0</span>,max_features=<span class="string">'auto'</span>, max_leaf_nodes=<span class="literal">None</span>, min_impurity_split=<span class="number">1e-07</span>,bootstrap=<span class="literal">True</span>, oob_score=<span class="literal">True</span>, n_jobs=<span class="number">1</span>, random_state=<span class="literal">None</span>, verbose=<span class="number">0</span>,warm_start=<span class="literal">False</span>, class_weight=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>n_estimators: 也就是弱学习器的最大迭代次数，或者说最大的弱学习器的个数，默认是10。一般来说n_estimators太小，容易欠拟合，n_estimators太大，又容易过拟合，一般选择一个适中的数值。对Random Forest来说，增加“子模型数”（n_estimators）可以明显降低整体模型的方差，且不会对子模型的偏差和方差有任何影响。模型的准确度会随着“子模型数”的增加而提高，由于减少的是整体模型方差公式的第二项，故准确度的提高有一个上限。在实际应用中，可以以10为单位，考察取值范围在1至201的调参情况。</p>
-</li>
-<li><p>对比，Random Forest的子模型都拥有较低的偏差，整体模型的训练过程旨在降低方差，故其需要较少的子模型（n_estimators默认值为10）且子模型不为弱模型（max_depth的默认值为None）；Gradient Tree Boosting的子模型都拥有较低的方差，整体模型的训练过程旨在降低偏差，故其需要较多的子模型（n_estimators默认值为100）且子模型为弱模型（max_depth的默认值为3）。</p>
-</li>
-<li><p>bootstrap：默认True，是否有放回的采样。</p>
-</li>
-<li><p>oob_score ：默认识False，即是否采用袋外样本来评估模型的好坏。有放回采样中大约36.8%的没有被采样到的数据，我们常常称之为袋外数据(Out Of Bag, 简称OOB)，这些数据没有参与训练集模型的拟合，因此可以用来检测模型的泛化能力。个人推荐设置为True，因为袋外分数反应了一个模型拟合后的泛化能力。对单个模型的参数训练，我们知道可以用cross validation（cv）来进行，但是特别消耗时间，而且对于随机森林这种情况也没有大的必要，所以就用这个数据对决策树模型进行验证，算是一个简单的交叉验证，性能消耗小，但是效果不错。</p>
-<h2 id="criterion：-即CART树做划分时对特征的评价标准，分类模型和回归模型的损失函数是不一样的。分类RF对应的CART分类树默认是基尼系数gini-另一个可选择的标准是信息增益entropy，是用来选择节点的最优特征和切分点的两个准则。回归RF对应的CART回归树默认是均方差mse，另一个可以选择的标准是绝对值差mae。一般来说选择默认的标准就已经很好的。"><a href="#criterion：-即CART树做划分时对特征的评价标准，分类模型和回归模型的损失函数是不一样的。分类RF对应的CART分类树默认是基尼系数gini-另一个可选择的标准是信息增益entropy，是用来选择节点的最优特征和切分点的两个准则。回归RF对应的CART回归树默认是均方差mse，另一个可以选择的标准是绝对值差mae。一般来说选择默认的标准就已经很好的。" class="headerlink" title="criterion： 即CART树做划分时对特征的评价标准，分类模型和回归模型的损失函数是不一样的。分类RF对应的CART分类树默认是基尼系数gini,另一个可选择的标准是信息增益entropy，是用来选择节点的最优特征和切分点的两个准则。回归RF对应的CART回归树默认是均方差mse，另一个可以选择的标准是绝对值差mae。一般来说选择默认的标准就已经很好的。"></a>criterion： 即CART树做划分时对特征的评价标准，分类模型和回归模型的损失函数是不一样的。分类RF对应的CART分类树默认是基尼系数gini,另一个可选择的标准是信息增益entropy，是用来选择节点的最优特征和切分点的两个准则。回归RF对应的CART回归树默认是均方差mse，另一个可以选择的标准是绝对值差mae。一般来说选择默认的标准就已经很好的。</h2></li>
-</ol>
-]]></content>
-      <categories>
-        <category>Machine Learning</category>
-      </categories>
-      <tags>
-        <tag>RandomForest</tag>
         <tag>scikit-learn</tag>
       </tags>
   </entry>
@@ -494,6 +546,45 @@ X(每个数据) - U(特征值均值))/(std)
       <tags>
         <tag>可视化</tag>
         <tag>pydotplus</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>特征与特征之间的相关系数</title>
+    <url>/2020/03/04/2020-3-3-feature_something-2020/</url>
+    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes<br><a id="more"></a></p>
+<h1 id="在进行特征选择时候可以求特征与特征之间的相关系数"><a href="#在进行特征选择时候可以求特征与特征之间的相关系数" class="headerlink" title="在进行特征选择时候可以求特征与特征之间的相关系数"></a>在进行特征选择时候可以求特征与特征之间的相关系数</h1></blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 做出特征之间的相关系数，并作图</span></span><br><span class="line"><span class="keyword">from</span> pandas.plotting <span class="keyword">import</span> scatter_matrix</span><br><span class="line"></span><br><span class="line">attributes = [<span class="string">"median_house_value"</span>, <span class="string">"median_income"</span>, <span class="string">"total_rooms"</span>,</span><br><span class="line">              <span class="string">"housing_median_age"</span>]</span><br><span class="line">scatter_matrix(housing[attributes], figsize=(<span class="number">12</span>, <span class="number">8</span>))</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 然后在进行敏感特征之间的处理分析</span></span><br><span class="line">housing.plot(kind=<span class="string">"scatter"</span>, x=<span class="string">"median_income"</span>, y=<span class="string">"median_house_value"</span>,</span><br><span class="line">             alpha=<span class="number">0.1</span>)</span><br><span class="line">plt.axis([<span class="number">0</span>, <span class="number">16</span>, <span class="number">0</span>, <span class="number">550000</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>pandas</tag>
+        <tag>特征与特征之间的相关系数</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>网格搜索与交叉验证</title>
+    <url>/2020/03/04/2020-3-3-gridsearch-2020/</url>
+    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes<br><a id="more"></a></p>
+<h1 id="网格搜索与交叉验证（网格搜索必须要在main下定义）"><a href="#网格搜索与交叉验证（网格搜索必须要在main下定义）" class="headerlink" title="网格搜索与交叉验证（网格搜索必须要在main下定义）"></a>网格搜索与交叉验证（网格搜索必须要在main下定义）</h1></blockquote>
+<h2 id="k折交叉验证调节超参数"><a href="#k折交叉验证调节超参数" class="headerlink" title="k折交叉验证调节超参数"></a>k折交叉验证调节超参数</h2><p>使用与样本数量较小的数据样本(以万基)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_breast_cancer</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> make_scorer, accuracy_score</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">data = load_breast_cancer()</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(data[<span class="string">'data'</span>], data[<span class="string">'target'</span>], test_size=<span class="number">0.2</span>, random_state=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># print(X_train.shape,y_train.shape,X_test.shape,y_test.shape)</span></span><br><span class="line">dec_clf = DecisionTreeClassifier(random_state=<span class="number">0</span>)</span><br><span class="line">dec_clf.fit(X_train, y_train)</span><br><span class="line">print(dec_clf.score(X_test, y_test))</span><br><span class="line"></span><br><span class="line">parameters = &#123;<span class="string">'max_depth'</span>: range(<span class="number">1</span>, <span class="number">6</span>), <span class="string">'min_samples_leaf'</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]&#125;</span><br><span class="line"><span class="comment"># 构建一个打分器</span></span><br><span class="line">scoring_fnc = make_scorer(accuracy_score)</span><br><span class="line">kfold = KFold(n_splits=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># for train_index,test_index in kfold.split(range(10)):</span></span><br><span class="line"><span class="comment">#     print(train_index,test_index)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 网格搜索</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line"></span><br><span class="line">grid = GridSearchCV(dec_clf, parameters, scoring_fnc, cv=kfold)</span><br><span class="line">grid = grid.fit(X_train, y_train)</span><br><span class="line">reg = grid.best_estimator_</span><br><span class="line"></span><br><span class="line">print(<span class="string">"best score:"</span>, grid.best_score_)</span><br><span class="line">print(<span class="string">'best parameters: '</span>, grid.best_params_)</span><br><span class="line">print(reg.score(X_test, y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment"># for key in parameters.keys():</span></span><br><span class="line"><span class="comment">#     print(key," : ",reg.get_params()[key])</span></span><br><span class="line"><span class="comment"># 显示交叉验证的过程</span></span><br><span class="line">print(pd.DataFrame(grid.cv_results_).T)</span><br></pre></td></tr></table></figure>
+<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>k折交叉验证法是将训练集分为k组，用每1组作为测试集而剩下的k-1组的训练集作为训练数据集，从而可以测试k个训练模型</p>
+<p>交叉验证是用于调节参数，最大的利用训练集寻找最优的超参数</p>
+<p>过拟合：训练集准确率高，测试集准确率较低</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># sklearn进行交叉验证----单一超参数</span></span><br><span class="line"><span class="comment"># 交叉验证得分cross_val_score()</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="comment"># estimator 训练器的选择</span></span><br><span class="line"><span class="comment"># X为训练集上的特征</span></span><br><span class="line"><span class="comment"># y是训练集中要预测的标签</span></span><br><span class="line"><span class="comment"># cv是交叉验证分为几折</span></span><br><span class="line">cross_val_score(estimator,X,y=<span class="literal">None</span>,cv=<span class="literal">None</span>)</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"></span><br><span class="line">k_range = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">10</span>] <span class="comment">#k选择2，4，5，10四个参数</span></span><br><span class="line">cv_scores = [] <span class="comment">#分别放用4个参数训练得到的精确度</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> k_range:</span><br><span class="line">    knn = KNeighborsClassifier(n_neighbors=k)</span><br><span class="line">    <span class="comment">#*****下面这句进行了交叉验证**********</span></span><br><span class="line">    scores = cross_val_score(knn, X_train_scaled, y_train, cv=<span class="number">3</span>)<span class="comment">#进行3折交叉验证，返回的是3个值即每次验证的精确度</span></span><br><span class="line"></span><br><span class="line">    cv_score = np.mean(scores)<span class="comment"># 把某个k对应的精确度求平均值</span></span><br><span class="line">    print(<span class="string">'k=&#123;&#125;，验证集上的准确率=&#123;:.3f&#125;'</span>.format(k, cv_score))</span><br><span class="line">    cv_scores.append(cv_score)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 验证曲线validation_curve()</span></span><br><span class="line">    sklearn.model_selection.validation_curve(estimator, X, y, param_name, param_range, cv=<span class="literal">None</span>, scoring=<span class="literal">None</span>) </span><br><span class="line">参数： </span><br><span class="line">- estimator： 训练器 </span><br><span class="line">- X： 训练集上选择的特征 </span><br><span class="line">- y：训练集上的要预测值 </span><br><span class="line">- param_name ：变化的参数的名称 </span><br><span class="line">- param_range ： 参数变化的范围 </span><br><span class="line">- cv：交叉验证的折数 </span><br><span class="line">- scoring：采用的模型评价标准</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> validation_curve</span><br><span class="line">train_scores, test_scores = validation_curve(SVC(kernel=<span class="string">'linear'</span>), X_train_scaled, y_train, param_name=<span class="string">'C'</span>, param_range=c_range, cv=<span class="number">5</span>, scoring=<span class="string">'accuracy'</span>)<span class="comment"># 通过验证曲线得到不同取值的C在验证集合训练集上的得分。</span></span><br></pre></td></tr></table></figure>
+<h1 id="随机搜索"><a href="#随机搜索" class="headerlink" title="随机搜索"></a>随机搜索</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> RandomizedSearchCV</span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> randint</span><br><span class="line"></span><br><span class="line">param_distribs = &#123;</span><br><span class="line">        <span class="string">'n_estimators'</span>: randint(low=<span class="number">1</span>, high=<span class="number">200</span>),</span><br><span class="line">        <span class="string">'max_features'</span>: randint(low=<span class="number">1</span>, high=<span class="number">8</span>),</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">forest_reg = RandomForestRegressor(random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search = RandomizedSearchCV(forest_reg, param_distributions=param_distribs,</span><br><span class="line">                                n_iter=<span class="number">10</span>, cv=<span class="number">5</span>, scoring=<span class="string">'neg_mean_squared_error'</span>, random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search.fit(housing_prepared, housing_labels)</span><br><span class="line"></span><br><span class="line">cvres = rnd_search.cv_results_</span><br><span class="line"><span class="keyword">for</span> mean_score, params <span class="keyword">in</span> zip(cvres[<span class="string">"mean_test_score"</span>], cvres[<span class="string">"params"</span>]):</span><br><span class="line">    print(np.sqrt(-mean_score), params)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>scikit-learn</tag>
+        <tag>cross validation</tag>
+        <tag>grid search</tag>
       </tags>
   </entry>
   <entry>
@@ -546,22 +637,6 @@ X(每个数据) - U(特征值均值))/(std)
       </tags>
   </entry>
   <entry>
-    <title>特征与特征之间的相关系数</title>
-    <url>/2020/03/04/2020-3-3-feature_something-2020/</url>
-    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes<br><a id="more"></a></p>
-<h1 id="在进行特征选择时候可以求特征与特征之间的相关系数"><a href="#在进行特征选择时候可以求特征与特征之间的相关系数" class="headerlink" title="在进行特征选择时候可以求特征与特征之间的相关系数"></a>在进行特征选择时候可以求特征与特征之间的相关系数</h1></blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 做出特征之间的相关系数，并作图</span></span><br><span class="line"><span class="keyword">from</span> pandas.plotting <span class="keyword">import</span> scatter_matrix</span><br><span class="line"></span><br><span class="line">attributes = [<span class="string">"median_house_value"</span>, <span class="string">"median_income"</span>, <span class="string">"total_rooms"</span>,</span><br><span class="line">              <span class="string">"housing_median_age"</span>]</span><br><span class="line">scatter_matrix(housing[attributes], figsize=(<span class="number">12</span>, <span class="number">8</span>))</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 然后在进行敏感特征之间的处理分析</span></span><br><span class="line">housing.plot(kind=<span class="string">"scatter"</span>, x=<span class="string">"median_income"</span>, y=<span class="string">"median_house_value"</span>,</span><br><span class="line">             alpha=<span class="number">0.1</span>)</span><br><span class="line">plt.axis([<span class="number">0</span>, <span class="number">16</span>, <span class="number">0</span>, <span class="number">550000</span>])</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Machine Learning</category>
-      </categories>
-      <tags>
-        <tag>pandas</tag>
-        <tag>特征与特征之间的相关系数</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>完整机器学习项目流程</title>
     <url>/2020/03/04/2020-3-3-machie_learning_procedure-2020/</url>
     <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
@@ -581,43 +656,6 @@ X(每个数据) - U(特征值均值))/(std)
       <categories>
         <category>Machine Learning</category>
       </categories>
-  </entry>
-  <entry>
-    <title>网格搜索与交叉验证</title>
-    <url>/2020/03/04/2020-3-3-gridsearch-2020/</url>
-    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes<br><a id="more"></a></p>
-<h1 id="网格搜索与交叉验证（网格搜索必须要在main下定义）"><a href="#网格搜索与交叉验证（网格搜索必须要在main下定义）" class="headerlink" title="网格搜索与交叉验证（网格搜索必须要在main下定义）"></a>网格搜索与交叉验证（网格搜索必须要在main下定义）</h1></blockquote>
-<h2 id="k折交叉验证调节超参数"><a href="#k折交叉验证调节超参数" class="headerlink" title="k折交叉验证调节超参数"></a>k折交叉验证调节超参数</h2><p>使用与样本数量较小的数据样本(以万基)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_breast_cancer</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> KFold</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> make_scorer, accuracy_score</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"></span><br><span class="line">data = load_breast_cancer()</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(data[<span class="string">'data'</span>], data[<span class="string">'target'</span>], test_size=<span class="number">0.2</span>, random_state=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># print(X_train.shape,y_train.shape,X_test.shape,y_test.shape)</span></span><br><span class="line">dec_clf = DecisionTreeClassifier(random_state=<span class="number">0</span>)</span><br><span class="line">dec_clf.fit(X_train, y_train)</span><br><span class="line">print(dec_clf.score(X_test, y_test))</span><br><span class="line"></span><br><span class="line">parameters = &#123;<span class="string">'max_depth'</span>: range(<span class="number">1</span>, <span class="number">6</span>), <span class="string">'min_samples_leaf'</span>: [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]&#125;</span><br><span class="line"><span class="comment"># 构建一个打分器</span></span><br><span class="line">scoring_fnc = make_scorer(accuracy_score)</span><br><span class="line">kfold = KFold(n_splits=<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># for train_index,test_index in kfold.split(range(10)):</span></span><br><span class="line"><span class="comment">#     print(train_index,test_index)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 网格搜索</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> GridSearchCV</span><br><span class="line"></span><br><span class="line">grid = GridSearchCV(dec_clf, parameters, scoring_fnc, cv=kfold)</span><br><span class="line">grid = grid.fit(X_train, y_train)</span><br><span class="line">reg = grid.best_estimator_</span><br><span class="line"></span><br><span class="line">print(<span class="string">"best score:"</span>, grid.best_score_)</span><br><span class="line">print(<span class="string">'best parameters: '</span>, grid.best_params_)</span><br><span class="line">print(reg.score(X_test, y_test))</span><br><span class="line"></span><br><span class="line"><span class="comment"># for key in parameters.keys():</span></span><br><span class="line"><span class="comment">#     print(key," : ",reg.get_params()[key])</span></span><br><span class="line"><span class="comment"># 显示交叉验证的过程</span></span><br><span class="line">print(pd.DataFrame(grid.cv_results_).T)</span><br></pre></td></tr></table></figure>
-<h3 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h3><p>k折交叉验证法是将训练集分为k组，用每1组作为测试集而剩下的k-1组的训练集作为训练数据集，从而可以测试k个训练模型</p>
-<p>交叉验证是用于调节参数，最大的利用训练集寻找最优的超参数</p>
-<p>过拟合：训练集准确率高，测试集准确率较低</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># sklearn进行交叉验证----单一超参数</span></span><br><span class="line"><span class="comment"># 交叉验证得分cross_val_score()</span></span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"><span class="comment"># estimator 训练器的选择</span></span><br><span class="line"><span class="comment"># X为训练集上的特征</span></span><br><span class="line"><span class="comment"># y是训练集中要预测的标签</span></span><br><span class="line"><span class="comment"># cv是交叉验证分为几折</span></span><br><span class="line">cross_val_score(estimator,X,y=<span class="literal">None</span>,cv=<span class="literal">None</span>)</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> cross_val_score</span><br><span class="line"></span><br><span class="line">k_range = [<span class="number">2</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">10</span>] <span class="comment">#k选择2，4，5，10四个参数</span></span><br><span class="line">cv_scores = [] <span class="comment">#分别放用4个参数训练得到的精确度</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> k <span class="keyword">in</span> k_range:</span><br><span class="line">    knn = KNeighborsClassifier(n_neighbors=k)</span><br><span class="line">    <span class="comment">#*****下面这句进行了交叉验证**********</span></span><br><span class="line">    scores = cross_val_score(knn, X_train_scaled, y_train, cv=<span class="number">3</span>)<span class="comment">#进行3折交叉验证，返回的是3个值即每次验证的精确度</span></span><br><span class="line"></span><br><span class="line">    cv_score = np.mean(scores)<span class="comment"># 把某个k对应的精确度求平均值</span></span><br><span class="line">    print(<span class="string">'k=&#123;&#125;，验证集上的准确率=&#123;:.3f&#125;'</span>.format(k, cv_score))</span><br><span class="line">    cv_scores.append(cv_score)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 验证曲线validation_curve()</span></span><br><span class="line">    sklearn.model_selection.validation_curve(estimator, X, y, param_name, param_range, cv=<span class="literal">None</span>, scoring=<span class="literal">None</span>) </span><br><span class="line">参数： </span><br><span class="line">- estimator： 训练器 </span><br><span class="line">- X： 训练集上选择的特征 </span><br><span class="line">- y：训练集上的要预测值 </span><br><span class="line">- param_name ：变化的参数的名称 </span><br><span class="line">- param_range ： 参数变化的范围 </span><br><span class="line">- cv：交叉验证的折数 </span><br><span class="line">- scoring：采用的模型评价标准</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> validation_curve</span><br><span class="line">train_scores, test_scores = validation_curve(SVC(kernel=<span class="string">'linear'</span>), X_train_scaled, y_train, param_name=<span class="string">'C'</span>, param_range=c_range, cv=<span class="number">5</span>, scoring=<span class="string">'accuracy'</span>)<span class="comment"># 通过验证曲线得到不同取值的C在验证集合训练集上的得分。</span></span><br></pre></td></tr></table></figure>
-<h1 id="随机搜索"><a href="#随机搜索" class="headerlink" title="随机搜索"></a>随机搜索</h1><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> RandomizedSearchCV</span><br><span class="line"><span class="keyword">from</span> scipy.stats <span class="keyword">import</span> randint</span><br><span class="line"></span><br><span class="line">param_distribs = &#123;</span><br><span class="line">        <span class="string">'n_estimators'</span>: randint(low=<span class="number">1</span>, high=<span class="number">200</span>),</span><br><span class="line">        <span class="string">'max_features'</span>: randint(low=<span class="number">1</span>, high=<span class="number">8</span>),</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">forest_reg = RandomForestRegressor(random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search = RandomizedSearchCV(forest_reg, param_distributions=param_distribs,</span><br><span class="line">                                n_iter=<span class="number">10</span>, cv=<span class="number">5</span>, scoring=<span class="string">'neg_mean_squared_error'</span>, random_state=<span class="number">42</span>)</span><br><span class="line">rnd_search.fit(housing_prepared, housing_labels)</span><br><span class="line"></span><br><span class="line">cvres = rnd_search.cv_results_</span><br><span class="line"><span class="keyword">for</span> mean_score, params <span class="keyword">in</span> zip(cvres[<span class="string">"mean_test_score"</span>], cvres[<span class="string">"params"</span>]):</span><br><span class="line">    print(np.sqrt(-mean_score), params)</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Machine Learning</category>
-      </categories>
-      <tags>
-        <tag>scikit-learn</tag>
-        <tag>cross validation</tag>
-        <tag>grid search</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>matplotlib防止中文乱码</title>
-    <url>/2020/03/04/2020-3-3-matplotlib_learning-2020/</url>
-    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes<br><a id="more"></a></p>
-<h1 id="matplotlib防止中文乱码"><a href="#matplotlib防止中文乱码" class="headerlink" title="matplotlib防止中文乱码"></a>matplotlib防止中文乱码</h1></blockquote>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 绘图时候防止在图像的中文乱码</span></span><br><span class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">'simHei'</span>]</span><br><span class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="literal">False</span></span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>Machine Learning</category>
-      </categories>
-      <tags>
-        <tag>matplotlib</tag>
-      </tags>
   </entry>
   <entry>
     <title>Machine Learning Procedure</title>
@@ -648,6 +686,20 @@ X(每个数据) - U(特征值均值))/(std)
       <tags>
         <tag>matplotlib</tag>
         <tag>pandas</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>matplotlib防止中文乱码</title>
+    <url>/2020/03/04/2020-3-3-matplotlib_learning-2020/</url>
+    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes<br><a id="more"></a></p>
+<h1 id="matplotlib防止中文乱码"><a href="#matplotlib防止中文乱码" class="headerlink" title="matplotlib防止中文乱码"></a>matplotlib防止中文乱码</h1></blockquote>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 绘图时候防止在图像的中文乱码</span></span><br><span class="line">mpl.rcParams[<span class="string">'font.sans-serif'</span>] = [<span class="string">'simHei'</span>]</span><br><span class="line">mpl.rcParams[<span class="string">'axes.unicode_minus'</span>] = <span class="literal">False</span></span><br></pre></td></tr></table></figure>]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>matplotlib</tag>
       </tags>
   </entry>
   <entry>
@@ -1540,28 +1592,6 @@ with 0 stored elements (blocksize = 3x2) in Block Sparse Row format></li>
       </tags>
   </entry>
   <entry>
-    <title>softmaxa Regression</title>
-    <url>/2020/03/04/2020-3-3-softmax_function-2020/</url>
-    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes<br><a id="more"></a></p>
-<h1 id="softmaxa-Regression"><a href="#softmaxa-Regression" class="headerlink" title="softmaxa Regression"></a>softmaxa Regression</h1></blockquote>
-<p>为LR在多分类上的推广，与LR一样，同属于广义线性模型（Generalized Linear Model）</p>
-<p>​    </p>
-<script type="math/tex; mode=display">
-S_i=\frac{e^{V_i}}{\sum_i^Ce^{V_i}}</script><p>其中，Vi 是分类器前级输出单元的输出。i 表示类别索引，总的类别个数为 C。Si 表示的是当前元素的指数与所有元素指数和的比值。Softmax 将多分类的输出数值转化为相对概率，更容易理解和比较。我们来看下面这个例子</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 什么是Softmax函数</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">实际应用中，使用 Softmax 需要注意数值溢出的问题。因为有指数运算，</span></span><br><span class="line"><span class="string">如果 V 数值很大，经过指数运算后的数值往往可能有溢出的可能。</span></span><br><span class="line"><span class="string">所以，需要对 V 进行一些数值处理：即 V 中的每个元素减去 V 中的最大值。"""</span></span><br><span class="line">scores = np.array([<span class="number">123</span>,<span class="number">456</span>,<span class="number">789</span>])</span><br><span class="line">scores -= np.max(scores)</span><br><span class="line">p = np.exp(scores) / np.sum(np.exp(scores))</span><br><span class="line"><span class="comment"># print(p)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Softmax损失函数</span></span><br><span class="line"><span class="comment"># 其中，Syi是正确类别对应的线性得分函数，Si 是正确类别对应的 Softmax输出。</span></span><br><span class="line"><span class="comment"># 由于 log 运算符不会影响函数的单调性，我们对 Si 进行 log 操作：</span></span><br><span class="line"><span class="comment"># 我们希望 Si 越大越好，即正确类别对应的相对概率越大越好，那么就可以对 Si 前面加个负号，来表示损失函数</span></span><br></pre></td></tr></table></figure>
-<script type="math/tex; mode=display">
-L_i=-log\frac{e^{S_{y_i}}}{\sum_{j=1}^Ce^{S_j}}=-(s_{y_i}-log\sum_{j=1}^Ce^{s_j})=-s_{y_i}+log\sum_{j=1}^Ce^{s_j}</script><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax_loss_naive</span><span class="params">(W,X,y,reg)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Softmax loss function ,naive implementation(with loops)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Inputs have dimension D,there are C classes,and we operate on minibatches of N examples</span></span><br><span class="line"><span class="string">    :param W: A numpy array of shape(D,C) containing weights</span></span><br><span class="line"><span class="string">    :param X: A numpy array of shaep(N,D) containing a minibatch of data</span></span><br><span class="line"><span class="string">    :param y:A numpy array of shape(N,) containing training,labels,y[i] = c means</span></span><br><span class="line"><span class="string">    :param reg:(float) regularization strength</span></span><br><span class="line"><span class="string">    :return: A tuple of (loss as single float, gradient with respect to weights W,an array of same shape as  W)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment"># initialize the loss and gradient to zero</span></span><br><span class="line">    loss = <span class="number">0.0</span></span><br><span class="line">    dW = np.zeros_like(W)</span><br><span class="line"></span><br><span class="line">    num_train = X.shape[<span class="number">0</span>]</span><br><span class="line">    num_classes = W.shape[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_train):</span><br><span class="line">        scores = X[i,:].dot(W)</span><br><span class="line">        scores_shift = scores - np.max(scores)</span><br><span class="line">        right_class = y[i]</span><br><span class="line">        loss += (-scores_shift[right_class] + np.log(np.sum(np.exp(scores_shift))))</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(num_classes):</span><br><span class="line">            softmax_output = np.exp(scores_shift[j]) / np.sum(np.exp(scores_shift))</span><br><span class="line">            <span class="keyword">if</span> j == y[i]:</span><br><span class="line">                dW[:,j] += (<span class="number">-1</span> + softmax_output) * X[i,:]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dW[:,j] += softmax_output * X[i,:]</span><br><span class="line">    loss /= num_train</span><br><span class="line">    loss += <span class="number">0.5</span> * reg * np.sum(W*W)</span><br><span class="line">    dW /= num_train</span><br><span class="line">    dW += reg * W</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> loss,dW</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax_loss_vectorized</span><span class="params">(W,X,y,reg)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Softmax loss function,vectorized version</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Inputs and outputs are the same as softmax_loss_naive</span></span><br><span class="line"><span class="string">    :param W:</span></span><br><span class="line"><span class="string">    :param X:</span></span><br><span class="line"><span class="string">    :param y:</span></span><br><span class="line"><span class="string">    :param reg:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    loss = <span class="number">0.0</span></span><br><span class="line">    dW = np.zeros_like(W)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获得样本的数量</span></span><br><span class="line">    num_train = X.shape[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># 获取样本的分裂数量</span></span><br><span class="line">    num_classes = W.shape[<span class="number">1</span>]</span><br><span class="line">    <span class="comment"># 获取到每个样本所对应的分类的得分</span></span><br><span class="line">    scores = X.dot(W)</span><br><span class="line">    scores_shift = scores - np.max(scores, axis=<span class="number">1</span>)</span><br><span class="line">    softmax_output = np.exp(scores_shift) / np.sum(np.exp(scores_shift), axis=<span class="number">1</span>)</span><br><span class="line">    loss = -np.sum(np.log(softmax_output[range(num_train), list(y)]))</span><br><span class="line">    loss /= num_train</span><br><span class="line">    loss += <span class="number">0.5</span> * reg * np.sum(W * W)</span><br><span class="line"></span><br><span class="line">    dS = softmax_output.copy()</span><br><span class="line">    dS[range(num_train), list(y)] += <span class="number">-1</span></span><br><span class="line">    dW = (X.T).dot(dS)</span><br><span class="line">    dW = dW / num_train + reg * W</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> loss, dW</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Machine Learning</category>
-      </categories>
-      <tags>
-        <tag>multi-classifition</tag>
-        <tag>softmax</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>sklearn中的数据预处理代码</title>
     <url>/2020/03/04/2020-3-3-sklearn_feature_engineer-2020/</url>
     <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
@@ -1704,6 +1734,45 @@ L_i=-log\frac{e^{S_{y_i}}}{\sum_{j=1}^Ce^{S_j}}=-(s_{y_i}-log\sum_{j=1}^Ce^{s_j}
       </tags>
   </entry>
   <entry>
+    <title>softmaxa Regression</title>
+    <url>/2020/03/04/2020-3-3-softmax_function-2020/</url>
+    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes<br><a id="more"></a></p>
+<h1 id="softmaxa-Regression"><a href="#softmaxa-Regression" class="headerlink" title="softmaxa Regression"></a>softmaxa Regression</h1></blockquote>
+<p>为LR在多分类上的推广，与LR一样，同属于广义线性模型（Generalized Linear Model）</p>
+<p>​    </p>
+<script type="math/tex; mode=display">
+S_i=\frac{e^{V_i}}{\sum_i^Ce^{V_i}}</script><p>其中，Vi 是分类器前级输出单元的输出。i 表示类别索引，总的类别个数为 C。Si 表示的是当前元素的指数与所有元素指数和的比值。Softmax 将多分类的输出数值转化为相对概率，更容易理解和比较。我们来看下面这个例子</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 什么是Softmax函数</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">实际应用中，使用 Softmax 需要注意数值溢出的问题。因为有指数运算，</span></span><br><span class="line"><span class="string">如果 V 数值很大，经过指数运算后的数值往往可能有溢出的可能。</span></span><br><span class="line"><span class="string">所以，需要对 V 进行一些数值处理：即 V 中的每个元素减去 V 中的最大值。"""</span></span><br><span class="line">scores = np.array([<span class="number">123</span>,<span class="number">456</span>,<span class="number">789</span>])</span><br><span class="line">scores -= np.max(scores)</span><br><span class="line">p = np.exp(scores) / np.sum(np.exp(scores))</span><br><span class="line"><span class="comment"># print(p)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Softmax损失函数</span></span><br><span class="line"><span class="comment"># 其中，Syi是正确类别对应的线性得分函数，Si 是正确类别对应的 Softmax输出。</span></span><br><span class="line"><span class="comment"># 由于 log 运算符不会影响函数的单调性，我们对 Si 进行 log 操作：</span></span><br><span class="line"><span class="comment"># 我们希望 Si 越大越好，即正确类别对应的相对概率越大越好，那么就可以对 Si 前面加个负号，来表示损失函数</span></span><br></pre></td></tr></table></figure>
+<script type="math/tex; mode=display">
+L_i=-log\frac{e^{S_{y_i}}}{\sum_{j=1}^Ce^{S_j}}=-(s_{y_i}-log\sum_{j=1}^Ce^{s_j})=-s_{y_i}+log\sum_{j=1}^Ce^{s_j}</script><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax_loss_naive</span><span class="params">(W,X,y,reg)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Softmax loss function ,naive implementation(with loops)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Inputs have dimension D,there are C classes,and we operate on minibatches of N examples</span></span><br><span class="line"><span class="string">    :param W: A numpy array of shape(D,C) containing weights</span></span><br><span class="line"><span class="string">    :param X: A numpy array of shaep(N,D) containing a minibatch of data</span></span><br><span class="line"><span class="string">    :param y:A numpy array of shape(N,) containing training,labels,y[i] = c means</span></span><br><span class="line"><span class="string">    :param reg:(float) regularization strength</span></span><br><span class="line"><span class="string">    :return: A tuple of (loss as single float, gradient with respect to weights W,an array of same shape as  W)</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    <span class="comment"># initialize the loss and gradient to zero</span></span><br><span class="line">    loss = <span class="number">0.0</span></span><br><span class="line">    dW = np.zeros_like(W)</span><br><span class="line"></span><br><span class="line">    num_train = X.shape[<span class="number">0</span>]</span><br><span class="line">    num_classes = W.shape[<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_train):</span><br><span class="line">        scores = X[i,:].dot(W)</span><br><span class="line">        scores_shift = scores - np.max(scores)</span><br><span class="line">        right_class = y[i]</span><br><span class="line">        loss += (-scores_shift[right_class] + np.log(np.sum(np.exp(scores_shift))))</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(num_classes):</span><br><span class="line">            softmax_output = np.exp(scores_shift[j]) / np.sum(np.exp(scores_shift))</span><br><span class="line">            <span class="keyword">if</span> j == y[i]:</span><br><span class="line">                dW[:,j] += (<span class="number">-1</span> + softmax_output) * X[i,:]</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dW[:,j] += softmax_output * X[i,:]</span><br><span class="line">    loss /= num_train</span><br><span class="line">    loss += <span class="number">0.5</span> * reg * np.sum(W*W)</span><br><span class="line">    dW /= num_train</span><br><span class="line">    dW += reg * W</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> loss,dW</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">softmax_loss_vectorized</span><span class="params">(W,X,y,reg)</span>:</span></span><br><span class="line">    <span class="string">"""</span></span><br><span class="line"><span class="string">    Softmax loss function,vectorized version</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    Inputs and outputs are the same as softmax_loss_naive</span></span><br><span class="line"><span class="string">    :param W:</span></span><br><span class="line"><span class="string">    :param X:</span></span><br><span class="line"><span class="string">    :param y:</span></span><br><span class="line"><span class="string">    :param reg:</span></span><br><span class="line"><span class="string">    :return:</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    loss = <span class="number">0.0</span></span><br><span class="line">    dW = np.zeros_like(W)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 获得样本的数量</span></span><br><span class="line">    num_train = X.shape[<span class="number">0</span>]</span><br><span class="line">    <span class="comment"># 获取样本的分裂数量</span></span><br><span class="line">    num_classes = W.shape[<span class="number">1</span>]</span><br><span class="line">    <span class="comment"># 获取到每个样本所对应的分类的得分</span></span><br><span class="line">    scores = X.dot(W)</span><br><span class="line">    scores_shift = scores - np.max(scores, axis=<span class="number">1</span>)</span><br><span class="line">    softmax_output = np.exp(scores_shift) / np.sum(np.exp(scores_shift), axis=<span class="number">1</span>)</span><br><span class="line">    loss = -np.sum(np.log(softmax_output[range(num_train), list(y)]))</span><br><span class="line">    loss /= num_train</span><br><span class="line">    loss += <span class="number">0.5</span> * reg * np.sum(W * W)</span><br><span class="line"></span><br><span class="line">    dS = softmax_output.copy()</span><br><span class="line">    dS[range(num_train), list(y)] += <span class="number">-1</span></span><br><span class="line">    dW = (X.T).dot(dS)</span><br><span class="line">    dW = dW / num_train + reg * W</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> loss, dW</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>multi-classifition</tag>
+        <tag>softmax</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>sklearn稀疏矩阵</title>
+    <url>/2020/03/04/2020-3-3-spare_matrix-2020/</url>
+    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
+<p>Machine Learning notes<br><a id="more"></a></p>
+<h1 id="sklearn稀疏矩阵"><a href="#sklearn稀疏矩阵" class="headerlink" title="sklearn稀疏矩阵"></a>sklearn稀疏矩阵</h1></blockquote>
+<h3 id="lil-matrix-使用两个列表储存非0元素，data保存每行中的非零元素-rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。"><a href="#lil-matrix-使用两个列表储存非0元素，data保存每行中的非零元素-rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。" class="headerlink" title="lil_matrix 使用两个列表储存非0元素，data保存每行中的非零元素,rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。"></a>lil_matrix 使用两个列表储存非0元素，data保存每行中的非零元素,rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.sparse <span class="keyword">import</span> lil_matrix</span><br><span class="line">l = lil_matrix((<span class="number">6</span>,<span class="number">5</span>))</span><br><span class="line">l[<span class="number">2</span>,<span class="number">3</span>] = <span class="number">1</span></span><br><span class="line">l[<span class="number">3</span>,<span class="number">4</span>] = <span class="number">2</span></span><br><span class="line">l[<span class="number">3</span>,<span class="number">2</span>] = <span class="number">3</span></span><br><span class="line">print(l.toarray())</span><br><span class="line">[[ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">1.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">3.</span>  <span class="number">0.</span>  <span class="number">2.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> l.data</span><br><span class="line">[[] [] [<span class="number">1.0</span>] [<span class="number">3.0</span>, <span class="number">2.0</span>] [] []]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> l.rows</span><br><span class="line">[[] [] [<span class="number">3</span>] [<span class="number">2</span>, <span class="number">4</span>] [] []]</span><br></pre></td></tr></table></figure>
+<h3 id="dok-matrix和lil-matrix适用的场景是逐渐添加矩阵的元素。doc-matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的元祖，value是记录元素的具体值。"><a href="#dok-matrix和lil-matrix适用的场景是逐渐添加矩阵的元素。doc-matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的元祖，value是记录元素的具体值。" class="headerlink" title="dok_matrix和lil_matrix适用的场景是逐渐添加矩阵的元素。doc_matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的元祖，value是记录元素的具体值。"></a>dok_matrix和lil_matrix适用的场景是逐渐添加矩阵的元素。doc_matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的<a href="https://www.baidu.com/s?wd=%E5%85%83%E7%A5%96&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">元祖</a>，value是记录元素的具体值。</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy.sparse <span class="keyword">import</span> dok_matrix</span><br><span class="line">S = dok_matrix((<span class="number">5</span>,<span class="number">5</span>), dtype=np.float32)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        S[i,j] = i + j</span><br><span class="line"><span class="comment"># 返回的是非零元素的row_index,column_index</span></span><br><span class="line">S.nonzero()</span><br><span class="line">print(S.toarray())</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>Machine Learning</category>
+      </categories>
+      <tags>
+        <tag>scipy</tag>
+        <tag>稀疏矩阵</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>如何处理不平衡的数据</title>
     <url>/2020/03/04/2020-3-3-unbalance_data-2020/</url>
     <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
@@ -1768,23 +1837,6 @@ L_i=-log\frac{e^{S_{y_i}}}{\sum_{j=1}^Ce^{S_j}}=-(s_{y_i}-log\sum_{j=1}^Ce^{s_j}
       </categories>
       <tags>
         <tag>不平衡数据处理</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>sklearn稀疏矩阵</title>
-    <url>/2020/03/04/2020-3-3-spare_matrix-2020/</url>
-    <content><![CDATA[<h1 id="Hey"><a href="#Hey" class="headerlink" title="Hey"></a>Hey</h1><blockquote>
-<p>Machine Learning notes<br><a id="more"></a></p>
-<h1 id="sklearn稀疏矩阵"><a href="#sklearn稀疏矩阵" class="headerlink" title="sklearn稀疏矩阵"></a>sklearn稀疏矩阵</h1></blockquote>
-<h3 id="lil-matrix-使用两个列表储存非0元素，data保存每行中的非零元素-rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。"><a href="#lil-matrix-使用两个列表储存非0元素，data保存每行中的非零元素-rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。" class="headerlink" title="lil_matrix 使用两个列表储存非0元素，data保存每行中的非零元素,rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。"></a>lil_matrix 使用两个列表储存非0元素，data保存每行中的非零元素,rows保存非零元素所在的列。这种格式也很适合逐个添加元素，并且能快速获取行相关的数据。</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.sparse <span class="keyword">import</span> lil_matrix</span><br><span class="line">l = lil_matrix((<span class="number">6</span>,<span class="number">5</span>))</span><br><span class="line">l[<span class="number">2</span>,<span class="number">3</span>] = <span class="number">1</span></span><br><span class="line">l[<span class="number">3</span>,<span class="number">4</span>] = <span class="number">2</span></span><br><span class="line">l[<span class="number">3</span>,<span class="number">2</span>] = <span class="number">3</span></span><br><span class="line">print(l.toarray())</span><br><span class="line">[[ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">1.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">3.</span>  <span class="number">0.</span>  <span class="number">2.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]</span><br><span class="line"> [ <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>  <span class="number">0.</span>]]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> l.data</span><br><span class="line">[[] [] [<span class="number">1.0</span>] [<span class="number">3.0</span>, <span class="number">2.0</span>] [] []]</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> l.rows</span><br><span class="line">[[] [] [<span class="number">3</span>] [<span class="number">2</span>, <span class="number">4</span>] [] []]</span><br></pre></td></tr></table></figure>
-<h3 id="dok-matrix和lil-matrix适用的场景是逐渐添加矩阵的元素。doc-matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的元祖，value是记录元素的具体值。"><a href="#dok-matrix和lil-matrix适用的场景是逐渐添加矩阵的元素。doc-matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的元祖，value是记录元素的具体值。" class="headerlink" title="dok_matrix和lil_matrix适用的场景是逐渐添加矩阵的元素。doc_matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的元祖，value是记录元素的具体值。"></a>dok_matrix和lil_matrix适用的场景是逐渐添加矩阵的元素。doc_matrix的策略是采用字典来记录矩阵中不为0的元素。自然，字典的key存的是记录元素的位置信息的<a href="https://www.baidu.com/s?wd=%E5%85%83%E7%A5%96&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd" target="_blank" rel="noopener">元祖</a>，value是记录元素的具体值。</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> scipy.sparse <span class="keyword">import</span> dok_matrix</span><br><span class="line">S = dok_matrix((<span class="number">5</span>,<span class="number">5</span>), dtype=np.float32)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">5</span>):</span><br><span class="line">        S[i,j] = i + j</span><br><span class="line"><span class="comment"># 返回的是非零元素的row_index,column_index</span></span><br><span class="line">S.nonzero()</span><br><span class="line">print(S.toarray())</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>Machine Learning</category>
-      </categories>
-      <tags>
-        <tag>scipy</tag>
-        <tag>稀疏矩阵</tag>
       </tags>
   </entry>
 </search>
